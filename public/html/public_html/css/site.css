@@ -1,0 +1,203 @@
+html {
+
+}
+body {
+   font-size: 14px;
+}
+a:focus {
+    outline: 0;
+    outline: none;
+}
+.btn-flat {
+    border-radius: 0;
+}
+.no-padding {
+    padding: 0;
+}
+.underline {
+    text-decoration: underline;
+}
+/************* INTRO ***************/
+#intro_wrapper {
+    background: url("../images/page/intro_bg.jpg") center center no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+}
+#intro_wrapper_cell {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+#intro {
+    background-color: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    margin: auto;
+    padding: 20px;
+    behavior:url(pie/PIE.htc);
+}
+#intro-header-wrapper {
+    margin: 13% 5% 0% 5%;
+}
+#intro-header {
+    width: 70%;
+    border-color: #EFEFEF;
+    border-style: solid;
+    border-width: 1px 0px 1px 0px;
+    margin: auto;
+}
+#intro-logo  {
+    text-align: center
+}
+#intro-logo img {
+    margin: auto;
+}
+#intro h1 {
+    font-size: 1.1em;
+    color: #0e84be;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 7px;
+}
+#intro p.sub {
+    font-size: 0.9em;
+    color: #0e84be;
+    font-style: italic;
+    margin-bottom: 7px;
+}
+#intro-country-nav {
+    margin-top: 4%
+}
+#intro-country-nav li a {
+    font-family: "Conv_Augushand",sans-serif,tahoma;
+    font-size: 1.5em;
+    color: #f0b32c;
+}
+#intro-description {
+    margin-left: 10%;
+    margin-right: 9%;
+    margin-top: 2%;
+    margin-bottom: 2%
+}
+#intro-description [class*="col-"] {
+    padding: 0;
+}
+#intro-des-text {
+    font-size: .75em;
+    font-style: italic;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0;
+    padding-top: 3px;
+}
+#intro-des-readmore a {
+    font-size: .75em;
+    color: #000 !important;
+    font-weight: bold;
+    text-decoration: underline
+}
+#intro-socials li a {
+    color: #fff;
+    background: #000;
+    padding: 6px 12px;
+    font-size: 1.3em
+}
+#intro-socials li a:hover {
+    background: #0e84be
+}
+
+/********** TOUR ******************/
+#header {
+    background: url('../images/page/tour_bg.jpg') top center no-repeat;
+    height: 530px;
+    background-size: cover;
+    border-bottom: 13px solid #f0b32c;
+}
+#main-nav-warrper {
+    background: none;
+    border: none;
+}
+#main-nav  ul.nav li {
+    padding-top: 10px
+}
+#main-nav ul.nav li a {
+    background: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: .9em
+}
+#main-nav ul.nav li.active a {
+    color: #F0B32C !important;
+    background: none;
+}
+#search-form {
+    position: relative;
+    top:10px;
+}
+#search-form input[type="text"] {
+    border-radius:0;
+    width: 200px;
+    padding: 3px;
+    outline:none; color: #999; background: #ececec; border: 1px solid #d2d2d2; border-bottom: 1px solid #d8d8d8; -webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07); -moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07); -o-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07); box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07);
+}
+#search-form [type="submit"] {
+    border-color:#ccc;
+    border-width: 0px 0px 0px 1px;
+    background: none;
+    position: absolute;
+    right: 0px;
+    color: #ccc;
+    top:3px;
+}
+#main-logo img {
+    max-width: 180px;
+}
+#country-main-nav-wrapper {
+    margin-left: 210px;
+    background: #006fc0;
+    border-top : 6px solid #f0b32c;
+    text-align: center;
+    margin-right: 15px
+}
+#country-main-nav-wrapper li a {
+    text-align: center;
+    font-family: "Conv_Augushand",sans-serif,tahoma;
+    font-size: 2.8em;
+    color: #fff;
+    padding: 8px 20px;
+}
+.header-caption {
+    padding: 25px;
+    background: rgba(33,161,198,0.7);
+}
+.header-caption p {
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold
+}
+.header-caption p.small {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+#features-tab {
+    margin-top: 25px;
+}
+#features-tab h3 {
+    margin: 0;
+}
+.feature-item {
+    background: #006fc0;
+    color: #fff;
+    padding: 25px;
+}
+.feature-item:hover {
+    background: #f0b32c;
+    cursor: pointer
+}

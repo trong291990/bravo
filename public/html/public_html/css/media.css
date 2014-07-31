@@ -1,0 +1,20 @@
+@media(max-width:768px){
+    
+    #intro-header {
+        width: 80%;
+        border: none
+    }
+    #intro-country-nav li a {
+        font-size: 1.2em;
+    }
+    #intro-country-nav {
+        margin-top: 1%
+    }
+}
+@media(max-width:680px){
+    #intro {
+        border-radius: 20px;
+        margin-top: 40px;
+        box-shadow: 0 0 4px #111111;
+    }
+}
