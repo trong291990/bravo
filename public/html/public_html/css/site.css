@@ -3,7 +3,21 @@ html {
 }
 body {
    font-size: 14px;
+   font-family: "Open Sans", sans-serif;
 }
+    html,body
+    {
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.1s;
+    }
+
+    @-webkit-keyframes fontfix{
+    from{ opacity: 1; }
+    to{ opacity: 1; }
+    }
 a:focus {
     outline: 0;
     outline: none;
@@ -13,6 +27,15 @@ a:focus {
 }
 .no-padding {
     padding: 0;
+}
+.no-padding-left {
+    padding-left:0;
+}
+.no-padding-right {
+    padding-right:0;
+}
+.auto {
+    margin: auto;
 }
 .underline {
     text-decoration: underline;
@@ -112,7 +135,7 @@ a:focus {
 
 /********** TOUR ******************/
 #header {
-    background: url('../images/page/tour_bg.jpg') top center no-repeat;
+    background: url('../images/page/hoi-an.jpg') top center no-repeat;
     height: 530px;
     background-size: cover;
     border-bottom: 13px solid #f0b32c;
@@ -200,4 +223,18 @@ a:focus {
 .feature-item:hover {
     background: #f0b32c;
     cursor: pointer
+}
+#view-cities {
+    background: #e0e0e0;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+#package-form {
+    padding: 15px 0px 5px 0px;
+    border-bottom: 3px solid #ebebeb
+}
+#select-package-label {
+    font-size: .9em;
+    font-weight: normal;
 }

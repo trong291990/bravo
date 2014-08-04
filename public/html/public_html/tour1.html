@@ -4,10 +4,14 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/fonts.css"/>
         <link rel="stylesheet" href="css/site.css"/>
         <link rel="stylesheet" href="css/media.css"/>
+        <link rel="stylesheet" href="plugins/bootstrap-select/bootstrap-select.min.css" />
+        <link rel="stylesheet" href="plugins/icheck/skins/all.css" />
+        
     </head>
     <body>
         <div id="header">
@@ -68,7 +72,7 @@
                 </div>
             </div>
             <div class="clearfix" id="features-tab">
-                <div class="col-sm-4  feature-item">
+                <div class="col-sm-4  feature-item clearfix">
                     <div class="col-xs-2 no-padding">
                         <i class="fa fa-3x fa-chevron-circle-down"></i>
                     </div>
@@ -79,7 +83,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-sm-4  feature-item">
+                <div class="col-sm-4  feature-item clearfix">
                     <div class="col-xs-2 no-padding">
                         <i class="fa fa-3x fa-chevron-circle-down"></i>
                     </div>
@@ -90,7 +94,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-sm-4  feature-item">
+                <div class="col-sm-4  feature-item clearfix">
                     <div class="col-xs-2 no-padding">
                         <i class="fa fa-3x fa-chevron-circle-down"></i>
                     </div>
@@ -102,9 +106,90 @@
                     </div>
                 </div>
             </div>
+            <div class="clearfix" id="view-cities">
+                SEE CITIES TO VISITS :: BEIJING :: GUILIN :: HONGKONG :: SHANGHAI :: XI'AN 
+            </div>
+            <div class="clearfix" id="package-form">
+                <div class="col-sm-4 no-padding" id="package-check">
+                    <input type="checkbox">
+                    <label id="select-package-label">Select the package</label>
+                    <input type="checkbox" />
+                    <input type="checkbox" />
+                    <input type="checkbox" />
+                    <button type="submit" class="btn btn-primary">Compare</button>
+                </div>
+                <div class="col-sm-8 no-padding">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <select>
+                                <option value="">Sort by travel style</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <select>
+                                <option value="">Sort by price</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <select>
+                                <option value="">Sort by duration</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tours-list">
+                <div class="tour-item">
+                    <div class="tour-sliders">
+                        <img src="images/page/tour_img.jpg" class="img-responsive" />
+                    </div>
+                    <div class="tour-content clearfix">
+                        <div class="col-sm-8 clearfix">
+                            <h3 class="tour-title">
+                                Bangkok and Pattaya Tour from Bangkok   
+                            </h3>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <p>Tour Duration : 4 days</p>
+                                    <p>Tour Code : 508-443</p>
+                                    <p>Destinations : VietNam, Campudia</p>
+                                    <p>Great for : LUXYRY, CUTURE VACATION, RIVER CRUISE</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="tour-price">START AT $809 </p>
+                                    <p class="tour-note">per person, without air</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 clearfix">
+                            <div class="col-sm-6 no-padding-left">
+                                <img src="images/page/map_small.jpg" class="img-responsive" />
+                            </div>
+                            <div class="col-sm-6 no-padding-right">
+                                <button class="btn btn-block btn-warning">Booking now</button>
+                                <p><i class="fa fa-envelope"></i> EMAIL TO FRIEND</p>
+                                <p><i class="fa fa-print"></i> PRINT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <ul class="pagination pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
         </div>
         <script src="js/jquery-2.0.3.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+        <script src="plugins/icheck/icheck.min.js"></script>
+        <script src="plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js"></script>
         <script src="js/layout.js"></script>
+        <script src="js/functions.js"></script>
     </body>
 </html>
