@@ -1,5 +1,18 @@
+.col-sm-27,.col-sm-57 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media(min-width:768px) {
+    .col-sm-27 {
+        width: 28.571%;
+        float: left
+    }
+    .col-sm-57 {
+        width: 71.428%;
+        float: left
+    }
+}
 @media(max-width:768px){
-    
     #intro-header {
         width: 80%;
         border: none
@@ -10,6 +23,9 @@
     #intro-country-nav {
         margin-top: 1%
     }
+    .col-sm-27,.col-sm-27 {
+        width: 100%;
+    }
 }
 @media(max-width:680px){
     #intro {
@@ -17,4 +33,22 @@
         margin-top: 40px;
         box-shadow: 0 0 4px #111111;
     }
+    #intro-country-nav li a {
+        font-size: 1em;
+    }
+    #intro-description img {
+        margin: auto;
+        margin-bottom: 10px
+    }
+    #main-logo img {
+        max-width: 120px;
+    }
+    #country-main-nav-wrapper {
+        margin-left: 130px
+    }
+}
+@media(max-width:360px){
+    #country-main-nav-wrapper li a {
+        font-size: 1.8em;
+      }
 }
