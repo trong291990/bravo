@@ -119,9 +119,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-        'Former\FormerServiceProvider',
-        'Darsain\Console\ConsoleServiceProvider',
-
+                'Former\FormerServiceProvider',
+                'Darsain\Console\ConsoleServiceProvider',
+                'Way\Generators\GeneratorsServiceProvider'
 	),
 
 	/*

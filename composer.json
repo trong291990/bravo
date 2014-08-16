@@ -6,7 +6,9 @@
 	"require": {
 		"laravel/framework": "4.1.*",
         "anahkiasen/former": "dev-master",
-        "darsain/laravel-console": "dev-master"
+        "darsain/laravel-console": "dev-master",
+        "way/generators": "2.3",
+		"davejamesmiller/laravel-breadcrumbs": "~2.2.2"
 	},
 	"autoload": {
 		"classmap": [
