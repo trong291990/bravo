@@ -120,8 +120,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Former\FormerServiceProvider',
-        'Darsain\Console\ConsoleServiceProvider',
-
+        'Darsain\Console\ConsoleServiceProvider'
 	),
 
 	/*
