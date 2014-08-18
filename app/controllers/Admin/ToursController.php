@@ -15,7 +15,7 @@ class ToursController extends AdminBaseController {
 	 */
 	public function index()
 	{
-            $tours = \Tour::paginate(2);
+            $tours = \Tour::paginate(20);
             $this->layout->content = View::make('admin.tours.index')->with('tours',$tours);
 	}
 

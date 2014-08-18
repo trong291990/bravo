@@ -38,18 +38,6 @@
                     @endforeach
                     </div>
                 </div>
-                {{Former::text('name')->class('form-control')->required()}}
-                {{Former::text('slug')->class('form-control')}}
-                <div class='input-group' style="margin-top: 15px">
-                    <label>Travel Styles</label>
-                    <div id='travel-style-wrapper' class='cleafix'>
-                    <?php foreach (\TravelStyle::all() as $ts):?>
-                        <div class='col-sm-4'>
-                            <input type="checkbox" name="travelStyle[]" value="{{$ts->id}}" /> {{$ts->name}} 
-                        </div>
-                    <?php endforeach;?>
-                    </div>
-                </div>
                 {{Former::textarea('meta_keyword')->class('form-control')}}
                 <div class="control-group" style="margin-top: 8px;">
                     <label>Keyword Inherit </label> <input type="checkbox" checked="checked" name="keyword_inherit" />
@@ -90,4 +78,3 @@
         
     });
 </script>
-@stop

@@ -16,5 +16,4 @@ class Place extends Eloquent {
     public function tours(){
         return $this->belongsToMany('Tour');
     }
-    
 }

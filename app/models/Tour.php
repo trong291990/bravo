@@ -26,8 +26,7 @@ class Tour extends Eloquent {
     
     public function places(){
         return $this->belongsToMany('Place');
-    }
-    
+    }  
     public  function placeIds(){
         $arrIds = array();
         $places =  $this->places;
