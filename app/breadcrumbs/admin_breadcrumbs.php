@@ -4,14 +4,14 @@ Breadcrumbs::register('dashboard', function($breadcrumbs) {
 });
 Breadcrumbs::register('list_tours', function($breadcrumbs) {
     $breadcrumbs->parent('dashboard');
-    $breadcrumbs->push('Tours', route('admin.tours.index'));
+    $breadcrumbs->push('Tours', route('admin.tour.index'));
 });
 Breadcrumbs::register('create_tour', function($breadcrumbs) {
     $breadcrumbs->parent('list_tours');
-    $breadcrumbs->push('Create tour', route('admin.tours.create'));
+    $breadcrumbs->push('Create tour', route('admin.tour.create'));
 });
 Breadcrumbs::register('edit_tour', function($breadcrumbs,$tour) {
     $breadcrumbs->parent('list_tours');
-    $breadcrumbs->push($tour->name, route('admin.tours.edit',$tour->id));
+    $breadcrumbs->push($tour->name, route('admin.tour.edit',$tour->id));
 });
 

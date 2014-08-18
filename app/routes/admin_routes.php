@@ -14,6 +14,6 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
             'as' => 'admin.logout',
             'uses' => 'AuthController@logout',
         ));
-        Route::resource('tours', 'ToursController');
+        Route::resource('tour', 'TourController');
 //     });
 });

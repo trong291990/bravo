@@ -8,7 +8,6 @@
     @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('list_tours')))
 @stop
 @section('content')
-@section('content')
 <div class="box box-primary">
 <div class="box-header">
     <div class="box-tools">
@@ -37,7 +36,7 @@
             <td>{{$tour->price_from}}</td>
             <td>
                 <a class='btn btn-primary'>Itineraries</a>
-                <a class='btn btn-warning' href="{{Route('admin.tours.edit',$tour->id)}}">Edit</a>
+                <a class='btn btn-warning' href="{{Route('admin.tour.edit',$tour->id)}}">Edit</a>
                 <a class='btn btn-danger'>Delete</a>
             </td>
         </tr>
