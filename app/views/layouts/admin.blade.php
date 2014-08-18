@@ -25,9 +25,9 @@
             <aside class="right-side">
                 <section class="content-header">
                     @yield('header_content')
+                    @yield('breadcrumbs')
                 </section>
                 <section class="content">
-                    @include('partials/_flash_messages')
                     @yield('content')
                 </section>
             </aside>
@@ -43,8 +43,8 @@
         <script src="{{asset('js/plugins/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
         <!-- END PLUGINS -->
         
-        <script src="{{asset('js/lte.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/admin.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/admin/lte.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/admin/init.js')}}" type="text/javascript"></script>
         @yield('addon_js')
         
         @yield('inline_scripts')

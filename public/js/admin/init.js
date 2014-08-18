@@ -1,9 +1,10 @@
+//CKEDITOR
 if (typeof (CKEDITOR) !== 'undefined') {
 	CKEDITOR.replace('ck-editor');
 }
-
+//SELECT2
 $('.select2').select2();
-
+//DELETE FORM
 $('a[data-method="delete"]').on('click', function() {
 	var dataConfirm = $(this).attr('data-confirm');
 	if (typeof dataConfirm === 'undefined') {
@@ -33,3 +34,7 @@ $('a[data-method="delete"]').on('click', function() {
 	}
 	return false;
 });
+//AUTOHIDE MESSAGE
+setTimeout(function(){
+    $('#flash-message-autohide').remove();
+}, 5000);

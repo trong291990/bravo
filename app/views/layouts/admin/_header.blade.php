@@ -1,6 +1,6 @@
 <header class="header">
-    <a href="<?php echo route('admin.root') ?>" class="logo">
-        Bravo Tours Admin
+    <a href="<?php echo route('admin.root') ?>" class="logo" id="admin-logo">
+        <span class="sr-only">Bravo Administrator Panel</span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -9,6 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </a>
+        @include('partials/_flash_messages_autohide')
         <div class="navbar-right">
             <ul class="nav navbar-nav">
                 <li class="dropdown">

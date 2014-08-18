@@ -4,10 +4,12 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.1.*",
-        "anahkiasen/former": "dev-master",
-        "darsain/laravel-console": "dev-master",
-        "way/generators": "dev-master"
+            "laravel/framework": "4.1.*",
+            "anahkiasen/former": "3.4.3",
+            "darsain/laravel-console": "dev-master",
+            "davejamesmiller/laravel-breadcrumbs": "2.2.2",
+            "barryvdh/laravel-ide-helper": "1.9.0",
+            "way/generators": "2.*"
 	},
 	"autoload": {
 		"classmap": [

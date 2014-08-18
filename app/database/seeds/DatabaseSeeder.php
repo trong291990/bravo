@@ -5,6 +5,7 @@ class DatabaseSeeder extends Seeder {
     public function run() {
         Eloquent::unguard();
         $this->call('CountryAndPlaceSeeder');
+        $this->call('TravelStylesTableSeeder');
     }
 
 }
@@ -12,9 +13,9 @@ class DatabaseSeeder extends Seeder {
 class CountryAndPlaceSeeder extends Seeder {
 
     public function run() {
-        DB::table('countries')->truncate();
+        DB::table('areas')->truncate();
         DB::table('places')->truncate();
-        $countries_places = [
+        $area_places = [
             'Vietnam' => [
                 'HaLong Bay', 'Hanoi', 'Da Lat', 'Phong Nha Ke Bang',
                 'Hoi An', 'Hue', 'Lang Co', 'Con Dao Islands', 'Nha Trang',
@@ -37,17 +38,17 @@ class CountryAndPlaceSeeder extends Seeder {
             ]
         ];
         $i = 0;
-        foreach ($countries_places as $countryName => $places) {
-            $country = Country::create([
-                        'name' => $countryName,
+        foreach ($area_places as $areaName => $places) {
+            $country = Area::create([
+                        'name' => $areaName,
                         'is_on_menu' => true,
                         'menu_order' => ++$i,
-                        'keyword' => $countryName
+                        'keyword' => $areaName
             ]);
             foreach ($places as $place) {
                 Place::create([
                     'name' => $place,
-                    'country_id' => $country->id
+                    'area_id' => $country->id
                 ]);
             }
         }
@@ -55,10 +56,3 @@ class CountryAndPlaceSeeder extends Seeder {
 
 }
 
-class TravelStyleSeeder extends Seeder {
-
-    public function run() {
-        DB::table('travel_styles')->truncate();
-    }
-
-}

@@ -4,3 +4,16 @@ function slug_string($input) {
 	str_replace(" ", "-", $value);
 	return $value;
 }
+function prepare_fileName($filename) {
+    $filename = preg_replace('/[^a-zA-Z0-9_\'%\[\]\.\(\)%&-]/s', '', $filename);
+    $filename = str_replace(' ', '_', $filename);
+    return strtolower($filename);
+}
+
+function pr($data){
+    print_r($data);
+}
+function prd($data){
+    print_r($data);
+    die();
+}

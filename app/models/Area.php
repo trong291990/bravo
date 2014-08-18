@@ -1,8 +1,8 @@
 <?php
 
-class Country extends Eloquent {
+class Area extends Eloquent {
 
-    protected $table = 'countries';
+    protected $table = 'areas';
     public $timestamps = false;
     protected $fillable = [
         'name', 'is_on_menu', 'menu_order', 'keyword', 'meta_keyword'
@@ -18,7 +18,7 @@ class Country extends Eloquent {
     }
 
     public function places() {
-        return $this->hasMany('Place', 'country_id');
+        return $this->hasMany('Place', 'area_id');
     }
 
     public function scopeOnMenu($query) {
