@@ -68,3 +68,41 @@ label.radio input[type="radio"]{
 .sidebar .sidebar-menu > li > a {
     padding: 8px 5px 8px 15px;
 }
+#flash-message-autohide {
+    width: calc(100% - 450px);
+    position: fixed;
+    top:10px;
+    margin: 0 0 0 60px;
+    z-index: 9999;
+}
+#flash-message-autohide .alert {
+    padding: 8px;
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+}
+.sidebar .sidebar-menu .treeview-menu > li > a {
+    padding-left: 30px
+}
+.right-side > .content-header > .breadcrumb > li > a {
+    font-size: 13px;
+    color: #428bca
+}
+.right-side > .content-header > .breadcrumb > li{
+    font-size: 12px;
+}
+#admin-logo {
+    display: inline-block;
+    height: 50px;
+    width: 220px;
+    background-image: url('../img/admin/logo.png');
+}
+@media only screen and   (max-device-width: 678px) {
+    #flash-message-autohide {
+        width: calc(100% - 145px);
+        position: fixed;
+        top:58px;
+        left: 30px;
+        z-index: 9999;
+    }
+}

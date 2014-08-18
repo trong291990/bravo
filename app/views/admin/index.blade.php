@@ -1,14 +1,12 @@
 @section('header_content')
 <h1>
     <i class="fa fa-dashboard"></i> Dashboard
-    <!--<small>Control panel</small>-->
+    <small>Bravo Tour Admin Panel</small>
 </h1>
-<ol class="breadcrumb">
-    <li>Dashboard</li>
-    <!--<li class="active">Home</li>-->
-</ol>
 @stop
-
+@section('breadcrumbs')
+    @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('dashboard')))
+@stop
 @section('content')
 <div class="row">
     <div class="col-md-12">

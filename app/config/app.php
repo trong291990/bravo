@@ -121,7 +121,9 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
                 'Former\FormerServiceProvider',
                 'Darsain\Console\ConsoleServiceProvider',
-                'Way\Generators\GeneratorsServiceProvider'
+                'Way\Generators\GeneratorsServiceProvider',
+                'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+                'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 	),
 
 	/*
@@ -187,7 +189,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
+                'Breadcrumbs'     => 'DaveJamesMiller\Breadcrumbs\Facade',
+                'Former' => 'Former\Facades\Former',
 	),
 
 );

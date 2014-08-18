@@ -1,0 +1,1 @@
+C:\Users\DinhTrong\Projects\bravo\bravo\app/views/tours/show.blade.php
