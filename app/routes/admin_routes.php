@@ -15,5 +15,7 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
             'uses' => 'AuthController@logout',
         ));
         Route::resource('tour', 'TourController');
+        Route::get('/tour/{tour_id}/itinerary', ['uses' => 'TourController@itinerary', 'as' => 'tour.itinerary.index']);
+        Route::post('/tour/{tour_id}/update-itinerary', ['uses' => 'TourController@updateItinerary', 'as' => 'tour.update.itinerary']);
 //     });
 });

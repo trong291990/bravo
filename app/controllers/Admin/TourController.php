@@ -11,6 +11,7 @@ use \Validator;
 use \Tour;
 use \Area;
 use \TravelStyle;
+use \Itinerary;
 
 class TourController extends AdminBaseController {
 
@@ -137,6 +138,28 @@ class TourController extends AdminBaseController {
     public function destroy($id) {
         $tour = Tour::findOrFail($id);
         $tour->completeDelete();
+        Session::flash('success', "The tour has been deleted");
+        return Redirect::route('admin.tour.index');
     }
 
+    public function itinerary($id) {
+        $tour = Tour::findOrFail($id);
+        $itineraries = $tour->itineraries;
+        $this->layout->content = View::make('admin.tour.itinerary.index')
+                ->with('tour', $tour)
+                ->with('itineraries', $itineraries);
+    }
+
+    public function updateItinerary($id) {
+        $tour = Tour::findOrFail($id);
+        $itineraries = Input::get('itineraries');
+        foreach ($itineraries as $key => $itineraryAttrs) {
+            $sanitized = $itineraryAttrs;
+            $sanitized['breakfast'] = isset($itineraryAttrs['breakfast']);
+            $sanitized['lunch'] = isset($itineraryAttrs['lunch']);
+            $sanitized['dinner'] = isset($itineraryAttrs['dinner']);
+            $tour->itineraries()->save(with(new Itinerary($sanitized))); 
+        }
+        return Redirect::route('admin.tour.index');
+    }
 }

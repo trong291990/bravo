@@ -95,7 +95,7 @@ class Tour extends Eloquent {
     }
 
     public function completeDelete() {
-        $this->itineraries->delete();
+        $this->itineraries()->delete();
         $this->delete();
     }
 
