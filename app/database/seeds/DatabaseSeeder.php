@@ -15,6 +15,12 @@ class CountryAndPlaceSeeder extends Seeder {
     public function run() {
         DB::table('areas')->truncate();
         DB::table('places')->truncate();
+        $indochinaArea = Area::create([
+                    'name' => 'Indochina',
+                    'is_on_menu' => true,
+                    'menu_order' => 0,
+                    'keyword' => 'Indochina'
+        ]);
         $area_places = [
             'Vietnam' => [
                 'HaLong Bay', 'Hanoi', 'Da Lat', 'Phong Nha Ke Bang',
@@ -33,22 +39,21 @@ class CountryAndPlaceSeeder extends Seeder {
                 'Hin Boun', 'Khammuan & Savannakhet', 'Luang Nam Tha', 'Luang Prabang',
                 'Muang La', 'Nong Khiaw', 'Pakbeng', 'Pakse', 'The Plain of Jars',
                 'Sam Neau', 'Tad Lo', 'Thakek', 'Vang Vieng', 'Vientiane'
-            ],
-            'Indochina' => [
             ]
         ];
         $i = 0;
         foreach ($area_places as $areaName => $places) {
-            $country = Area::create([
+            $area = Area::create([
                         'name' => $areaName,
                         'is_on_menu' => true,
                         'menu_order' => ++$i,
-                        'keyword' => $areaName
+                        'keyword' => $areaName,
+                        'parent_id' => $indochinaArea->id
             ]);
             foreach ($places as $place) {
                 Place::create([
                     'name' => $place,
-                    'area_id' => $country->id
+                    'area_id' => $area->id
                 ]);
             }
         }

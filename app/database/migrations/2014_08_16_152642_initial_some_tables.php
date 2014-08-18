@@ -6,9 +6,10 @@ use Illuminate\Database\Migrations\Migration;
 class InitialSomeTables extends Migration {
 
     public function up() {
-        Schema::create('countries', function(Blueprint $t) {
+        Schema::create('areas', function(Blueprint $t) {
                     $t->increments('id');
                     $t->string('name', 255);
+                    $t->integer('parent_id')->nullable();
                     $t->string('slug', 255);
                     $t->string('keyword', 255)->nullable();
                     $t->boolean('keyword_inherit')->default(true);
@@ -19,14 +20,14 @@ class InitialSomeTables extends Migration {
 
         Schema::create('places', function(Blueprint $t) {
                     $t->increments('id');
-                    $t->integer('country_id');
+                    $t->integer('area_id');
                     $t->string('name', 255);
                     $t->text('description')->nullable();
                     $t->string('thumbnail', 255)->nullable(); // thumbnail from primary photo
                     $t->float('lat')->nullable();
                     $t->float('lng')->nullable();
                     
-                    $t->index('country_id');
+                    $t->index('area_id');
                 });
         Schema::create('place_photos', function(Blueprint $t) {
                     $t->increments('id');
@@ -57,13 +58,13 @@ class InitialSomeTables extends Migration {
 
         Schema::create('tours', function(Blueprint $t) {
                     $t->increments('id');
-                    $t->integer('country_id');
+                    $t->integer('area_id');
                     $t->string('name', 255);
                     $t->string('code', 255);
                     $t->string('slug', 255);
                     $t->string('meta_keyword', 255)->nullable();
 
-                    $t->string('keyword', 255)->nullable();
+                    $t->string('meta_description', 255)->nullable();
                     $t->boolean('keyword_inherit')->default(true);
 
                     $t->integer('duration');
@@ -72,12 +73,13 @@ class InitialSomeTables extends Migration {
                     $t->text('include')->nullable();
                     $t->text('not_include')->nullable();
                     $t->text('overview')->nullable();
+                    $t->string('photo')->nullable();
 
                     $t->timestamps();
-                    $t->index('country_id');
+                    $t->index('area_id');
                 });
 
-        Schema::create('tours_places', function(Blueprint $t) {
+        Schema::create('place_tour', function(Blueprint $t) {
                     $t->increments('id');
                     $t->integer('tour_id');
                     $t->integer('place_id');
@@ -86,7 +88,7 @@ class InitialSomeTables extends Migration {
                     $t->index('tour_id');
                     $t->index('place_id');
                 });
-        Schema::create('tours_travel_styles', function(Blueprint $t) {
+        Schema::create('tour_travel_style', function(Blueprint $t) {
                     $t->increments('id');
                     $t->integer('tour_id');
                     $t->integer('travel_style_id');

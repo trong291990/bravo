@@ -10,6 +10,7 @@ use \View;
 use \Validator;
 use \Tour;
 use \Area;
+use \TravelStyle;
 
 class TourController extends AdminBaseController {
 
@@ -30,7 +31,8 @@ class TourController extends AdminBaseController {
      */
     public function create() {
         $areas = Area::all();
-        $this->layout->content = View::make('admin.tour.create')->with('areas', $areas);
+        $travelStyles = TravelStyle::all();
+        $this->layout->content = View::make('admin.tour.create')->with(compact('areas', 'travelStyles'));
     }
 
     /**
@@ -40,38 +42,27 @@ class TourController extends AdminBaseController {
      */
     public function store() {
         $data = Input::all();
-        $validator = Validator::make($data, \Tour::$rules);
+        $validator = Validator::make($data, Tour::$rules);
         if ($validator->passes()) {
             $tour = new Tour();
             $tour->area_id = $data['area_id'];
             $tour->name = $data['name'];
-            $tour->slug = $data['slug'];
             $tour->meta_keyword = $data['meta_keyword'];
             $tour->price_from = $data['price_from'];
             $tour->duration = $data['duration'];
             $tour->include = $data['include'];
             $tour->not_include = $data['not_include'];
             $tour->overview = $data['overview'];
-            $travelStyles = $data['travelStyle'];
+            $travelStyles = $data['travel_styles'];
             $tour->save();
             $tour->travelStyles()->sync($travelStyles);
             $tour->places()->sync($data['places']);
-            $this->_savePhoto($tour);
+            $tour->savePhoto(Input::file('photo'));
             Session::flash('success', "The tour {$tour->name} has been created successful");
             return Redirect::route('admin.tour.index');
         } else {
             Session::flash('error', "The tour has could not be save");
             return Redirect::back()->withInput()->withErrors($validator->errors());
-        }
-    }
-
-    private function _savePhoto($tour) {
-        if (Input::hasFile('photo')) {
-            $fileName = prepare_fileName(Input::file('photo')->getClientOriginalName());
-            $destPath = public_path() . \Tour::PHOTO_PATH . '/' . $tour->id;
-            Input::file('photo')->move($destPath, $fileName);
-            $tour->photo = $fileName;
-            $tour->save();
         }
     }
 
@@ -95,12 +86,14 @@ class TourController extends AdminBaseController {
         $areas = Area::all();
         $tour = Tour::findOrFail($id);
         $placeIds = $tour->placeIds();
+        $travelStyles = TravelStyle::all();
         $travelStyleIds = $tour->travelStylesIds();
         $this->layout->content = View::make('admin.tour.edit')
                 ->with('areas', $areas)
                 ->with('tour', $tour)
                 ->with('placeIds', $placeIds)
-                ->with('travelStyleIds', $travelStyleIds);
+                ->with('travelStyleIds', $travelStyleIds)
+                ->with('travelStyles', $travelStyles);
     }
 
     /**
@@ -116,18 +109,17 @@ class TourController extends AdminBaseController {
             $tour = Tour::findOrFail($id);
             $tour->area_id = $data['area_id'];
             $tour->name = $data['name'];
-            $tour->slug = $data['slug'];
             $tour->meta_keyword = $data['meta_keyword'];
             $tour->price_from = $data['price_from'];
             $tour->duration = $data['duration'];
             $tour->include = $data['include'];
             $tour->not_include = $data['not_include'];
             $tour->overview = $data['overview'];
-            $travelStyles = $data['travelStyle'];
+            $travelStyles = $data['travel_styles'];
             $tour->save();
             $tour->travelStyles()->sync($travelStyles);
             $tour->places()->sync($data['places']);
-            $this->_savePhoto($tour);
+            $tour->savePhoto(Input::file('photo'));
             Session::flash('success', "The tour {$tour->name} has been updated successful");
             return Redirect::route('admin.tour.edit', array($tour->id));
         } else {
@@ -143,7 +135,8 @@ class TourController extends AdminBaseController {
      * @return Response
      */
     public function destroy($id) {
-        //
+        $tour = Tour::findOrFail($id);
+        $tour->completeDelete();
     }
 
 }

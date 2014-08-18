@@ -1,7 +1,6 @@
 @section('header_content')
 <h1>
-    <i class="fa fa-files-o"></i> Listed Tours
-    <small>All your tours</small>
+    <i class="fa fa-files-o"></i> List Tours
 </h1>
 @stop
 @section('breadcrumbs')
@@ -24,7 +23,7 @@
         <tbody><tr>
             <th>ID</th>
             <th style="width: 50%">Name</th>
-            <th>Country</th>
+            <th>Area</th>
             <th>Price From</th>
             <th>Action</th>
         </tr>

@@ -55,12 +55,12 @@ return array(
 	"not_in"               => "The selected :attribute is invalid.",
 	"numeric"              => "The :attribute must be a number.",
 	"regex"                => "The :attribute format is invalid.",
-	"required"             => "The :attribute field is required.",
-	"required_if"          => "The :attribute field is required when :other is :value.",
-	"required_with"        => "The :attribute field is required when :values is present.",
-	"required_with_all"    => "The :attribute field is required when :values is present.",
-	"required_without"     => "The :attribute field is required when :values is not present.",
-	"required_without_all" => "The :attribute field is required when none of :values are present.",
+	"required"             => "The :attribute is required.",
+	"required_if"          => "The :attribute is required when :other is :value.",
+	"required_with"        => "The :attribute is required when :values is present.",
+	"required_with_all"    => "The :attribute is required when :values is present.",
+	"required_without"     => "The :attribute is required when :values is not present.",
+	"required_without_all" => "The :attribute is required when none of :values are present.",
 	"same"                 => "The :attribute and :other must match.",
 	"size"                 => array(
 		"numeric" => "The :attribute must be :size.",
@@ -99,6 +99,9 @@ return array(
 	|
 	*/
 
-	'attributes' => array(),
+	'attributes' => array(
+            'area_id' => 'Area',
+            'price_from' => 'Price from'
+        ),
 
 );

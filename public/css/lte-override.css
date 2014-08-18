@@ -96,20 +96,13 @@ label.radio input[type="radio"]{
     background-position: top left;
     background-repeat: no-repeat;
 }
-.area-place-wrapper {
-    padding:15px;
-}
+
 .area-place-wrapper h5 {
     font-weight: normal;
     font-style: inherit;
     border-bottom: 1px solid #ccc
 }
-#travel-place-wrapper {
-    min-height: 30px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%
-}
+
 .help-inline {
     color: red
 }
@@ -121,4 +114,7 @@ label.radio input[type="radio"]{
         left: 30px;
         z-index: 9999;
     }
+}
+.travel-style-boxes {
+    padding-left: 35px;
 }
