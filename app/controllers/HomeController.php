@@ -1,9 +1,9 @@
 <?php
 
 class HomeController extends FrontendBaseController {
-
-    public function index() {
-        $this->layout->content = View::make('frontend.index');
+    public function landing() {
+        $this->layout = null;
+        return View::make('frontend.landing');
     }
 
 }
