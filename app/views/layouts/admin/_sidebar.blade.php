@@ -16,5 +16,15 @@
                 <li><a href="{{ route('admin.tour.create') }}"><i class="fa fa-angle-double-right"></i> New Tour</a></li>
             </ul>
         </li>
+        <li class="treeview active">
+            <a href="#">
+                <span>Reservations</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('admin.reservation.index') }}"><i class="fa fa-angle-double-right"></i> List </a></li>
+                <li><a href="{{ route('admin.reservation.create') }}"><i class="fa fa-angle-double-right"></i> New </a></li>
+            </ul>
+        </li>        
     </ul>
 </section>

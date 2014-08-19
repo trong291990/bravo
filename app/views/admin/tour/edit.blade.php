@@ -1,6 +1,6 @@
 @section('header_content')
 <h1>
-    <i class="fa fa-files-o"></i> Edit tour
+    Edit tour
     <small>{{$tour->name}}</small>
 </h1>
 @stop

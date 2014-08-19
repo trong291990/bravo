@@ -3,6 +3,7 @@
 namespace Admin;
 
 use \Request;
+use \Response;
 use \Session;
 use \Redirect;
 use \Input;
@@ -168,8 +169,22 @@ class TourController extends AdminBaseController {
             $sanitized['breakfast'] = isset($itineraryAttrs['breakfast']);
             $sanitized['lunch'] = isset($itineraryAttrs['lunch']);
             $sanitized['dinner'] = isset($itineraryAttrs['dinner']);
-            $tour->itineraries()->save(with(new Itinerary($sanitized))); 
+            if (isset($itineraryAttrs['id']) && $itinerary = $tour->itineraries->find($itineraryAttrs['id'])) {
+                $itinerary->update($sanitized);
+            } else {
+                $tour->itineraries()->save(with(new Itinerary($sanitized)));
+            }
         }
-        return Redirect::route('admin.tour.index');
+        return Redirect::route('tour.itinerary.index', $id);
     }
+
+    public function deleteItinerary($id, $itinerary_id) {
+        $tour = Tour::findOrFail($id);
+        $itinerary = $tour->itineraries->find($itinerary_id);
+        $itinerary->delete();
+        return Response::json([
+            'success' => true
+            ]);
+    }
+
 }
