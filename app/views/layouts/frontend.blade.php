@@ -5,12 +5,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="css/fonts.css"/>
-        <link rel="stylesheet" href="css/site.css"/>
-        <link rel="stylesheet" href="css/media.css"/>
-        <link rel="stylesheet" href="plugins/bootstrap-select/bootstrap-select.min.css" />
-        <link rel="stylesheet" href="plugins/icheck/skins/all.css" />
+        {{ HTML::style('css/bootstrap.min.css') }}
+        {{ HTML::style('css/fonts.css') }}
+        {{ HTML::style('css/site.css') }}
+        {{ HTML::style('css/media.css') }}
+        {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
+        {{ HTML::style('/plugins/icheck/skins/all.css') }}
          @yield('addon_stylesheets')
     </head>
     <body>
@@ -25,7 +25,7 @@
                           <span class="icon-bar"></span>
                         </button>
                         <a href="#" class="navbar-brand" id="main-logo">
-                            <img src="images/page/main_logo.png" alt="Bravo Tour" />
+                            <img class="img-responsive" src="{{ URL::asset('/') }}images/page/main_logo.png">
                             <span class="sr-only">Bravo Tour Since 2009</span>
                         </a>
                     </div>
@@ -63,14 +63,14 @@
             </div>
         </div>
         <div class="container">
-             @yield('content')
+            @yield('content')
             <div id="footer" class="row">
                 <div class="col-sm-8  clearfix" id="footer-left">
                     <div class="col-sm-3 no-padding-left">
                         <p>What other travel Bravo Us <br/> &nbsp;</p>
                         <div>
                             <a href="#">
-                                <img src="images/page/virtual_tourist.png" class="img-responsive" />
+                                <img class="img-responsive" src="{{ URL::asset('/') }}images/page/virtual_tourist.png">
                             </a>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         <p>Checkout what other travelers <br/>Bravo us On TripAdvisor</p>
                         <div>
                              <a href="#">
-                                 <img src="images/page/tripadvisor.png" class="img-responsive" />
+                                 <img class="img-responsive" src="{{ URL::asset('/') }}images/page/tripadvisor.png">
                             </a>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                          <p>Checkout what our client said <br/> &nbsp;</p>
                         <div>
                              <a href="#">
-                                 <img src="images/page/review_cente.png" class="img-responsive" />
+                                 <img class="img-responsive" src="{{ URL::asset('/') }}images/page/review_cente.png">
                             </a>
                         </div>
                     </div>
@@ -113,13 +113,13 @@
                 </div>
             </div>
         </div>
-        <script src="{{Request::root()}}/js/jquery-2.0.3.min.js"></script>
-        <script src="{{Request::root()}}/js/bootstrap.min.js"></script>
-        <script src="{{Request::root()}}/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-        <script src="{{Request::root()}}/plugins/icheck/icheck.min.js"></script>
-        <script src="{{Request::root()}}/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js"></script>
-        <script src="{{Request::root()}}/js/layout.js"></script>
-        <script src="{{Request::root()}}/js/functions.js"></script>
+        {{ HTML::script('/js/jquery-2.0.3.min.js') }}
+        {{ HTML::style('/js/bootstrap.min.js') }}
+        {{ HTML::style('plugins/bootstrap-select/bootstrap-select.min.js') }}
+        {{ HTML::style('/js/plugins/icheck/icheck.min.js') }}
+        {{ HTML::style('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
+        {{ HTML::style('/js/layout.js') }}
+        {{ HTML::style('/js/functions.js') }}       
         @yield('addon_js')
         
         @yield('inline_scripts')

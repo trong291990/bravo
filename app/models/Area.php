@@ -21,6 +21,10 @@ class Area extends Eloquent {
         return $this->hasMany('Place', 'area_id');
     }
 
+    public function tours() {
+        return $this->hasMany('Tour', 'area_id');
+    }
+    
     public function scopeOnMenu($query) {
         return $query->where('is_on_menu', true);
     }
