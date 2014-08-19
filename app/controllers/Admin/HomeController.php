@@ -16,7 +16,6 @@ class HomeController extends AdminBaseController {
      * The dashboard for administrator
      */
     public function index() {
-        Session::flash('success','Welcome to admin area');
         $this->layout->content = View::make('admin.index');
     }
 

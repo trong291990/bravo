@@ -11,52 +11,52 @@
     margin: 5px 0;
 }
 .thumbnail-select{
-	background: white;
-	border: 1px solid #E2E3E2;
-	border-radius: 3px;
-	width: 150px;
-	height: 150px;
-	cursor: pointer;
+    background: white;
+    border: 1px solid #E2E3E2;
+    border-radius: 3px;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
 }
 .thumbnail-select img{
-	width: 150px;
-	height: 150px;
+    width: 150px;
+    height: 150px;
 }
 .content {
     min-height: 300px;
 }
 .custom-select2{
-	display: block;
-	width: 100%;
-	height: 34px;
+    display: block;
+    width: 100%;
+    height: 34px;
 
-	font-size: 14px;
-	line-height: 1.428571429;
-	color: #555;
-	vertical-align: middle;
-	box-shadow: none;
-	-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    box-shadow: none;
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 .custom-select2 .select2-choices { 
-	background: none; 
-	border: 1px solid #ccc;
+    background: none; 
+    border: 1px solid #ccc;
 }
 .list-resource {
-	list-style: none;
+    list-style: none;
 }
 .list-resource .resource-parent{
-	font-size: 16px;
+    font-size: 16px;
 }
 .list-resource .resource-group ul.resource-children{
-	list-style: none;
-	font-weight: normal;
+    list-style: none;
+    font-weight: normal;
 }
 .list-resource .resource-group ul.resource-children label{
-	font-weight: normal;
+    font-weight: normal;
 }
 label.radio input[type="radio"]{
-	margin-left: 0px;
+    margin-left: 0px;
 }
 .select2-container .select2-choice , .select2-container .select2-choice .select2-arrow{
     border-radius: 0px;
@@ -135,4 +135,15 @@ label.radio input[type="radio"]{
 }
 .mall-5{
     margin: 5px;
+}
+.bootbox .modal-body {
+    padding: 15px;
+}
+.bootbox .modal-footer {
+    padding: 10px 20px 10px; 
+    margin-top: 5px;
+}
+.bootbox-confirm .bootbox-body {
+    text-align: center;
+    font-size: 18px;
 }

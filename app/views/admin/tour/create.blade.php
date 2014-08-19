@@ -1,6 +1,6 @@
 @section('header_content')
 <h1>
-    <i class="fa fa-files-o"></i> New Tour
+    New Tour
     <small>Create a new tour</small>
 </h1>
 @stop

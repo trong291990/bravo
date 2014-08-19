@@ -1,7 +1,5 @@
 @section('header_content')
-<h1>
-    <i class="fa fa-files-o"></i> List Tours
-</h1>
+<h1>List Tours</h1>
 @stop
 @section('breadcrumbs')
 @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('list_tours')))
@@ -30,13 +28,13 @@
                 <?php foreach ($tours as $tour): ?>
                     <tr>
                         <td>{{$tour->id}}</td>
-                        <td>{{$tour->name}}</td>
+                        <td><a href="{{route('admin.tour.edit', $tour->id)}}">{{$tour->name}}</a></td>
                         <td>{{$tour->area->name}}</td>
                         <td>{{$tour->price_from}}</td>
                         <td>
-                            <a class='btn btn-primary' href="{{route('tour.itinerary.index', $tour->id)}}">Itineraries</a>
-                            <a class='btn btn-warning' href="{{Route('admin.tour.edit',$tour->id)}}">Edit</a>
-                            <a class='btn btn-danger btn-delete' data-method="DELETE" data-url="{{route('admin.tour.destroy', $tour->id)}}">Delete</a>
+                            <a class='btn btn-sm btn-primary' href="{{route('tour.itinerary.index', $tour->id)}}">Itineraries</a>
+                            <a class='btn btn-sm btn-warning' href="{{Route('admin.tour.edit',$tour->id)}}">Edit</a>
+                            <a class='btn btn-sm btn-danger btn-delete' data-method="DELETE" data-url="{{route('admin.tour.destroy', $tour->id)}}">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -41,8 +41,10 @@
         <script src="{{asset('js/plugins/daterangepicker.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/plugins/bootstrap3-wysihtml5.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/plugins/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/plugins/bootbox.min.js')}}" type="text/javascript"></script>
         <!-- END PLUGINS -->
         
+        <script src="{{asset('js/admin/helper.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/admin/lte.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/admin/init.js')}}" type="text/javascript"></script>
         @yield('addon_js')
