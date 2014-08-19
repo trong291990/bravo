@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div id="tours-list">
-                <?php foreach($tours as $tou) ?>
+                <?php foreach($tours as $tou): ?>
                 <div class="tour-item">
                     <div class="tour-sliders">
                         <img src="images/page/tour_img.jpg" class="img-responsive" />

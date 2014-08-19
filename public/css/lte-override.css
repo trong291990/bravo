@@ -92,7 +92,7 @@ label.radio input[type="radio"]{
     font-size: 12px;
 }
 #admin-logo {
-    background-image: url('../img/admin/logo.png');
+    background-image: url('../images/admin/logo.png');
     background-position: top left;
     background-repeat: no-repeat;
 }

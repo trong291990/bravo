@@ -13,6 +13,7 @@ class Place extends Eloquent {
     public function photos() {
         return $this->hasMany('PlacePhoto', 'place_id');
     }
+    
     public function tours(){
         return $this->belongsToMany('Tour');
     }
