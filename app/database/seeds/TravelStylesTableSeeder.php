@@ -13,7 +13,7 @@ class TravelStylesTableSeeder extends Seeder {
         foreach ($styles as $s) {
             TravelStyle::create([
                 'name' => $s
-            ]);
+            ]);      
         }
     }
 

@@ -58,7 +58,12 @@ class TourController extends AdminBaseController {
             $tour->save();
             $tour->travelStyles()->sync($travelStyles);
             $tour->places()->sync($data['places']);
-            $tour->savePhoto(Input::file('photo'));
+            if(\Input::hasFile('photo')){
+                $tour->savePhoto(Input::file('photo'));
+            }
+            if(\Input::hasFile('thumbnail')){
+                $tour->saveThumnail(Input::file('thumbnail'));
+            }
             Session::flash('success', "The tour {$tour->name} has been created successful");
             return Redirect::route('admin.tour.index');
         } else {
@@ -120,7 +125,12 @@ class TourController extends AdminBaseController {
             $tour->save();
             $tour->travelStyles()->sync($travelStyles);
             $tour->places()->sync($data['places']);
-            $tour->savePhoto(Input::file('photo'));
+            if(\Input::hasFile('photo')){
+                $tour->savePhoto(Input::file('photo'));
+            }
+            if(\Input::hasFile('thumbnail')){
+                $tour->saveThumnail(Input::file('thumbnail'));
+            }
             Session::flash('success', "The tour {$tour->name} has been updated successful");
             return Redirect::route('admin.tour.edit', array($tour->id));
         } else {

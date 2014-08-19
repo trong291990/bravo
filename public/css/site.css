@@ -231,6 +231,10 @@ a:focus {
     font-weight: bold;
     font-size: 1.3em;
 }
+#view-cities a {
+    color: #333;
+    text-decoration: none
+}
 #package-form {
     padding: 15px 0px 5px 0px;
     border-bottom: 3px solid #ebebeb
@@ -433,5 +437,10 @@ h3.tour-title {
     background: #156bbd;
     text-align: center;
     color: #fff;
-        
+}
+#contact-page h2 {
+    font-size: 1.6em;
+    padding: 4px;
+    background: #e0e0e0;
+    font-weight: bold
 }

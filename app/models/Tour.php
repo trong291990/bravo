@@ -67,15 +67,19 @@ class Tour extends Eloquent {
     }
 
     public function savePhoto($file) {
-        if (get_class($file) == 'Uploadedfile') {
-            $fileName = sanitize_file_name($file->getClientOriginalName());
-            $destPath = public_path() . '/' . self::PHOTO_PATH . '/' . $this->id;
-            $file->move($destPath, $fileName);
-            $this->photo = $fileName;
-            $this->save();
-        }
+        $fileName = sanitize_file_name($file->getClientOriginalName());
+        $destPath = public_path() . '/' . self::PHOTO_PATH . '/' . $this->id;
+        $file->move($destPath, $fileName);
+        $this->photo = $fileName;
+        $this->save();
     }
-
+    public function saveThumnail($file) {
+        $fileName = 'thumbnail_'.$this->id.'_'.sanitize_file_name($file->getClientOriginalName());
+        $destPath = public_path() . '/' . self::PHOTO_PATH . '/' . $this->id;
+        $file->move($destPath, $fileName);
+        $this->thumbnail = $fileName;
+        $this->save();
+    }
     public function placeIds() {
         $arrIds = array();
         $places = $this->places;

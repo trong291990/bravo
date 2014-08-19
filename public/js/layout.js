@@ -30,7 +30,6 @@ $( window ).on( "orientationchange", function( event ) {
 });
 $(document).ready(function(){
     fixIntroHeight();
-    aler('efef');
 });
 
 

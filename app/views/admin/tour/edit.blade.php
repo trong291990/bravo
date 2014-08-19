@@ -66,19 +66,29 @@
                 {{Former::text('meta_description')->class('form-control')->label('Meta Description')}}
                 {{Former::text('price_from')->class('form-control')->placeholder('$')->required()}}
                 {{Former::text('duration')->class('form-control')->placeholder('days')->required()}}
-                {{Former::text('include')->class('form-control')}}
-                {{Former::text('not_include')->class('form-control')}}
+                {{Former::text('include')->class('form-control  ckeditor')}}
+                {{Former::text('not_include')->class('form-control  ckeditor')}}
                 {{Former::textarea('overview')->class('form-control')}}
                 {{Former::file('photo')->accept('image')}}
-                <?php
-                if ($tour->photo):
-                    ?>
-                    <div class="row">
-                        <div class="col-sm-8 col-lg-offset-2 col-sm-offset-4" style="margin-top: 10px;margin-bottom: 10px">
-                            <img src="<?php echo $tour->photoUrl() ?>" class="img-responsive" alt="" />
-                        </div>
+                @if($tour->photo)
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <a target="_blank" href="{{Request::root()}}/{{Tour::PHOTO_PATH}}/{{$tour->id}}/{{$tour->photo}}">
+                            <i class="fa fa-chain"> </i> {{$tour->photo}}
+                        </a>
                     </div>
-                <?php endif; ?>
+                </div>
+                @endif
+                {{Former::file('thumbnail')->accept('image')}}
+                @if($tour->thumbnail)
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <a target="_blank" href="{{Request::root()}}/{{Tour::PHOTO_PATH}}/{{$tour->id}}/{{$tour->thumbnail}}">
+                            <i class="fa fa-chain"> </i> {{$tour->thumbnail}}
+                        </a>
+                    </div>
+                </div>
+                @endif
             </div>
 
             <div class="box-footer">

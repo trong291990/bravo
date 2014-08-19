@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Bravo Indochina Tour @yield('title')</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="@yield('keyword')" />
+        <meta name="description" content="@yield('description')" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
         {{ HTML::style('css/bootstrap.min.css') }}
         {{ HTML::style('css/fonts.css') }}
@@ -33,7 +35,7 @@
                         <ul class="nav navbar-nav pull-right">
                           <li class="active"><a href="#">Home</a></li>
                           <li><a href="#about">About</a></li>
-                          <li><a href="#contact">Contact</a></li>
+                          <li><a href="{{Request::root()}}/contact">Contact</a></li>
                           <li>
                               <form id="search-form">
                                   <input type="text" placeholder="Search" />
@@ -44,10 +46,10 @@
                     </div><!--/.nav-collapse -->
                     <div id="country-main-nav-wrapper">
                          <ul class="list-unstyled list-inline">
-                            <li><a href="#">Indochina</a></li>
-                            <li><a href="#">Vietnam</a></li>
-                            <li><a href="#">Kampot</a></li>
-                            <li><a href="#">Lao</a></li>
+                            <li><a href="{{Request::root()}}/tours/indochina-tours">Indochina</a></li>
+                            <li><a href="{{Request::root()}}/tours/vietnam-tours">Vietnam</a></li>
+                            <li><a href="{{Request::root()}}/tours/cambodia-tours">Cambodia</a></li>
+                            <li><a href="{{Request::root()}}/tours/laos-tours">Lao</a></li>
                          </ul>
                     </div>
             </div>
@@ -114,12 +116,11 @@
             </div>
         </div>
         {{ HTML::script('/js/jquery-2.0.3.min.js') }}
-        {{ HTML::style('/js/bootstrap.min.js') }}
-        {{ HTML::style('plugins/bootstrap-select/bootstrap-select.min.js') }}
-        {{ HTML::style('/js/plugins/icheck/icheck.min.js') }}
-        {{ HTML::style('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
-        {{ HTML::style('/js/layout.js') }}
-        {{ HTML::style('/js/functions.js') }}       
+        {{ HTML::script('/js/bootstrap.min.js') }}
+        {{ HTML::script('plugins/bootstrap-select/bootstrap-select.min.js') }}
+        {{ HTML::script('/js/plugins/icheck/icheck.min.js') }}
+        {{ HTML::script('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
+        {{ HTML::script('/js/functions.js') }}       
         @yield('addon_js')
         
         @yield('inline_scripts')
