@@ -5,5 +5,5 @@ class HomeController extends FrontendBaseController {
         $this->layout = null;
         return View::make('frontend.landing');
     }
-
+  
 }
