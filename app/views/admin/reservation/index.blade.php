@@ -1,8 +1,8 @@
 @section('header_content')
-<h1>List Tours</h1>
+<h1>List Reservations</h1>
 @stop
 @section('breadcrumbs')
-@include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('list_tours')))
+    @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('index_reservations')))
 @stop
 @section('content')
 <div class="box box-primary">
@@ -18,30 +18,34 @@
     </div><!-- /.box-header -->
     <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
-            <tbody><tr>
-                    <th>ID</th>
-                    <th style="width: 50%">Name</th>
-                    <th>Area</th>
-                    <th>Price From</th>
-                    <th>Action</th>
-                </tr>
-                <?php foreach ($tours as $tour): ?>
+            <tbody>
+                <thead>
                     <tr>
-                        <td>{{$tour->code}}</td>
-                        <td><a href="{{route('admin.tour.edit', $tour->id)}}">{{$tour->name}}</a></td>
-                        <td>{{$tour->area->name}}</td>
-                        <td>{{$tour->price_from}}</td>
-                        <td>
-                            <a class='btn btn-sm btn-primary' href="{{route('tour.itinerary.index', $tour->id)}}">Itineraries</a>
-                            <a class='btn btn-sm btn-warning' href="{{Route('admin.tour.edit',$tour->id)}}">Edit</a>
-                            <a class='btn btn-sm btn-danger btn-delete' data-method="DELETE" data-url="{{route('admin.tour.destroy', $tour->id)}}">Delete</a>
-                        </td>
+                        <th>ID</th>
+                        <th>Customer Name</th>
+                        <th>Tour</th>
+                        <th>Booked At</th>
+                        <th>Action</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody></table>
+                </thead>
+                <tbody>
+                    <?php foreach ($reservations as $re) : ?>
+                        <tr>
+                            <td>{{$re->id}}</td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a class='btn btn-sm btn-warning' href="{{Route('admin.reservation.edit',$re->id)}}">Edit</a>
+                                <a class='btn btn-sm btn-danger btn-delete' data-method="DELETE" data-url="{{route('admin.reservation.destroy', $re->id)}}">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </tbody>
+            </table>
     </div><!-- /.box-body -->
     <div class="box-footer">
-        {{$tours->links()}}
+        {{$reservations->links()}}
     </div>
 </div>
 @stop

@@ -15,3 +15,7 @@ Breadcrumbs::register('edit_tour', function($breadcrumbs,$tour) {
     $breadcrumbs->push($tour->name, route('admin.tour.edit',$tour->id));
 });
 
+Breadcrumbs::register('index_reservations', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Reservations', route('admin.reservation.index'));
+});

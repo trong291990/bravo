@@ -14,19 +14,6 @@ class Tour extends Eloquent {
 //        'photo' => 'image|required'
     );
 
-    /**
-     * Generate the next tour code
-     * Format: <BIT><Year><number>
-     * Example: BIT2014000001
-     * 
-     * @return string
-     */
-    public static function nextTourCode() {
-        $total = self::count() + 1;
-        $code = self::CODE_PREFIX . date('Y') . zero_padding_number($total, 6);
-        return $code;
-    }
-
     public static function boot() {
         parent::boot();
         static::creating(function($tour) {
@@ -37,6 +24,18 @@ class Tour extends Eloquent {
                 });
     }
 
+    /**
+     * Generate the next tour code
+     * Format: <BIT><Year><number>
+     * Example: BIT2014000001
+     * 
+     * @return string
+     */
+    public static function nextTourCode() {
+        $total = self::count() + 1;
+        $code = self::CODE_PREFIX . date('Ym') . zero_padding_number($total, 5);
+        return $code;
+    }
     public function photoUrl($root = null) {
         $relativePath = self::PHOTO_PATH . '/' . $this->id . '/' . $this->photo;
         if (is_null($root)) {
