@@ -26,7 +26,7 @@ class Tour extends Eloquent {
 
     /**
      * Generate the next tour code
-     * Format: <BIT><Year><number>
+     * Format: <BIT><YearMonth><number>
      * Example: BIT2014000001
      * 
      * @return string
@@ -36,6 +36,7 @@ class Tour extends Eloquent {
         $code = self::CODE_PREFIX . date('Ym') . zero_padding_number($total, 5);
         return $code;
     }
+
     public function photoUrl($root = null) {
         $relativePath = self::PHOTO_PATH . '/' . $this->id . '/' . $this->photo;
         if (is_null($root)) {
@@ -53,8 +54,8 @@ class Tour extends Eloquent {
         return $this->hasMany('Itinerary', 'tour_id');
     }
 
-    public function scopeInCountry($query, $country) {
-        return $query->where('country_id', $country->id);
+    public function scopeInArea($query, $area) {
+        return $query->where('area_id', $area->id);
     }
 
     public function travelStyles() {

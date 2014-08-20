@@ -34,7 +34,7 @@
                         <td>
                             <a class='btn btn-sm btn-primary' href="{{route('tour.itinerary.index', $tour->id)}}">Itineraries</a>
                             <a class='btn btn-sm btn-warning' href="{{Route('admin.tour.edit',$tour->id)}}">Edit</a>
-                            <a class='btn btn-sm btn-danger btn-delete' data-method="DELETE" data-url="{{route('admin.tour.destroy', $tour->id)}}">Delete</a>
+                            <a class='btn btn-sm btn-danger btn-delete-with-confirm' data-method="DELETE" data-url="{{route('admin.tour.destroy', $tour->id)}}">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -44,20 +44,4 @@
         {{$tours->links()}}
     </div>
 </div>
-@stop
-
-@section('inline_scripts')
-<script type='text/javascript'>
-    $('.btn-delete').click(function(e) {
-        e.preventDefault();
-        var $_this = $(this);
-        if (confirm('Are you sure?')) {
-            var form = '<form id="form-delete" method="POST" action="' + $_this.data('url') + '">' +
-                    '<input type="hidden" name="_method" value="' + $_this.data('method') + '">' +
-                    '</form>';
-            $(this).append(form);
-            $('#form-delete').submit();
-        }
-    });
-</script>
 @stop

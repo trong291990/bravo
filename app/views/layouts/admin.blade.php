@@ -7,6 +7,7 @@
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('css/plugins/select2/select2.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('/css/plugins/bootstrap-datepicker.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('/css/lte.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('/css/lte-override.css')}}" rel="stylesheet" type="text/css" />
         <meta content="{{Session::token()}}" name="csrf-token" />
@@ -43,11 +44,12 @@
         <script src="{{asset('js/plugins/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/plugins/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/plugins/bootbox.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/plugins/bootstrap-datepicker.js')}}" type="text/javascript"></script>
         <!-- END PLUGINS -->
         
         <script src="{{asset('js/admin/helper.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/admin/lte.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/admin/init.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/admin/scripts.js')}}" type="text/javascript"></script>
         @yield('addon_js')
         
         @yield('inline_scripts')

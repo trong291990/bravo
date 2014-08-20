@@ -21,22 +21,23 @@
             <tbody>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Booking ID</th>
                         <th>Customer Name</th>
                         <th>Tour</th>
-                        <th>Booked At</th>
+                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($reservations as $re) : ?>
                         <tr>
-                            <td>{{$re->id}}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$re->booking_id}}</td>
+                            <td>{{$re->customer_name}}</td>
+                            <td>{{$re->tour->name}}</td>
+                            <td>{{$re->created_at->format('M d, Y \a\t H:i')}}</td>
                             <td>
                                 <a class='btn btn-sm btn-warning' href="{{Route('admin.reservation.edit',$re->id)}}">Edit</a>
-                                <a class='btn btn-sm btn-danger btn-delete' data-method="DELETE" data-url="{{route('admin.reservation.destroy', $re->id)}}">Delete</a>
+                                <a class='btn btn-sm btn-danger btn-delete-with-confirm' data-method="DELETE" data-url="{{route('admin.reservation.destroy', $re->id)}}">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -48,20 +49,4 @@
         {{$reservations->links()}}
     </div>
 </div>
-@stop
-
-@section('inline_scripts')
-<script type='text/javascript'>
-    $('.btn-delete').click(function(e) {
-        e.preventDefault();
-        var $_this = $(this);
-        if (confirm('Are you sure?')) {
-            var form = '<form id="form-delete" method="POST" action="' + $_this.data('url') + '">' +
-                    '<input type="hidden" name="_method" value="' + $_this.data('method') + '">' +
-                    '</form>';
-            $(this).append(form);
-            $('#form-delete').submit();
-        }
-    });
-</script>
 @stop
