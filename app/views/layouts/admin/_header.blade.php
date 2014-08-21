@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="glyphicon glyphicon-user"></i> <span>Admin Name <i class="caret"></i></span>
+                        <i class="glyphicon glyphicon-user"></i> <span><?php echo Auth::user()->name ?> <i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>

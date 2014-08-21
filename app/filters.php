@@ -99,7 +99,9 @@ Route::filter('csrf', function() {
 });
 
 Route::filter('admin.auth', function() {
-   if (!Auth::check()) {
-      return Redirect::route('admin.login');
-   }
+    if (!Auth::check()) {
+        Session::put('url.intended', URL::full());
+        Session::flash('error', 'You need signed in before continue');
+        return Redirect::route('admin.login');
+    }
 });
