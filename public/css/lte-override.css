@@ -127,6 +127,12 @@ label.radio input[type="radio"]{
 .padding-5{
     padding: 5px;
 }
+.padding-10{
+    padding: 10px;
+}
+.padding-15{
+    padding: 15px;
+}
 .mtb-5{
     margin: 5px 0;
 }
@@ -152,7 +158,6 @@ label.radio input[type="radio"]{
     border: none;
     padding: 0;
 }
-
 [class^="icon-"], [class*=" icon-"] {
   background-image: url("../images/glyphicons-halflings.png");
   background-repeat: no-repeat;
@@ -204,4 +209,10 @@ label.radio input[type="radio"]{
     text-align: center;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
     vertical-align: middle;
+}
+.text-bold {
+    font-weight: bold;
+}
+.text-i {
+    font-style: italic;
 }

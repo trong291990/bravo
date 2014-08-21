@@ -2,7 +2,7 @@
 <h1>List Reservations</h1>
 @stop
 @section('breadcrumbs')
-    @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('index_reservations')))
+@include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('index_reservations')))
 @stop
 @section('content')
 <div class="box box-primary">
@@ -19,31 +19,41 @@
     <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
             <tbody>
-                <thead>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Customer Name</th>
+                    <th>Tour</th>
+                    <th>Created At</th>
+                    <th>Confirmed</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($reservations as $re) : ?>
                     <tr>
-                        <th>Booking ID</th>
-                        <th>Customer Name</th>
-                        <th>Tour</th>
-                        <th>Created At</th>
-                        <th>Action</th>
+                        <td>
+                            <a href="{{Route('admin.reservation.edit',$re->id)}}">{{$re->booking_id}}</a>
+                        </td>
+                        <td>{{$re->customer_name}}</td>
+                        <td>{{$re->tour->name}}</td>
+                        <td>{{$re->created_at->format('M d, Y \a\t H:i')}}</td>
+                        <td>
+                            <?php if ($re->is_confirmed()) : ?>
+                                <span class="text-success"><i class="fa fa-check"></i></span>
+                            <?php else : ?>
+                                <span class="text-muted"><i class="fa fa-times"></i></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a class='btn btn-xs btn-primary' href="{{Route('admin.reservation.edit',$re->id)}}">Edit</a>
+                            <a class='btn btn-xs btn-danger btn-delete-with-confirm' data-method="DELETE" data-url="{{route('admin.reservation.destroy', $re->id)}}">Delete</a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($reservations as $re) : ?>
-                        <tr>
-                            <td>{{$re->booking_id}}</td>
-                            <td>{{$re->customer_name}}</td>
-                            <td>{{$re->tour->name}}</td>
-                            <td>{{$re->created_at->format('M d, Y \a\t H:i')}}</td>
-                            <td>
-                                <a class='btn btn-sm btn-warning' href="{{Route('admin.reservation.edit',$re->id)}}">Edit</a>
-                                <a class='btn btn-sm btn-danger btn-delete-with-confirm' data-method="DELETE" data-url="{{route('admin.reservation.destroy', $re->id)}}">Delete</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
+                <?php endforeach; ?>
             </tbody>
-            </table>
+            </tbody>
+        </table>
     </div><!-- /.box-body -->
     <div class="box-footer">
         {{$reservations->links()}}
