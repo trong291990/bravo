@@ -66,10 +66,10 @@
                 {{Former::text('meta_description')->class('form-control')->label('Meta Description')}}
                 {{Former::text('price_from')->class('form-control')->placeholder('$')->required()}}
                 {{Former::text('duration')->class('form-control')->placeholder('days')->required()}}
-                {{Former::text('include')->class('form-control  ckeditor')}}
-                {{Former::text('not_include')->class('form-control  ckeditor')}}
+                {{Former::textarea('include')->class('form-control  ckeditor')}}
+                {{Former::textarea('not_include')->class('form-control  ckeditor')}}
                 {{Former::textarea('overview')->class('form-control')}}
-                {{Former::file('photo')->accept('image')}}
+                {{Former::file('photo')}}
                 @if($tour->photo)
                 <div class="row" style="margin-bottom: 15px;">
                     <div class="col-sm-8 col-sm-offset-2">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 @endif
-                {{Former::file('thumbnail')->accept('image')}}
+                {{Former::file('thumbnail')}}
                 @if($tour->thumbnail)
                 <div class="row" style="margin-bottom: 15px;">
                     <div class="col-sm-8 col-sm-offset-2">
