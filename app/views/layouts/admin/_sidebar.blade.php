@@ -18,6 +18,7 @@
         </li>
         <li class="treeview active">
             <a href="#">
+                <i class="fa fa-bookmark"></i>
                 <span>Reservations</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
