@@ -101,6 +101,7 @@ return array(
 
 	'attributes' => array(
             'area_id' => 'Area',
+            'tour_id' => 'Tour',
             'price_from' => 'Price from'
         ),
 

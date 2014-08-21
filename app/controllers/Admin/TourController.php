@@ -68,7 +68,7 @@ class TourController extends AdminBaseController {
             Session::flash('success', "The tour {$tour->name} has been created successful");
             return Redirect::route('admin.tour.index');
         } else {
-            Session::flash('error', "The tour  could not be save");
+            Session::flash('error', "The tour could not be save");
             return Redirect::back()->withInput()->withErrors($validator->errors());
         }
     }

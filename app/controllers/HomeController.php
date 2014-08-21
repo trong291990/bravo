@@ -10,4 +10,7 @@ class HomeController extends FrontendBaseController {
     public function contact(){
         $this->layout->content = View::make('frontend.pages.contact');
     }
+    public function aboutUs(){
+        $this->layout->content = View::make('frontend.pages.about_us');
+    }
 }

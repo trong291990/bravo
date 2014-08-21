@@ -66,8 +66,8 @@
                 {{Former::text('meta_description')->class('form-control')->label('Meta Description')}}
                 {{Former::text('price_from')->class('form-control')->placeholder('$')->required()}}
                 {{Former::text('duration')->class('form-control')->placeholder('days')->required()}}
-                {{Former::textarea('include')->class('form-control  ckeditor')}}
-                {{Former::textarea('not_include')->class('form-control  ckeditor')}}
+                {{Former::textarea('include')->class('form-control')->rows(10)}}
+                {{Former::textarea('not_include')->class('form-control')->rows(10)}}
                 {{Former::textarea('overview')->class('form-control')}}
                 {{Former::file('photo')}}
                 @if($tour->photo)

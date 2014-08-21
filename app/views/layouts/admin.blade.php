@@ -7,8 +7,10 @@
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('css/plugins/select2/select2.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('/css/plugins/bootstrap-datepicker.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('/css/lte.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('/css/lte-override.css')}}" rel="stylesheet" type="text/css" />
+        {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
         <meta content="{{Session::token()}}" name="csrf-token" />
         @yield('addon_stylesheets')
         <!--[if lt IE 9]>
@@ -39,15 +41,16 @@
         <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/plugins/select2.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/plugins/daterangepicker.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/plugins/bootstrap3-wysihtml5.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/plugins/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/plugins/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/plugins/bootbox.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/plugins/bootstrap-datepicker.js')}}" type="text/javascript"></script>
         <!-- END PLUGINS -->
         
+        {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
+        {{ HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js') }}
         <script src="{{asset('js/admin/helper.js')}}" type="text/javascript"></script>
         <script src="{{asset('js/admin/lte.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/admin/init.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/admin/scripts.js')}}" type="text/javascript"></script>
         @yield('addon_js')
         
         @yield('inline_scripts')

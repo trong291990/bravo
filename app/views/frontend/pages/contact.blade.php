@@ -1,6 +1,8 @@
 @section('content')
 <div class="row" id='contact-page'>
     <div class="col-sm-10 col-sm-offset-1" style="margin-top: 30px;margin-bottom: 40px">
+        <h1>CONTACT US</h1>
+        <hr class='divider' />
     <p>
 Thank you for your interest in Bravo Indochina Tours. We have operation office in Vietnam, Thailand, Laos and Cambodia, who can assist any of your questions. If you need to send us an inquiry, please use our Inquiry form and we will arrange for a Travel Consultant to assist you within 24 hours.
 24 Hours Services : Questions? Contact a Specialist at +84917391106
