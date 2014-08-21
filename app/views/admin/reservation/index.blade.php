@@ -56,7 +56,15 @@
         </table>
     </div><!-- /.box-body -->
     <div class="box-footer">
-        {{$reservations->links()}}
-    </div>
-</div>
-@stop
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-left">
+                    <?php echo View::make('partials._paging_info')->with('items', $reservations)->render() ?>
+                </div>
+                <div class="pull-right">
+                    {{$reservations->links()}}
+                </div>
+
+            </div>
+        </div>
+        @stop
