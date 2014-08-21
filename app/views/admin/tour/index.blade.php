@@ -16,8 +16,8 @@
             </div>
         </div>
     </div><!-- /.box-header -->
-    <div class="box-body table-responsive no-padding">
-        <table class="table table-hover">
+    <div class="box-body table-responsive">
+        <table class="table table-bordered table-hover">
             <tbody><tr>
                     <th>ID</th>
                     <th style="width: 50%">Name</th>
@@ -32,16 +32,25 @@
                         <td>{{$tour->area->name}}</td>
                         <td>{{$tour->price_from}}</td>
                         <td>
-                            <a class='btn btn-sm btn-primary' href="{{route('tour.itinerary.index', $tour->id)}}">Itineraries</a>
-                            <a class='btn btn-sm btn-warning' href="{{Route('admin.tour.edit',$tour->id)}}">Edit</a>
-                            <a class='btn btn-sm btn-danger btn-delete-with-confirm' data-method="DELETE" data-url="{{route('admin.tour.destroy', $tour->id)}}">Delete</a>
+                            <a class='btn btn-xs btn-primary' href="{{route('tour.itinerary.index', $tour->id)}}">Itineraries</a>
+                            <a class='btn btn-xs btn-warning' href="{{Route('admin.tour.edit',$tour->id)}}">Edit</a>
+                            <a class='btn btn-xs btn-danger btn-delete-with-confirm' data-method="DELETE" data-url="{{route('admin.tour.destroy', $tour->id)}}">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody></table>
     </div><!-- /.box-body -->
     <div class="box-footer">
-        {{$tours->links()}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-left">
+                    <?php echo View::make('partials._paging_info')->with('items', $tours)->render() ?>
+                </div>
+                <div class="pull-right">
+                    {{$tours->links()}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @stop

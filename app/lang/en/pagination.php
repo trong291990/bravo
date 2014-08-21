@@ -16,5 +16,5 @@ return array(
 	'previous' => '&laquo; Previous',
 
 	'next'     => 'Next &raquo;',
-
+        'info' => 'Display from :from to :to in total :total items'
 );
