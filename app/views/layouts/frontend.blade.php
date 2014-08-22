@@ -7,13 +7,17 @@
         <meta name="keyword" content="@yield('keyword')" />
         <meta name="description" content="@yield('description')" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-        {{ HTML::style('css/bootstrap.min.css') }}
-        {{ HTML::style('css/fonts.css') }}
-        {{ HTML::style('css/site.css') }}
-        {{ HTML::style('css/media.css') }}
+        {{ HTML::style('/shared/css/bootstrap.min.css') }}
+        {{ HTML::style('/frontend/css/fonts.css') }}
+        {{ HTML::style('/frontend/css/site.css') }}
+        {{ HTML::style('/frontend/css/media.css') }}
         {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
         {{ HTML::style('/plugins/icheck/skins/all.css') }}
         {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
          @yield('addon_stylesheets')
     </head>
     <body>
@@ -116,15 +120,15 @@
                 </div>
             </div>
         </div>
-        {{ HTML::script('/js/jquery-2.0.3.min.js') }}
-        {{ HTML::script('/js/bootstrap.min.js') }}
-        {{ HTML::script('plugins/bootstrap-select/bootstrap-select.min.js') }}
-        {{ HTML::script('/js/plugins/icheck/icheck.min.js') }}
-        {{ HTML::script('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
-        {{ HTML::script('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
+        {{ HTML::script('/shared/js/jquery-2.0.3.min.js') }}
+        {{ HTML::script('/shared/js/bootstrap.min.js') }}
+        {{ HTML::script('/plugins/bootstrap-select/bootstrap-select.min.js') }}
+        {{ HTML::script('/plugins/icheck/icheck.min.js') }}
+        {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
+        {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
-        {{ HTML::script('/js/functions.js') }}       
+        {{ HTML::script('/frontend/js/functions.js') }}       
         @yield('addon_js')
         
         @yield('inline_scripts')
