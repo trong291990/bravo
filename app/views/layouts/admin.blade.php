@@ -4,7 +4,10 @@
         <meta charset="UTF-8">
         <title>Bravo Tours | Administration</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        {{ HTML::style('/shared/css/bootstrap.min.css') }}
+        {{ HTML::style('/backend/css/lte.css') }}
+        {{ HTML::style('/backend/css/lte-override.css') }}
+        {{ HTML::style('/backend/css/lte-override.css') }}
         <link href="{{asset('css/plugins/select2/select2.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('/css/plugins/bootstrap-datepicker.css')}}" rel="stylesheet" type="text/css" />
