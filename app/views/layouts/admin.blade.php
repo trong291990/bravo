@@ -5,12 +5,12 @@
         <title>Bravo Tours | Administration</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         {{ HTML::style('/shared/css/bootstrap.min.css') }}
-        {{ HTML::style('/backend/css/lte.css') }}
-        {{ HTML::style('/backend/css/lte-override.css') }}
         {{ HTML::style('/plugins/select2/select2.css') }}
         {{ HTML::style('/fonts/font-awesome.min.css') }}
         {{ HTML::style('/plugins/bootstrap-datepicker/datepicker3.css') }}
         {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
+        {{ HTML::style('/backend/css/lte.css') }}
+        {{ HTML::style('/backend/css/lte-override.css') }}        
         <meta content="{{Session::token()}}" name="csrf-token" />
         @yield('addon_stylesheets')
         <!--[if lt IE 9]>
