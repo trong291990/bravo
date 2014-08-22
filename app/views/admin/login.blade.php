@@ -4,8 +4,9 @@
         <meta charset="UTF-8">
         <title>Bravo Tours | Administration</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/css/lte.css')}}" rel="stylesheet" type="text/css" />
+        {{ HTML::style('/shared/css/bootstrap.min.css') }}
+        {{ HTML::style('/backend/css/lte.css') }}
+        {{ HTML::style('/backend/css/lte-override.css') }}
     </head>
     <body class="bg-black" style="min-height: 690px">
         <div class="form-box" id="login-box">
@@ -31,7 +32,7 @@
                 </div>
             </form>
         </div>
-        <script src="{{asset('js/plugins/jquery-1.10.2.min.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+        {{ HTML::script('shared/js/jquery-2.0.3.min.js') }}
+        {{ HTML::script('shared/js/bootstrap.min.js') }}
     </body>
 </html>
