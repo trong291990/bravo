@@ -8,7 +8,8 @@
         <meta name="description" content="@yield('description')" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
         {{ HTML::style('/shared/css/bootstrap.min.css') }}
-        {{ HTML::style('/frontend/css/fonts.css') }}
+        {{ HTML::style('/fonts/font-awesome.min.css') }}
+        {{ HTML::style('/fonts/augushand.css') }}
         {{ HTML::style('/frontend/css/site.css') }}
         {{ HTML::style('/frontend/css/media.css') }}
         {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
