@@ -13,6 +13,7 @@
         {{ HTML::style('css/media.css') }}
         {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
         {{ HTML::style('/plugins/icheck/skins/all.css') }}
+        {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
          @yield('addon_stylesheets')
     </head>
     <body>
@@ -27,14 +28,14 @@
                           <span class="icon-bar"></span>
                         </button>
                         <a href="#" class="navbar-brand" id="main-logo">
-                            <img class="img-responsive" src="{{ URL::asset('/') }}images/page/main_logo.png">
+                            <img class="img-responsive" src="{{ URL::asset('/') }}images/page/main_logov2.jpg">
                             <span class="sr-only">Bravo Tour Since 2009</span>
                         </a>
                     </div>
                     <div class="navbar-collapse collapse" id="main-nav">
                         <ul class="nav navbar-nav pull-right">
-                          <li class="active"><a href="#">Home</a></li>
-                          <li><a href="#about">About</a></li>
+                          <li class="active"><a href="{{Request::root()}}">Home</a></li>
+                          <li><a href="{{Request::root()}}/about-us">About</a></li>
                           <li><a href="{{Request::root()}}/contact">Contact</a></li>
                           <li>
                               <form id="search-form">
@@ -120,6 +121,9 @@
         {{ HTML::script('plugins/bootstrap-select/bootstrap-select.min.js') }}
         {{ HTML::script('/js/plugins/icheck/icheck.min.js') }}
         {{ HTML::script('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
+        {{ HTML::script('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
+        {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
+        {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
         {{ HTML::script('/js/functions.js') }}       
         @yield('addon_js')
         

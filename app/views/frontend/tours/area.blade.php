@@ -63,7 +63,9 @@
                 <?php foreach($tours as $tour): ?>
                 <div class="tour-item">
                     <div class="tour-sliders">
-                        <img src="{{URL::asset('/')}}images/page/tour_img.jpg" class="img-responsive" />
+                        @if($tour->photo)
+                        <img src="{{URL::asset('/')}}{{Tour::PHOTO_PATH}}/{{$tour->id}}/{{$tour->photo}}" class="img-responsive" />
+                        @endif
                     </div>
                     <div class="tour-content clearfix">
                         <div class="col-sm-8 clearfix">

@@ -13,10 +13,9 @@
         <div class="box box-info">
             <div class="box-header">
             </div>
-            {{
-            Former::open_for_files()->method("POST")->action(route('admin.tour.store'))
-            }}
+            {{Former::open_for_files()->method("POST")->action(route('admin.tour.store'))}}
             <div class="box-body pad">
+                {{Former::token()}}
                 {{Former::text('name')->class('form-control')->required()}}
                 {{Former::select('area_id')->fromQuery($areas,'name','id')->class('form-control')->label('Area')->placeholder('-- Select one --')->required()}}
                 <div class="form-group">
@@ -60,21 +59,21 @@
                 {{Former::text('meta_description')->class('form-control')->label('Meta Description')}}
                 {{Former::text('price_from')->class('form-control')->placeholder('$')->required()}}
                 {{Former::text('duration')->class('form-control')->placeholder('days')->required()}}
-                {{Former::textarea('include')->class('form-control  ckeditor')}}
-                {{Former::textarea('not_include')->class('form-control ckeditor')}}
+                {{Former::textarea('include')->class('form-control')->rows(10)}}
+                {{Former::textarea('not_include')->class('form-control')->rows(10)}}
                 {{Former::textarea('overview')->class('form-control')}}
-                {{Former::file('photo')->accept('image')}}
+                {{Former::file('photo')}}
+                {{Former::file('thumbnail')}}
             </div>
-        </div>
-        <div class="box-footer">
+            <div class="box-footer">
             {{
             Former::actions()
             ->large_primary_submit('Save')->name('commit')
             ->large_inverse_reset('Reset')
             }}
         </div>
-        {{Former::close()}}
-    </div>
+            {{Former::close()}}
+        </div>
 </div>
 @stop
 @section('inline_scripts')

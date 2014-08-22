@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('.datepicker').datepicker();
+	//$('.datepicker').datepicker();
 	$('.select2-able').select2();
 
 	$('body').on('click', '.btn-delete-with-confirm', function() {
@@ -14,4 +14,6 @@ $(document).ready(function() {
         	}
         });
 	});
+        $('#include').wysihtml5();
+        $('#not_include').wysihtml5();
 });

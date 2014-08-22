@@ -233,7 +233,8 @@ a:focus {
 }
 #view-cities a {
     color: #333;
-    text-decoration: none
+    text-decoration: none;
+    text-transform: uppercase;
 }
 #package-form {
     padding: 15px 0px 5px 0px;
@@ -438,9 +439,16 @@ h3.tour-title {
     text-align: center;
     color: #fff;
 }
+#contact-page h1 {
+    font-weight: bold;
+    font-size: 1.7em;
+}
 #contact-page h2 {
-    font-size: 1.6em;
-    padding: 4px;
+    font-size: 1.2em;
+    padding: 5px;
     background: #e0e0e0;
     font-weight: bold
+}
+.feature-item > .col-xs-10 {
+    min-height: 176px;
 }

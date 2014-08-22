@@ -16,7 +16,6 @@
         <script type="text/javascript" src="{{Request::root()}}/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="{{Request::root()}}/js/layout.js"></script>
         <script type="text/javascript" src="{{Request::root()}}/js/functions.js"></script>
-    </body>
     </head>
     <body>
         <div id="intro_wrapper">
@@ -37,10 +36,10 @@
                         </div>
                         <div class="country-nav" id="intro-country-nav">
                             <ul class="list-unstyled list-inline">
-                                <li><a href="#">Indochina</a></li>
-                                <li><a href="#">Vietnam</a></li>
-                                <li><a href="#">Kampot</a></li>
-                                <li><a href="#">Lao</a></li>
+                                <li><a href="{{Request::root()}}/tours/indochina-tours">Indochina</a></li>
+                                <li><a href="{{Request::root()}}/tours/vietnam-tours">Vietnam</a></li>
+                                <li><a href="{{Request::root()}}/tours/cambodia-tours">Cambodia</a></li>
+                                <li><a href="{{Request::root()}}/tours/laos-tours">Lao</a></li>
                             </ul>
                         </div>
                         <div class="row" id="intro-description">

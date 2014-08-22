@@ -152,3 +152,56 @@ label.radio input[type="radio"]{
     border: none;
     padding: 0;
 }
+
+[class^="icon-"], [class*=" icon-"] {
+  background-image: url("../images/glyphicons-halflings.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 14px;
+  line-height: 14px;
+  vertical-align: text-top;
+  width: 14px;
+}
+.icon-list {
+  background-position: -360px -48px;
+}
+.icon-th-list {
+  background-position: -264px 0;
+}
+.icon-indent-right {
+  background-position: -408px -48px;
+}
+.icon-indent-left {
+  background-position: -384px -48px;
+}
+.icon-share {
+  background-position: -120px -72px;
+}
+.icon-picture {
+  background-position: -456px -48px;
+}
+.wysihtml5-toolbar .btn {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(center top , #ffffff, #e6e6e6);
+    background-repeat: repeat-x;
+    border-color: #cccccc #cccccc #b3b3b3;
+    border-image: none;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 0;
+    padding: 4px 10px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+}
