@@ -41,7 +41,7 @@ class ProfileController extends AdminBaseController {
     		$adminAccount = Auth::user();
     		$adminAccount->password = Input::get('password');
     		$adminAccount->save();
-    		Session::flash('success', 'Your profile has been updated successfully');
+    		Session::flash('success', 'Your password has been updated');
     		return Redirect::back();
     	} else {
 	        return Redirect::back()->withInput()->withErrors($validator);
