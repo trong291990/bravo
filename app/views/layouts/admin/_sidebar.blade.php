@@ -34,7 +34,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('admin.reservation.create') }}"><i class="fa fa-angle-double-right"></i> Site </a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Site </a></li>
                 <li><a href="{{ route('admin.profile') }}"><i class="fa fa-angle-double-right"></i> Profile</a></li>
             </ul>
         </li>         

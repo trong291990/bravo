@@ -15,6 +15,14 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
             'as' => 'admin.profile',
             'uses' => 'ProfileController@show'
         ));         
+        Route::post('/profile/update', array(
+            'as' => 'admin.profile.update',
+            'uses' => 'ProfileController@update'
+        ));      
+        Route::post('/profile/update-password', array(
+            'as' => 'admin.profile.update_password',
+            'uses' => 'ProfileController@updatePassword'
+        ));        
         Route::get('/logout', array(
             'as' => 'admin.logout',
             'uses' => 'AuthController@logout',
