@@ -5,4 +5,6 @@ Route::get('/tours/{slug}', array('as' => 'area_tours', 'uses' => 'TourControlle
 Route::get('/contact', array('as' => 'contract', 'uses' => 'HomeController@contact'));
 Route::get('/about-us', array('as' => 'about_us', 'uses' => 'HomeController@aboutUs'));
 
+Route::get('/geo', array('as' => 'geo', 'uses' => 'ToolController@geo'));
+
 
