@@ -15,12 +15,33 @@ class AuthController extends AdminBaseController {
         if (Request::isMethod('GET')) {
             return View::make('admin.login');
         } else {
+            $checkLogin = Auth::attempt(array(
+                'email' => Input::get('email'),
+                'password' => Input::get('password')
+                ), Input::has('remember_me')
+            );
+            if ($checkLogin) {
+                return Redirect::intended('/admin');
+            } else {
+                Session::flash('error', "Email or password is invalid");
+                return Redirect::back()->withInput();
+            }
+
             return Redirect::route('admin.root');
         }
     }
 
     public function logout() {
+        Auth::logout();
         return Redirect::route('admin.login');
+    }
+
+    public function forgotPassword() {
+
+    }
+    
+    public function reminderPassword() {
+
     }
 
 }

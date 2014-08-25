@@ -10,7 +10,8 @@
             "davejamesmiller/laravel-breadcrumbs": "2.2.2",
             "barryvdh/laravel-ide-helper": "1.9.0",
             "way/generators": "2.3",
-            "barryvdh/laravel-ide-helper": "1.*"
+            "barryvdh/laravel-ide-helper": "1.*",
+            "doctrine/dbal": "~2.3"
 	},
 	"autoload": {
 		"classmap": [
