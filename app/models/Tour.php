@@ -6,8 +6,9 @@ class Tour extends Eloquent {
     const PHOTO_PATH = 'uploads/tours';
 
     protected $table = 'tours';
+    
     public static $rules = array(
-        'name' => 'required',
+        'name' => 'required|unique',
         'price_from' => 'required|numeric',
         'duration' => 'required|integer|min:1',
         'area_id' => 'required',
@@ -16,10 +17,8 @@ class Tour extends Eloquent {
 
     public static function boot() {
         parent::boot();
-        static::creating(function($tour) {
-                    if (!$tour->slug) {
-                        $tour->slug = slug_string($tour->name);
-                    }
+        static::saving(function($tour) {
+                    $tour->slug = slug_string($tour->name);
                     $tour->code = self::nextTourCode();
                 });
     }

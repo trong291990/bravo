@@ -2,7 +2,8 @@
 
 function slug_string($input) {
     $value = $input;
-    str_replace(" ", "-", $value);
+    $value = str_replace(" ", "-", $value);
+    $value = strtolower($value);
     return $value;
 }
 

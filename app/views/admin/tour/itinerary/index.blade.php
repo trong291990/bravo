@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label for="itineraries_{{$index}}_detail" class="control-label col-lg-2 col-sm-4">Detail</label>
                         <div class="col-lg-10 col-sm-8">
-                            <textarea class="form-control" id="itineraries_{{$index}}_detail" name="itineraries[{{$index}}][detail]" required>{{$itinerary['detail']}}</textarea>
+                            <textarea class="form-control" rows='3' id="itineraries_{{$index}}_detail" name="itineraries[{{$index}}][detail]" required>{{$itinerary['detail']}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -96,7 +96,7 @@
                 '<div class="form-group">' +
                 '<label for="itineraries_' + index + '_detail" class="control-label col-lg-2 col-sm-4">Detail</label>' +
                 '<div class="col-lg-10 col-sm-8">' +
-                '<textarea class="form-control" id="itineraries_' + index + '_detail" name="itineraries[' + index + '][detail]" required></textarea>' +
+                '<textarea class="form-control" rows="3" id="itineraries_' + index + '_detail" name="itineraries[' + index + '][detail]" required></textarea>' +
                 '</div>' +
                 '</div>' +
                 '<div class="form-group">' +
