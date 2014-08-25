@@ -14,20 +14,33 @@ class AdminUser extends Eloquent implements UserInterface, RemindableInterface {
         'password',
         'password_confirmation',
     );
+
     public static $rules = array(
         'name' => 'required',
         'email' => 'required|email|unique:admin_users,email',
         'password' => 'required|min:6',
-        'password_confirmation' => 'same:password',
+        'password_confirmation' => 'required|same:password',
+    );
+
+    public static $updatePasswordRules = array(
+        'password' => 'required|min:6',
+        'password_confirmation' => 'required|same:password',
     );
 
     public static function boot() {
         parent::boot();
-        static::saving(function($user) {
-            if (Hash::needsRehash($user->password)) {
-                $user->password = Hash::make($user->password);
+        static::saving(function($adminUser) {
+            if (Hash::needsRehash($adminUser->password)) {
+                $adminUser->password = Hash::make($adminUser->password);
             }
         });
+    }
+
+    public function updateProfileRules() {
+        return  array(
+            'name' => 'required',
+            'email' => 'required|email|unique:admin_users,email,' . $this->id
+        );
     }
 
     /**
