@@ -85,7 +85,7 @@
                     <div class="col-sm-3">
                         <p>Checkout what other travelers <br/>Bravo us On TripAdvisor</p>
                         <div>
-                             <a href="#">
+                            <a target="_blank" href="http://www.reviewcentre.com/Tour-Companies/Bravo-Indochina-Tours-www-bravoindochinatour-com-reviews_2826805">
                                  <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/tripadvisor.png">
                             </a>
                         </div>

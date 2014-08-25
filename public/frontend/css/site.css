@@ -258,6 +258,10 @@ h3.tour-title {
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 5px;
+    color: #000;
+}
+h3.tour-title a {
+    color: #000
 }
 .tour-item p {
     margin-bottom: 5px;
