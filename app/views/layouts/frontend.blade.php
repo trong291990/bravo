@@ -78,7 +78,7 @@
                         <p>What other travel Bravo Us <br/> &nbsp;</p>
                         <div>
                             <a href="#">
-                                <img class="img-responsive" src="{{ URL::asset('/') }}images/page/virtual_tourist.png">
+                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/virtual_tourist.png">
                             </a>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         <p>Checkout what other travelers <br/>Bravo us On TripAdvisor</p>
                         <div>
                              <a href="#">
-                                 <img class="img-responsive" src="{{ URL::asset('/') }}images/page/tripadvisor.png">
+                                 <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/tripadvisor.png">
                             </a>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                          <p>Checkout what our client said <br/> &nbsp;</p>
                         <div>
                              <a href="#">
-                                 <img class="img-responsive" src="{{ URL::asset('/') }}images/page/review_cente.png">
+                                 <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/review_cente.png">
                             </a>
                         </div>
                     </div>
