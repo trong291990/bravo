@@ -18,4 +18,11 @@ class ToolController extends BaseController {
             }
         }
     }
+    public function tourSlug(){
+        $tours = Tour::all();
+        foreach ($tours as $tour){
+            $tour->slug = slug_string($tour->slug);
+            $tour->save();
+        }
+    }
 }

@@ -8,7 +8,7 @@ class Tour extends Eloquent {
     protected $table = 'tours';
     
     public static $rules = array(
-        'name' => 'required|unique',
+        'name' => 'required|unique:tours',
         'price_from' => 'required|numeric',
         'duration' => 'required|integer|min:1',
         'area_id' => 'required',
