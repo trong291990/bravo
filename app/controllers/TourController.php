@@ -14,11 +14,13 @@ class TourController extends FrontendBaseController {
                 ->with('searchPlaces', $searchPlaces)
                 ->with('tours', $tours);
     }
+
     public function show($areaSlug, $tourSlug) {
         $area = Area::where('slug', $areaSlug)->first();
-        $tour = $area->tours()->where('slug', $tourSlug)->first();
-         $this->layout->content = View::make('frontend.tours.show')
-                 ->with(compact('area', 'tour'));
+        $tour = $area->tours()->with('places')->where('slug', $tourSlug)->first();
+        $itineraries = $tour->itineraries()->orderBy('order', 'ASC')->get();
+        $this->layout->content = View::make('frontend.tours.show')
+                ->with(compact('area', 'tour', 'itineraries'));
     }
 
 }

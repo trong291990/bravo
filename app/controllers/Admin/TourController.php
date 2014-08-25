@@ -164,17 +164,19 @@ class TourController extends AdminBaseController {
     public function updateItinerary($id) {
         $tour = Tour::findOrFail($id);
         $itineraries = Input::get('itineraries');
-        foreach ($itineraries as $key => $itineraryAttrs) {
+        foreach ($itineraries as $index => $itineraryAttrs) {
             $sanitized = $itineraryAttrs;
             $sanitized['breakfast'] = isset($itineraryAttrs['breakfast']);
             $sanitized['lunch'] = isset($itineraryAttrs['lunch']);
             $sanitized['dinner'] = isset($itineraryAttrs['dinner']);
+            $sanitized['order'] = $index + 1;
             if (isset($itineraryAttrs['id']) && $itinerary = $tour->itineraries->find($itineraryAttrs['id'])) {
                 $itinerary->update($sanitized);
             } else {
                 $tour->itineraries()->save(with(new Itinerary($sanitized)));
             }
         }
+        Session::flash('success', "The itineraries has been updated successfully");
         return Redirect::route('tour.itinerary.index', $id);
     }
 

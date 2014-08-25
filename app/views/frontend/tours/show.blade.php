@@ -21,7 +21,7 @@
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Tours</a></li>
-                <li class="active">Discovery Mekong Delta</li>
+                <li class="active">{{$tour->name}}</li>
             </ol>
         </div>
         <div class="col-sm-6">
@@ -37,7 +37,7 @@
             <p>
                 This 11-day tour visits four of Thailand's best-known cities, from palaces in Bangkok to exotic zoos near the Gulf of Thailand. In between, you'll have some leisure time and the chance to take part in some optional tours.
             </p>
-            <img src="images/page/map.jpg" class="img-responsive" />
+            <img src="{{asset('frontend/images/page/map.jpg')}}" class="img-responsive" />
             <div id="map-des">
                 <p>
                     <span class="badge"> A </span> <b>Thai Lan</b> <br/>
@@ -63,32 +63,29 @@
                     <div id="tour-detail-itinerary" class="tab-pane fade active in">
                         <div class="cleafix tour-itinerary-item">
                             <div class="col-sm-8">
-                                <div class="col-xs-1 no-padding">
-                                    <div class="tour-detail-day">
-                                        Day <br/> <span>1</span>
+                                <!-- Itineraries List -->   
+                                <?php foreach ($itineraries as $index => $itinerary) : ?>
+                                    <div class="col-xs-1 no-padding">
+                                        <div class="tour-detail-day">
+                                            Day <br/> <span>{{$index + 1}}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-11">
-                                    <h4>Hanoi - Halong</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                    </p>
-                                </div>
-                                <div class="col-xs-1 no-padding">
-                                    <div class="tour-detail-day">
-                                        Day <br/> <span>2</span>
+                                    <div class="col-xs-11">
+                                        <h4>{{$itinerary->name}}</h4>
+                                        <p>
+                                            {{$itinerary->detail}}
+                                        </p>
+                                        <p>
+                                            <?php if ($itinerary->hasAnyMeals()): ?>
+                                                <img src="{{asset('frontend/images/page/dinner.png')}}" style="width: 20px" /> 
+                                                <?php echo $itinerary->mealsInString() ?>   
+                                            <?php endif; ?>
+                                            &nbsp;
+                                            &nbsp;
+                                            <i class="fa fa-building"></i> NOVOTEL CAIRNS
+                                        </p>
                                     </div>
-                                </div>
-                                <div class="col-xs-11">
-                                    <h4>Hanoi - Halong</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                    </p>
-                                    <p>
-                                        <img src="{{asset('frontend/images/page/dinner.png')}}" style="width: 20px" /> DINNER &nbsp;&nbsp;&nbsp;
-                                        <i class="fa fa-building"></i> NOVOTEL CAIRNS
-                                    </p>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                             <div class="col-sm-4">
                                 <div class="tour-itinerary-des">
