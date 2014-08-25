@@ -452,3 +452,13 @@ h3.tour-title {
 .feature-item > .col-xs-10 {
     min-height: 176px;
 }
+.tour-sliders img {
+    width: 100%;
+}
+.tour-sliders a.thumbnail:hover {
+    border-color: #ddd;
+    color: #ddd
+}
+.great-for {
+    text-transform: uppercase
+}

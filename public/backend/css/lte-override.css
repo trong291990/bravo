@@ -92,7 +92,7 @@ label.radio input[type="radio"]{
     font-size: 12px;
 }
 #admin-logo {
-    background-image: url('../images/admin/logo.png');
+    background-image: url('../images/logo.png');
     background-position: top left;
     background-repeat: no-repeat;
 }
@@ -215,4 +215,10 @@ label.radio input[type="radio"]{
 }
 .text-i {
     font-style: italic;
+}
+.select2-container .select2-choice {
+    height: 34px;
+}
+.form-control.datepicker {
+    padding: 6px 12px;
 }

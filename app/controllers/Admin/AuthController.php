@@ -37,7 +37,7 @@ class AuthController extends AdminBaseController {
     }
 
     public function forgotPassword() {
-
+        
     }
     
     public function reminderPassword() {

@@ -61,10 +61,12 @@
             </div>
             <div id="tours-list">
                 <?php foreach($tours as $tour): ?>
-                <div class="tour-item">
+                <div class="tour-item" data-places='<?php echo json_encode($tour->places->lists('name')) ?>'>
                     <div class="tour-sliders">
                         @if($tour->photo)
-                        <img src="{{URL::asset('/')}}{{Tour::PHOTO_PATH}}/{{$tour->id}}/{{$tour->photo}}" class="img-responsive" />
+                        <a class="thumbnail" href="#">
+                            <img src="{{URL::asset('/')}}{{Tour::PHOTO_PATH}}/{{$tour->id}}/{{$tour->photo}}" class="img-responsive" />
+                        </a>
                         @endif
                     </div>
                     <div class="tour-content clearfix">
@@ -77,8 +79,8 @@
                                     <p>Tour Duration : {{$tour->duration}}  days</p>
                                     <p>Tour Code : {{$tour->code}} </p>
                                     <p>Destinations : {{implode(',',$tour->places()->lists('name'))}}</p>
-                                    <p>Great for : {{implode(',',$tour->travelStyles->lists('name'))}}</p>
-                                    <p><img src="{{URL::asset('/')}}images/page/likes.png" /></p>
+                                    <p>Great for : <span class="great-for">{{implode(',',$tour->travelStyles->lists('name'))}}</span></p>
+                                    <p><img src="{{URL::asset('/')}}frontend/images/page/likes.png" /></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <p class="tour-price">START AT ${{$tour->price_from}} </p>
@@ -88,7 +90,7 @@
                         </div>
                         <div class="col-sm-4 clearfix">
                             <div class="col-sm-6 no-padding-left">
-                                <img src="{{URL::asset('/')}}images/page/map_small.jpg" class="img-responsive" />
+                                <img src="{{URL::asset('/')}}frontend/images/page/map_small.jpg" class="img-responsive" />
                             </div>
                             <div class="col-sm-6 no-padding-right tour-actions">
                                 <button class="btn btn-block btn-warning tour-booking">Booking now</button>
@@ -104,4 +106,8 @@
             <div class="clearfix">
                 <?php echo $tours->links(); ?>
             </div>
+@stop
+@section('inline_scripts')
+<script>
+</script>
 @stop

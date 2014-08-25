@@ -4,13 +4,13 @@
         <meta charset="UTF-8">
         <title>Bravo Tours | Administration</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('css/plugins/select2/select2.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/css/plugins/bootstrap-datepicker.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/css/lte.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/css/lte-override.css')}}" rel="stylesheet" type="text/css" />
+        {{ HTML::style('/shared/css/bootstrap.min.css') }}
+        {{ HTML::style('/plugins/select2/select2.css') }}
+        {{ HTML::style('/fonts/font-awesome.min.css') }}
+        {{ HTML::style('/plugins/bootstrap-datepicker/datepicker3.css') }}
         {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
+        {{ HTML::style('/backend/css/lte.css') }}
+        {{ HTML::style('/backend/css/lte-override.css') }}        
         <meta content="{{Session::token()}}" name="csrf-token" />
         @yield('addon_stylesheets')
         <!--[if lt IE 9]>
@@ -34,22 +34,23 @@
                 </section>
             </aside>
         </div>
-        
-        <!-- START PLUGINS -->
-        <script src="{{asset('js/plugins/jquery-1.10.2.min.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/plugins/jquery-ui-1.10.3.min.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/plugins/select2.min.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/plugins/daterangepicker.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/plugins/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/plugins/bootbox.min.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/plugins/bootstrap-datepicker.js')}}" type="text/javascript"></script>
-        <!-- END PLUGINS -->
+        <!-- START LIBRARIES & PLUGINS -->
+        {{ HTML::script('shared/js/jquery-2.0.3.min.js') }}
+        {{ HTML::script('plugins/jquery-ui/jquery-ui-1.10.3.min.js') }}
+        {{ HTML::script('shared/js/bootstrap.min.js') }}
+        {{ HTML::script('plugins/select2/select2.min.js') }}
+        {{ HTML::script('plugins/daterangepicker/daterangepicker.js') }}
+        {{ HTML::script('plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}
+        {{ HTML::script('plugins/jquery.slimscroll.min.js') }}
+        {{ HTML::script('plugins/bootbox.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
-        {{ HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js') }}
-        <script src="{{asset('js/admin/helper.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/admin/lte.js')}}" type="text/javascript"></script>
-        <script src="{{asset('js/admin/scripts.js')}}" type="text/javascript"></script>
+        {{ HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js') }}        
+        <!-- END LIBRARIES & PLUGINS -->
+
+        {{ HTML::script('backend/js/helper.js') }}
+        {{ HTML::script('backend/js/lte.js') }}
+        {{ HTML::script('backend/js/scripts.js') }}
+
         @yield('addon_js')
         
         @yield('inline_scripts')

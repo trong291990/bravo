@@ -6,7 +6,7 @@ class TourController extends FrontendBaseController {
         if(!$area){
             throw new Exception;
         }
-        $tours = $area->tours()->paginate(5);
+        $tours = $area->tours()->with('places')->paginate(5);
         $searchPlaces = $area->places()->where('search_able','>',0)->orderBy('search_able')->get();
         $this->layout->title = $area->name;
         $this->layout->content = View::make('frontend.tours.area')->with('area', $area)

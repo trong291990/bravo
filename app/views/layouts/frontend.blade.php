@@ -7,13 +7,18 @@
         <meta name="keyword" content="@yield('keyword')" />
         <meta name="description" content="@yield('description')" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-        {{ HTML::style('css/bootstrap.min.css') }}
-        {{ HTML::style('css/fonts.css') }}
-        {{ HTML::style('css/site.css') }}
-        {{ HTML::style('css/media.css') }}
+        {{ HTML::style('/shared/css/bootstrap.min.css') }}
+        {{ HTML::style('/fonts/font-awesome.min.css') }}
+        {{ HTML::style('/fonts/augushand.css') }}
+        {{ HTML::style('/frontend/css/site.css') }}
+        {{ HTML::style('/frontend/css/media.css') }}
         {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
         {{ HTML::style('/plugins/icheck/skins/all.css') }}
         {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
          @yield('addon_stylesheets')
     </head>
     <body>
@@ -28,7 +33,7 @@
                           <span class="icon-bar"></span>
                         </button>
                         <a href="#" class="navbar-brand" id="main-logo">
-                            <img class="img-responsive" src="{{ URL::asset('/') }}images/page/main_logov2.jpg">
+                            <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
                             <span class="sr-only">Bravo Tour Since 2009</span>
                         </a>
                     </div>
@@ -73,7 +78,7 @@
                         <p>What other travel Bravo Us <br/> &nbsp;</p>
                         <div>
                             <a href="#">
-                                <img class="img-responsive" src="{{ URL::asset('/') }}images/page/virtual_tourist.png">
+                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/virtual_tourist.png">
                             </a>
                         </div>
                     </div>
@@ -81,7 +86,7 @@
                         <p>Checkout what other travelers <br/>Bravo us On TripAdvisor</p>
                         <div>
                              <a href="#">
-                                 <img class="img-responsive" src="{{ URL::asset('/') }}images/page/tripadvisor.png">
+                                 <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/tripadvisor.png">
                             </a>
                         </div>
                     </div>
@@ -89,7 +94,7 @@
                          <p>Checkout what our client said <br/> &nbsp;</p>
                         <div>
                              <a href="#">
-                                 <img class="img-responsive" src="{{ URL::asset('/') }}images/page/review_cente.png">
+                                 <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/review_cente.png">
                             </a>
                         </div>
                     </div>
@@ -116,15 +121,15 @@
                 </div>
             </div>
         </div>
-        {{ HTML::script('/js/jquery-2.0.3.min.js') }}
-        {{ HTML::script('/js/bootstrap.min.js') }}
-        {{ HTML::script('plugins/bootstrap-select/bootstrap-select.min.js') }}
-        {{ HTML::script('/js/plugins/icheck/icheck.min.js') }}
-        {{ HTML::script('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
-        {{ HTML::script('/js/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
+        {{ HTML::script('/shared/js/jquery-2.0.3.min.js') }}
+        {{ HTML::script('/shared/js/bootstrap.min.js') }}
+        {{ HTML::script('/plugins/bootstrap-select/bootstrap-select.min.js') }}
+        {{ HTML::script('/plugins/icheck/icheck.min.js') }}
+        {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
+        {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
-        {{ HTML::script('/js/functions.js') }}       
+        {{ HTML::script('/frontend/js/functions.js') }}       
         @yield('addon_js')
         
         @yield('inline_scripts')

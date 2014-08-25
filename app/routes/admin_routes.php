@@ -1,7 +1,6 @@
 <?php
 
 Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
-    
     Route::match(array('GET', 'POST'), '/login', array(
         'as' => 'admin.login', 
         'uses' => 'AuthController@login'
