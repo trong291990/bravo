@@ -64,8 +64,8 @@
                 <div class="tour-item" data-places='<?php echo json_encode($tour->places->lists('name')) ?>'>
                     <div class="tour-sliders">
                         @if($tour->photo)
-                        <a class="thumbnail" href="#">
-                            <img src="{{URL::asset('/')}}{{Tour::PHOTO_PATH}}/{{$tour->id}}/{{$tour->photo}}" class="img-responsive" />
+                        <a class="thumbnail" href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}">
+                            <img src="{{$tour->photoUrl()}}" class="img-responsive" />
                         </a>
                         @endif
                     </div>
