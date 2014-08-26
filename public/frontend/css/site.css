@@ -466,3 +466,9 @@ h3.tour-title a {
 .great-for {
     text-transform: uppercase
 }
+
+.tour-map-container {
+    width: 100%;
+    height: 270px;
+    border: solid 2px #eee;
+}

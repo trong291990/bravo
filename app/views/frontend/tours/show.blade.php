@@ -14,6 +14,10 @@
 {{$area->meta_description}}
 @stop
 
+@section('addon_js')
+{{ HTML::script("https://maps.googleapis.com/maps/api/js") }}
+@stop
+
 @section('content')
 <div id="tour-detail">
     <div class="row">
@@ -37,7 +41,7 @@
             <p>
                 This 11-day tour visits four of Thailand's best-known cities, from palaces in Bangkok to exotic zoos near the Gulf of Thailand. In between, you'll have some leisure time and the chance to take part in some optional tours.
             </p>
-            <img src="{{asset('frontend/images/page/map.jpg')}}" class="img-responsive" />
+            <div class="tour-map-container" data-url="{{route('tour.load_place_coordinates', $tour->id)}}"></div>
             <div id="map-des">
                 <p>
                     <span class="badge"> A </span> <b>Thai Lan</b> <br/>

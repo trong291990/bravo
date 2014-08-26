@@ -23,4 +23,21 @@ class TourController extends FrontendBaseController {
                 ->with(compact('area', 'tour', 'itineraries'));
     }
 
+    public function placeCoordinates($id) {
+        $response = [];
+        $response['places'] = [];
+        $tour = Tour::find($id);
+        if ($tour) {
+            $response['success'] = true;
+            $response['places'] = $tour->places()
+                    ->where('lat', '<>', 'NULL')
+                    ->where('lng', '<>', 'NULL')
+                    ->get(array('lat', 'lng'))
+                    ->toArray();
+        } else {
+            $response['success'] = false;
+        }
+        return Response::json($response);
+    }
+
 }
