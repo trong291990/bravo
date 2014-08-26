@@ -124,6 +124,7 @@ return array(
                 'Way\Generators\GeneratorsServiceProvider',
                 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
                 'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+                'RyanNielson\Shareable\ShareableServiceProvider'
 	),
 
 	/*
@@ -191,6 +192,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
                 'Breadcrumbs'     => 'DaveJamesMiller\Breadcrumbs\Facade',
                 'Former' => 'Former\Facades\Former',
+                'Shareable' => 'RyanNielson\Shareable\Facades\Shareable'
 	),
 
 );

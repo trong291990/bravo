@@ -82,7 +82,12 @@
                                     <p>Tour Code : {{$tour->code}} </p>
                                     <p>Destinations : {{implode(',',$tour->places()->lists('name'))}}</p>
                                     <p>Great for : <span class="great-for">{{implode(',',$tour->travelStyles->lists('name'))}}</span></p>
-                                    <p><img src="{{URL::asset('/')}}frontend/images/page/likes.png" /></p>
+                                    <div>
+                                        <?php $options = array('url'=>route('tour.show', array($tour->area->slug, $tour->slug))); ?>
+                                        {{ Shareable::facebook($options) }}
+                                        {{ Shareable::googlePlus($options)}}
+                                        {{ Shareable::twitter($options) }}
+                                    </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <p class="tour-price">START AT ${{$tour->price_from}} </p>
