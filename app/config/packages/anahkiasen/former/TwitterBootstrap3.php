@@ -13,8 +13,8 @@
 
 	// Width of labels for horizontal forms expressed as viewport => grid columns
 	'labelWidths' => array(
-		'large' => 3,
-		'small' => 4,
+		'large' => 2,
+		'small' => 3,
 	),
 
 	// HTML markup and classes used by Bootstrap 3 for icons

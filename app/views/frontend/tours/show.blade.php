@@ -14,6 +14,10 @@
 {{$area->meta_description}}
 @stop
 
+@section('addon_js')
+{{ HTML::script("https://maps.googleapis.com/maps/api/js") }}
+@stop
+
 @section('content')
 <div id="tour-detail">
     <div class="row">
@@ -35,22 +39,15 @@
     <div class="row">
         <div class="col-sm-27">
             <p>
-                This 11-day tour visits four of Thailand's best-known cities, from palaces in Bangkok to exotic zoos near the Gulf of Thailand. In between, you'll have some leisure time and the chance to take part in some optional tours.
+                {{$tour->overview}}
             </p>
-            <img src="{{asset('frontend/images/page/map.jpg')}}" class="img-responsive" />
+            <div class="tour-map-container" data-url="{{route('tour.load_place_coordinates', $tour->id)}}"></div>
             <div id="map-des">
-                <p>
-                    <span class="badge"> A </span> <b>Thai Lan</b> <br/>
-                    9/1 Moo 3 Amphur Muang Amphur Muang Kanchanaburi, -
-                </p>
-                <p>
-                    <span class="badge"> B </span> <b>Thai Lan</b> <br/>
-                    9/1 Moo 3 Amphur Muang Amphur Muang Kanchanaburi, -
-                </p>
-                <p>
-                    <span class="badge"> C </span> <b>Thai Lan</b> <br/>
-                    9/1 Moo 3 Amphur Muang Amphur Muang Kanchanaburi, -
-                </p>
+                <?php foreach ($places as $index => $place): ?>
+                    <p>
+                        <span class="badge"> {{$index + 1}} </span> <b>{{$place->name}}</b> <br/>
+                    </p>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="col-sm-57">
@@ -95,69 +92,41 @@
                         </div>
                     </div>
                     <div id="tour-detail-pricing" class="tab-pane fade">
-                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                        <h3>Price from: <strong>${{$tour->price_from}}</strong></h3>
+                        <p>
+                            <h3>Include:</h3>
+                            {{$tour->include}}
+                        </p>
+                        <p>
+                            <h3>Not Include:</h3>
+                            {{$tour->not_include}}
+                        </p>
                     </div>
                 </div>
             </div>
             <div id="relationship-tours">
                 <h3>YOU MAY BE ALSO LIKE</h3>
                 <div class="cleafix">
-                    <div class="col-sm-3">
-                        <div class="relationship-tour-item">
-                            <div class="img-thumbnail">
-                                <img src="{{asset('frontend/images/page/tour-item.jpg')}}" class="img-responsive" />
+                    <?php foreach ($otherTours as $tour) : ?>
+                        <div class="col-sm-3">
+
+                            <div class="relationship-tour-item">
+                                <div class="img-thumbnail">
+                                    <img src="{{$tour->photoUrl()}}" class="img-responsive" />
+                                </div>
+                                <div>
+                                    <a href="{{route('tour.show', array($area->slug, $tour->slug))}}">
+                                        <h4>{{$tour->name}}</h4>
+                                    </a>
+                                    <p class="price">
+                                        STARTING AT ${{$tour->price_from}}
+                                    </p>
+                                    <p class="des">per person without air</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4>Tour Name</h4>
-                                <p class="price">
-                                    STARTING AT $340
-                                </p>
-                                <p class="des">per person without air</p>
-                            </div>
+
                         </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="relationship-tour-item">
-                            <div class="img-thumbnail">
-                                <img src="{{asset('frontend/images/page/tour-item.jpg')}}" class="img-responsive" />
-                            </div>
-                            <div>
-                                <h4>Tour Name</h4>
-                                <p class="price">
-                                    STARTING AT $340
-                                </p>
-                                <p class="des">per person without air</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="relationship-tour-item">
-                            <div class="img-thumbnail">
-                                <img src="{{asset('frontend/images/page/tour-item.jpg')}}" class="img-responsive" />
-                            </div>
-                            <div>
-                                <h4>Tour Name</h4>
-                                <p class="price">
-                                    STARTING AT $340
-                                </p>
-                                <p class="des">per person without air</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="relationship-tour-item">
-                            <div class="img-thumbnail">
-                                <img src="{{asset('frontend/images/page/tour-item.jpg')}}" class="img-responsive" />
-                            </div>
-                            <div>
-                                <h4>Tour Name</h4>
-                                <p class="price">
-                                    STARTING AT $340
-                                </p>
-                                <p class="des">per person without air</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

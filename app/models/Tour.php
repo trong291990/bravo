@@ -8,11 +8,11 @@ class Tour extends Eloquent {
     protected $table = 'tours';
     
     public static $rules = array(
-        'name' => 'required|unique:tours',
+        'name' => 'required',
         'price_from' => 'required|numeric',
         'duration' => 'required|integer|min:1',
         'area_id' => 'required',
-        'photo' => 'image|required'
+//        'photo' => 'image|required'
     );
 
     public static function boot() {
