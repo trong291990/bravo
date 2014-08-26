@@ -68,7 +68,7 @@
                 {{Former::text('duration')->class('form-control')->placeholder('days')->required()}}
                 {{Former::textarea('include')->class('form-control')->rows(10)}}
                 {{Former::textarea('not_include')->class('form-control')->rows(10)}}
-                {{Former::textarea('overview')->class('form-control')}}
+                {{Former::textarea('overview')->class('form-control')->rows(4)}}
                 {{Former::file('photo')}}
                 @if($tour->photo)
                 <div class="row" style="margin-bottom: 15px;">

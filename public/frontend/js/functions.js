@@ -32,7 +32,7 @@ function showMap(dom, locations, zoom) {
                 });
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        infowindow.setContent(locations[i][0]);
+                        infowindow.setContent(locations[i].name);
                         infowindow.open(map, marker);
                     };
                 })(marker, i));
@@ -48,7 +48,7 @@ $('.tour-map-container').each(function() {
     var _this = this;
     $.get($_this.data('url'), function(response) {
         if (response.success) {
-            showMap(_this, response.places, 7);
+            showMap(_this, response.places, 9);
         }
     });
 });

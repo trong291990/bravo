@@ -18,9 +18,11 @@ class TourController extends FrontendBaseController {
     public function show($areaSlug, $tourSlug) {
         $area = Area::where('slug', $areaSlug)->first();
         $tour = $area->tours()->with('places')->where('slug', $tourSlug)->first();
+        $otherTours = $area->tours()->where('tours.id','<>', $tour->id)->take(4)->get();
         $itineraries = $tour->itineraries()->orderBy('order', 'ASC')->get();
+        $places = $tour->places()->orderBy('order','ASC')->get();
         $this->layout->content = View::make('frontend.tours.show')
-                ->with(compact('area', 'tour', 'itineraries'));
+                ->with(compact('area', 'tour', 'itineraries', 'places','otherTours'));
     }
 
     public function placeCoordinates($id) {
@@ -32,7 +34,7 @@ class TourController extends FrontendBaseController {
             $response['places'] = $tour->places()
                     ->where('lat', '<>', 'NULL')
                     ->where('lng', '<>', 'NULL')
-                    ->get(array('lat', 'lng'))
+                    ->get(array('name', 'lat', 'lng'))
                     ->toArray();
         } else {
             $response['success'] = false;
