@@ -115,7 +115,7 @@
                                     <img src="{{$tour->photoUrl()}}" class="img-responsive" />
                                 </div>
                                 <div>
-                                    <a href="{{route('tour.show', $area->slug, $tour->slug)}}">
+                                    <a href="{{route('tour.show', array($area->slug, $tour->slug))}}">
                                         <h4>{{$tour->name}}</h4>
                                     </a>
                                     <p class="price">
