@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('select').selectpicker();
     $('input').iCheck({
-        checkboxClass: 'icheckbox_minimal',
+        checkboxClass: 'icheckbox_square-orange',
         radioClass: 'iradio_minimal',
         increaseArea: '40%'
     });

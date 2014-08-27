@@ -474,3 +474,12 @@ h3.tour-title a {
     height: 270px;
     border: solid 2px #eee;
 }
+#package-check .checked.disabled {
+    background-position: -48px 0;
+}
+.complare-package-label {
+    font-size: .7em;
+    width: 50px;
+    top: 5px;
+    position: relative
+}
