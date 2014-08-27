@@ -1,6 +1,7 @@
 @section('header_content')
 <h1>
-    <i class="fa fa-files-o"></i> Tour Itineraries
+   Itineraries
+   <small>{{$tour->name}}</small>
 </h1>
 @stop
 @section('breadcrumbs')

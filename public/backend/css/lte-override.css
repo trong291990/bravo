@@ -233,3 +233,9 @@ label.radio input[type="radio"]{
     -moz-border-radius: 2px;
     border-radius: 2px;    
 }
+.form-search {
+    margin: 5px 0;
+}
+.form-search label {
+    padding-top: 5px;
+}

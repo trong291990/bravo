@@ -2,7 +2,7 @@
 <h1>New Reservation</h1>
 @stop
 @section('breadcrumbs')
-@include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('index_reservations')))
+@include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('create_reservation')))
 @stop
 @section('content')
 <div class="box box-primary">

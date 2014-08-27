@@ -3,12 +3,13 @@ Breadcrumbs::register('dashboard', function($breadcrumbs) {
     $breadcrumbs->push('Dashboard', route('admin.root'));
 });
 Breadcrumbs::register('list_tours', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
     $breadcrumbs->push('Tours', route('admin.tour.index'));
 });
 
 Breadcrumbs::register('create_tour', function($breadcrumbs) {
     $breadcrumbs->parent('list_tours');
-    $breadcrumbs->push('Create tour', route('admin.tour.create'));
+    $breadcrumbs->push('New', route('admin.tour.create'));
 });
 
 Breadcrumbs::register('edit_tour', function($breadcrumbs,$tour) {
@@ -21,5 +22,11 @@ Breadcrumbs::register('profile', function($breadcrumbs) {
 });
 
 Breadcrumbs::register('index_reservations', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
     $breadcrumbs->push('Reservations', route('admin.reservation.index'));
+});
+
+Breadcrumbs::register('create_reservation', function($breadcrumbs) {
+    $breadcrumbs->parent('index_reservations');
+    $breadcrumbs->push('New', route('admin.reservation.create'));
 });

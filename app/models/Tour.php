@@ -6,7 +6,6 @@ class Tour extends Eloquent {
     const PHOTO_PATH = 'uploads/tours';
 
     protected $table = 'tours';
-    
     public static $rules = array(
         'name' => 'required',
         'price_from' => 'required|numeric',
@@ -37,6 +36,22 @@ class Tour extends Eloquent {
         $code = self::CODE_PREFIX . date('Ym') . zero_padding_number($total, 5);
         return $code;
     }
+
+    public static function loadOrSearch($options = []) {
+        $query = self::select('*')->with('area');
+        if (isset($options['area_id']) && trim($options['area_id'])) {
+            $query = $query->where('area_id', $options['area_id']);
+        }
+        if (isset($options['keyword']) && trim($options['keyword'])) {
+            $keyword = '%' . trim($options['keyword']) . '%';
+            $query = $query->where(function($query) use($keyword) {
+                        $query->where('name', 'LIKE', $keyword)
+                                ->orWhere('code', 'LIKE', $keyword);
+                    });
+        }
+        return $query->orderBy('created_at', 'DESC')->paginate();
+    }
+
     public function photoUrl($root = null) {
         $relativePath = self::PHOTO_PATH . '/' . $this->id . '/' . $this->photo;
         if (is_null($root)) {
@@ -73,13 +88,15 @@ class Tour extends Eloquent {
         $this->photo = $fileName;
         $this->save();
     }
+
     public function saveThumnail($file) {
-        $fileName = 'thumbnail_'.$this->id.'_'.sanitize_file_name($file->getClientOriginalName());
+        $fileName = 'thumbnail_' . $this->id . '_' . sanitize_file_name($file->getClientOriginalName());
         $destPath = public_path() . '/' . self::PHOTO_PATH . '/' . $this->id;
         $file->move($destPath, $fileName);
         $this->thumbnail = $fileName;
         $this->save();
     }
+
     public function placeIds() {
         $arrIds = array();
         $places = $this->places;

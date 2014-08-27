@@ -8,11 +8,32 @@
 <div class="box box-primary">
     <div class="box-header">
         <div class="box-tools">
-            <div class="input-group">
-                <input type="text" placeholder="Search" style="width: 150px;" class="form-control input-sm pull-right" name="table_search">
-                <div class="input-group-btn">
-                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                </div>
+            <div class="row">
+                <form method='GET' class='form-search'>
+                    <div class="col-md-3 col-md-offset-5">
+                        <label for="area_id" class='col-xs-3'>Area</label>
+                        <div class="col-xs-9 no-padding">
+                            {{
+                            Former::select('area_id')->addOption('-- Select one --', null)
+                            ->fromQuery($areas,'name','id')
+                            ->label(false)
+                            }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="keyword" class='col-xs-4'>Search</label>
+                        <div class="col-xs-8 no-padding">
+                            <div class="input-group">
+                                <input type="text" name="keyword" id='keyword' placeholder="ID or name" class="form-control" value='{{Input::get("keyword")}}'>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                    <a href="{{route('admin.tour.index')}}" title="Clear filter" class="btn btn-sm btn-default"><i class='fa fa-times'></i></a>
+                                </div>
+                            </div>  
+                        </div>  
+                    </div>
+                    <div class=""></div>
+                </form>
             </div>
         </div>
     </div><!-- /.box-header -->
@@ -20,10 +41,11 @@
         <table class="table table-bordered table-hover">
             <tbody><tr>
                     <th>Tour ID</th>
-                    <th style="width: 50%">Name</th>
+                    <th style="width: 35%">Name</th>
                     <th>Area</th>
                     <th>Price From($)</th>
-                    <th>Action</th>
+                    <th>Created At</th>
+                    <th style='min-width: 180px;'>Action</th>
                 </tr>
                 <?php foreach ($tours as $tour): ?>
                     <tr>
@@ -31,6 +53,7 @@
                         <td><a href="{{route('admin.tour.edit', $tour->id)}}">{{$tour->name}}</a></td>
                         <td>{{$tour->area->name}}</td>
                         <td>{{$tour->price_from}}</td>
+                        <td>{{$tour->created_at->format('M d, Y \a\t H:i')}}</td>
                         <td>
                             <a class='btn btn-xs btn-primary' href="{{route('tour.itinerary.index', $tour->id)}}">Itineraries</a>
                             <a class='btn btn-xs btn-warning' href="{{Route('admin.tour.edit',$tour->id)}}">Edit</a>
