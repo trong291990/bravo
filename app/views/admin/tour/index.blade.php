@@ -19,10 +19,10 @@
     <div class="box-body table-responsive">
         <table class="table table-bordered table-hover">
             <tbody><tr>
-                    <th>ID</th>
+                    <th>Tour ID</th>
                     <th style="width: 50%">Name</th>
                     <th>Area</th>
-                    <th>Price From</th>
+                    <th>Price From($)</th>
                     <th>Action</th>
                 </tr>
                 <?php foreach ($tours as $tour): ?>

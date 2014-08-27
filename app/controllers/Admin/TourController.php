@@ -111,6 +111,7 @@ class TourController extends AdminBaseController {
      */
     public function update($id) {
         $data = Input::all();
+        unset(Tour::$rules['photo']);
         $validator = Validator::make($data, Tour::$rules);
         if ($validator->passes()) {
             $tour = Tour::findOrFail($id);

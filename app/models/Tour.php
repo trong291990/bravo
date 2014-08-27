@@ -12,7 +12,9 @@ class Tour extends Eloquent {
         'price_from' => 'required|numeric',
         'duration' => 'required|integer|min:1',
         'area_id' => 'required',
-//        'photo' => 'image|required'
+        'travel_styles' => 'required',
+        'places' => 'required',
+        'photo' => 'image|required'
     );
 
     public static function boot() {
