@@ -32,11 +32,11 @@
             </div>
             <div class="clearfix" id="package-form">
                 <div class="col-sm-4 no-padding" id="package-check">
-                    <input type="checkbox">
+                    <input type="checkbox" disabled checked>
                     <label id="select-package-label">Select the package</label>
-                    <input type="checkbox" />
-                    <input type="checkbox" />
-                    <input type="checkbox" />
+                    <input type="checkbox" class="selected-package-checkbox" id="select-package-1" name="select_packages[]" />
+                    <input type="checkbox" class="selected-package-checkbox" name="select_packages[]"  id="select-package-2" />
+                    <input type="checkbox" class="selected-package-checkbox" name="select_packages[]"  id="select-package-1" />
                     <button type="submit" class="btn btn-primary">Compare</button>
                 </div>
                 <div class="col-sm-8 no-padding">
@@ -77,14 +77,23 @@
                                 <a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}">{{$tour->name;}} </a>
                             </h3>
                             <div class="row">
-                                <div class="col-sm-8">
+                                <div class="col-sm-7">
                                     <p>Tour Duration : {{$tour->duration}}  days</p>
                                     <p>Tour Code : {{$tour->code}} </p>
                                     <p>Destinations : {{implode(',',$tour->places()->lists('name'))}}</p>
                                     <p>Great for : <span class="great-for">{{implode(',',$tour->travelStyles->lists('name'))}}</span></p>
-                                    <p><img src="{{URL::asset('/')}}frontend/images/page/likes.png" /></p>
+                                    <div>
+                                        <?php $options = array('url'=>route('tour.show', array($tour->area->slug, $tour->slug))); ?>
+                                        {{ Shareable::facebook($options) }}
+                                        {{ Shareable::googlePlus($options)}}
+                                        {{ Shareable::twitter($options) }}
+                                    </div>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-2 clearfix">
+                                    <input class="pull-left compare-package-checkbox" type="checkbox" name="select_packages[]" value="{{$tour->id}}"/>
+                                    <label  class="pull-lef complare-package-label">Compare package</label>
+                                </div>
+                                <div class="col-sm-3">
                                     <p class="tour-price">START AT ${{$tour->price_from}} </p>
                                     <p class="tour-note">per person, without air</p>
                                 </div>
@@ -175,5 +184,14 @@
              showMap(document.getElementById('map-modal-content'),localtionModal,7);
          });
     });
+    
+    //check to compare
+    $('.compare-package-checkbox').on('ifChecked', function(){
+        var freeCheckboxes = $('#package-check .icheckbox_square-orange:not(.checked)');
+        if(freeCheckboxes.length==0){
+            alert('You may only compare 2 or 3 packages. After selecting your packages, click the Compare button at the top of the page')
+            $(this).iCheck('uncheck');
+        }
+      });
 </script>
 @stop

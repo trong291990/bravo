@@ -466,9 +466,20 @@ h3.tour-title a {
 .great-for {
     text-transform: uppercase
 }
-
+.fb_iframe_widget {
+    top:-5px
+}
 .tour-map-container {
     width: 100%;
     height: 270px;
     border: solid 2px #eee;
+}
+#package-check .checked.disabled {
+    background-position: -48px 0;
+}
+.complare-package-label {
+    font-size: .7em;
+    width: 50px;
+    top: 5px;
+    position: relative
 }
