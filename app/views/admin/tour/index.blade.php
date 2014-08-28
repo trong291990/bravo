@@ -17,6 +17,7 @@
                             Former::select('area_id')->addOption('-- Select one --', null)
                             ->fromQuery($areas,'name','id')
                             ->label(false)
+                            ->class('form-control submit-on-change')
                             }}
                         </div>
                     </div>
@@ -61,7 +62,8 @@
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            </tbody></table>
+            </tbody>
+        </table>
     </div><!-- /.box-body -->
     <div class="box-footer">
         <div class="row">

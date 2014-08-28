@@ -22,4 +22,23 @@ $(document).ready(function() {
     $('.submit-on-change').on('change', function(e) {
         $(this).closest('form').submit();
     });
+    /* Handler button as form with confirm*/
+    $(document).on('click','.btn-action-with-confirm', function(e) {
+        e.preventDefault();
+        var $_this = $(this);
+        var msg = $_this.data('message');
+        if(!msg) {
+            msg = 'Are you sure?'
+        }
+        bootbox.confirm(msg, function(result){
+            if(result) {
+                var form = '<form id="form-confirm-action" method="POST" action="' + $_this.data('url') + '">' +
+                    '<input type="hidden" name="_method" value="' + $_this.data('method') + '">' +
+                    '<input type="hidden" name="authenticity_token" value="' + $('[name="csrf-token"]').attr('content') + '">' +
+                    '</form>';
+                $('body').append(form);
+                $('#form-confirm-action').submit();
+            }
+        });        
+    });    
 });

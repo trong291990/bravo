@@ -14,6 +14,7 @@
             <ul class="treeview-menu">
                 <li><a href="{{ route('admin.tour.index') }}"><i class="fa fa-angle-double-right"></i> List Tours</a></li>
                 <li><a href="{{ route('admin.tour.create') }}"><i class="fa fa-angle-double-right"></i> New Tour</a></li>
+                <li><a href="{{ route('admin.review.index') }}"><i class="fa fa-angle-double-right"></i> Reviews</a></li>
             </ul>
         </li>
         <li class="treeview active">

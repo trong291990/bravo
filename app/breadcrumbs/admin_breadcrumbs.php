@@ -30,3 +30,8 @@ Breadcrumbs::register('create_reservation', function($breadcrumbs) {
     $breadcrumbs->parent('index_reservations');
     $breadcrumbs->push('New', route('admin.reservation.create'));
 });
+
+Breadcrumbs::register('list_reviews', function($breadcrumbs) {
+    $breadcrumbs->parent('list_tours');
+    $breadcrumbs->push('Reviews', route('admin.review.index'));
+});
