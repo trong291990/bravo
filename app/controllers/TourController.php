@@ -7,12 +7,36 @@ class TourController extends FrontendBaseController {
         if (!$area) {
             throw new Exception;
         }
-        $tours = $area->tours()->with('places')->paginate(5);
+        $params = Request::query();
+        $toursQuery = Tour::where('area_id','=',$area->id);
+        $sorts = [];
+        $sorts['price'] = isset($params['price']) ? $params['price'] : false;
+        $sorts['travel_style'] = isset($params['travel_style']) ? $params['travel_style'] : false;
+        $sorts['duration'] = isset($params['duration']) ? $params['duration'] : false;
+        if($sorts['travel_style']){
+            $toursQuery =  $area->tours()->with('places')->whereHas('travelStyles',function($query) use ($sorts){
+                $query->where('travel_styles.id',$sorts['travel_style']);
+            });
+        }else{
+            $toursQuery =  $toursQuery->with('places');
+        }
+        //pr($params);
+        //prd($sorts);
+        if($sorts['price']){
+            $priceSorts = Tour::priceSorts();
+            $toursQuery = $toursQuery->whereRaw("price_from {$priceSorts[$sorts['price']]['condition']}");
+        }
+        if($sorts['duration']){
+            $priceSorts = Tour::durationSorts();
+            $toursQuery = $toursQuery->whereRaw("duration {$priceSorts[$sorts['duration']]['condition']}");
+        }
+        $tours = $toursQuery->paginate(5);
         $searchPlaces = $area->places()->where('search_able', '>', 0)->orderBy('search_able')->get();
         $this->layout->title = $area->name;
         $this->layout->content = View::make('frontend.tours.area')->with('area', $area)
                 ->with('searchPlaces', $searchPlaces)
-                ->with('tours', $tours);
+                ->with('tours', $tours)
+                ->with('sorts',$sorts);
     }
 
     public function show($areaSlug, $tourSlug) {
@@ -24,7 +48,24 @@ class TourController extends FrontendBaseController {
         $this->layout->content = View::make('frontend.tours.show')
                 ->with(compact('area', 'tour', 'itineraries', 'places','otherTours'));
     }
-
+    
+    public function compare(){
+        $tourIds = Input::get('select_packages');
+        //prd($tourIds);
+        if(empty($tourIds)){
+            Redirect::to('/');
+        }
+        $Ids = array();
+        foreach ($tourIds as $key => $id) {
+            if($key<=2){
+               $Ids[] = $id;
+            }
+        }
+        $tours = Tour::whereIn('id',$Ids)->get();
+        $this->layout->content = 
+                View::make('frontend.tours.compare')
+                ->with(compact('tours'));
+    }
     public function placeCoordinates($id) {
         $response = [];
         $response['places'] = [];
@@ -40,6 +81,20 @@ class TourController extends FrontendBaseController {
             $response['success'] = false;
         }
         return Response::json($response);
+    }
+    
+    public function booking(){
+        $data = Input::all();
+        $validator = Validator::make($data, Reservation::$rules);
+        if ($validator->passes()) {
+            $reservation = new Reservation($data);
+            $reservation->is_by_admin = true;
+            $reservation->save();
+            Session::flash('booking_success', "Your booking request has been sent. We will contact with you in 2 hours");
+            return Redirect::to('/tours/indochina-tours');
+        } else {
+            return Redirect::to('/');
+        }
     }
 
 }

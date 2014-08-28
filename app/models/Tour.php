@@ -4,8 +4,30 @@ class Tour extends Eloquent {
 
     const CODE_PREFIX = 'BIT';
     const PHOTO_PATH = 'uploads/tours';
-
+    
     protected $table = 'tours';
+    private static $price_sort = [
+        1=>['label'=>'Less than $25','condition'=>'<= 25'],
+        2=>['label'=>'$25 -> $50','condition'=>'BETWEEN 25 AND 50'],
+        3=>['label'=>'$50 -> $100','condition'=>'BETWEEN 50 AND 100'],
+        4=>['label'=>'$100 -> $300','condition'=>'BETWEEN 100 AND 300'],
+        5=>['label'=>'$300 -> $500','condition'=>'BETWEEN 300 AND 500'],
+        6=>['label'=>'$500 -> $700','condition'=>'BETWEEN 500 AND 700'],
+        7=>['label'=>'$700 -> $1000','condition'=>'BETWEEN 700 AND 1000'],
+        8=>['label'=>'> $1000','condition'=>'>1000'],
+    ];
+    private static $duration_sort = [
+        1=>['label'=>'4 Days or Less','condition'=>'< 4'],
+        2=>['label'=>'One Week','condition'=>'BETWEEN 5 AND 7'],
+        3=>['label'=>'One - Two Weeks','condition'=>'BETWEEN 8 AND 14'],
+        4=>['label'=>'Longer than two weeks','condition'=>'> 14']
+    ];
+    public static function priceSorts(){
+        return self::$price_sort;
+    }
+    public static function durationSorts(){
+        return self::$duration_sort;
+    }
     public static $rules = array(
         'name' => 'required',
         'price_from' => 'required|numeric',

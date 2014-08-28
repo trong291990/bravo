@@ -121,6 +121,66 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="booking-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <h2 class="modal-title" style="text-align: center" id="myModalLabel">Booking Online</h2>
+                </div>
+               <?php echo Former::open('/booking') ?>
+                <div class="modal-body">
+                    <div id='booking-modal-content' class='row clearfix'>
+                        <div  class='col-sm-10 col-sm-offset-1'>
+                            <input type="hidden" value="" id='booking-tour-id' name='tour_id' />
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Your name(*)</label>
+                                <input type="text" class="form-control" name='customer_name' required="required"  placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Your email(*)</label>
+                                <input type="email" name='customer_email' class="form-control" required="required"  placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Your phone number(*)</label>
+                                <input name='customer_phone' type="text" class="form-control" required="required"  placeholder="Enter your phone number">
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputEmail1">Message</label>
+                                <textarea name='message' class="form-control" placeholder="Your message" style="min-height: 120px"></textarea>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Booking now</button>   
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+               <?php echo Former::close(); ?>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="booking-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <h3>Booking success</h3>
+                    </div>
+                      <div class="modal-body" style="padding: 0">
+                          <div id='success-modal-content' style="margin-top:20px">
+                            <div role="alert" class="alert alert-success">
+                            <strong>Well done!</strong> Your booking request has been sent. We will contact with you in 2 hours.
+                          </div>
+                            
+                        </div>
+                    </div>
+                      <div class="modal-footer" style="margin: 0">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
         {{ HTML::script('/shared/js/jquery-2.0.3.min.js') }}
         {{ HTML::script('/shared/js/bootstrap.min.js') }}
         {{ HTML::script('/plugins/bootstrap-select/bootstrap-select.min.js') }}
@@ -129,7 +189,12 @@
         {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
-        {{ HTML::script('/frontend/js/functions.js') }}       
+        {{ HTML::script('/frontend/js/functions.js') }}
+        @if(Session::has('booking_success'))
+        <script>
+            $('#booking-success').modal('show');
+        </script>
+        @endif
         @yield('addon_js')
         
         @yield('inline_scripts')

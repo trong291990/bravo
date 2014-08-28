@@ -481,5 +481,56 @@ h3.tour-title a {
     font-size: .7em;
     width: 50px;
     top: 5px;
-    position: relative
+    position: relative;
+    font-size: .7em !important;
+    line-height: 100% !important;
+}
+input[type=checkbox].css-checkbox {
+	display:none;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left:33px;
+    height:28px; 
+    display:inline-block;
+    line-height:28px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:28px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -28px;
+}
+label.css-label {
+    background-image:url(../images/common/csscheckbox.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.compare-item {
+    padding: 20px;
+    border:1px solid #ccc;
+    box-shadow: 0 0 4px #d2d2d2;
+    margin: 25px 0px;
+}
+.compare-item h2,.compare-item h2 a {
+    margin-top: 0px;
+    color: #006FC0;
+    font-weight: bold
+}
+.compare-item h3{
+    color: #C69019;
+    font-weight: bold
+}
+.compare-map {
+    border:1px solid #999
+}
+.navbar-brand {
+    height: 50px !important
 }

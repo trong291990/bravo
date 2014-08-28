@@ -32,28 +32,42 @@
             </div>
             <div class="clearfix" id="package-form">
                 <div class="col-sm-4 no-padding" id="package-check">
-                    <input type="checkbox" disabled checked>
-                    <label id="select-package-label">Select the package</label>
-                    <input type="checkbox" class="selected-package-checkbox" id="select-package-1" name="select_packages[]" />
-                    <input type="checkbox" class="selected-package-checkbox" name="select_packages[]"  id="select-package-2" />
-                    <input type="checkbox" class="selected-package-checkbox" name="select_packages[]"  id="select-package-1" />
+                     <?php echo Former::open(route('package_compare')) ?>
+                    <input type="checkbox" id="checkbox-as-icon" class="css-checkbox" disabled checked>
+                    <label class="css-label" id="select-package-label">Select the package</label>
+                    <input type="checkbox" class="selected-package-checkbox css-checkbox" id="select-package-1" name="select_packages[]" />
+                    <label class="css-label"></label>
+                    <input type="checkbox" class="selected-package-checkbox css-checkbox" name="select_packages[]"  id="select-package-2" />
+                    <label class="css-label"></label>
+                    <input type="checkbox" class="selected-package-checkbox css-checkbox" name="select_packages[]"  id="select-package-1" />
+                    <label class="css-label"></label>
                     <button type="submit" class="btn btn-primary">Compare</button>
+                     <?php echo Former::close() ?>
                 </div>
                 <div class="col-sm-8 no-padding">
                     <div class="row">
                         <div class="col-sm-4">
-                            <select>
+                            <select id='travel-style-sort'>
                                 <option value="">Sort by travel style</option>
+                                <?php foreach (TravelStyle::all() as $key => $style) :?>
+                                <option <?php if($key==$sorts['travel_style']) echo 'selected="selected"'; ?> value="{{$style->id}}">{{$style->name}}</option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <select>
+                            <select id='price-sort'>
                                 <option value="">Sort by price</option>
+                                <?php foreach (Tour::priceSorts() as $key => $v): ?>
+                                <option <?php if($key==$sorts['price']) echo 'selected="selected"'; ?> value="{{$key}}">{{$v['label']}}</option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <select>
-                                <option value="">Sort by duration</option>
+                            <select id='duration-sort'>
+                                <option value="">Sort by duration</option> 
+                                <?php foreach (Tour::durationSorts() as $key => $v): ?>
+                                <option <?php if($key==$sorts['duration']) echo 'selected="selected"'; ?> value="{{$key}}">{{$v['label']}}</option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                     </div>
@@ -90,8 +104,8 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-2 clearfix">
-                                    <input class="pull-left compare-package-checkbox" type="checkbox" name="select_packages[]" value="{{$tour->id}}"/>
-                                    <label  class="pull-lef complare-package-label">Compare package</label>
+                                    <input id="compare-package-checkbox-{{$tour->id}}" class="pull-left compare-package-checkbox css-checkbox" type="checkbox" name="select_packages[]" value="{{$tour->id}}"/>
+                                    <label for="compare-package-checkbox-{{$tour->id}}"  class="pull-lef complare-package-label css-label">Compare package</label>
                                 </div>
                                 <div class="col-sm-3">
                                     <p class="tour-price">START AT ${{$tour->price_from}} </p>
@@ -105,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 no-padding-right tour-actions">
-                                <button class="btn btn-block btn-warning tour-booking">Booking now</button>
+                                <button type="button" data-id='{{$tour->id}}' class="btn booking-tour btn-block btn-warning tour-booking">Booking now</button>
                                 <p><i class="fa fa-envelope"></i> EMAIL TO FRIEND</p>
                                 <p><i class="fa fa-print"></i> PRINT THIS PAGE</p>
                                 <p><i class="fa fa-phone-square"></i> 19008198</p>
@@ -184,14 +198,26 @@
              showMap(document.getElementById('map-modal-content'),localtionModal,7);
          });
     });
-    
+    $('checkbox:not(#checkbox-as-icon)').prop('checked',false);
     //check to compare
-    $('.compare-package-checkbox').on('ifChecked', function(){
-        var freeCheckboxes = $('#package-check .icheckbox_square-orange:not(.checked)');
-        if(freeCheckboxes.length==0){
-            alert('You may only compare 2 or 3 packages. After selecting your packages, click the Compare button at the top of the page')
-            $(this).iCheck('uncheck');
+    $('.compare-package-checkbox').change(function() {
+        if(this.checked) {
+            var freeCheckbox = $('#package-check .selected-package-checkbox:not(:checked)').first();
+            if(freeCheckbox.length==0){
+                alert('You may only compare 2 or 3 packages. After selecting your packages, click the Compare button at the top of the page')
+                $(this).prop("checked",false);
+            }else {
+               freeCheckbox.prop("checked",true);
+               freeCheckbox.val($(this).val());
+            }
+        }else{
+            var checkedCheckbox = $('#package-check .selected-package-checkbox:checked').last();
+            if(checkedCheckbox.length!==0){
+                checkedCheckbox.prop("checked",false);
+                 freeCheckbox.val('');
+            }
         }
-      });
+    });
+    var url = $(location).attr('href');    
 </script>
 @stop

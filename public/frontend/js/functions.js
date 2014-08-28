@@ -1,10 +1,10 @@
 $(document).ready(function() {
     $('select').selectpicker();
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_square-orange',
-        radioClass: 'iradio_minimal',
-        increaseArea: '40%'
-    });
+//    $('input:not(checkbox)').iCheck({
+//        checkboxClass: 'icheckbox_square-orange',
+//        radioClass: 'iradio_minimal',
+//        increaseArea: '40%'
+//    });
 //    $('input:checkbox').screwDefaultButtons({
 //        image: 'url("plugins/screwdefaultbuttons/images/checkbox.jpg")',
 //        width: 40,
@@ -51,4 +51,8 @@ $('.tour-map-container').each(function() {
             showMap(_this, response.places, 9);
         }
     });
+});
+$('.booking-tour').on('click',function(){
+   $('#booking-modal').modal('show');
+   $('#booking-tour-id').val($(this).data('id'));
 });
