@@ -4,7 +4,7 @@ class Tour extends Eloquent {
 
     const CODE_PREFIX = 'BIT';
     const PHOTO_PATH = 'uploads/tours';
-    
+    const PER_PAGE = 15;    
     protected $table = 'tours';
     private static $price_sort = [
         1=>['label'=>'Less than $25','condition'=>'<= 25'],
@@ -71,7 +71,7 @@ class Tour extends Eloquent {
                                 ->orWhere('code', 'LIKE', $keyword);
                     });
         }
-        return $query->orderBy('created_at', 'DESC')->paginate();
+        return $query->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
 
     public function photoUrl($root = null) {

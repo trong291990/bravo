@@ -20,9 +20,11 @@ class ReservationController extends AdminBaseController {
      * @return Response
      */
     public function index() {
-        $reservations = Reservation::with('tour')->paginate(20);
+        $tours = Tour::get(array('id', 'name'));
+        $reservations = Reservation::loadOrSearch(Input::all());
         $this->layout->content =
-                View::make('admin.reservation.index')->with('reservations', $reservations);
+                View::make('admin.reservation.index')
+                ->with(compact('reservations','tours'));
     }
 
     /**

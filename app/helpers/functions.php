@@ -36,3 +36,11 @@ function zero_padding_number($number, $length) {
     }
     return $prefix . $number;
 }
+
+function reservation_statuses_for_select() {
+        return [
+            'any' => 'Any',
+            'pending' => 'Pending',
+            'confirmed' => 'Confirmed'
+        ];
+}
