@@ -45,7 +45,7 @@
                      <?php echo Former::close() ?>
                 </div>
                 <div class="col-sm-8 no-padding">
-                    <div class="row">
+                    <div class="row" id="filter-container">
                         <div class="col-sm-4">
                             <select id='travel-style-sort'>
                                 <option value="">Sort by travel style</option>
@@ -218,6 +218,21 @@
             }
         }
     });
-    var url = $(location).attr('href');    
+    var url = "{{Request::root()}}/tours/{{$area->slug}}?filler=true";
+    $('#filter-container select').change(function(){
+        var travelStyle = $('#travel-style-sort').val();
+        var price = $('#price-sort').val();
+        var duration =  $('#duration-sort').val();
+        if(travelStyle!==''){
+           url += "&travel_style="+travelStyle;
+        }
+        if(price!==''){
+           url += "&price="+price; 
+        }
+        if(duration !==''){
+             url += "&duration="+duration; 
+        }
+        window.location = url;
+    });
 </script>
 @stop
