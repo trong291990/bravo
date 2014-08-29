@@ -97,4 +97,12 @@ class TourController extends FrontendBaseController {
         }
     }
 
+    public function createInquiry() {
+        $this->layout->content = 
+            View::make('frontend.tours.inquiry');
+    }
+
+    public function storeInquiry() {
+        dd('here');
+    }
 }
