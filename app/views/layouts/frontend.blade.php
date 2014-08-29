@@ -72,6 +72,7 @@
         </div>
         <div class="container">
             @yield('content')
+            @include('frontend.partials.order_book')
             <div id="footer" class="row">
                 <div class="col-sm-8  clearfix" id="footer-left">
                     <div class="col-sm-3 no-padding-left">

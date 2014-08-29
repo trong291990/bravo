@@ -386,7 +386,42 @@ h3.tour-title a {
     font-size: .9em;
 }
 #gui-ebooks {
+    background: #efefef;
     margin: 25px 0px;
+    padding: 15px;
+    height: 98px;
+}
+#gui-ebooks form {
+    position: relative;
+}
+#gui-ebooks form input {
+    height: 60px;
+    border : 1px solid #d2d2d2;
+    width: 68%;
+    padding-left: 110px;
+}
+#gui-ebooks form button {
+    width: 30%;
+    background: #ff1a4e;
+    color: #fff;
+    border : 1px solid #d2d2d2;
+    border-left: none;
+    height: 60px;
+    position: relative;
+    left: -5px;
+    top:13px;
+    padding-top: 6px
+}
+#gui-ebooks form button span {
+    font-size: .9em;
+}
+#gui-ebooks form button p {
+    font-size: 1.4em;
+}
+#gui-ebooks img {
+    position: absolute;
+    left: 10px;
+    top:-10px;
 }
 #map-des p {
     margin: 10px 0px;

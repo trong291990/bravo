@@ -186,11 +186,13 @@
     });
     
     //check to compare
-    $('.compare-package-checkbox').on('ifChecked', function(){
+    $('.compare-package-checkbox').on('ifChanged', function(e){
+        //alert($(this).attr('class'));
+        $(this).iCheck('uncheck');
         var freeCheckboxes = $('#package-check .icheckbox_square-orange:not(.checked)');
         if(freeCheckboxes.length==0){
             alert('You may only compare 2 or 3 packages. After selecting your packages, click the Compare button at the top of the page')
-            $(this).iCheck('uncheck');
+            
         }
       });
 </script>
