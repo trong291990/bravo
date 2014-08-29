@@ -66,7 +66,9 @@
                     <div class="header-caption">
                         <p>Customize your ecuador trip </p>
                         <p class="small">3 steps to a free <span class="underline">custom itinerary</span></p>
-                        <div class="clearfix"><a class="btn btn-default btn-flat pull-right" href="#">Start now</a></div>
+                        <div class="clearfix">
+                        <a class="btn btn-default btn-flat pull-right" href="{{route('inquiry.create')}}">Start now</a>
+                        </div>
                     </div>
                 </div>
             </div>
