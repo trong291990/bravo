@@ -39,7 +39,6 @@ App::after(function($request, $response) {
             $sql_log .= ucfirst($query_str);
         }
         $log .= $sql_log . "\n";
-        $log .= str_repeat('=', 100) . "\n";
         $log_file = storage_path() . '/' . 'logs' . '/server.log';
         file_put_contents('php://stdout', $log);            
 });

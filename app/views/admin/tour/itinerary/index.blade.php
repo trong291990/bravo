@@ -1,6 +1,7 @@
 @section('header_content')
 <h1>
-    <i class="fa fa-files-o"></i> Tour Itineraries
+   Itineraries
+   <small>{{$tour->name}}</small>
 </h1>
 @stop
 @section('breadcrumbs')
@@ -10,6 +11,7 @@
 @section('content')
 <div class="box box-primary">
     <div class="box-header">
+        <h3 class="box-title {{$itineraries->count() > 0 ? 'hide' : ''}}" id="empty-message">There is no anyitineraries</h3>
         <div class="box-tools mall-5 text-right">
             <a href="{{route('admin.tour.edit', $tour->id)}}" class="btn btn-sm btn-primary">Edit Tour</a>
             <button class="btn btn-success" id="btn-add-itinerary"><i class="fa fa-plus"></i> Add</button>
@@ -66,7 +68,7 @@
     <div class="box-footer">
         <div class="form-group" name="commit">
             <div class="col-lg-offset-2 col-sm-offset-4 col-lg-10 col-sm-8">
-                <button class="btn-large btn-primary btn" type="submit">Save</button>
+                <button class="btn-large btn-primary btn {{$itineraries->count() > 0 ? '' : 'hide'}}" type="submit" id="btn-submit">Save</button>
             </div>
         </div>
     </div>
@@ -76,6 +78,23 @@
 
 @section('inline_scripts')
 <script type="text/javascript">
+    function refreshUI() {
+        if($('#itineraries-wrap .an-itinerary').length === 0) {
+             $('#empty-message').removeClass('hide');
+             $('#btn-submit').addClass('hide');
+        } else {
+            $('#empty-message').addClass('hide');
+            $('#btn-submit').removeClass('hide');
+        }
+    }
+
+    function removeItineraryForm(el) {
+        $(el).fadeOut(500, function() {
+            $(this).remove();
+            refreshUI();
+        });             
+    }
+
     function createItineraryFieldsHTML(index) {
         var html = '<div class="an-itinerary">' +
                 '<div class="mtb-5 text-right">' +
@@ -122,6 +141,7 @@
         var $_lastItineraryForm = $('.an-itinerary:last');
         Helper.scroll_to($_lastItineraryForm, 700, null, 30);
         $_lastItineraryForm.find('input:first').focus();
+        refreshUI();
     });
 
     $(document).on('click', '.btn-remove-itinerary', function(e) {
@@ -134,18 +154,14 @@
             			type: 'DELETE',
             			success: function(response) {
             				if(response.success) {
-				                $_this.closest('.an-itinerary').fadeOut(500, function() {
-				                    $(this).remove();
-				                });            					
+                                removeItineraryForm($_this.closest('.an-itinerary'));       					
             				}
             			}
             		});
             		return;
-            	} 
-
-                $_this.closest('.an-itinerary').fadeOut(500, function() {
-                    $(this).remove();
-                });
+            	} else {
+                    removeItineraryForm($_this.closest('.an-itinerary'));   
+                } 
             }
         });
     });

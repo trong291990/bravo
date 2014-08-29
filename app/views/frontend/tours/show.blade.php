@@ -21,14 +21,17 @@
 @section('content')
 <div id="tour-detail">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Tours</a></li>
                 <li class="active">{{$tour->name}}</li>
             </ol>
         </div>
-        <div class="col-sm-6">
+        <div class='col-sm-2'>
+            <button type="button" data-id='{{$tour->id}}' class="btn booking-tour btn-block btn-warning tour-booking">Booking now</button>
+        </div>
+        <div class="col-sm-5">
             <ul class="list-unstyled list-inline" id="tour-detail-actions">
                 <li><i class="fa fa-envelope"></i> EMAIL TO FRIEND</li>
                 <li><i class="fa fa-print"></i> PRINT THIS PAGE</li>

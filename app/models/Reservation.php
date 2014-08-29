@@ -33,6 +33,33 @@ class Reservation extends Eloquent {
                 });
     }
 
+    public static function loadOrSearch($options = []) {
+        $sanitized_options = [];
+        foreach ($options as $key => $val) {
+            $sanitized_options[$key] = trim($val);
+        }
+
+        $query = self::select('*')->with('tour');
+
+        if (isset($sanitized_options['tour_id']) && $sanitized_options['tour_id']) {
+            $query = $query->where('tour_id', $sanitized_options['tour_id']);
+        }
+
+        if (isset($sanitized_options['keyword']) && $sanitized_options['keyword']) {
+            $keyword = '%' . $sanitized_options['keyword'] . '%';
+            $query = $query->where(function($query) use($keyword) {
+                        $query->where('booking_id', 'LIKE', $keyword)
+                           ->orWhere('customer_name', 'LIKE', $keyword);
+                    });
+        }
+
+        if(isset($sanitized_options['status']) && in_array($sanitized_options['status'], ['pending','confirmed'])) {
+            $k = $sanitized_options['status'] == 'confirmed' ? '1' : '0';
+            $query = $query->where('status', $k);
+        }
+        return $query->orderBy('created_at', 'DESC')->paginate();        
+    }
+
     public static function statusesForSelect() {
         return [
             self::STATUS_PENDING => 'Pending',

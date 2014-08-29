@@ -18,7 +18,7 @@
                 {{Former::token()}}
                 {{Former::text('name')->class('form-control')->required()}}
                 {{Former::select('area_id')->fromQuery($areas,'name','id')->class('form-control')->label('Area')->placeholder('-- Select one --')->required()}}
-                <div class="form-group">
+                <div class="form-group {{$errors->has('travel_styles') ? 'has-error' : ''}}">
                     <label for="travel_styles" class="control-label col-lg-2 col-sm-4">Travel styles<sup>*</sup></label>
                     <div class="col-lg-10 col-sm-8 travel-style-boxes">
                         <?php
@@ -27,9 +27,12 @@
                         <?php foreach ($travelStyles as $index => $ts) : ?>
                             <label class="col-md-5 checkbox"> <input name="travel_styles[]" value="{{ $ts->id }}" type="checkbox" <?php echo in_array($ts->id, $travelStyleIdsSelected) ? 'checked' : '' ?>>{{ $ts->name }}</label>
                         <?php endforeach; ?>
+                        @if($errors->has('travel_styles'))
+                        <span class="help-block">Please select at least one style.</span>
+                        @endif
                     </div>
                 </div>
-                <div class='form-group'>
+                <div class='form-group {{$errors->has('places') ? 'has-error' : ''}}'>
                     <label class="control-label col-lg-2 col-sm-4">Place</label>
                     <div id='travel-place-wrapper' class='col-lg-10 col-sm-8'>
                         @foreach($areas as $area)
@@ -51,6 +54,9 @@
                         </div>
                         @endif
                         @endforeach
+                        @if($errors->has('places'))
+                        <span class="help-block">Please select at least one place.</span>
+                        @endif
                     </div>
                 </div>
 

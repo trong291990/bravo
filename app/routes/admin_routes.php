@@ -30,6 +30,10 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
         Route::resource('tour', 'TourController');
         Route::resource('reservation', 'ReservationController');
 
+        Route::get('review', array('as' => 'admin.review.index', 'uses' => 'ReviewController@index'));
+        Route::post('review/{id}/approve', array('as' => 'admin.review.approve', 'uses' => 'ReviewController@approve'));
+        Route::post('review/{id}/reject', array('as' => 'admin.review.reject', 'uses' => 'ReviewController@reject'));
+
         Route::post('/tour/{tour_id}/itinerary/update', ['uses' => 'TourController@updateItinerary', 'as' => 'tour.itinerary.update']);
         Route::delete('/tour/{tour_id}/itinerary/{itinerary_id}', ['uses' => 'TourController@deleteItinerary', 'as' => 'tour.itinerary.delete']);
         Route::get('/tour/{tour_id}/itinerary', ['uses' => 'TourController@itinerary', 'as' => 'tour.itinerary.index']);

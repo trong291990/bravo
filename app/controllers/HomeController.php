@@ -13,4 +13,7 @@ class HomeController extends FrontendBaseController {
     public function aboutUs(){
         $this->layout->content = View::make('frontend.pages.about_us');
     }
+    public function review(){
+        $this->layout->content = View::make('frontend.pages.review');
+    }
 }

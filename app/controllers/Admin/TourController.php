@@ -22,8 +22,10 @@ class TourController extends AdminBaseController {
      * @return Response
      */
     public function index() {
-        $tours = Tour::paginate(20);
-        $this->layout->content = View::make('admin.tour.index')->with('tours', $tours);
+        $areas = Area::get(array('id', 'name'));
+        $tours = Tour::loadOrSearch(Input::all());
+        $this->layout->content = View::make('admin.tour.index')
+                ->with(compact('tours', 'areas'));
     }
 
     /**
@@ -59,10 +61,10 @@ class TourController extends AdminBaseController {
             $tour->save();
             $tour->travelStyles()->sync($travelStyles);
             $tour->places()->sync($data['places']);
-            if(\Input::hasFile('photo')){
+            if (\Input::hasFile('photo')) {
                 $tour->savePhoto(Input::file('photo'));
             }
-            if(\Input::hasFile('thumbnail')){
+            if (\Input::hasFile('thumbnail')) {
                 $tour->saveThumnail(Input::file('thumbnail'));
             }
             Session::flash('success', "The tour {$tour->name} has been created successful");
@@ -111,6 +113,7 @@ class TourController extends AdminBaseController {
      */
     public function update($id) {
         $data = Input::all();
+        unset(Tour::$rules['photo']);
         $validator = Validator::make($data, Tour::$rules);
         if ($validator->passes()) {
             $tour = Tour::findOrFail($id);
@@ -126,10 +129,10 @@ class TourController extends AdminBaseController {
             $tour->save();
             $tour->travelStyles()->sync($travelStyles);
             $tour->places()->sync($data['places']);
-            if(\Input::hasFile('photo')){
+            if (\Input::hasFile('photo')) {
                 $tour->savePhoto(Input::file('photo'));
             }
-            if(\Input::hasFile('thumbnail')){
+            if (\Input::hasFile('thumbnail')) {
                 $tour->saveThumnail(Input::file('thumbnail'));
             }
             Session::flash('success', "The tour {$tour->name} has been updated successful");
@@ -185,8 +188,8 @@ class TourController extends AdminBaseController {
         $itinerary = $tour->itineraries->find($itinerary_id);
         $itinerary->delete();
         return Response::json([
-            'success' => true
-            ]);
+                    'success' => true
+        ]);
     }
 
 }
