@@ -8,7 +8,7 @@ class TourController extends FrontendBaseController {
             throw new Exception;
         }
         $params = Request::query();
-        $toursQuery = Tour::where('area_id','=',$area->id);
+        $toursQuery = Tour::where('area_id','=',$area->id)->orderBy('viewed','desc');
         $sorts = [];
         $sorts['price'] = isset($params['price']) ? $params['price'] : false;
         $sorts['travel_style'] = isset($params['travel_style']) ? $params['travel_style'] : false;
@@ -30,7 +30,7 @@ class TourController extends FrontendBaseController {
             $priceSorts = Tour::durationSorts();
             $toursQuery = $toursQuery->whereRaw("duration {$priceSorts[$sorts['duration']]['condition']}");
         }
-        $tours = $toursQuery->paginate(5);
+        $tours = $toursQuery->paginate(9);
         $searchPlaces = $area->places()->where('search_able', '>', 0)->orderBy('search_able')->get();
         $this->layout->title = $area->name;
         $this->layout->content = View::make('frontend.tours.area')->with('area', $area)
@@ -42,6 +42,8 @@ class TourController extends FrontendBaseController {
     public function show($areaSlug, $tourSlug) {
         $area = Area::where('slug', $areaSlug)->first();
         $tour = $area->tours()->with('places')->where('slug', $tourSlug)->first();
+        $tour->viewed++;
+        $tour->save();
         $otherTours = $area->tours()->where('tours.id','<>', $tour->id)->take(4)->get();
         $itineraries = $tour->itineraries()->orderBy('order', 'ASC')->get();
         $places = $tour->places()->orderBy('order','ASC')->get();

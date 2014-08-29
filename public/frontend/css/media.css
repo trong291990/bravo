@@ -13,6 +13,15 @@
         float: left
     }
 }
+@media(max-width:1199px) {
+    #gui-ebooks {
+        height: auto;
+    }
+    #gui-ebooks > div {
+        margin-top: 20px;
+        padding-bottom: 30px;
+    }
+}
 @media(max-width:992px) {
     #intro {
         border-radius: 20px;
@@ -21,6 +30,18 @@
         box-shadow: 0 0 4px #111111;
         height: auto !important;
     }
+    .feature-item {
+        min-height: 352px;
+    }
+    #package-check {
+        margin-bottom: 15px;
+    }
+    #features-tab i {
+        font-size: 2em;
+    }
+}
+@media(max-width:992px) and (min-width:768px) {
+    
 }
 @media(max-width:768px){
     #intro-header {
@@ -35,6 +56,23 @@
     }
     .col-sm-27,.col-sm-27 {
         width: 100%;
+    }
+}
+@media(max-width:767px){
+    .feature-item {
+       height: auto;
+       min-height: 0 !important;
+       padding-bottom: 0;
+       margin-bottom: 10px;
+    }
+    #features-tab i {
+        font-size: 2em;
+    }
+    .feature-item p {
+        display: none
+    }
+    .feature-item > .col-xs-10 {
+        min-height: 46px
     }
 }
 @media(max-width:680px){

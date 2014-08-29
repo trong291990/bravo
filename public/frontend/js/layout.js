@@ -21,15 +21,30 @@ function fixIntroHeight() {
        $('#intro_wrapper_cell').height(h);
    }
 }
+/**
+ * fi
+ */
+function fixTabFeature() {
+   var w =  $( window ).width();
+   if(w <768){
+       $('.feature-item').on('click',function(){
+           $('.feature-item p').not($(this).find('p')).slideUp(500);
+           $(this).find('p').slideDown(500);
+       });
+   }
+}
 fixIntroHeight();
 $( window ).resize(function() {
     fixIntroHeight();
+    fixTabFeature();
 });
 $( window ).on( "orientationchange", function( event ) {
    fixIntroHeight();
+   fixTabFeature();
 });
 $(document).ready(function(){
     fixIntroHeight();
+    fixTabFeature();
 });
 
 

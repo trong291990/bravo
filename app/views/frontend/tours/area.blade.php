@@ -31,7 +31,7 @@
                 @endforeach
             </div>
             <div class="clearfix" id="package-form">
-                <div class="col-sm-4 no-padding" id="package-check">
+                <div class="col-md-4 col-sm-12 no-padding" id="package-check">
                      <?php echo Former::open(route('package_compare')) ?>
                     <input type="checkbox" id="checkbox-as-icon" class="css-checkbox" disabled checked>
                     <label class="css-label" id="select-package-label">Select the package</label>
@@ -44,7 +44,7 @@
                     <button type="submit" class="btn btn-primary">Compare</button>
                      <?php echo Former::close() ?>
                 </div>
-                <div class="col-sm-8 no-padding">
+                <div class="col-md-8 col-sm-12 no-padding">
                     <div class="row" id="filter-container">
                         <div class="col-sm-4">
                             <select id='travel-style-sort'>
@@ -129,7 +129,7 @@
                 </div>
                 <?php endforeach;?>
             </div>
-            <div class="clearfix">
+            <div class="clearfix" id="area-tours-pagging-container">
                 <?php echo $tours->links(); ?>
             </div>
            <div class="modal fade" id="map-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

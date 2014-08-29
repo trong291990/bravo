@@ -42,6 +42,7 @@
                           <li class="active"><a href="{{Request::root()}}">Home</a></li>
                           <li><a href="{{Request::root()}}/about-us">About</a></li>
                           <li><a href="{{Request::root()}}/contact">Contact</a></li>
+                          <li><a href="#">Term & Condition</a></li>
                           <li>
                               <form id="search-form">
                                   <input type="text" placeholder="Search" />
@@ -78,8 +79,8 @@
                     <div class="col-sm-3 no-padding-left">
                         <p>What other travel Bravo Us <br/> &nbsp;</p>
                         <div>
-                            <a href="#">
-                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/virtual_tourist.png">
+                            <a href="http://www.yelp.com.sg/biz/bravo-indochina-tours-and-travel-singapore">
+                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/yelp.png">
                             </a>
                         </div>
                     </div>
@@ -103,10 +104,10 @@
                         <p>Contact us for reservations and questions 19001578 </p>
                         <div id="intro-socials">
                             <ul class="list-unstyled list-inline">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="https://facebook.com/bravoindochinatour"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/bravo-indochina-tours"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://plus.google.com/+bravoindochina"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -191,6 +192,7 @@
         {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
         {{ HTML::script('/frontend/js/functions.js') }}
+        {{ HTML::script('/frontend/js/layout.js') }}
         @if(Session::has('booking_success'))
         <script>
             $('#booking-success').modal('show');

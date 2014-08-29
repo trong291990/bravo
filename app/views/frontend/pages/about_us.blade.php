@@ -4,9 +4,8 @@
         <div class="row">
                     <div class="col-sm-6">
                         <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Tours</a></li>
-                            <li class="active">Discovery Mekong Delta</li>
+                            <li><a href="{{Request::root()}}">Home</a></li>
+                            <li class="active">About Us</li>
                         </ol>
                     </div>
                     <div class="col-sm-6">
@@ -22,9 +21,9 @@
                         <div id="contact-summary-infor">
                             <h3 class="has-dividor">About Us </h3>
                             <p class="small">Email us Directly</p>
-                            <p><a href="mailto:contact@viettouris.com">contact@viettouris.com</a></p>
+                            <p style="font-size: 16px;"><a href="mailto: support@bravoindochinatour.com">support@bravoindochinatour.com</a></p>
                             <p class="small">Give us a call</p>
-                            <p>098376767</p>
+                            <p style="font-size: 16px;">(+84)917391106</p>
                         </div>
                     </div>
                     <div class="col-sm-9">
@@ -110,7 +109,7 @@
                                 Vietnamtourism Co.,Ltd is a professional, reputed tour operator that specializes in tailor-made tours to Vietnam and Indochina, South Asia & more. It is members of a few major travel associations and has received a number of awards over the years. Many well-known media organizations recommended us on their websites. And thousands of good reviews from our customers are also our judges. Read on to learn more about us.
                             </div>
                             <div class="col-sm-6">
-                                <img src="{{Request::root()}}/images/page/awards.png" class="img-responsive" />
+                                <img src="{{Request::root()}}/frontend/images/page/awards.png" class="img-responsive" />
                             </div>
                         </div>
                 </div>

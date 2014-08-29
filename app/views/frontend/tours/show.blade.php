@@ -135,16 +135,4 @@
         </div>
     </div>
 </div>
-<div id="gui-ebooks" class="clearfix">
-    <div class="col-sm-6 no-padding">
-        <a href="#">
-            <img src="{{asset('frontend/images/page/ebook1.png')}}" class="img-responsive" />
-        </a>
-    </div>
-    <div class="col-sm-6 no-padding">
-        <a href="#">
-            <img src="{{asset('frontend/images/page/ebook2.png')}}" class="img-responsive" />
-        </a>
-    </div>
-</div>
 @stop
