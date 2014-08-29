@@ -64,8 +64,8 @@
             <div class="container" id="main-captions">
                 <div class="col-lg-3 col-lg-offset-9 col-sm-6 col-sm-offset-6 no-padding">
                     <div class="header-caption">
-                        <p>Customize your ecuador trip </p>
-                        <p class="small">3 steps to a free <span class="underline">custom itinerary</span></p>
+                        <p>Customize Your Indochina Trip </p>
+                        <p class="small">Easy steps to a free <span class="underline">custom itinerary</span></p>
                         <div class="clearfix">
                         <a class="btn btn-default btn-flat pull-right" href="{{route('inquiry.create')}}">Start now</a>
                         </div>

@@ -51,7 +51,7 @@
                                 <p id="intro-des-readmore" class="pull-right"><a href="#">Read more</a></p>
                             </div>
                             <div class="col-sm-3">
-                                <img src="images/page/bravo_us.png" alt="Bravo us" class="img-responsive" />
+                                <img src="{{Request::root()}}/frontend/images/page/bravo_us.png" alt="Bravo us" class="img-responsive" />
                             </div>
                         </div>
                         <div id="intro-socials">
