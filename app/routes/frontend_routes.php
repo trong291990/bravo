@@ -11,5 +11,5 @@ Route::get('/geo', array('as' => 'geo', 'uses' => 'ToolController@geo'));
 Route::get('/tour-slug', array('as' => 'tour.slug', 'uses' => 'ToolController@tourSlug'));
 Route::post('/package-compare', array('as' => 'package_compare', 'uses' => 'TourController@compare'));
 Route::post('/booking', array('as' => 'booking', 'uses' => 'TourController@booking'));
-Route::get('/customize-trip', array('as' => 'inquiry.create', 'uses' => 'TourController@createInquiry'));
+Route::get('/customize-your-trip', array('as' => 'inquiry.create', 'uses' => 'TourController@createInquiry'));
 Route::post('/inquiry', array('as' => 'inquiry.store', 'uses' => 'TourController@storeInquiry'));

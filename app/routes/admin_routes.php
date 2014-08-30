@@ -27,6 +27,11 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
             'as' => 'admin.logout',
             'uses' => 'AuthController@logout',
         ));
+        Route::get('inquiry', array('as' => 'admin.inquiry.index', 'uses' => 'InquiryController@index'));
+        Route::post('inquiry/{id}/mark_resolved', array('as' => 'admin.inquiry.mark_resolved', 'uses' => 'InquiryController@markResolved'));
+        Route::get('inquiry/{id}', array('as' => 'admin.inquiry.show', 'uses' => 'InquiryController@show'));
+        Route::delete('inquiry/{id}', array('as' => 'admin.inquiry.delete', 'uses' => 'InquiryController@destroy'));
+
         Route::resource('tour', 'TourController');
         Route::resource('reservation', 'ReservationController');
 

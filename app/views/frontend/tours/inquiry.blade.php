@@ -32,77 +32,104 @@
                     We make planning your trip easy by doing all the work for you. Just complete a couple steps and a our Representative will get in touch with you shortly within 23,5 hours. You can also call us at 866.270.9841 to speak to someone right away.
                 </p>
                 <h2 class="has-dividor">CONTACT INFORMATION</h2>
-                <form id="request-tour-form">
+                {{ Former::framework('Nude') }}
+                {{ Former::open(route('inquiry.store'))->id('request-tour-form') }}
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label>First Name</label>
-                            <input type="text" class="form-control" />
+                            {{ Former::text('first_name')->class('form-control')->maxlength(25)->required() }}
                             <p class="form-help">0 of 25 max character</p>
                         </div>
                         <div class="form-group col-sm-6">
                             <label>Last Name</label>
-                            <input type="text" class="form-control" />
+                            {{ Former::text('last_name')->class('form-control')->maxlength(25)->required() }}
                             <p class="form-help">0 of 25 max character</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Email address</label>
-                        <input type="text" class="form-control" />
+                        {{ Former::email('email')->class('form-control')->required()  }}
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label>Phone number</label>
-                            <input type="text" class="form-control" />
+                            {{ Former::text('phone_number')->class('form-control')->maxlength(25)->required()  }}
                             <p class="form-help">0 of 25 max character</p>
                         </div>
                         <div class="form-group col-sm-6">
                             <label>Best time to call</label>
-                            <input type="text" class="form-control" />
+                            {{ Former::text('best_time_call')->class('form-control')  }}
                         </div>
                     </div>
                     <h2>TRIP DETAIL</h2>
                      <div class="row">
                         <div class="form-group col-sm-6">
-                            <select class="form-control">
-                                <option>HOW MANY IN YOUR PARTY</option>
-                            </select>
+                            {{ Former::select('number_of_participants')->options(range(1,100,1))->placeholder('HOW MANY IN YOUR PARTY?')->class('form-control')->required()  }}
                         </div>
                         <div class="form-group col-sm-6">
-                           <select class="form-control">
-                                <option>TOTAL ESTIMATE FOR BUDGET</option>
-                            </select>
+                            {{ Former::select('estimate_budget')->options(range(1000,50000,500))->placeholder('TOTAL ESTIMATE FOR BUDGET')->class('form-control')->required()  }}
                         </div>
                     </div>
                      <div class="row">
                         <div class="form-group col-sm-6">
-                            <label>Phone number</label>
-                            <input type="text" class="form-control" />
-                            <p class="form-help">0 of 25 max character</p>
+                            <label>Departure city</label>
+                            {{ Former::text('departure_city')->class('form-control')->maxlength(30)->required()  }}
+                            <p class="form-help">0 of 30 max character</p>
                         </div>
                         <div class="form-group col-sm-6">
-                            <label>Best time to call</label>
-                            <input type="text" class="form-control" />
+                            <label>DEPARTURE DATE</label>
+                            <div class="input-group">
+                              {{ Former::text('departure_date')->class('form-control')->required()  }}
+                              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
                         </div>
                     </div>
-                     <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-6">
-                            <label>Phone number</label>
-                            <input type="text" class="form-control" />
-                            <p class="form-help">0 of 25 max character</p>
+                            <label>DESTINATION(S)</label>
+                            {{ Former::text('destinations')->class('form-control')->maxlength(50)->required()  }}
+                            <p class="form-help">0 of 50 max character</p>
                         </div>
                         <div class="form-group col-sm-6">
-                            <label>Best time to call</label>
-                            <input type="text" class="form-control" />
+                            <label>LENGTH OF YOUR TRIP(S)</label>
+                            {{ Former::select('length_of_trip')->options(range(1,30,1))->placeholder('LENGTH OF TRIP?')->class('form-control')->required()  }}
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>ADDITIONAL COMMENT</label>
-                        <textarea class="form-control"></textarea>
+                    <h2>CLASS OF SERVICE</h2>
+                    <div class="row">
+                        <div class="form-group col-sm-12">
+                            {{ Former::select('cruise_line')->class('form-control')->placeholder('CHOOSE CRUISE LINE') }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-12">
+                            <label class="checkbox">
+                                {{ Former::checkbox('keep_update')->class('checkbox') }}
+                                KEEP ME UPDATED WITH FUTURE OFFERS RELATED TO MY INTERESTS
+                            </label>    
+                        </div>
+                    </div>       
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label>HOW DID YOU FIND US?(OPT)</label>
+                            {{ Former::text('find_us_from')->class('form-control') }}
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>PREFERRED TRAVEL CONSULTANT(OPT)</label>
+                            {{ Former::text('preferred_consultant')->class('form-control') }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group  col-sm-12">
+                            <label>ADDITIONAL COMMENT</label>
+                            {{ Former::textarea('additional_comment')->class('form-control')->rows(5) }}
+                        </div>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-danger pull-right"> SUBMIT REQUEST </button>
                     </div>
-                </form>
+                {{ Former::close() }}
             </div>
         </div>
     </div>

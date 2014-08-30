@@ -35,3 +35,8 @@ Breadcrumbs::register('list_reviews', function($breadcrumbs) {
     $breadcrumbs->parent('list_tours');
     $breadcrumbs->push('Reviews', route('admin.review.index'));
 });
+
+Breadcrumbs::register('list_inquiries', function($breadcrumbs) {
+    $breadcrumbs->parent('list_tours');
+    $breadcrumbs->push('Inquiries', route('admin.inquiry.index'));
+});

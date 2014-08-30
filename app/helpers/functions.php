@@ -52,6 +52,14 @@ function review_statuses_for_select() {
         'approved' => 'Approved'
     ];  
 }
+
+function inquiry_statuses_for_select() {
+    return [
+        'any' => 'Any',
+        'pending' => 'Pending',
+        'resolved' => 'Resolved'
+    ];      
+}
 /**
  * 
  * @param string $text      -> the string wants to truncate

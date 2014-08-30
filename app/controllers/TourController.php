@@ -105,6 +105,14 @@ class TourController extends FrontendBaseController {
     }
 
     public function storeInquiry() {
-        dd('here');
+        $inputs = Input::all();
+        $validator = Validator::make($inputs, Inquiry::$rules);
+        if($validator->passes()) {
+            $inquiry = new Inquiry($inputs);
+            $inquiry->save();
+            return Redirect::back();
+        } else {
+            return Redirect::back()->withInput()->withErrors($validator->errors());
+        }
     }
 }

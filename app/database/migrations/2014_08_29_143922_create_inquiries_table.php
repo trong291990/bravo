@@ -25,7 +25,7 @@ class CreateInquiriesTable extends Migration {
         	$t->string('cruise_line')->nullable();	
         	$t->boolean('keep_update')->default(true);
         	$t->string('preferred_consultant')->nullable();	
-        	$t->string('find_us_from')->nullable();	
+        	$t->string('find_us    _from')->nullable();	
         	$t->text('additional_comment')->nullable();
         	$t->boolean('is_resolved')->default(false);
             $t->timestamps();
