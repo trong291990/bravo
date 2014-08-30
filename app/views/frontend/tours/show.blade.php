@@ -109,7 +109,7 @@
                         <p><b>Destinations : {{implode(',',$tour->places()->lists('name'))}}</b></p>
                         <p><b> Great For: <span class="great-for">{{implode(',',$tour->travelStyles->lists('name'))}}</span></b></p>
                         <p><b>*Starting at  ${{$tour->price_from}}</b></p>
-                        11-day/8-night tour of Thailand, Tour priced per person and based on double occupancy
+                        <p><b>{{$tour->name}}</b></p>
                         <br/>
                         Send A Enquiry & Receive reply within 59 minutes<br/>
                         After receiving your online enquiry, one of our professional travel consultant will go to work for you. He/she will prepare a very reasonable itinerary and quote our best price. If there is no itinerary in our ready-made tours that meets your needs, just click “Customize Your Indochina Trip” to send us your requirements. More detailed information is highly appreciated as it will help us optimize your customized tour plan more effectively.

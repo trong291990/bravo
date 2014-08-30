@@ -39,6 +39,9 @@
     #features-tab i {
         font-size: 2em;
     }
+    .col-sm-57 {
+        width: 100%
+    }
 }
 @media(max-width:992px) and (min-width:768px) {
     
@@ -89,6 +92,17 @@
     }
     #country-main-nav-wrapper {
         margin-left: 130px
+    }
+    #gui-ebooks form input {
+        width: 100%;
+    }
+    #gui-ebooks > div {
+        padding-bottom: 100px;
+    }
+    #gui-ebooks form button {
+        width: 130px;
+        top:90px;
+        left: calc(50% - 45px)
     }
 }
 @media(max-width:360px){

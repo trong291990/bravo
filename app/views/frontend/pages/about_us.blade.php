@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-lg-3 col-md-12">
                         <div id="contact-summary-infor">
                             <h3 class="has-dividor">About Us </h3>
                             <p class="small">Email us Directly</p>
@@ -26,7 +26,7 @@
                             <p style="font-size: 16px;">(+84)917391106</p>
                         </div>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-lg-9 col-md-12">
                         <h2>ABOUT US</h2>
                         <p>
                             Since tailor-made private touring is fundamentally different from group tours, Bravo Indochina Tours was born focusing on the needs of individual travellers who seeks a real experience of Indochina including Vietnam, Laos, Cambodia. and to show that the itineraries we create can be truly unique and flexible. Founded in early 2013 Bravo Indochina Tours, the tailor-made travel service by Vietnamtourism has been developing rapidly and established good brand image among travellers worldwide.

@@ -407,9 +407,9 @@ h3.tour-title a {
     border : 1px solid #d2d2d2;
     border-left: none;
     height: 60px;
-    position: relative;
-    left: -5px;
-    top:13px;
+    position: absolute;
+    right:17px;
+    top:0px;
     padding-top: 6px
 }
 #gui-ebooks form button span {
