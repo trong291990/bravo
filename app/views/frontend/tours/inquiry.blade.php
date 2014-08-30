@@ -21,12 +21,24 @@
                 <div id="contact-summary-infor">
                     <h3 class="has-dividor">Interest ?</h3>
                     <p class="small">Email us Directly</p>
-                    <p><a href="mailto:contact@viettouris.com">contact@viettouris.com</a></p>
+                    <p><a href="mailto:support@bravoindochinatour.com">support@bravoindochinatour.com</a></p>
                     <p class="small">Give us a call</p>
-                    <p>098376767</p>
+                    <p>(+84)917391106</p>
                 </div>
             </div>
             <div class="col-sm-9">
+                <div class="cleafix">
+                   @if(Session::has('success'))
+                   <div class="row">
+                       @if(Session::has('success'))
+                       <div class="alert alert-success">
+                           {{Session::get('success')}}
+                           <button type="button" class="close" data-dismiss="alert">&times;</button>
+                       </div>
+                       @endif
+                   </div>
+                   @endif
+               </div>
                 <h2>GET YOUR VACATION QUOTE</h2>
                 <p>
                     We make planning your trip easy by doing all the work for you. Just complete a couple steps and a our Representative will get in touch with you shortly within 23,5 hours. You can also call us at 866.270.9841 to speak to someone right away.
@@ -67,7 +79,21 @@
                             {{ Former::select('number_of_participants')->options(range(1,100,1))->placeholder('HOW MANY IN YOUR PARTY?')->class('form-control')->required()  }}
                         </div>
                         <div class="form-group col-sm-6">
-                            {{ Former::select('estimate_budget')->options(range(1000,50000,500))->placeholder('TOTAL ESTIMATE FOR BUDGET')->class('form-control')->required()  }}
+                            <?php
+                                $option = [
+                                    "$100 -> $300",
+                                    "$300 -> 500",
+                                    "$500 -> $700",
+                                    "$700 -> $1000",
+                                    "$1000 -> $1200",
+                                    "$1200 -> $1500",
+                                    "$1500 -> $1700",
+                                    "$1700 -> $2000",
+                                    "$3000 -> $4000"
+                                ]
+                                
+                            ?>
+                            {{ Former::select('estimate_budget')->options($option)->placeholder('TOTAL ESTIMATE FOR BUDGET')->class('form-control')->required()  }}
                         </div>
                     </div>
                      <div class="row">
@@ -88,7 +114,6 @@
                         <div class="form-group col-sm-6">
                             <label>DESTINATION(S)</label>
                             {{ Former::text('destinations')->class('form-control')->maxlength(50)->required()  }}
-                            <p class="form-help">0 of 50 max character</p>
                         </div>
                         <div class="form-group col-sm-6">
                             <label>LENGTH OF YOUR TRIP(S)</label>

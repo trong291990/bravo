@@ -4,8 +4,14 @@ class TourController extends FrontendBaseController {
 
     public function area($slug) {
         $area = Area::where('slug', '=', trim($slug))->first();
-        if (!$area) {
-            throw new Exception;
+        $place =null;
+        if ($area) {
+            $toursQuery = Tour::where('area_id','=',$area->id)->orderBy('viewed','desc');
+        }else{
+            $place = Place::where('slug', '=', trim($slug))->first();
+            if($place){
+                //$toursQuery = Tour::whereHas('places')
+            }
         }
         $params = Request::query();
         $toursQuery = Tour::where('area_id','=',$area->id)->orderBy('viewed','desc');
@@ -110,6 +116,7 @@ class TourController extends FrontendBaseController {
         if($validator->passes()) {
             $inquiry = new Inquiry($inputs);
             $inquiry->save();
+            Session::flash('success', "Your booking request has been sent. We will contact with you in 2 hours");
             return Redirect::back();
         } else {
             return Redirect::back()->withInput()->withErrors($validator->errors());
