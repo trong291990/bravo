@@ -5,29 +5,40 @@ class TourController extends FrontendBaseController {
     public function area($slug) {
         $area = Area::where('slug', '=', trim($slug))->first();
         $place =null;
-        if ($area) {
-            $toursQuery = Tour::where('area_id','=',$area->id)->orderBy('viewed','desc');
-        }else{
-            $place = Place::where('slug', '=', trim($slug))->first();
-            if($place){
-                //$toursQuery = Tour::whereHas('places')
-            }
-        }
         $params = Request::query();
-        $toursQuery = Tour::where('area_id','=',$area->id)->orderBy('viewed','desc');
         $sorts = [];
         $sorts['price'] = isset($params['price']) ? $params['price'] : false;
         $sorts['travel_style'] = isset($params['travel_style']) ? $params['travel_style'] : false;
         $sorts['duration'] = isset($params['duration']) ? $params['duration'] : false;
-        if($sorts['travel_style']){
-            $toursQuery =  $area->tours()->with('places')->whereHas('travelStyles',function($query) use ($sorts){
-                $query->where('travel_styles.id',$sorts['travel_style']);
-            });
+        if ($area) {
+            $toursQuery = Tour::where('area_id','=',$area->id)->orderBy('viewed','desc');
+            $toursParent = $area->slug;
+            $title = $area->name. " tours";
         }else{
-            $toursQuery =  $toursQuery->with('places');
+            $place = Place::where('slug', '=', trim(str_replace('-tours','',$slug)))->first();
+            if($place){
+                $toursQuery = Tour::with('places')->whereHas('places',function($query) use ($place) {
+                    $query->where('places.id',$place->id);
+                });
+            }
+            //sort
+            $area = Area::find($place->area_id);
+            $title = $place->name. " tours";
+            $toursParent = $place->slug;
+            if($sorts['travel_style']){
+               $toursQuery->whereHas('travelStyles',function($query) use ($sorts){
+                   $query->where('travel_styles.id',$sorts['travel_style']);
+               });
+            }else {
+               if($sorts['travel_style']){
+               $toursQuery =  $area->tours()->with('places')->whereHas('travelStyles',function($query) use ($sorts){
+                   $query->where('travel_styles.id',$sorts['travel_style']);
+                   });
+               }else{
+                   $toursQuery =  $toursQuery->with('places');
+               }
+            }
         }
-        //pr($params);
-        //prd($sorts);
         if($sorts['price']){
             $priceSorts = Tour::priceSorts();
             $toursQuery = $toursQuery->whereRaw("price_from {$priceSorts[$sorts['price']]['condition']}");
@@ -37,17 +48,23 @@ class TourController extends FrontendBaseController {
             $toursQuery = $toursQuery->whereRaw("duration {$priceSorts[$sorts['duration']]['condition']}");
         }
         $tours = $toursQuery->paginate(9);
+        
         $searchPlaces = $area->places()->where('search_able', '>', 0)->orderBy('search_able')->get();
-        $this->layout->title = $area->name;
         $this->layout->content = View::make('frontend.tours.area')->with('area', $area)
                 ->with('searchPlaces', $searchPlaces)
                 ->with('tours', $tours)
-                ->with('sorts',$sorts);
+                ->with('sorts',$sorts)
+                ->with('title',$title)
+                ->with('toursParent',$toursParent);
     }
 
     public function show($areaSlug, $tourSlug) {
         $area = Area::where('slug', $areaSlug)->first();
-        $tour = $area->tours()->with('places')->where('slug', $tourSlug)->first();
+        if(!$area){
+             $place = Place::where('slug', '=', trim(str_replace('-tours','',$areaSlug)))->first();
+             $area = Area::find($place->area_id);
+        }
+        $tour = Tour::where('slug', $tourSlug)->first();
         $tour->viewed++;
         $tour->save();
         $otherTours = $area->tours()->where('tours.id','<>', $tour->id)->take(4)->get();

@@ -25,4 +25,11 @@ class ToolController extends BaseController {
             $tour->save();
         }
     }
+    public function placeSlug(){
+        $places = Place::all();
+        foreach ($places as $place){
+            $place->slug = slug_string($place->name);
+            $place->save();
+        }
+    }
 }

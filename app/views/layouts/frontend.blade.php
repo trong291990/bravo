@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bravo Indochina Tour @yield('title')</title>
+        <title>@yield('title')</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <meta name="keyword" content="@yield('keyword')" />

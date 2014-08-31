@@ -31,7 +31,7 @@
                         </div>
                         <div id="intro-logo" class="col-sm-12">
                                 <a href="#">
-                                    <img src="images/page/logo.png" alt="BRAVO TOUR" class="img-responsive" />
+                                    <img src="{{Request::root()}}/frontend/images/page/logo.png" alt="BRAVO TOUR" class="img-responsive" />
                                     <span class="sr-only">BRAVO TOUR</span>
                                 </a>
                         </div>

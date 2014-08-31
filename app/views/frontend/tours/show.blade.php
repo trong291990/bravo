@@ -1,5 +1,5 @@
 @section('title')
-| {{$area->name}} tours
+ {{$tour->name}} Tours | Bravo Indochina Tours
 @stop
 
 @section('keyword')
@@ -111,19 +111,21 @@
                         <p><b>*Starting at  ${{$tour->price_from}}</b></p>
                         <p><b>{{$tour->name}}</b></p>
                         <p><b>Send A Enquiry & Receive reply within 59 minutes</b></p>
+                        <p>
                         After receiving your online enquiry, one of our professional travel consultant will go to work for you. He/she will prepare a very reasonable itinerary and quote our best price. If there is no itinerary in our ready-made tours that meets your needs, just click “Customize Your Indochina Trip” to send us your requirements. More detailed information is highly appreciated as it will help us optimize your customized tour plan more effectively.
+                        </p><p>
                         We will be pleased to make any changes as per your requests. No matter how long the tour discussion may take, our aim is to make you completely satisfied with the final tour plan
-                        <br/>
-                        Bravo Special Discount (View more)<br/>
-                        offering an exclusive 5% group discount for paties of 7 or more that are booking a tours of 2 or more day
+                        </p>
+                        <p><b>Bravo Special Discount (View more)</b></p>
+                        Offering an exclusive 5% group discount for paties of 7 or more that are booking a tours of 2 or more day
                         We are pleased to offer a 3% to 10% discount on the total price for early bird bookings (30 Days - 90 Days prior to the trip)
                         Book 2 and get 1 free for city packages<br/>
                         Repeat Travelers or their recommendation save an additional 5% on any 2014 or 2015 vacation
-                        <br/>
-                        Deposit & Reservation<br/>
+                        <br/><br/>
+                        <p><b>Deposit & Reservation</b></p>
                         Only 10% Refundable Deposit (usually 30%) to secure the reservation for you and keep the price unchanged.
-                        <br/>
-                        Cancellation policy & fees<br/>
+                        <br/><br/>
+                        <p><b>Cancellation policy & fees</b></p>
                         You do not have to pay any cancellation fee if you cancel your reservation no less than 30 days prior to scheduled departure date, 20% for 29 -15 days notice, 50% for 14- 7days notice; 50% for 6-0 days notice.
                     </div>
                 </div>

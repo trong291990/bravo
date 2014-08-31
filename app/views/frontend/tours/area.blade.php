@@ -1,5 +1,5 @@
 @section('title')
- | {{$area->name}} tours
+ {{$title}}  | Bravo Indochina  
 @stop
 
 @section('keyword')
@@ -27,7 +27,7 @@
             <div class="clearfix" id="view-cities">
                 SEE CITIES TO VISITS  
                 @foreach($searchPlaces as $p)
-                <a href="{{route('area_tours',$area->slug)}}/?place={{$p->name}}-{{$p->id}}"> :: {{$p->name}} </a>
+                <a href="{{Request::root()}}/tours/{{$p->slug}}-tours"> :: {{$p->name}} </a>
                 @endforeach
             </div>
             <div class="clearfix" id="package-form">
@@ -88,7 +88,7 @@
                     <div class="tour-content clearfix">
                         <div class="col-lg-8 co-md-12 clearfix">
                             <h3 class="tour-title">
-                                <a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}">{{$tour->name;}} </a>
+                                <a href="{{route('tour.show', array($toursParent, $tour->slug))}}">{{$tour->name;}} </a>
                             </h3>
                             <div class="row">
                                 <div class="col-sm-7">
@@ -217,7 +217,7 @@
             }
         }
     });
-    var url = "{{Request::root()}}/tours/{{$area->slug}}?filler=true";
+    var url = "{{Request::root()}}/tours/{{$toursParent}}?filler=true";
     $('#filter-container select').change(function(){
         var travelStyle = $('#travel-style-sort').val();
         var price = $('#price-sort').val();
