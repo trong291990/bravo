@@ -21,9 +21,9 @@
                 <div id="contact-summary-infor">
                     <h3 class="has-dividor">Interest ?</h3>
                     <p class="small">Email us Directly</p>
-                    <p><a style="font-size: 16px" href="mailto:support@bravoindochinatour.com"><i class="fa fa-envelope"></i>support@bravoindochinatour.com</a></p>
+                    <p><a style="font-size: 13px" href="mailto:support@bravoindochinatour.com"><i class="fa fa-envelope"></i> support@bravoindochinatour.com</a></p>
                     <p class="small">Give us a call</p>
-                    <p style="font-size: 16px"> <i class="fa fa-phone"></i> (+84)917391106</p>
+                    <p style="font-size: 13px"> <i class="fa fa-phone"></i> (+84)917391106</p>
                 </div>
             </div>
             <div class="col-sm-9">
