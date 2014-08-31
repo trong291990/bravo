@@ -88,7 +88,7 @@
                     <div class="tour-content clearfix">
                         <div class="col-lg-8 co-md-12 clearfix">
                             <h3 class="tour-title">
-                                <a href="{{route('tour.show', array($toursParent.'-tours', $tour->slug))}}">{{$tour->name;}} </a>
+                                <a href="{{route('tour.show', array($toursParent, $tour->slug))}}">{{$tour->name;}} </a>
                             </h3>
                             <div class="row">
                                 <div class="col-sm-7">
