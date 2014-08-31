@@ -110,8 +110,7 @@
                         <p><b> Great For: <span class="great-for">{{implode(',',$tour->travelStyles->lists('name'))}}</span></b></p>
                         <p><b>*Starting at  ${{$tour->price_from}}</b></p>
                         <p><b>{{$tour->name}}</b></p>
-                        <br/>
-                        Send A Enquiry & Receive reply within 59 minutes<br/>
+                        <p><b>Send A Enquiry & Receive reply within 59 minutes</b></p>
                         After receiving your online enquiry, one of our professional travel consultant will go to work for you. He/she will prepare a very reasonable itinerary and quote our best price. If there is no itinerary in our ready-made tours that meets your needs, just click “Customize Your Indochina Trip” to send us your requirements. More detailed information is highly appreciated as it will help us optimize your customized tour plan more effectively.
                         We will be pleased to make any changes as per your requests. No matter how long the tour discussion may take, our aim is to make you completely satisfied with the final tour plan
                         <br/>
