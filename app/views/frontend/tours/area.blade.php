@@ -86,12 +86,12 @@
                         @endif
                     </div>
                     <div class="tour-content clearfix">
-                        <div class="col-lg-8 co-md-12 clearfix">
+                        <div class="col-lg-8 col-sm-6 clearfix">
                             <h3 class="tour-title">
                                 <a href="{{route('tour.show', array($toursParent, $tour->slug))}}">{{$tour->name;}} </a>
                             </h3>
                             <div class="row">
-                                <div class="col-sm-7">
+                                <div class="col-lg-7 col-sm-12">
                                     <p>Tour Duration : {{$tour->duration}}  days</p>
                                     <p>Tour Code : {{$tour->code}} </p>
                                     <p>Destinations : {{implode(',',$tour->places()->lists('name'))}}</p>
@@ -103,17 +103,17 @@
                                         {{ Shareable::twitter($options) }}
                                     </div>
                                 </div>
-                                <div class="col-sm-2 clearfix">
+                                <div class="col-lg-2 col-sm-6 compare-col clearfix">
                                     <input id="compare-package-checkbox-{{$tour->id}}" class="pull-left compare-package-checkbox css-checkbox" type="checkbox" name="select_packages[]" value="{{$tour->id}}"/>
                                     <label for="compare-package-checkbox-{{$tour->id}}"  class="pull-lef complare-package-label css-label">Compare package</label>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-lg-3 price-col col-sm-8">
                                     <p class="tour-price">START AT ${{$tour->price_from}} </p>
                                     <p class="tour-note">per person, without air</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12 clearfix">
+                        <div class="col-lg-4 col-sm-6 clearfix">
                             <div class="col-sm-6 no-padding-left">
                                 <div data-id="{{$tour->id}}" id="tour-map-{{$tour->id}}" class="tour-map" style="width: 156px;height: 156px">
                                 </div>
