@@ -45,7 +45,7 @@
                           <li><a href="#">Term & Condition</a></li>
                           <li>
                               <form id="search-form" action="{{route('tour.search')}}">
-                                  <input type="text" placeholder="Search" value="{{Input::get('keyword')}}"/>
+                                  <input type="text" placeholder="Search" name="keyword" value="{{Input::get('keyword')}}"/>
                                   <button type="submit"><i class="fa fa-search"></i></button>
                               </form>
                           </li>
