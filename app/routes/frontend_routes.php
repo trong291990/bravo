@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', array('as' => 'root', 'uses' => 'HomeController@landing'));
+Route::get('/tours/search', array('as' => 'tour.search', 'uses' => 'TourController@search'));
 Route::get('/tours/{slug}', array('as' => 'area_tours', 'uses' => 'TourController@area'));
 Route::get('/tours/{id}/place_coordinates', array('as' => 'tour.load_place_coordinates', 'uses' => 'TourController@placeCoordinates'));
 Route::get('/tours/{area_slug}/{tour_slug}', array('as' => 'tour.show', 'uses' => 'TourController@show'));

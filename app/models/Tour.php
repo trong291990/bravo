@@ -61,6 +61,11 @@ class Tour extends Eloquent {
         return $code;
     }
 
+    public static function searchByKeyword($keyword) {
+        $query = self::select('*')->with('places','itineraries');
+        return $query->orderBy('created_at', 'DESC')->paginate(); 
+    }
+
     public static function loadOrSearch($options = []) {
         $query = self::select('*')->with('area');
         if (isset($options['area_id']) && trim($options['area_id'])) {

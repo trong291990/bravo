@@ -44,8 +44,8 @@
                           <li><a href="{{Request::root()}}/contact">Contact</a></li>
                           <li><a href="#">Term & Condition</a></li>
                           <li>
-                              <form id="search-form">
-                                  <input type="text" placeholder="Search" />
+                              <form id="search-form" action="{{route('tour.search')}}">
+                                  <input type="text" placeholder="Search" value="{{Input::get('keyword')}}"/>
                                   <button type="submit"><i class="fa fa-search"></i></button>
                               </form>
                           </li>
