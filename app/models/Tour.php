@@ -21,7 +21,7 @@ class Tour extends Eloquent {
         2=>['label'=>'One Week','condition'=>'BETWEEN 5 AND 7'],
         3=>['label'=>'One - Two Weeks','condition'=>'BETWEEN 8 AND 14'],
         4=>['label'=>'Longer than two weeks','condition'=>'> 14']
-    ];
+    ];  
     public static function priceSorts(){
         return self::$price_sort;
     }
@@ -40,10 +40,12 @@ class Tour extends Eloquent {
 
     public static function boot() {
         parent::boot();
-        static::saving(function($tour) {
-                    $tour->slug = slug_string($tour->name);
-                    $tour->code = self::nextTourCode();
+        static::creating(function($tour) {
+                $tour->code = self::nextTourCode();
                 });
+        static::saving(function($tour) {
+                $tour->slug = slug_string($tour->name);
+        });
     }
 
     /**

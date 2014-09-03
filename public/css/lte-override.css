@@ -25,6 +25,10 @@
 .content {
     min-height: 300px;
 }
+
+.right-side {
+    background: #fff;
+}
 .custom-select2{
     display: block;
     width: 100%;
