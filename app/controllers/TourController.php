@@ -58,6 +58,14 @@ class TourController extends FrontendBaseController {
                 ->with('toursParent',$toursParent);
     }
 
+    public function search() {
+        $keyword = trim(Input::get('keyword'));
+        $tours = Tour::searchByKeyword($keyword);
+        $title = 'Unknown';
+        $this->layout->content = View::make('frontend.tours.search')
+            ->with(compact('tours','title'));
+    }
+
     public function show($areaSlug, $tourSlug) {
         $area = Area::where('slug', $areaSlug)->first();
         if(!$area){
@@ -123,8 +131,9 @@ class TourController extends FrontendBaseController {
     }
 
     public function createInquiry() {
+        $areas = Area::with('places')->notIsParent()->get();
         $this->layout->content = 
-            View::make('frontend.tours.inquiry');
+            View::make('frontend.tours.inquiry')->with(compact('areas'));
     }
 
     public function storeInquiry() {

@@ -13,6 +13,7 @@
         {{ HTML::style('/frontend/css/site.css') }}
         {{ HTML::style('/frontend/css/media.css') }}
         {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
+        {{ HTML::style('/plugins/bootstrap-datepicker/bootstrap-datepicker3.css') }}
         {{ HTML::style('/plugins/icheck/skins/all.css') }}
         {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
         <!--[if lt IE 9]>
@@ -44,8 +45,8 @@
                           <li><a href="{{Request::root()}}/contact">Contact</a></li>
                           <li><a href="#">Term & Condition</a></li>
                           <li>
-                              <form id="search-form">
-                                  <input type="text" placeholder="Search" />
+                              <form id="search-form" action="{{route('tour.search')}}">
+                                  <input type="text" placeholder="Search" name="keyword" value="{{Input::get('keyword')}}"/>
                                   <button type="submit"><i class="fa fa-search"></i></button>
                               </form>
                           </li>
@@ -193,6 +194,7 @@
         {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
+        {{ HTML::script('/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}
         {{ HTML::script('/frontend/js/functions.js') }}
         {{ HTML::script('/frontend/js/layout.js') }}
         @if(Session::has('booking_success'))

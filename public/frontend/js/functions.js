@@ -56,3 +56,6 @@ $('.booking-tour').on('click',function(){
    $('#booking-modal').modal('show');
    $('#booking-tour-id').val($(this).data('id'));
 });
+$('.datepicker').datepicker({
+    format: 'yyyy-mm-dd'
+});

@@ -61,6 +61,16 @@ class Tour extends Eloquent {
         return $code;
     }
 
+    public static function searchByKeyword($keyword) {
+        return self::with('area', 'places', 'itineraries')
+        ->leftjoin('areas', 'tours.area_id', '=' ,'areas.id')
+        ->where(function($q) use ($keyword) {
+            return $q->where('tours.meta_keyword', 'LIKE', '%' . $keyword . '%')
+                ->orWhereRaw("IF( (tours.keyword_inherit = 1), areas.meta_keyword, tours.meta_keyword) LIKE '%" . $keyword . "%'");
+        })
+        ->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
+    }
+
     public static function loadOrSearch($options = []) {
         $query = self::select('*')->with('area');
         if (isset($options['area_id']) && trim($options['area_id'])) {
