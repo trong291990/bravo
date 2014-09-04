@@ -135,7 +135,7 @@ a:focus {
 
 /********** TOUR ******************/
 #header {
-    background: url('../images/page/hoi-an.jpg') top center no-repeat;
+    background: url('../images/page/hoi-an.jpg') center center no-repeat;
     height: 530px;
     background-size: cover;
     border-bottom: 13px solid #f0b32c;

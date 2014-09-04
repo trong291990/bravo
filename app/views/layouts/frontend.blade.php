@@ -94,7 +94,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-lg-3 col-sm-2">
                          <p>Checkout what our client said <br/> &nbsp;</p>
                         <div>
                              <a href="http://www.reviewcentre.com/Tour-Companies/Bravo-Indochina-Tours-www-bravoindochinatour-com-reviews_2826805">
@@ -102,7 +102,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-3 no-padding-right">
+                    <div class="col-lg-3 col-sm-4 no-padding-right">
                         <p>Contact us for reservations and questions 19001578 </p>
                         <div id="intro-socials">
                             <ul class="list-unstyled list-inline">

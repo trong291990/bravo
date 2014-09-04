@@ -42,6 +42,14 @@
     .col-sm-57 {
         width: 100%
     }
+    
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    #intro-socials  li {
+        padding: 0 !important;
+    }
 }
 @media(max-width:768px) and (min-width:480px) {
     #main-nav li a {
@@ -65,8 +73,9 @@
         left: 100%;
     }
     .price-col {
-        left: 130%;
-        bottom: -10px
+        left: 135%;
+        bottom: 45px;
+        font-size: .8em !important;
     }
     .price-col p {
         font-size: 1em !important;
@@ -76,6 +85,17 @@
     h3.tour-title {
         margin-top: 0px !important;
     }
+    .tour-map {
+        width: 130px !important;
+        height: 130px !important;
+    }
+    .tour-item .tour-actions p {
+        font-size: .8em !important;
+    }
+    .tour-item .tour-booking {
+        margin-top: 0 !important;
+    }
+    
 }
 @media(max-width:768px){
     #intro-header {
@@ -91,6 +111,7 @@
     .col-sm-27,.col-sm-27 {
         width: 100%;
     }
+    
 }
 @media(max-width:767px){
     .feature-item {

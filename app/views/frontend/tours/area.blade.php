@@ -86,7 +86,7 @@
                         @endif
                     </div>
                     <div class="tour-content clearfix">
-                        <div class="col-lg-8 col-sm-6 clearfix">
+                        <div class="col-lg-8 col-sm-7 clearfix">
                             <h3 class="tour-title">
                                 <a href="{{route('tour.show', array($toursParent, $tour->slug))}}">{{$tour->name;}} </a>
                             </h3>
@@ -113,7 +113,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-6 clearfix">
+                        <div class="col-lg-4 col-sm-5 clearfix">
                             <div class="col-sm-6 no-padding-left">
                                 <div data-id="{{$tour->id}}" id="tour-map-{{$tour->id}}" class="tour-map" style="width: 156px;height: 156px">
                                 </div>

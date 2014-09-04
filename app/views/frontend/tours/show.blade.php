@@ -84,7 +84,7 @@
                                             <?php endif; ?>
                                             &nbsp;
                                             &nbsp;
-                                            <i class="fa fa-building"></i> NOVOTEL CAIRNS
+                                            <i class="fa fa-building"></i> {{$itinerary->hotel}}
                                         </p>
                                     </div>
                                 <?php endforeach; ?>
