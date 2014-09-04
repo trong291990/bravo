@@ -131,8 +131,9 @@ class TourController extends FrontendBaseController {
     }
 
     public function createInquiry() {
+        $areas = Area::with('places')->notIsParent()->get();
         $this->layout->content = 
-            View::make('frontend.tours.inquiry');
+            View::make('frontend.tours.inquiry')->with(compact('areas'));
     }
 
     public function storeInquiry() {

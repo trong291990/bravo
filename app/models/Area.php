@@ -16,6 +16,9 @@ class Area extends Eloquent {
                     }
                 });
     }
+    public function scopeNotIsParent($query) {
+        return $query->where('parent_id', '<>', 'NULL');
+    }
 
     public function places() {
         return $this->hasMany('Place', 'area_id');

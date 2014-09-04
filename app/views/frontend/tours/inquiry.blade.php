@@ -129,7 +129,8 @@
                      <div class="row">
                         <div class="form-group col-sm-6 {{$errors->has('departure_city') ? 'has-error' : ''}}">
                             <label class="control-label">Departure city</label>
-                            {{ Former::text('departure_city')->class('form-control')->maxlength(30)  }}
+                            {{ Former::select('departure_city')->class('form-control')->placeholder('-- Select one --')
+                            ->options(area_cities_options_for_select($areas)) }}
                             @if($errors->has('departure_city'))
                             <span class="help-block">{{$errors->get('departure_city')[0]}}</span> 
                             @else                               
