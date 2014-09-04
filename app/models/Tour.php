@@ -62,8 +62,15 @@ class Tour extends Eloquent {
     }
 
     public static function searchByKeyword($keyword) {
-        $query = self::select('*')->with('places','itineraries');
-        return $query->orderBy('created_at', 'DESC')->paginate(); 
+        return self::with('area', 'places', 'itineraries')
+        ->select(DB::raw("tours.*"))
+        ->leftjoin('areas', 'tours.area_id', '=' ,'areas.id')
+        ->leftjoin('areas as a2', 'areas.parent_id', '=' ,'a2.id')
+        ->whereRaw("IF( (tours.keyword_inherit = 1), 
+                        IF(areas.keyword_inherit = 1, a2.meta_keyword, areas.meta_keyword), 
+                        tours.meta_keyword
+                    ) LIKE '%" . $keyword . "%'")
+        ->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
 
     public static function loadOrSearch($options = []) {
