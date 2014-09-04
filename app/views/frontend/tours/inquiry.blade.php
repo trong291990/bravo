@@ -1,3 +1,7 @@
+@section('title')
+ Customize your trip  | Bravo Indochina  
+@stop
+
 @section('content')            
     <div id="tour-contact" class="tour-sub-page">
         <div class="row">
@@ -94,7 +98,8 @@
                     <h2>TRIP DETAIL</h2>
                      <div class="row">
                         <div class="form-group col-sm-6 {{$errors->has('number_of_participants') ? 'has-error' : ''}}">
-                            {{ Former::select('number_of_participants')->options(range(1,100,1))->placeholder('HOW MANY IN YOUR PARTY?')->class('form-control')  }}
+                            <label class="control-label">HOW MANY IN YOUR PARTY?</label>   
+                            {{ Former::select('number_of_participants')->options(range(1,100,1))->class('form-control')->placeholder('-- Select one --')  }}
                             @if($errors->has('number_of_participants'))
                             <span class="help-block">{{$errors->get('number_of_participants')[0]}}</span> 
                             @endif                                    
@@ -102,19 +107,20 @@
                         <div class="form-group col-sm-6 {{$errors->has('estimate_budget') ? 'has-error' : ''}}">
                             <?php
                                 $option = [
-                                    "$100 -> $300",
-                                    "$300 -> 500",
-                                    "$500 -> $700",
-                                    "$700 -> $1000",
-                                    "$1000 -> $1200",
-                                    "$1200 -> $1500",
-                                    "$1500 -> $1700",
-                                    "$1700 -> $2000",
-                                    "$3000 -> $4000"
+                                    "$100 -> $300" => "$100 -> $300",
+                                    "$300 -> 500"  => "$300 -> 500",
+                                    "$500 -> $700" =>  "$500 -> $700",
+                                    "$700 -> $1000" =>  "$700 -> $1000",
+                                    "$1000 -> $1200" => "$1000 -> $1200",
+                                    "$1200 -> $1500" => "$1200 -> $1500",
+                                    "$1500 -> $1700" => "$1500 -> $1700",
+                                    "$1700 -> $2000" => "$1700 -> $2000",
+                                    "$3000 -> $4000" => "$3000 -> $4000"
                                 ]
                                 
                             ?>
-                            {{ Former::select('estimate_budget')->options($option)->placeholder('TOTAL ESTIMATE FOR BUDGET')->class('form-control')  }}
+                            <label class="control-label">TOTAL ESTIMATE FOR BUDGET</label>  
+                            {{ Former::select('estimate_budget')->options($option)->class('form-control')->placeholder('-- Select one --')  }}
                             @if($errors->has('estimate_budget'))
                             <span class="help-block">{{$errors->get('estimate_budget')[0]}}</span> 
                             @endif                              
@@ -133,7 +139,7 @@
                         <div class="form-group col-sm-6 {{$errors->has('departure_date') ? 'has-error' : ''}}">
                             <label class="control-label">DEPARTURE DATE</label>
                             <div class="input-group">
-                              {{ Former::text('departure_date')->class('form-control')  }}
+                              {{ Former::text('departure_date')->class('form-control datepicker')  }}
                               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                             </div>
                             @if($errors->has('departure_date'))
@@ -150,8 +156,8 @@
                             @endif                            
                         </div>
                         <div class="form-group col-sm-6 {{$errors->has('length_of_trip') ? 'has-error' : ''}}">
-                            <label class="control-label">LENGTH OF YOUR TRIP(S)</label>
-                            {{ Former::select('length_of_trip')->options(range(1,30,1))->placeholder('LENGTH OF TRIP?')->class('form-control')  }}
+                            <label class="control-label">LENGTH OF YOUR TRIP</label>
+                            {{ Former::select('length_of_trip')->options(range(1,30,1))->class('form-control')  }}
                             @if($errors->has('length_of_trip'))
                             <span class="help-block">{{$errors->get('length_of_trip')[0]}}</span>                               
                             @endif                                
@@ -160,13 +166,23 @@
                     <h2>CLASS OF SERVICE</h2>
                     <div class="row">
                         <div class="form-group col-sm-12">
-                            {{ Former::select('cruise_line')->class('form-control')->placeholder('CHOOSE CRUISE LINE') }}
+                            <label class="control-label">CHOOSE CRUISE LINE</label>
+                            <?php 
+                            $cruiseLineOpts = [
+                                "Standard Hotels - generally 1-2 star" => "Standard Hotels - generally 1-2 star",
+                                'First Class Hotels - generally 2-3 star' => 'First Class Hotels - generally 2-3 star',
+                                'Superior Hotels - generally 3-4 star' => 'Superior Hotels - generally 3-4 star',
+                                'Deluxe Hotels - generally 4-5 star' => 'Deluxe Hotels - generally 4-5 star',
+                                'Super Deluxe Hotels - generally 5-6 star' => 'Super Deluxe Hotels - generally 5-6 star'
+                            ]
+                             ?>
+                            {{ Former::select('cruise_line')->class('form-control')->placeholder('-- Select one --')->options($cruiseLineOpts) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
                             <label class="checkbox">
-                                {{ Former::checkbox('keep_update')->class('checkbox') }}
+                                {{ Former::checkbox('keep_update')}}
                                 KEEP ME UPDATED WITH FUTURE OFFERS RELATED TO MY INTERESTS
                             </label>    
                         </div>

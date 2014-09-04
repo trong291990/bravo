@@ -576,3 +576,6 @@ label.css-label {
 #area-tours-pagging-container .pagination {
     float: right
 }
+#request-tour-form .control-label {
+    text-transform: uppercase;
+}
