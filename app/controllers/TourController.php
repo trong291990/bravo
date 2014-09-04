@@ -61,7 +61,7 @@ class TourController extends FrontendBaseController {
     public function search() {
         $keyword = trim(Input::get('keyword'));
         $tours = Tour::searchByKeyword($keyword);
-        $title = 'Eo biet';
+        $title = 'Unknown';
         $this->layout->content = View::make('frontend.tours.search')
             ->with(compact('tours','title'));
     }
