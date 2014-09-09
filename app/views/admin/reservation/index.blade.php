@@ -65,7 +65,7 @@
                             <a href="{{Route('admin.reservation.edit',$re->id)}}">{{$re->booking_id}}</a>
                         </td>
                         <td>{{$re->customer_name}}</td>
-                        <td>{{$re->tour->name}}</td>
+                        <td>{{$re->tour->name or 'Deleted'}}</td>
                         <td>{{$re->created_at->format('M d, Y \a\t H:i')}}</td>
                         <td>
                             <?php if ($re->is_confirmed()) : ?>
