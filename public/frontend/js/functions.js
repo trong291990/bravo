@@ -59,3 +59,4 @@ $('.booking-tour').on('click',function(){
 $('.datepicker').datepicker({
     format: 'yyyy-mm-dd'
 });
+$('form').validate();

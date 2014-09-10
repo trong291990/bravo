@@ -131,7 +131,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h2 class="modal-title" style="text-align: center" id="myModalLabel">Booking Online</h2>
+                  <h2 class="modal-title" style="text-align: center" id="myModalLabel">Send us an Enquiry</h2>
                 </div>
                <?php echo Former::open('/booking') ?>
                 <div class="modal-body">
@@ -147,8 +147,16 @@
                                 <input type="email" name='customer_email' class="form-control" required="required"  placeholder="Enter your email">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Your phone number(*)</label>
-                                <input name='customer_phone' type="text" class="form-control" required="required"  placeholder="Enter your phone number">
+                                <label for="exampleInputEmail1">Travel date</label>
+                                <input name='start_date' type="text" 
+                                       class="form-control datepicker" 
+                                        placeholder="Enter your travel date">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">How many traveling ?</label>
+                                <input name='travelling' type="text" 
+                                       class="form-control"
+                                       placeholder="Enter your number of  traveling">
                             </div>
                              <div class="form-group">
                                 <label for="exampleInputEmail1">Message</label>
@@ -158,7 +166,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Booking now</button>   
+                  <button type="submit" class="btn btn-primary">Send now</button>   
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                <?php echo Former::close(); ?>
@@ -195,6 +203,7 @@
         {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
         {{ HTML::script('/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}
+        {{ HTML::script('/frontend/js/jquery.validate.min.js') }}
         {{ HTML::script('/frontend/js/functions.js') }}
         {{ HTML::script('/frontend/js/layout.js') }}
         @if(Session::has('booking_success'))

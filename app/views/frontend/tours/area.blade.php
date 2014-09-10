@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 no-padding-right tour-actions">
-                                <button type="button" data-id='{{$tour->id}}' class="btn booking-tour btn-block btn-warning tour-booking">Booking now</button>
+                                <button type="button" data-id='{{$tour->id}}' class="btn booking-tour btn-block btn-warning tour-booking">Enquiry Now</button>
                                 <p><i class="fa fa-envelope"></i> EMAIL TO FRIEND</p>
                                 <p><i class="fa fa-print"></i> PRINT THIS PAGE</p>
                                 <p><i class="fa fa-phone-square"></i> 19008198</p>

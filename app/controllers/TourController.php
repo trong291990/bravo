@@ -131,6 +131,7 @@ class TourController extends FrontendBaseController {
             Session::flash('booking_success', "Your booking request has been sent. We will contact with you in 2 hours");
             return Redirect::to('/tours/indochina-tours');
         } else {
+            //print_r($validator->errors()->toArray());die();
             return Redirect::to('/');
         }
     }

@@ -94,7 +94,14 @@ class Tour extends Eloquent {
             return $root . '/' . $relativePath;
         }
     }
-
+    public function thumbnail($root = null) {
+        $relativePath = self::PHOTO_PATH . '/' . $this->id . '/' . $this->thumbnail;
+        if (is_null($root)) {
+            return asset($relativePath);
+        } else {
+            return $root . '/' . $relativePath;
+        }
+    }
     public function area() {
         return $this->belongsTo('Area', 'area_id');
     }

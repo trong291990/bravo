@@ -39,10 +39,14 @@
     #features-tab i {
         font-size: 2em;
     }
-    .col-sm-57 {
+    .col-sm-57,.col-sm-27  {
         width: 100%
     }
-    
+    #country-main-nav-wrapper li a {
+        font-size: 1.7em;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 @media only screen 
 and (min-device-width : 768px) 
@@ -51,17 +55,41 @@ and (max-device-width : 1024px) {
         padding: 0 !important;
     }
 }
+@media only screen and (max-width:1000px) and (min-width:760px){
+    .container{width:760px !important;padding-left: 0!important;padding-right: 0 !important}
+    #gui-ebooks form input{
+        height: 40px;
+    }
+   #gui-ebooks img {
+        left: -2px;
+        position: absolute;
+        top: -2px;
+        width: 50px;
+    }
+    #gui-ebooks form input {
+        border: 1px solid #d2d2d2;
+        height: 40px;
+        padding-left: 46px;
+        width: 68%;
+        font-size: 11px
+      }
+      #gui-ebooks form button {
+          font-size: 10px;
+          height: 40px;
+      }
+      #gui-ebooks form button p {
+          margin: 0;
+          font-size: 1.1em;
+      }
+      #gui-ebooks {padding: 0px;}
+}
 @media(max-width:768px) and (min-width:480px) {
     #main-nav li a {
         padding-left: 7px;
         padding-right: 7px;
         font-size: .9em !important;
     }
-    #country-main-nav-wrapper li a {
-        font-size: 1.7em;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+    
     .tour-content {
         position: relative
     }
@@ -97,6 +125,7 @@ and (max-device-width : 1024px) {
     }
     
 }
+
 @media(max-width:768px){
     #intro-header {
         width: 80%;
