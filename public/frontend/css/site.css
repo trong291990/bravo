@@ -619,3 +619,15 @@ label.css-label {
     margin-left: 0;
     margin-right: 0;
 }
+#header.vietnam-tours {
+  background: url("../images/header/vietnam.jpg") no-repeat scroll top center / cover  rgba(0, 0, 0, 0);
+}
+#header.cambodia-tours {
+  background: url("../images/header/cambodia.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
+}
+#header.laos-tours {
+  background: url("../images/header/laos.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
+}
+#header.vietnam-tours #main-nav ul.nav li a {
+    color: #146abd
+}

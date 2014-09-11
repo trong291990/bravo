@@ -1,7 +1,9 @@
 @section('title')
  {{$title}}  | Bravo Indochina  
 @stop
-
+@section('area_class')
+  class="{{$area->slug}}"  
+@stop
 @section('keyword')
  @if($area->keyword_inherit)
  ,{{$area->meta_keyword}}

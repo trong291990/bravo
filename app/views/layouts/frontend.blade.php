@@ -23,7 +23,7 @@
          @yield('addon_stylesheets')
     </head>
     <body>
-        <div id="header">
+        <div id="header" @yield('area_class')>
             <div role="navigation" class="navbar navbar-default" id="main-nav-warrper" >
                 <div class="container">
                     <div class="navbar-header">
