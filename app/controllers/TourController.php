@@ -29,19 +29,21 @@ class TourController extends FrontendBaseController {
             $area = Area::find($place->area_id);
             $title = $place->name . " tours";
             $toursParent = $place->slug;
-            if ($sorts['travel_style']) {
-                $toursQuery->whereHas('travelStyles', function($query) use ($sorts) {
-                            $query->where('travel_styles.id', $sorts['travel_style']);
-                        });
-            } else {
-                if ($sorts['travel_style']) {
-                    $toursQuery = $area->tours()->with('places')->whereHas('travelStyles', function($query) use ($sorts) {
-                                $query->where('travel_styles.id', $sorts['travel_style']);
-                            });
-                } else {
-                    $toursQuery = $toursQuery->with('places');
-                }
-            }
+        }
+        
+        if ($sorts['travel_style']) {
+            $toursQuery->whereHas('travelStyles', function($query) use ($sorts) {
+                        $query->where('travel_styles.id', $sorts['travel_style']);
+                    });
+        } else {
+            if(!$place) $toursQuery = $toursQuery->with('places');
+//            if ($sorts['travel_style']) {
+//                $toursQuery = $area->tours()->with('places')->whereHas('travelStyles', function($query) use ($sorts) {
+//                            $query->where('travel_styles.id', $sorts['travel_style']);
+//                        });
+//            } else {
+//                $toursQuery = $toursQuery->with('places');
+//            }
         }
         if ($sorts['price']) {
             $priceSorts = Tour::priceSorts();
@@ -52,7 +54,10 @@ class TourController extends FrontendBaseController {
             $toursQuery = $toursQuery->whereRaw("duration {$priceSorts[$sorts['duration']]['condition']}");
         }
         $tours = $toursQuery->paginate(9);
-
+        View::composer(Paginator::getViewName(), function($view) {
+                $query = array_except( Input::query(), Paginator::getPageName() );
+                $view->paginator->appends($query);
+        });
         $searchPlaces = $area->places()->where('search_able', '>', 0)->orderBy('search_able')->get();
         $this->layout->content = View::make('frontend.tours.area')->with('area', $area)
                 ->with('searchPlaces', $searchPlaces)

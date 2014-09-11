@@ -157,15 +157,16 @@
 @section('inline_scripts')
 <script>
     function showMap(dom,locations,zoom){
+        try {
             var map = new google.maps.Map(dom, {
-             zoom:zoom,
-             center: new google.maps.LatLng(locations[0][1],locations[0][2]),
-             mapTypeId: google.maps.MapTypeId.ROADMAP
-           });
+                zoom:zoom,
+                center: new google.maps.LatLng(locations[0][1],locations[0][2]),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
 
-           var infowindow = new google.maps.InfoWindow();
-           var marker, i;
-
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+           
             for (i = 0; i < locations.length; i++) {  
                 marker = new google.maps.Marker({
                   position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -179,8 +180,12 @@
                     infowindow.open(map, marker);
                   }
                 })(marker, i));
-           }
+            }
+           
+        } catch (ex) {
+            console.log(ex);
         }
+    }
     <?php foreach($tours as $tour):
         $places = [];
         foreach($tour->places as $place){

@@ -203,7 +203,7 @@
         {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
         {{ HTML::script('/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}
-        {{ HTML::script('/frontend/js/jquery.validate.min.js') }}
+        {{ HTML::script('/plugins/jquery.validate.min.js') }}
         {{ HTML::script('/frontend/js/functions.js') }}
         {{ HTML::script('/frontend/js/layout.js') }}
         @if(Session::has('booking_success'))
