@@ -42,6 +42,7 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
         Route::post('/tour/{tour_id}/itinerary/update', ['uses' => 'TourController@updateItinerary', 'as' => 'tour.itinerary.update']);
         Route::delete('/tour/{tour_id}/itinerary/{itinerary_id}', ['uses' => 'TourController@deleteItinerary', 'as' => 'tour.itinerary.delete']);
         Route::get('/tour/{tour_id}/itinerary', ['uses' => 'TourController@itinerary', 'as' => 'tour.itinerary.index']);
-
+        Route::get('/setting/edit-terms', ['as' => 'admin.setting.edit_terms', 'uses' => 'SettingController@editTerms']);
+        Route::post('/setting/update-terms', ['as' => 'admin.setting.update_terms', 'uses' => 'SettingController@updateTerms']);
     });
 });

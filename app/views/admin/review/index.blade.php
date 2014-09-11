@@ -42,7 +42,7 @@
                             </div>
                             <div style="margin-bottom: 15px">
                                 <p>Content</p> 
-                                {truncate_words($review->content, 200)}}
+                                {{truncate_words($review->content, 200)}}
                                 <a href="#" class="btn-show-review-detail" data-content="{{$review->content}}">>> More</a>
                             </div>
                         </td>

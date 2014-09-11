@@ -43,7 +43,7 @@
                           <li class="active"><a href="{{Request::root()}}">Home</a></li>
                           <li><a href="{{Request::root()}}/about-us">About</a></li>
                           <li><a href="{{Request::root()}}/contact">Contact</a></li>
-                          <li><a href="#">Term & Condition</a></li>
+                          <li><a href="{{route('terms')}}">Term & Condition</a></li>
                           <li>
                               <form id="search-form" action="{{route('tour.search')}}">
                                   <input type="text" placeholder="Search" name="keyword" value="{{Input::get('keyword')}}"/>

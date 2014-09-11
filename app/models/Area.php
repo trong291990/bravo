@@ -12,7 +12,7 @@ class Area extends Eloquent {
         parent::boot();
         static::creating(function($country) {
                     if (!$country->slug) {
-                        $country->slug = slug_string($country->name);
+                        $country->slug = slug_string($country->name) . '-tours';
                     }
                 });
     }

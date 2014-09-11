@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('textarea.wysihtml5').wysihtml5();
     $('.datepicker').datepicker();
     $('.select2-able').select2({
         width: 'resolve'

@@ -40,3 +40,7 @@ Breadcrumbs::register('list_inquiries', function($breadcrumbs) {
     $breadcrumbs->parent('list_tours');
     $breadcrumbs->push('Inquiries', route('admin.inquiry.index'));
 });
+Breadcrumbs::register('setting', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Setting', '#');
+});

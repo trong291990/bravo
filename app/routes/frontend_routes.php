@@ -7,6 +7,7 @@ Route::get('/tours/{id}/place_coordinates', array('as' => 'tour.load_place_coord
 Route::get('/tours/{area_slug}/{tour_slug}', array('as' => 'tour.show', 'uses' => 'TourController@show'));
 Route::get('/contact', array('as' => 'contract', 'uses' => 'HomeController@contact'));
 Route::get('/about-us', array('as' => 'about_us', 'uses' => 'HomeController@aboutUs'));
+Route::get('/terms-and-condition', array('as' => 'terms', 'uses' => 'HomeController@termsAndCondition'));
 Route::get('/review', array('as' => 'review', 'uses' => 'HomeController@review'));
 Route::get('/geo', array('as' => 'geo', 'uses' => 'ToolController@geo'));
 Route::get('/tour-slug', array('as' => 'tour.slug', 'uses' => 'ToolController@tourSlug'));

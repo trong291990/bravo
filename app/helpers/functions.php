@@ -50,7 +50,7 @@ function review_statuses_for_select() {
         'any' => 'Any',
         'pending' => 'Pending',
         'approved' => 'Approved'
-    ];  
+    ];
 }
 
 function inquiry_statuses_for_select() {
@@ -58,8 +58,9 @@ function inquiry_statuses_for_select() {
         'any' => 'Any',
         'pending' => 'Pending',
         'resolved' => 'Resolved'
-    ];      
+    ];
 }
+
 function area_cities_options_for_select($areas) {
     $options = [];
     foreach ($areas as $area) {
@@ -70,6 +71,7 @@ function area_cities_options_for_select($areas) {
     }
     return $options;
 }
+
 /**
  * 
  * @param string $text      -> the string wants to truncate
@@ -87,6 +89,13 @@ function truncate_words($text, $limit, $pad = "...", $stripTag = true) {
         array_push($words, $pad);
     }
     return implode(' ', $words);
+}
+
+function create_file_if_not_exists($file_path) {
+    if (!file_exists($file_path)) {
+        $file = fopen($file_path, 'w');
+        fclose($file);
+    }
 }
 
 ?>
