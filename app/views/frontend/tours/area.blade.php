@@ -88,11 +88,7 @@
                         @endif
                     </div>
                     <div class="tour-content clearfix">
-<<<<<<< HEAD
-                        <div class="col-sm-8 clearfix">
-=======
                         <div class="col-lg-8 col-sm-7 clearfix">
->>>>>>> 024180b1669e33c1c06827dd57f6287e42d749f9
                             <h3 class="tour-title">
                                 <a href="{{route('tour.show', array($toursParent, $tour->slug))}}">{{$tour->name;}} </a>
                             </h3>
