@@ -39,13 +39,93 @@
     #features-tab i {
         font-size: 2em;
     }
-    .col-sm-57 {
+    .col-sm-57,.col-sm-27  {
         width: 100%
     }
+    #country-main-nav-wrapper li a {
+        font-size: 1.7em;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
-@media(max-width:992px) and (min-width:768px) {
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    #intro-socials  li {
+        padding: 0 !important;
+    }
+}
+@media only screen and (max-width:1000px) and (min-width:760px){
+    .container{min-width:760px !important;padding-left: 10px!important;padding-right: 10px !important}
+    #gui-ebooks form input{
+        height: 40px;
+    }
+   #gui-ebooks img {
+        left: -2px;
+        position: absolute;
+        top: -2px;
+        width: 50px;
+    }
+    #gui-ebooks form input {
+        border: 1px solid #d2d2d2;
+        height: 40px;
+        padding-left: 46px;
+        width: 68%;
+        font-size: 11px
+      }
+      #gui-ebooks form button {
+          font-size: 10px;
+          height: 40px;
+      }
+      #gui-ebooks form button p {
+          margin: 0;
+          font-size: 1.1em;
+      }
+      #gui-ebooks {padding: 0px;}
+}
+@media(max-width:768px) and (min-width:480px) {
+    #main-nav li a {
+        padding-left: 7px;
+        padding-right: 7px;
+        font-size: .9em !important;
+    }
+    
+    .tour-content {
+        position: relative
+    }
+    .price-col,.compare-col {
+        position: absolute;
+        bottom: 0
+    }
+    .compare-col {
+        left: 100%;
+    }
+    .price-col {
+        left: 135%;
+        bottom: 45px;
+        font-size: .8em !important;
+    }
+    .price-col p {
+        font-size: 1em !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    h3.tour-title {
+        margin-top: 0px !important;
+    }
+    .tour-map {
+        width: 130px !important;
+        height: 130px !important;
+    }
+    .tour-item .tour-actions p {
+        font-size: .8em !important;
+    }
+    .tour-item .tour-booking {
+        margin-top: 0 !important;
+    }
     
 }
+
 @media(max-width:768px){
     #intro-header {
         width: 80%;
@@ -60,6 +140,7 @@
     .col-sm-27,.col-sm-27 {
         width: 100%;
     }
+    
 }
 @media(max-width:767px){
     .feature-item {

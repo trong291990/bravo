@@ -25,8 +25,8 @@
                     <div id="intro">
                         <div id="intro-header-wrapper">
                             <div id="intro-header">
-                                <h1>A BRAND UNDER VIETNAMTOURISM</h1>
-                                <p class="sub">Management</p>
+                                <h1>YOUR BEST CHOICE FOR INDOCHINA </h1>
+                                <p class="sub">Truly Unique, Flexible Itineraries, Affordable Price</p>
                             </div>
                         </div>
                         <div id="intro-logo" class="col-sm-12">
@@ -46,9 +46,10 @@
                         <div class="row" id="intro-description">
                             <div class="col-sm-9 clearfix">
                                 <p id="intro-des-text">
-                                    Since tailor-made private touring is fundamentally different from group tours, Bravo Indochina Tours was born focusing on the needs of individual travellers who seeks a real experience of Indochina including Vietnam, Laos, Cambodia. and to show that the itineraries we create can be truly unique and flexible. Founded in early 2013 Bravo Indochina Tours, the tailor-made travel service by Vietnamtourism has been developing rapidly and established good brand image among travellers worldwide.
+                                    Since tailor-made private touring is fundamentally different from group tours, Bravo Indochina Tours was born focusing on the needs of individual travellers who seeks a real experience of Indochina including Vietnam, Laos, Cambodia. and to show that the itineraries we create can be truly unique and flexible. 
+                                
                                 </p>
-                                <p id="intro-des-readmore" class="pull-right"><a href="#">Read more</a></p>
+                                <p id="intro-des-readmore" class="pull-right"><a href="{}">Read more</a></p>
                             </div>
                             <div class="col-sm-3">
                                 <img src="{{Request::root()}}/frontend/images/page/bravo_us.png" alt="Bravo us" class="img-responsive" />

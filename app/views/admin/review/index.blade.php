@@ -24,9 +24,7 @@
             <tbody><tr>
                     <th style="width: 15%">Full name</th>
                     <th>Email</th>
-                    <th>Departure date</th>
-                    <th>Destination</th>
-                    <th>Content</th>
+                    <th style="min-width: 50%">Review Detail</th>
                     <th>Status</th>
                     <th>Created At</th>
                     <th style='min-width: 180px;'>Action</th>
@@ -35,11 +33,18 @@
                     <tr>
                         <td>{{$review->fullName()}}</td>
                         <td>{{$review->email}}</td>
-                        <td>{{$review->departure_date}}</td>
-                        <td>{{$review->destination}}</td>
                         <td>
-                        	{{truncate_words($review->content, 10)}}
-                        	<a href="#" class="btn-show-review-detail" data-content="{{$review->content}}">>> More</a>
+                            <div style="margin-bottom: 15px">
+                                Departure date :{{$review->departure_date}}
+                            </div>
+                            <div style="margin-bottom: 15px">
+                                Destination {{$review->destination}}
+                            </div>
+                            <div style="margin-bottom: 15px">
+                                <p>Content</p> 
+                                {truncate_words($review->content, 200)}}
+                                <a href="#" class="btn-show-review-detail" data-content="{{$review->content}}">>> More</a>
+                            </div>
                         </td>
                         <td>{{$review->statusString()}}</td>
                         <td>{{$review->created_at->format('M d, Y \a\t H:i')}}</td>

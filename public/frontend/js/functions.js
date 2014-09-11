@@ -13,7 +13,7 @@ $(document).ready(function() {
 });
 
 function showMap(dom, locations, zoom) {
-    if (typeof google !== 'undifined') {
+    if (typeof google !== 'undefined') {
         var map = new google.maps.Map(dom, {
             zoom: zoom,
             center: new google.maps.LatLng(locations[0].lat, locations[0].lng),
@@ -56,3 +56,7 @@ $('.booking-tour').on('click',function(){
    $('#booking-modal').modal('show');
    $('#booking-tour-id').val($(this).data('id'));
 });
+$('.datepicker').datepicker({
+    format: 'yyyy-mm-dd'
+});
+$('form').validate();

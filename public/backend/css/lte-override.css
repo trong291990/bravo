@@ -239,3 +239,6 @@ label.radio input[type="radio"]{
 .form-search label {
     padding-top: 5px;
 }
+.an-itinerary textarea {
+    min-height: 300px
+}

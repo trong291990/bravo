@@ -28,10 +28,8 @@
                 <li class="active">{{$tour->name}}</li>
             </ol>
         </div>
-        <div class='col-sm-2'>
-            <button type="button" data-id='{{$tour->id}}' class="btn booking-tour btn-block btn-warning tour-booking">Booking now</button>
-        </div>
-        <div class="col-sm-5">
+        
+        <div class="col-sm-7">
             <ul class="list-unstyled list-inline" id="tour-detail-actions">
                 <li><i class="fa fa-envelope"></i> EMAIL TO FRIEND</li>
                 <li><i class="fa fa-print"></i> PRINT THIS PAGE</li>
@@ -51,6 +49,11 @@
                         <span class="badge"> {{$index + 1}} </span> <b>{{$place->name}}</b> <br/>
                     </p>
                 <?php endforeach; ?>
+            </div>
+            <div class="row">
+                <div class='col-sm-6 col-sm-offset-3'>
+                    <button style="margin-bottom: 20px;margin-top: 10px" type="button" data-id='{{$tour->id}}' class="btn booking-tour  btn-warning tour-booking">Enquiry Now</button>
+                </div>
             </div>
         </div>
         <div class="col-sm-57">
@@ -84,7 +87,7 @@
                                             <?php endif; ?>
                                             &nbsp;
                                             &nbsp;
-                                            <i class="fa fa-building"></i> NOVOTEL CAIRNS
+                                            <i class="fa fa-building"></i> {{$itinerary->hotel}}
                                         </p>
                                     </div>
                                 <?php endforeach; ?>
@@ -113,10 +116,10 @@
                         <p><b>Send A Enquiry & Receive reply within 59 minutes</b></p>
                         <ul class="list-unstyled">
                             <li>
-                                <i class="fa fa-hand-o-right"></i> After receiving your online enquiry, one of our professional travel consultant will go to work for you. He/she will prepare a very reasonable itinerary and quote our best price. If there is no itinerary in our ready-made tours that meets your needs, just click “Customize Your Indochina Trip” to send us your requirements. More detailed information is highly appreciated as it will help us optimize your customized tour plan more effectively.
+                                    After receiving your online enquiry, one of our professional travel consultant will go to work for you. He/she will prepare a very reasonable itinerary and quote our best price. If there is no itinerary in our ready-made tours that meets your needs, just click “Customize Your Indochina Trip” to send us your requirements. More detailed information is highly appreciated as it will help us optimize your customized tour plan more effectively.
                             </li>
-                            <li>
-                                <i class="fa fa-hand-o-right"></i> We will be pleased to make any changes as per your requests. No matter how long the tour discussion may take, our aim is to make you completely satisfied with the final tour plan.  
+                            <li style="margin-top: 10px;">
+                                    We will be pleased to make any changes as per your requests. No matter how long the tour discussion may take, our aim is to make you completely satisfied with the final tour plan.  
                             </li>
                         </ul>
                         <p><b>Bravo Special Discount (View more)</b></p>
@@ -128,8 +131,11 @@
                             <li>
                                 <i class="fa fa-hand-o-right"></i> Book 2 and get 1 free for city packages.
                             </li>
+                            <li>
+                                <i class="fa fa-hand-o-right"></i> Repeat Travelers or their recommendation save an additional 5% on any 20
+                                14 or 2015 vacation.
+                            </li>
                         </ul>
-                        Repeat Travelers or their recommendation save an additional 5% on any 2014 or 2015 vacation.
                         
                         <p><b>Deposit & Reservation</b></p>
                         Only 10% Refundable Deposit (usually 30%) to secure the reservation for you and keep the price unchanged.
@@ -147,7 +153,7 @@
 
                             <div class="relationship-tour-item">
                                 <div class="img-thumbnail">
-                                    <img src="{{$tour->photoUrl()}}" class="img-responsive" />
+                                    <img src="{{$tour->thumbnail()}}" class="img-responsive" />
                                 </div>
                                 <div>
                                     <a href="{{route('tour.show', array($area->slug, $tour->slug))}}">

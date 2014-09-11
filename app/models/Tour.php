@@ -21,7 +21,7 @@ class Tour extends Eloquent {
         2=>['label'=>'One Week','condition'=>'BETWEEN 5 AND 7'],
         3=>['label'=>'One - Two Weeks','condition'=>'BETWEEN 8 AND 14'],
         4=>['label'=>'Longer than two weeks','condition'=>'> 14']
-    ];
+    ];  
     public static function priceSorts(){
         return self::$price_sort;
     }
@@ -40,10 +40,12 @@ class Tour extends Eloquent {
 
     public static function boot() {
         parent::boot();
-        static::saving(function($tour) {
-                    $tour->slug = slug_string($tour->name);
-                    $tour->code = self::nextTourCode();
+        static::creating(function($tour) {
+                $tour->code = self::nextTourCode();
                 });
+        static::saving(function($tour) {
+                $tour->slug = slug_string($tour->name);
+        });
     }
 
     /**
@@ -57,6 +59,16 @@ class Tour extends Eloquent {
         $total = self::count() + 1;
         $code = self::CODE_PREFIX . date('Ym') . zero_padding_number($total, 5);
         return $code;
+    }
+
+    public static function searchByKeyword($keyword) {
+        return self::with('area', 'places', 'itineraries')
+        ->leftjoin('areas', 'tours.area_id', '=' ,'areas.id')
+        ->where(function($q) use ($keyword) {
+            return $q->where('tours.meta_keyword', 'LIKE', '%' . $keyword . '%')
+                ->orWhereRaw("IF( (tours.keyword_inherit = 1), areas.meta_keyword, tours.meta_keyword) LIKE '%" . $keyword . "%'");
+        })
+        ->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
 
     public static function loadOrSearch($options = []) {
@@ -82,7 +94,14 @@ class Tour extends Eloquent {
             return $root . '/' . $relativePath;
         }
     }
-
+    public function thumbnail($root = null) {
+        $relativePath = self::PHOTO_PATH . '/' . $this->id . '/' . $this->thumbnail;
+        if (is_null($root)) {
+            return asset($relativePath);
+        } else {
+            return $root . '/' . $relativePath;
+        }
+    }
     public function area() {
         return $this->belongsTo('Area', 'area_id');
     }

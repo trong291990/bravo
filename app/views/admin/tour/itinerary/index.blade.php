@@ -141,6 +141,7 @@
         var $_lastItineraryForm = $('.an-itinerary:last');
         Helper.scroll_to($_lastItineraryForm, 700, null, 30);
         $_lastItineraryForm.find('input:first').focus();
+        $_lastItineraryForm.find('textarea').wysihtml5();
         refreshUI();
     });
 

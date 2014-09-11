@@ -9,7 +9,7 @@ class Reservation extends Eloquent {
 
     protected $table = 'reservations';
     protected $fillable = ['tour_id', 'customer_name', 'customer_email',
-        'customer_phone', 'message', 'status', 'start_date'
+        'customer_phone', 'message', 'status', 'start_date','traveling','travel_date'
     ];
     public static $rules = array(
         'tour_id' => 'required',

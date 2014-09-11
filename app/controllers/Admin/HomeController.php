@@ -7,6 +7,7 @@ use \Session;
 use \Redirect;
 use \Input;
 use \View;
+use \Mail;
 
 class HomeController extends AdminBaseController {
 

@@ -60,6 +60,16 @@ function inquiry_statuses_for_select() {
         'resolved' => 'Resolved'
     ];      
 }
+function area_cities_options_for_select($areas) {
+    $options = [];
+    foreach ($areas as $area) {
+        $options[$area->name] = [];
+        foreach ($area->places as $place) {
+            $options[$area->name][$place->name] = $place->name;
+        }
+    }
+    return $options;
+}
 /**
  * 
  * @param string $text      -> the string wants to truncate

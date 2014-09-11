@@ -8,14 +8,9 @@ class Inquiry extends Eloquent {
     	'first_name' => 'required',
     	'last_name' => 'required',
     	'email' => 'required',
-    	'phone_number' => 'required',
-    	'best_time_call' => 'required',
-    	
     	'number_of_participants' => 'required|integer',
-    	'estimate_budget' => 'required|numeric',
+        'departure_city' => 'required',
     	'departure_date' => 'required',
-    	'departure_city' => 'required',
-    	'destinations' => 'required',
     	'length_of_trip' => 'required|integer',
     ];
 

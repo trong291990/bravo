@@ -13,6 +13,7 @@
         {{ HTML::style('/frontend/css/site.css') }}
         {{ HTML::style('/frontend/css/media.css') }}
         {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
+        {{ HTML::style('/plugins/bootstrap-datepicker/bootstrap-datepicker3.css') }}
         {{ HTML::style('/plugins/icheck/skins/all.css') }}
         {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
         <!--[if lt IE 9]>
@@ -44,8 +45,8 @@
                           <li><a href="{{Request::root()}}/contact">Contact</a></li>
                           <li><a href="#">Term & Condition</a></li>
                           <li>
-                              <form id="search-form">
-                                  <input type="text" placeholder="Search" />
+                              <form id="search-form" action="{{route('tour.search')}}">
+                                  <input type="text" placeholder="Search" name="keyword" value="{{Input::get('keyword')}}"/>
                                   <button type="submit"><i class="fa fa-search"></i></button>
                               </form>
                           </li>
@@ -89,12 +90,12 @@
                     <div class="col-sm-3">
                         <p>Checkout what other travelers <br/>Bravo us On TripAdvisor</p>
                         <div>
-                            <a target="_blank" href="#">
+                            <a target="_blank" href="http://www.tripadvisor.com/Attraction_Review-g293924-d7057241-Reviews-Bravo_Tours_Day_Tours-Hanoi.html">
                                  <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/tripadvisor.png">
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-lg-3 col-sm-2">
                          <p>Checkout what our client said <br/> &nbsp;</p>
                         <div>
                              <a href="http://www.reviewcentre.com/Tour-Companies/Bravo-Indochina-Tours-www-bravoindochinatour-com-reviews_2826805">
@@ -102,7 +103,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-3 no-padding-right">
+                    <div class="col-lg-3 col-sm-4 no-padding-right">
                         <p>Contact us for reservations and questions 19001578 </p>
                         <div id="intro-socials">
                             <ul class="list-unstyled list-inline">
@@ -130,7 +131,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h2 class="modal-title" style="text-align: center" id="myModalLabel">Booking Online</h2>
+                  <h2 class="modal-title" style="text-align: center" id="myModalLabel">Send us an Enquiry</h2>
                 </div>
                <?php echo Former::open('/booking') ?>
                 <div class="modal-body">
@@ -146,8 +147,16 @@
                                 <input type="email" name='customer_email' class="form-control" required="required"  placeholder="Enter your email">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Your phone number(*)</label>
-                                <input name='customer_phone' type="text" class="form-control" required="required"  placeholder="Enter your phone number">
+                                <label for="exampleInputEmail1">Travel date</label>
+                                <input name='start_date' type="text" 
+                                       class="form-control datepicker" 
+                                        placeholder="Enter your travel date">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">How many traveling ?</label>
+                                <input name='travelling' type="text" 
+                                       class="form-control"
+                                       placeholder="Enter your number of  traveling">
                             </div>
                              <div class="form-group">
                                 <label for="exampleInputEmail1">Message</label>
@@ -157,7 +166,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Booking now</button>   
+                  <button type="submit" class="btn btn-primary">Send now</button>   
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                <?php echo Former::close(); ?>
@@ -193,6 +202,8 @@
         {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/jbootstrap-wysihtml5-0.0.2.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
+        {{ HTML::script('/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}
+        {{ HTML::script('/frontend/js/jquery.validate.min.js') }}
         {{ HTML::script('/frontend/js/functions.js') }}
         {{ HTML::script('/frontend/js/layout.js') }}
         @if(Session::has('booking_success'))
