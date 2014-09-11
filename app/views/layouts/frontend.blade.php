@@ -90,7 +90,7 @@
                     <div class="col-sm-3">
                         <p>Checkout what other travelers <br/>Bravo us On TripAdvisor</p>
                         <div>
-                            <a target="_blank" href="#">
+                            <a target="_blank" href="http://www.tripadvisor.com/Attraction_Review-g293924-d7057241-Reviews-Bravo_Tours_Day_Tours-Hanoi.html">
                                  <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/tripadvisor.png">
                             </a>
                         </div>

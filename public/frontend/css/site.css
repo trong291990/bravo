@@ -579,3 +579,43 @@ label.css-label {
 #request-tour-form .control-label {
     text-transform: uppercase;
 }
+.tour-map {
+        margin-top: 20px;
+    }
+#review-container h1 {
+    color: #000;
+    font-family: "Conv_Augushand",sans-serif,tahoma;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.bravo-number-item {
+    display: inline;
+    width: auto;
+    float:left;
+    padding: 0px 10px;
+    max-width: 180px;
+    text-align: center
+}
+.bravo-number {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold
+}
+#client-said-divider {
+    position: relative;
+    margin: 25px 0px;
+}
+.client-saild {
+    font-size: 1.7em;
+    font-weight: bold;
+    background: #eab53c;
+    padding: 10px;
+    top:-8px;
+    width: 310px;
+    left: calc(50% - 155px);
+    position: absolute
+}
+#review-container .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}

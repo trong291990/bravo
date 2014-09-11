@@ -56,7 +56,7 @@ and (max-device-width : 1024px) {
     }
 }
 @media only screen and (max-width:1000px) and (min-width:760px){
-    .container{width:760px !important;padding-left: 0!important;padding-right: 0 !important}
+    .container{min-width:760px !important;padding-left: 10px!important;padding-right: 10px !important}
     #gui-ebooks form input{
         height: 40px;
     }

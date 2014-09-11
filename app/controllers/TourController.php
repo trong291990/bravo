@@ -17,8 +17,12 @@ class TourController extends FrontendBaseController {
         } else {
             $place = Place::where('slug', '=', trim(str_replace('-tours', '', $slug)))->first();
             if ($place) {
-                $toursQuery = Tour::with('places')->whereHas('places', function($query) use ($place) {
+                $toursQuery = Tour::with('places')
+                        ->whereHas('places', function($query) use ($place) {
                             $query->where('places.id', $place->id);
+                        })
+                        ->whereHas('travelStyles', function($query) use ($sorts) {
+                            $query->where('travel_styles.id','1');
                         });
             }
             //sort
