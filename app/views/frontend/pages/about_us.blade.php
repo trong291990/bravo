@@ -1,5 +1,8 @@
 @section('title')
-  About Us | Bravo Indochina Tour
+About us – Bravo Indochina Tours
+@stop
+@section('description')
+Bravo Indochina Tours are experts in travel throughout Indochina. Call one of our tailor-made specialists to discuss your travel plans and share ideas and discover how we can help to create your perfect holiday
 @stop
 @section('content')
 <div class="container">

@@ -1,6 +1,12 @@
 @section('addon_stylesheets')
 {{ HTML::style('/plugins/raty/jquery.raty.css') }}
 @stop
+@section('title')
+Indochina Tour Reviews – Bravo Indochina Tours
+@stop
+@section('description')
+Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by past travellers on our Indochina Tours and Indochina holidays
+@stop
 @section('content')
 <div class='row' id="review-container">
     @include('partials/_flash_messages_autohide')
