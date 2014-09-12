@@ -57,7 +57,8 @@ $('.booking-tour').on('click',function(){
    $('#booking-tour-id').val($(this).data('id'));
 });
 $('.datepicker').datepicker({
-    format: 'yyyy-mm-dd'
+    format: 'yyyy-mm-dd',
+    autoclose: true
 });
 $('form').validate();
 $('.html5-editor').wysihtml5();

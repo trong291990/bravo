@@ -53,19 +53,18 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
     <div id="client-reviewed-list">
         @foreach($reviews as $review)
         <div class="client-review-item row">
-             <div class="col-sm-3">
-                 <?php 
-                    $email = $review->email;
-                    $size = 100;
-                    $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "&s=" . $size;
-                 ?>
-                 <img style="width: 120px;margin: auto" src="{{$grav_url}}" class="img-responsive img-circle" />
-                 <div class="client-review-data-meta">
+            <div class="col-sm-3">
+                <?php
+                $email = $review->email;
+                $grav_url = "http://www.gravatar.com/avatar/" . md5(strtolower(trim($email))) . "&s=100";
+                ?>
+                <img style="width: 120px;margin: auto" src="{{$grav_url}}" class="img-responsive img-circle" />
+                <div class="client-review-data-meta">
                     <h4 class="center">{{$review->first_name}} {{$review->last_name}}</h4>
                     @if($review->departure_date) 
-                    <h4>Travel with us from <?php echo date('Y',  strtotime($review->departure_date)) ?></h4>
+                    <h4>Travel with us from <?php echo date('Y', strtotime($review->departure_date)) ?></h4>
                     @endif
-                 </div>
+                </div>
             </div>
             <div class="col-sm-9">
                 {{$review->content}}
@@ -79,9 +78,9 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
         <div class="clearfix" style="margin-top: 20px">
             <?php echo $reviews->links(); ?>
         </div>
-        
+
     </div>
-    
+
     <div class='cleafix'>
         <h3>BEEN TO BRAVO TOURS? SHARE YOUR EXPERIENCES AND BRAVO US</h3>
         <div class="cleafix">
@@ -96,68 +95,69 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
             <div class='col-sm-10 col-sm-offset-2'>
                 <hr class='divider' />
                 <h3>CONTACT INFORMATION</h3>
-                <?php echo Former::open('/review/submit')->id('review-form'); ?>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label >First name</label>
-                            <input name='first_name' type="text" required="required" class="form-control"/>
-                         </div>
+                <form action="{{route('review_submit')}}" id="review-form" method='POST'>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label >First name</label>
+                                <input name='first_name' type="text" required="required" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label >Last name</label>
+                                <input name='last_name' type="text" required="required" class="form-control" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label >Last name</label>
-                            <input name='last_name' type="text" required="required" class="form-control" />
-                         </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input name='email' type="email" required="required" class="form-control"  />
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input name='email' type="email" required="required" class="form-control"  />
-                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <span style="font-size: 1.3em">YOUR RATE ON OUR SERVICE</span> <span id="client-raty"></span>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <span style="font-size: 1.3em">YOUR RATE ON OUR SERVICE</span> <span id="client-raty"></span>
+                        </div>
                     </div>
-                </div>
-                <h3>TRIP DETAIL</h3>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label >Destinations</label>
-                            <input required="required" name='destination' type="text" class="form-control" />
-                         </div>
+                    <h3>TRIP DETAIL</h3>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label >Destinations</label>
+                                <input required="required" name='destination' type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label >Departure date</label>
+                                <input name='departure_date' type="text" required="required" class="form-control datepicker" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label >Departure day</label>
-                            <input  name='departure_date' type="text" class="form-control datepicker" />
-                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label >Your review</label>
-                    <textarea required="required" class="form-control html5-editor" name="content">
-                    </textarea>
-                </div>      
-                <div class="form-group">
-                    <button class="btn btn-primary pull-right" type="submit">Submit</button>
-                </div>     
-                <?php echo Former::close();?>
+                    <div class="form-group">
+                        <label >Your review</label>
+                        <textarea class="form-control html5-editor" name="content">
+                        </textarea>
+                    </div>      
+                    <div class="form-group">
+                        <button class="btn btn-primary pull-right" type="submit">Submit</button>
+                    </div>     
+                </form>
             </div>
         </div>
     </div>
 </div>
 @stop
 @section('addon_js')
- {{ HTML::script('/plugins/raty/jquery.raty.js') }}
+{{ HTML::script('/plugins/raty/jquery.raty.js') }}
 @stop
 @section('inline_scripts')
 <script>
-    $('.client-ratied').each(function(){
+    $('.client-ratied').each(function() {
         var dataRaty = $(this).data('ratied');
-        $(this).raty({ starType: 'i','score':dataRaty,readOnly:true});
+        $(this).raty({starType: 'i', 'score': dataRaty, readOnly: true});
     });
-    $('#client-raty').raty({ starType: 'i','score':4});
+    $('#client-raty').raty({starType: 'i', 'score': 4});
+    $('#review-form').removeAttr('novalidate');
 </script>
 @stop
