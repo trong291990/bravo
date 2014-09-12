@@ -56,7 +56,9 @@
                  <img style="width: 120px;margin: auto" src="{{$grav_url}}" class="img-responsive img-circle" />
                  <div class="client-review-data-meta">
                     <h4 class="center">{{$review->first_name}} {{$review->last_name}}</h4>
+                    @if($review->departure_date) 
                     <h4>Travel with us from <?php echo date('Y',  strtotime($review->departure_date)) ?></h4>
+                    @endif
                  </div>
             </div>
             <div class="col-sm-9">
@@ -123,7 +125,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label >Departure day</label>
-                            <input  name='departure_day' type="text" class="form-control datepicker" />
+                            <input  name='departure_date' type="text" class="form-control datepicker" />
                          </div>
                     </div>
                 </div>
