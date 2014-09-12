@@ -6,14 +6,20 @@ class Setting {
 
     public static $EMAIL_RECEIVE_NOTIFY = 'support@bravoindochinatour.com';
 
+    public static function fullPathTermsContentFile() {
+        return app_path() . self::TERMS_CONTENT_FILE_PATH;
+    }
+    
     public static function updateTermsContent($content) {
-        create_file_if_not_exists(app_path() . self::TERMS_CONTENT_FILE_PATH);
-        file_put_contents(self::TERMS_CONTENT_FILE_PATH, $content);
+        $file_path = self::fullPathTermsContentFile();
+        create_file_if_not_exists($file_path);
+        file_put_contents($file_path, $content);
     }
 
     public static function getTermsContent() {
-        create_file_if_not_exists(app_path() . self::TERMS_CONTENT_FILE_PATH);
-        return file_get_contents(self::TERMS_CONTENT_FILE_PATH);
+        $file_path = self::fullPathTermsContentFile();
+        create_file_if_not_exists($file_path);
+        return file_get_contents($file_path);
     }
 
 }
