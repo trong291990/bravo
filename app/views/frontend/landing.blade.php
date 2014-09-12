@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bravo Indochina Tour</title>
+        <title>Private Tours & Holidays in Indochina | Bravo Indochina Tours</title>
         <meta charset="UTF-8">
+        <meta name="keyword" content="Indochina Tours, Indochina Travel, Indochina Holidays, Bravo Indochina Tour, Bravo Indochina Tours, Bravo Tours"/>
+        <meta name="description" content="Bravo Indochina Tours are the  leading experts in private tours and tailor-made holidays to Indochina including Vietnam, Laos, Cambodia. Your best choice for Indochina Travel"/>
         <meta name="viewport" content="width=device-width">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
         {{ HTML::style('/shared/css/bootstrap.min.css') }}
