@@ -3,6 +3,7 @@
 @stop
 @section('content')
 <div class='row' id="review-container">
+    @include('partials/_flash_messages_autohide')
     <div class='col-sm-12'>
         <h1>Bravo by numbers</h1>
         <p>These full and frank independent holiday reviews are from travellers who have booked directly through Bravo Tours. These holiday reviews are not edited by us or any of the companies we work with. Find the real story, from real travellers below.
@@ -27,7 +28,8 @@
         </div>
         <div class='bravo-number-item' style="min-width: 190px">
             <p class="bravo-number">499</p>
-            <p class="bravo-number-des">Number of tailor-made itineraries has personally designed in his lifetime</p>
+            <p class="bravo-number-des">Number of tailor-made itineraries has
+                personally designed in his lifetime</p>
         </div>
         <div class='bravo-number-item'>
             <p class="bravo-number">3</p>
@@ -43,31 +45,33 @@
         <span class="client-saild">WHAT OUR CLIENTS SAID</span>
     </div>
     <div id="client-reviewed-list">
+        @foreach($reviews as $review)
         <div class="client-review-item row">
-             <div class="col-sm-2">
-                <img src="{{Request::root()}}/frontend/images/page/client.jpg" class="img-responsive" />
+             <div class="col-sm-3">
+                 <?php 
+                    $email = $review->email;
+                    $size = 100;
+                    $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "&s=" . $size;
+                 ?>
+                 <img style="width: 120px;margin: auto" src="{{$grav_url}}" class="img-responsive img-circle" />
+                 <div class="client-review-data-meta">
+                    <h4 class="center">{{$review->first_name}} {{$review->last_name}}</h4>
+                    <h4>Travel with us from <?php echo date('Y',  strtotime($review->departure_date)) ?></h4>
+                 </div>
             </div>
-            <div class="col-sm-10">
-                <h3>The trip went brilliantly. Many thanks to all your staff involved.</h3>
-                <p>
-                Peter was a superb guide, bless you for allocating him to us. His English is great, his knowledge is phenomenal, not just historically, but I don't think there was one of the idiotic questions my group asked to which he did not know the answer. including the price of rubber per kilo! Both our drivers were incredibly pleasant guys too and very obliging.
-                All of the hotels were superb. Outstanding ones were:
-                Rimping Village - incredibly quiet location, nice resort atmosphere and very friendly staff. One can stroll to the best restaurants in town (on the river bank) and even the Night Markets.
-                Lampang River Lodge - Quiet location, lovely resort atmosphere. OK, it is a long way from town, but there does not appear to be much in town anyway!
-                Mae Kok River Village - The town of Thaton is of no interest, but, the setting for the resort is spectacular. The rooms are stunning and the gardens outstanding. Very nice owners.
-                </p><p>
-                Legend - Top place with gorgeous rooms. Lovely gardens, beaut public areas and lovely location. Good restaurants too (just don't order the steak!).
-                </p>
-                Thanks for all your help.<br/>
-                Trevor<br/>
-                (From Discover Asia)
+            <div class="col-sm-9">
+                {{$review->content}}
                 <div style="margin-top: 20px">
-                    <div id='client-ratied'>
-
+                    <div class='client-ratied' data-ratied="{{$review->score}}">
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
+        <div class="clearfix" style="margin-top: 20px">
+            <?php echo $reviews->links(); ?>
+        </div>
+        
     </div>
     
     <div class='cleafix'>
@@ -84,51 +88,53 @@
             <div class='col-sm-10 col-sm-offset-2'>
                 <hr class='divider' />
                 <h3>CONTACT INFORMATION</h3>
-                <?php echo Former::open(); ?>
+                <?php echo Former::open('/review/submit')->id('review-form'); ?>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label >First name</label>
-                            <input name='first_name' type="text" class="form-control"/>
+                            <input name='first_name' type="text" required="required" class="form-control"/>
                          </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label >Last name</label>
-                            <input name='first_name' type="text" class="form-control" />
+                            <input name='last_name' type="text" required="required" class="form-control" />
                          </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input name='first_name' type="text" class="form-control"  />
-                 </div>  
-                <div class="form-group">
-                    <h4 style="display: inline">YOUR RATE ON OUR SERVICE</h4>
-                    <div id="client-raty"></div>
+                    <input name='email' type="email" required="required" class="form-control"  />
+                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span style="font-size: 1.3em">YOUR RATE ON OUR SERVICE</span> <span id="client-raty"></span>
+                    </div>
                 </div>
                 <h3>TRIP DETAIL</h3>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label >Destinations</label>
-                            <input name='destination' type="text" class="form-control" />
+                            <input required="required" name='destination' type="text" class="form-control" />
                          </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label >Departure day</label>
-                            <input name='departure_day' type="text" class="form-control datepicker" />
+                            <input  name='departure_day' type="text" class="form-control datepicker" />
                          </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label >Your review</label>
-                    <textarea class="form-control">
-                        
+                    <textarea required="required" class="form-control html5-editor" name="content">
                     </textarea>
                 </div>      
-                     
+                <div class="form-group">
+                    <button class="btn btn-primary pull-right" type="submit">Submit</button>
+                </div>     
                 <?php echo Former::close();?>
             </div>
         </div>
@@ -140,7 +146,10 @@
 @stop
 @section('inline_scripts')
 <script>
-    $('#client-ratied').raty({ starType: 'i','score':4,readOnly:true});
+    $('.client-ratied').each(function(){
+        var dataRaty = $(this).data('ratied');
+        $(this).raty({ starType: 'i','score':dataRaty,readOnly:true});
+    });
     $('#client-raty').raty({ starType: 'i','score':4});
 </script>
 @stop

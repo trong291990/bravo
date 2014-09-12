@@ -611,7 +611,8 @@ label.css-label {
     background: #eab53c;
     padding: 10px;
     top:-8px;
-    width: 310px;
+    width: 350px;
+    text-align: center;
     left: calc(50% - 155px);
     position: absolute
 }
@@ -630,4 +631,24 @@ label.css-label {
 }
 #header.vietnam-tours #main-nav ul.nav li a {
     color: #146abd
+}
+.html5-editor {
+    min-height: 300px;
+}
+#review-form input,#review-form textarea {
+    border-radius: 0;
+}
+.client-review-data-meta h4 {
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold
+}
+.client-review-item {
+    margin-top: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+#client-reviewed-list .pagination {
+    float: right
 }

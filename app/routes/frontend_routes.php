@@ -16,3 +16,4 @@ Route::post('/package-compare', array('as' => 'package_compare', 'uses' => 'Tour
 Route::post('/booking', array('as' => 'booking', 'uses' => 'TourController@booking'));
 Route::get('/customize-your-trip', array('as' => 'inquiry.create', 'uses' => 'TourController@createInquiry'));
 Route::post('/inquiry', array('as' => 'inquiry.store', 'uses' => 'TourController@storeInquiry'));
+Route::post('/review/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));

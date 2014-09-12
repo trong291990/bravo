@@ -60,3 +60,4 @@ $('.datepicker').datepicker({
     format: 'yyyy-mm-dd'
 });
 $('form').validate();
+$('.html5-editor').wysihtml5();
