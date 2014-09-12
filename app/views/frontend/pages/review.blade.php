@@ -75,7 +75,7 @@
     </div>
     
     <div class='cleafix'>
-        <h3>Been to BRAVO TOURS? Share your experiences and BRAVO US</h3>
+        <h3>BEEN TO BRAVO TOURS? SHARE YOUR EXPERIENCES AND BRAVO US</h3>
         <div class="cleafix">
             <div class='col-sm-2'>
                 <a class='btn btn-warning btn-block'> BRAVO US</a>
