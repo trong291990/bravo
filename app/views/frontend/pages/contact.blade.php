@@ -1,3 +1,6 @@
+@section('title')
+Contact us – Bravo Indochina Tours
+@stop
 @section('content')
 <div class="row" style="margin-top: 20px;">
         <div class="col-sm-5">
