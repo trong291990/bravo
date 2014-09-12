@@ -1,5 +1,5 @@
 @section('title')
- {{$title}}  | Bravo Indochina  
+ {{$title}} & Travel Packages | Bravo Indochina Tours
 @stop
 @section('area_class')
   class="{{$area->slug}}"  
