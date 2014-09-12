@@ -6,7 +6,7 @@
                     $review = new Review(Input::all());
                     $review->save();
                     Session::flash('success', "Thank you. Your review are currently in the melting pot.");
-                    return Redirect::to('/review');
+                    return Redirect::to(route('review'));
 		}
 
 	}
