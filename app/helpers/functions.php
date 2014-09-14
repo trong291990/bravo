@@ -98,4 +98,12 @@ function create_file_if_not_exists($file_path) {
     }
 }
 
+function gravatar_url($email, $size = 100) {
+    $default = asset('/images/default_avatar.png');
+    return "http://www.gravatar.com/avatar/" .
+            md5(strtolower(trim($email))) .
+            "?d=" . urlencode($default) .
+            "&s=" . $size;
+}
+
 ?>

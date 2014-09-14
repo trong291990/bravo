@@ -54,11 +54,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
         @foreach($reviews as $review)
         <div class="client-review-item row">
             <div class="col-sm-3">
-                <?php
-                $email = $review->email;
-                $grav_url = "http://www.gravatar.com/avatar/" . md5(strtolower(trim($email))) . "&s=100";
-                ?>
-                <img style="width: 120px;margin: auto" src="{{$grav_url}}" class="img-responsive img-circle" />
+                <img style="width: 120px;margin: auto" src="{{gravatar_url($review->email)}}" class="img-responsive img-circle" />
                 <div class="client-review-data-meta">
                     <h4 class="center">{{$review->first_name}} {{$review->last_name}}</h4>
                     @if($review->departure_date) 

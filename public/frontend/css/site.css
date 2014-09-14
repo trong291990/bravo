@@ -2,22 +2,22 @@ html {
 
 }
 body {
-   font-size: 14px;
-   font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
 }
-    html,body
-    {
+html,body
+{
     -webkit-animation-duration: 0.1s;
     -webkit-animation-name: fontfix;
     -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -webkit-animation-delay: 0.1s;
-    }
+}
 
-    @-webkit-keyframes fontfix{
+@-webkit-keyframes fontfix{
     from{ opacity: 1; }
-    to{ opacity: 1; }
-    }
+to{ opacity: 1; }
+}
 a:focus {
     outline: 0;
     outline: none;
@@ -327,7 +327,7 @@ h3.tour-title a {
     font-weight: bold;
     position: absolute;
     right: 8px;
-    
+
 }
 #footer #intro-socials li a {
     padding: 3px 9px;
@@ -525,7 +525,7 @@ h3.tour-title a {
     line-height: 100% !important;
 }
 input[type=checkbox].css-checkbox {
-	display:none;
+    display:none;
 }
 
 input[type=checkbox].css-checkbox + label.css-label {
@@ -580,8 +580,8 @@ label.css-label {
     text-transform: uppercase;
 }
 .tour-map {
-        margin-top: 20px;
-    }
+    margin-top: 20px;
+}
 #review-container h1 {
     color: #000;
     font-family: "Conv_Augushand",sans-serif,tahoma;
@@ -621,13 +621,13 @@ label.css-label {
     margin-right: 0;
 }
 #header.vietnam-tours {
-  background: url("../images/header/vietnam.jpg") no-repeat scroll top center / cover  rgba(0, 0, 0, 0);
+    background: url("../images/header/vietnam.jpg") no-repeat scroll top center / cover  rgba(0, 0, 0, 0);
 }
 #header.cambodia-tours {
-  background: url("../images/header/cambodia.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
+    background: url("../images/header/cambodia.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
 }
 #header.laos-tours {
-  background: url("../images/header/laos.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
+    background: url("../images/header/laos.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
 }
 #header.vietnam-tours #main-nav ul.nav li a {
     color: #146abd
@@ -651,4 +651,16 @@ label.css-label {
 }
 #client-reviewed-list .pagination {
     float: right
+}
+
+#header .dropdown-menu{
+    background-color: rgba(3, 3, 3, 0.47);
+}
+
+#header .dropdown-menu a:hover{
+    color: #F0B32C !important;
+}
+
+#header li:hover ul.dropdown-menu { 
+    display :block;
 }
