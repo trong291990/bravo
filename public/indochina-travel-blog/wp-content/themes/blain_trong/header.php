@@ -46,7 +46,7 @@ const MAIN_SITE_URL = "http://bravoindochinatour.com/";
                           <li><a href="http://bravoindochinatour.com/terms-and-condition">Term &amp; Condition</a></li>
                           <li><a href="http://bravoindochinatour.com/travel-reviews">Reviews</a></li>
                           <li>
-                              <form action="http://bravoindochinatour.com/tours/search" id="search-form" novalidate="novalidate">
+                              <form style="display: none" action="http://bravoindochinatour.com/tours/search" id="search-form" novalidate="novalidate">
                                   <input type="text" value="" name="keyword" placeholder="Search">
                                   <button type="submit"><i class="fa fa-search"></i></button>
                               </form>
