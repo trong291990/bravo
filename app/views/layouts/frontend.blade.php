@@ -45,7 +45,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="#">Why travel with us</a></li>
-                                    <li><a href="{{route('terms')}}">Term & Condition</a></li>
+                                    <li><a href="{{route('terms_and_condition')}}">Term & Condition</a></li>
                                     <li><a href="#">FAQ</a></li>
                                     <li><a href="#">Join Our Team</a></li>
                                     <li><a href="#">Travel Album</a></li>

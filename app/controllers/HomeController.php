@@ -18,11 +18,18 @@ class HomeController extends FrontendBaseController {
     }
 
     public function review() {
-        $this->layout->content = View::make('frontend.pages.review')->with('reviews',Review::where('is_approved',1)->paginate(10));
+        $this->layout->content = View::make('frontend.pages.review')->with('reviews', Review::where('is_approved', 1)->paginate(10));
     }
 
     public function termsAndCondition() {
         $this->layout->content = View::make('frontend.pages.terms_and_condition');
+    }
+
+    public function staticPage() {
+        $page_name = Request::path();
+        $page = StaticPage::findOrCreateByName($page_name);
+        $this->layout->content = View::make('frontend.static_page')
+                ->with('page', $page);
     }
 
 }

@@ -5,9 +5,7 @@ Route::get('/tours/search', array('as' => 'tour.search', 'uses' => 'TourControll
 Route::get('/tours/{slug}', array('as' => 'area_tours', 'uses' => 'TourController@area'));
 Route::get('/tours/{id}/place_coordinates', array('as' => 'tour.load_place_coordinates', 'uses' => 'TourController@placeCoordinates'));
 Route::get('/tours/{area_slug}/{tour_slug}', array('as' => 'tour.show', 'uses' => 'TourController@show'));
-Route::get('/contact', array('as' => 'contract', 'uses' => 'HomeController@contact'));
-Route::get('/about-us', array('as' => 'about_us', 'uses' => 'HomeController@aboutUs'));
-Route::get('/terms-and-condition', array('as' => 'terms', 'uses' => 'HomeController@termsAndCondition'));
+
 Route::get('/travel-reviews', array('as' => 'review', 'uses' => 'HomeController@review'));
 Route::get('/geo', array('as' => 'geo', 'uses' => 'ToolController@geo'));
 Route::get('/tour-slug', array('as' => 'tour.slug', 'uses' => 'ToolController@tourSlug'));
@@ -17,3 +15,10 @@ Route::post('/booking', array('as' => 'booking', 'uses' => 'TourController@booki
 Route::get('/customize-your-trip', array('as' => 'inquiry.create', 'uses' => 'TourController@createInquiry'));
 Route::post('/inquiry', array('as' => 'inquiry.store', 'uses' => 'TourController@storeInquiry'));
 Route::post('/review/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
+
+foreach (StaticPage::$VALID_NAMES as $page_name) {
+    Route::get('/' . $page_name, [
+        'as' => str_replace('-', '_', $page_name),
+        'uses' => 'HomeController@staticPage']
+    );
+}
