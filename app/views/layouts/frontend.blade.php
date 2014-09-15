@@ -52,7 +52,7 @@
                                     <li><a href="{{route('about_us')}}">About Us</a></li>
                                 </ul>
                             </li>      
-                            <li><a href="{{Request::root()}}/indochina-travel-blog">Blog</a></li>
+                            <li><a href="{{Request::root()}}/indochina-travel-blog/">Blog</a></li>
                             <li><a href="{{route('review')}}">Reviews</a></li>
                             <li><a href="{{Request::root()}}/contact">Contact</a></li>
                             <li>
