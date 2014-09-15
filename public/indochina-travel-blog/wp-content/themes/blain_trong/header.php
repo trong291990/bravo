@@ -25,7 +25,7 @@ const MAIN_SITE_URL = "http://bravoindochinatour.com/";
 	<?php do_action( 'before' ); ?>
 	
         <div id="main-nav-warrper" class="navbar navbar-default" role="navigation">
-                <div class="container">
+                <div id="main-nav-container" class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
                           <span class="sr-only">Toggle navigation</span>
@@ -33,39 +33,48 @@ const MAIN_SITE_URL = "http://bravoindochinatour.com/";
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                         </button>
-                        <a id="main-logo" class="navbar-brand" href="#">
-                            <img src="http://bravoindochinatour.com/frontend/images/page/main_logov2.jpg" class="img-responsive">
+                        <a id="main-logo" class="navbar-brand" href="http://bravoindochinatour.com/">
+                            <img alt="Bravo Indochina Tours" src="http://bravoindochinatour.com/frontend/images/page/main_logov2.jpg" class="img-responsive">
                             <span class="sr-only">Bravo Tour Since 2009</span>
                         </a>
                     </div>
                     <div id="main-nav" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav pull-right">
-                          <li class="active"><a href="http://bravoindochinatour.com">Home</a></li>
-                          <li><a href="http://bravoindochinatour.com/about-us">About</a></li>
-                          <li><a href="http://bravoindochinatour.com/contact">Contact</a></li>
-                          <li><a href="http://bravoindochinatour.com/terms-and-condition">Term &amp; Condition</a></li>
-                          <li><a href="http://bravoindochinatour.com/travel-reviews">Reviews</a></li>
-                          <li>
-                              <form style="display: none" action="http://bravoindochinatour.com/tours/search" id="search-form" novalidate="novalidate">
-                                  <input type="text" value="" name="keyword" placeholder="Search">
-                                  <button type="submit"><i class="fa fa-search"></i></button>
-                              </form>
-                          </li>
+                       <ul class="nav navbar-nav pull-right">
+                            <li class="active"><a href="http://bravoindochinatour.com">Home</a></li>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">About Us <span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li><a href="#">Why travel with us</a></li>
+                                    <li><a href="http://bravoindochinatour.com/terms-and-condition">Term &amp; Condition</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Join Our Team</a></li>
+                                    <li><a href="#">Travel Album</a></li>
+                                    <li><a href="http://bravoindochinatour.com/about-us">About Us</a></li>
+                                </ul>
+                            </li>      
+                            <li><a href="http://bravoindochinatour.com/indochina-travel-blog/">Blog</a></li>
+                            <li><a href="http://bravoindochinatour.com/travel-reviews">Reviews</a></li>
+                            <li><a href="http://bravoindochinatour.com/contact">Contact</a></li>
+                            <li>
+                                <form style="display: none" action="http://bravoindochinatour.com/tours/search" id="search-form" novalidate="novalidate">
+                                    <input type="text" value="" name="keyword" placeholder="Search">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </li>
                         </ul>
                     </div><!--/.nav-collapse -->
-                    <div id="country-main-nav-wrapper">
-                         <ul class="list-unstyled list-inline">
-                            <li><a href="http://bravoindochinatour.com/tours/indochina-tours">Indochina</a></li>
-                            <li><a href="http://bravoindochinatour.com/tours/vietnam-tours">Vietnam</a></li>
-                            <li><a href="http://bravoindochinatour.com/tours/cambodia-tours">Cambodia</a></li>
-                            <li><a href="http://bravoindochinatour.com/tours/laos-tours">Lao</a></li>
-                         </ul>
+                    <div id="blog-heading">
+                        <h2>SPEAK TO OUR EXPERT 18001059</h2>
+                        <p>Blog Management by Bravo Tours Co.,Ltd</p>
                     </div>
-            </div>
+                </div>
+                <div class="container" id="blog-banner-container">
+
+                </div>
             </div>
 
-	<div class="nav-wrapper container">
-	<nav id="site-navigation" class="navbar navbar-default main-navigation" role="navigation">
+	<div  style="display: none" class="nav-wrapper container">
+            <nav id="site-navigation" class="navbar navbar-default main-navigation" role="navigation">
 			
 			<div class="navbar-header">
 		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

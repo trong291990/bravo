@@ -384,6 +384,7 @@ article table th {
 #main-nav-warrper {
     background: none;
     border: none;
+    margin-bottom: 0px
 }
 #main-nav  ul.nav li {
     padding-top: 10px
@@ -457,15 +458,6 @@ article table th {
     margin-bottom: 10px;
 }
 body {
-    background:url("http://bravoindochinatour.com/frontend/images/page/hoi-an.jpg") no-repeat center center fixed;
-
-    -moz-background-size: cover;
-
-    -webkit-background-size: cover;
-
-    -o-background-size: cover;
-
-    background-size: cover;
 }
 #footer-left {
     font-size: 1em;
@@ -514,4 +506,37 @@ body {
     color: #fff;
     font-size: 1.3em;
     padding: 6px 12px;
+}
+#blog-heading {
+    margin-left: 190px;
+    float: right;
+    position: relative;
+    top:-100px;
+}
+#blog-heading h2 {
+    margin-top: 0;
+    color: #fff;
+}
+#blog-heading p {
+    font-size: 1.1em;
+    color: #fff;
+    text-align: right;
+    font-style: italic
+}
+#main-nav-container {
+    background: #006EBF;
+    height: 162px
+}
+#blog-banner-container {
+    background: url("../images/blog_banner.jpg") center top no-repeat;
+    background-size: cover;
+}
+#blog-banner-container {
+    height: 400px;
+}
+#main-nav li:hover ul.dropdown-menu {
+    display: block;
+}
+#main-nav .dropdown-menu {
+    background-color: rgba(3, 3, 3, 0.47);
 }
