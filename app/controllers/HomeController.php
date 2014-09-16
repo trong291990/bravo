@@ -9,27 +9,17 @@ class HomeController extends FrontendBaseController {
         return View::make('frontend.landing');
     }
 
-    public function contact() {
-        $this->layout->content = View::make('frontend.pages.contact');
-    }
-
-    public function aboutUs() {
-        $this->layout->content = View::make('frontend.pages.about_us');
-    }
-
     public function review() {
-        $this->layout->content = View::make('frontend.pages.review')->with('reviews', Review::where('is_approved', 1)->paginate(10));
-    }
-
-    public function termsAndCondition() {
-        $this->layout->content = View::make('frontend.pages.terms_and_condition');
+        $this->layout->content = View::make('frontend.pages.review')
+            ->with('reviews', Review::where('is_approved', 1)
+            ->paginate(10));
     }
 
     public function staticPage() {
         $page_name = Request::path();
         $page = StaticPage::findOrCreateByName($page_name);
         $this->layout->content = View::make('frontend.static_page')
-                ->with('page', $page);
+            ->with('page', $page);
     }
 
 }

@@ -55,7 +55,7 @@
                             </li>      
                             <li><a href="{{Request::root()}}/indochina-travel-blog/">Blog</a></li>
                             <li><a href="{{route('review')}}">Reviews</a></li>
-                            <li><a href="{{route('contact')}}/contact">Contact</a></li>
+                            <li><a href="{{route('contact')}}">Contact</a></li>
                             <li>
                                 <form id="search-form" action="{{route('tour.search')}}">
                                     <input type="text" placeholder="Search" name="keyword" value="{{Input::get('keyword')}}"/>
