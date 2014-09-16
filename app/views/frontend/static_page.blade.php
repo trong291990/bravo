@@ -1,5 +1,5 @@
 @section('title')
-{{$page->title}}
+{{$page->title}} – Bravo Indochina Tours
 @stop
 @section('keyword')
 {{$page->meta_keyword}}
