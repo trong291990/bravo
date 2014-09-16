@@ -17,7 +17,7 @@ Route::post('/inquiry', array('as' => 'inquiry.store', 'uses' => 'TourController
 Route::post('/review/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
 Route::get('/contact', array('as' => 'contract', 'uses' => 'HomeController@contact'));
 Route::get('/about-us', array('as' => 'about_us', 'uses' => 'HomeController@aboutUs'));
-Route::get('/terms-and-condition', array('as' => 'terms', 'uses' => 'HomeController@termsAndCondition'));
+Route::get('/terms-and-condition', array('as' => 'terms_and_condition', 'uses' => 'HomeController@termsAndCondition'));
 //foreach (StaticPage::$VALID_NAMES as $page_name) {
 //    Route::get('/' . $page_name, [
 //        'as' => str_replace('-', '_', $page_name),
