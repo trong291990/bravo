@@ -12,27 +12,29 @@ use \StaticPage;
 class StaticPageController extends AdminBaseController {
 
     public function index() {
-        $this->layout->content = View::make('admin.static_page.index');
+        $pages = StaticPage::all();
+        $this->layout->content = View::make('admin.static_page.index')->with('pages', $pages);
     }
 
     public function edit() {
-        $page_name = Request::path();
+        $page_name = Input::get('page');
         $page = StaticPage::findOrCreateByName($page_name);
         if ($page) {
             $this->layout->content = View::make('admin.static_page.edit')
-                    ->with('page', $page);
+                ->with('page', $page);
         } else {
             throw new NotFoundHttpException;
         }
     }
 
     public function update() {
-        $page_name = Request::path();
+        $page_name = Input::get('page');
         $page = StaticPage::findOrCreateByName($page_name);
         $page->update(Input::all());
-        Session::flash('success', 'Update content successfully');
-        return Redirect::route('admin' . 'edit' . $page_name);
+        Session::flash('success', 'Update successfully');
+        return Redirect::back();
     }
 
 }
+
 ?>

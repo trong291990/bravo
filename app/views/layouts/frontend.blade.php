@@ -44,17 +44,18 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Why travel with us</a></li>
+                                    <li><a href="{{route('why_travel_with_us')}}">Why travel with us</a></li>
                                     <li><a href="{{route('terms_and_condition')}}">Term & Condition</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Join Our Team</a></li>
-                                    <li><a href="#">Travel Album</a></li>
+                                    <li><a href="{{route('faq')}}">FAQ</a></li>
+                                    <li><a href="{{route('join_our_team')}}">Join Our Team</a></li>
+                                    <li><a href="{{route('travel_album')}}">Travel Album</a></li>
+                                    <li><a href="{{route('responsible_policy')}}">Responsible Policy</a></li>
                                     <li><a href="{{route('about_us')}}">About Us</a></li>
                                 </ul>
                             </li>      
                             <li><a href="{{Request::root()}}/indochina-travel-blog/">Blog</a></li>
                             <li><a href="{{route('review')}}">Reviews</a></li>
-                            <li><a href="{{Request::root()}}/contact">Contact</a></li>
+                            <li><a href="{{route('contact')}}/contact">Contact</a></li>
                             <li>
                                 <form id="search-form" action="{{route('tour.search')}}">
                                     <input type="text" placeholder="Search" name="keyword" value="{{Input::get('keyword')}}"/>

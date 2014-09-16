@@ -3,19 +3,13 @@
 class StaticPageSeeder extends Seeder {
 
     public function run() {
-        $pages = [
-            'why-travel-with-us' => 'Why travel with us',
-            'terms-and-condition' => 'Terms And Condition',
-            'faq' => 'FAQ',
-            'join-our-team' => 'Join Our Team',
-            'travel-album' => 'Travel album',
-            'about-us' => 'About Us'
-        ];
-        foreach ($pages as $name => $title) {
+        DB::table('static_pages')->truncate();
+        foreach (StaticPage::$VALID_NAMES as $page_name) {
+            $title = str_replace('-', ' ', $page_name);
             DB::table('static_pages')->insert([
-                'name' => $name,
-                'title' => $title,
-                'content' => $title . ' content ...'
+                'name' => $page_name,
+                'title' => ucwords($title),
+                'content' => 'Sample content ...'
             ]);
         }
     }
