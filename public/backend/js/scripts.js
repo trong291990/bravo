@@ -1,7 +1,8 @@
 $(document).ready(function() {
-    $('textarea.wysihtml5').each(function(){
+    $('textarea.wysihtml5').each(function() {
         $(this).wysihtml5();
     });
+
     $('.datepicker').datepicker();
     $('.select2-able').select2({
         width: 'resolve'
@@ -17,7 +18,7 @@ $(document).ready(function() {
                 $('#form-delete').submit();
             }
         });
-	});
+    });
     $('#include').wysihtml5();
     $('#not_include').wysihtml5();
 
@@ -26,22 +27,22 @@ $(document).ready(function() {
         $(this).closest('form').submit();
     });
     /* Handler button as form with confirm*/
-    $(document).on('click','.btn-action-with-confirm', function(e) {
+    $(document).on('click', '.btn-action-with-confirm', function(e) {
         e.preventDefault();
         var $_this = $(this);
         var msg = $_this.data('message');
-        if(!msg) {
+        if (!msg) {
             msg = 'Are you sure?'
         }
-        bootbox.confirm(msg, function(result){
-            if(result) {
+        bootbox.confirm(msg, function(result) {
+            if (result) {
                 var form = '<form id="form-confirm-action" method="POST" action="' + $_this.data('url') + '">' +
-                    '<input type="hidden" name="_method" value="' + $_this.data('method') + '">' +
-                    '<input type="hidden" name="authenticity_token" value="' + $('[name="csrf-token"]').attr('content') + '">' +
-                    '</form>';
+                        '<input type="hidden" name="_method" value="' + $_this.data('method') + '">' +
+                        '<input type="hidden" name="authenticity_token" value="' + $('[name="csrf-token"]').attr('content') + '">' +
+                        '</form>';
                 $('body').append(form);
                 $('#form-confirm-action').submit();
             }
-        });        
-    });    
+        });
+    });
 });
