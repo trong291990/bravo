@@ -1,3 +1,6 @@
+@section('addon_js')
+<script src="{{asset('plugins/ckeditor/ckeditor.js')}}"></script>
+@stop
 @section('header_content')
 <h1>Static Page
     <small>{{$page->title}}</small>
@@ -18,7 +21,7 @@
         {{ Former::text('title') }}
         {{ Former::text('meta_keyword') }}
         {{ Former::textarea('meta_description')->rows(3) }}
-        {{ Former::textarea('content')->class('form-control wysihtml5')->rows(35) }}
+        {{ Former::textarea('content')->class('form-control ckeditor')->rows(35) }}
 
     </div>
     <div class="box-footer text-center">
@@ -27,4 +30,12 @@
     </div>
     {{ Former::close() }}
 </div>
+@stop
+
+@section('inline_scripts')
+<script type="text/javascript">
+    $('.ckeditor').each(function(e) {
+        CKEDITOR.replace(this);
+    });
+</script>
 @stop
