@@ -72,7 +72,7 @@
                     <?php echo View::make('partials._paging_info')->with('items', $tours)->render() ?>
                 </div>
                 <div class="pull-right">
-                    {{$tours->links()}}
+                    {{$tours->appends(Input::except('page'))->links()}}
                 </div>
             </div>
         </div>

@@ -65,7 +65,7 @@
                     <?php echo View::make('partials._paging_info')->with('items', $inquiries)->render() ?>
                 </div>
                 <div class="pull-right">
-                    {{$inquiries->links()}}
+                    {{$inquiries->appends(Input::except('page'))->links()}}
                 </div>
             </div>
         </div>

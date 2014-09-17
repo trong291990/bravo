@@ -91,7 +91,7 @@
                     <?php echo View::make('partials._paging_info')->with('items', $reservations)->render() ?>
                 </div>
                 <div class="pull-right">
-                    {{$reservations->links()}}
+                    {{$reservations->appends(Input::except('page'))->links()}}
                 </div>
 
             </div>

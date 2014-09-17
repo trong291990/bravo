@@ -73,7 +73,7 @@
                     <?php echo View::make('partials._paging_info')->with('items', $reviews)->render() ?>
                 </div>
                 <div class="pull-right">
-                    {{$reviews->links()}}
+                    {{$reviews->appends(Input::except('page'))->links()}}
                 </div>
             </div>
         </div>
