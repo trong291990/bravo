@@ -9,7 +9,7 @@
 @stop
 @section('content')
 <div class="row" style="margin-top: 20px;">
-    <div class="col-sm-5">
+    <div class="col-md-10">
         <ol class="breadcrumb page-breadcrumb" style="margin-bottom: 10px">
             <li><a href="{{Request::root()}}">Home</a></li>
             <li class="active">{{$page->title}}</li>
