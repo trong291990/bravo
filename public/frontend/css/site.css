@@ -654,7 +654,7 @@ label.css-label {
 }
 
 #header .dropdown-menu{
-    background-color: rgba(3, 3, 3, 0.47);
+   
 }
 
 #header .dropdown-menu a:hover{
@@ -663,4 +663,15 @@ label.css-label {
 
 #header li:hover ul.dropdown-menu { 
     display :block;
+}
+#header  li > ul.dropdown-menu {
+    left: auto !important;
+    right:auto !important;
+    background-color: rgba(0,111,192, 0.90);
+}
+#header  li > ul.dropdown-menu a {
+    color: #fff !important;
+}
+#header  li > ul.dropdown-menu > li:hover a {
+    color: #f0b32c !important;
 }
