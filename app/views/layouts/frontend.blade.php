@@ -138,6 +138,27 @@
                 </div>
             </div>
         </div>
+        <div id="quick-contact-form" class="clearfix">
+            <div class="toggle">
+                <span>
+                    <i class="fa fa-envelope"></i>
+                </span>
+            </div>
+            <div class="contact-content">
+                {{Former::open('quick-contact')->class('validate')}}
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Your email" required="required" />
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" required="required" placeholder="The message"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary pull-right" > Send </button>
+                </div>
+                {{Former::close()}}
+            </div>
+        </div>
+            
         <div class="modal fade" id="booking-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -206,6 +227,27 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="thanks-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3>Thank you !.</h3>
+                    </div>
+                    <div class="modal-body" style="padding: 0">
+                        <div style="margin-top:20px">
+                            <div id="thanks-modal-content" role="alert" class="alert alert-success">
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin: 0">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{ HTML::script('/shared/js/jquery-2.0.3.min.js') }}
         {{ HTML::script('/shared/js/bootstrap.min.js') }}
         {{ HTML::script('/plugins/bootstrap-select/bootstrap-select.min.js') }}
@@ -221,6 +263,12 @@
         @if(Session::has('booking_success'))
         <script>
             $('#booking-success').modal('show');
+        </script>
+        @endif
+        @if(Session::has('thanks'))
+        <script>
+            $('#thanks-modal-content').html( {{Session::get('thanks')}});
+            $('#thanks-modal').modal('show');
         </script>
         @endif
         @yield('addon_js')
