@@ -20,17 +20,27 @@ class Reservation extends Eloquent {
     public static function boot() {
         parent::boot();
         static::creating(function($reservation) {
-                    $reservation->booking_id = self::nextBookingId();
-                });
+            $reservation->booking_id = self::nextBookingId();
+        });
         static::saving(function($reservation) {
-                    if(!$reservation->start_date) {
-                        $reservation->start_date = NULL;
-                    }
-                    // Auto update confirmed_at when status is confirmed
-                    if ($reservation->status == self::STATUS_CONFIRMED && !$reservation->confirmed_at) {
-                        $reservation->confirmed_at = date('Y-m-d H:i:m');
-                    }
-                });
+            if(!$reservation->start_date) {
+                $reservation->start_date = NULL;
+            }
+            // Auto update confirmed_at when status is confirmed
+            if ($reservation->status == self::STATUS_CONFIRMED && !$reservation->confirmed_at) {
+                $reservation->confirmed_at = date('Y-m-d H:i:m');
+            }
+        });
+        static::created(function($reservation) {
+            Customer::createFromSource(
+              Customer::FROM_BOOKING,
+              [
+                'name' => $reservation->customer_name,
+                'email' => $reservation->customer_email,
+                'phone' => $reservation->customer_phone
+              ]
+           );   
+        });
     }
 
     public static function loadOrSearch($options = []) {

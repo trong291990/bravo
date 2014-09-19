@@ -22,4 +22,16 @@ class HomeController extends FrontendBaseController {
             ->with('page', $page);
     }
 
+    public function subscribeNewsletter() {
+      if(trim(Input::get('email'))) {
+         Customer::createFromSource(
+            Customer::FROM_NEWSLETTER,
+            [
+              'email' => Input::get('email')
+            ]
+         );
+     }
+       return Redirect::back();
+    }
+
 }

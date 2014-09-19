@@ -3,7 +3,9 @@ $(document).ready(function() {
         $(this).wysihtml5();
     });
 
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd'
+    });
     $('.select2-able').select2({
         width: 'resolve'
     });

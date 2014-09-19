@@ -72,6 +72,15 @@ function area_cities_options_for_select($areas) {
     return $options;
 }
 
+function customer_sources_for_select() {
+    $sources = [];
+    $sources[''] = 'Any';
+    foreach (Customer::$sources as $source) {
+        $sources[$source] = $source;
+    }
+    return $sources;
+}
+
 /**
  * 
  * @param string $text      -> the string wants to truncate

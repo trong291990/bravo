@@ -34,6 +34,7 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
 
         Route::resource('tour', 'TourController');
         Route::resource('reservation', 'ReservationController');
+        Route::resource('customer', 'CustomerController');
 
         Route::get('review', array('as' => 'admin.review.index', 'uses' => 'ReviewController@index'));
         Route::post('review/{id}/approve', array('as' => 'admin.review.approve', 'uses' => 'ReviewController@approve'));

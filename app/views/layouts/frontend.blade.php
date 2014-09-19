@@ -130,8 +130,8 @@
                 <div class="col-sm-4">
                     <div id="enewsletter-sign-up">
                         <h3>ENEWSLETTER SIGN UP</h3>
-                        <form>
-                            <input type="text" />
+                        <form action="{{ route('subscribe_newsletter') }}" method="POST">
+                            <input type="text" required="required" name="email" />
                             <button type="submit" class="btn btn-warning"> SIGN UP</button>
                         </form>
                     </div>

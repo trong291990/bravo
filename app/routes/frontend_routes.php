@@ -16,6 +16,7 @@ Route::get('/customize-your-trip', array('as' => 'inquiry.create', 'uses' => 'To
 Route::post('/inquiry', array('as' => 'inquiry.store', 'uses' => 'TourController@storeInquiry'));
 Route::post('/review/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
 
+Route::post('/subscribe', ['as' => 'subscribe_newsletter', 'uses' => 'HomeController@subscribeNewsletter']);
 foreach (StaticPage::$VALID_NAMES as $page_name) {
     Route::get('/' . $page_name, [
         'as' => str_replace('-', '_', $page_name),

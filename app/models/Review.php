@@ -5,6 +5,19 @@ class Review extends Eloquent {
     protected $table = 'reviews';
     protected $fillable = ['first_name', 'last_name', 'email', 'departure_date', 'destination', 'content', 'score'];	
     
+
+    public static function boot() {
+        static::created(function($review) {
+            Customer::createFromSource(
+              Customer::FROM_REVIEW,
+              [
+                'name' => $review->fullName(),
+                'email' => $review->email
+              ]
+           );   
+        });
+    }    
+
     public static function loadOrSearch($options =[]) {
     	$query = self::select('*');
     	if(isset($options['status']) && in_array($options['status'], ['approved', 'pending'])) {

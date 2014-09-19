@@ -28,7 +28,20 @@
                 <li><a href="{{ route('admin.reservation.index') }}"><i class="fa fa-angle-double-right"></i> List reservations</a></li>
                 <li><a href="{{ route('admin.reservation.create') }}"><i class="fa fa-angle-double-right"></i> New </a></li>
             </ul>
-        </li>        
+        </li>    
+        <li class="treeview active">
+            <a href="#">
+                <i class="fa fa-user"></i>
+                <span>Customer data</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('admin.customer.index') }}"><i class="fa fa-angle-double-right"></i> List customers</a></li>
+                @if(false)
+                <li><a href="{{ route('admin.customer.create') }}"><i class="fa fa-angle-double-right"></i> New</a></li>
+                @endif
+            </ul>
+        </li>             
         <li class="treeview active">
             <a href="#">
                 <i class="fa fa-cogs"></i>

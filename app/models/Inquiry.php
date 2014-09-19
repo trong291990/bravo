@@ -14,6 +14,20 @@ class Inquiry extends Eloquent {
     	'length_of_trip' => 'required|integer',
     ];
 
+    public static function boot() {
+        parent::boot();
+        static::created(function($inquiry) {
+           Customer::createFromSource(
+              Customer::FROM_INQUIRY,
+              [
+                'name' => $inquiry->fullName(),
+                'email' => $inquiry->email,
+                'phone' => $inquiry->phone_number
+              ]
+           );     
+        });
+    }
+
     public static function loadOrSearch($options =[]) {
         $query = self::select('*');
         if(isset($options['status']) && in_array($options['status'], ['resolved', 'pending'])) {
