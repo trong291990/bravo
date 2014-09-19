@@ -22,6 +22,9 @@ class Customer extends Eloquent {
       if (!$customer->source) {
           $customer->source = self::FROM_OTHER;
       }
+      if (!$customer->dob) {
+        $customer->dob = null;
+      }
     });
   }
 
