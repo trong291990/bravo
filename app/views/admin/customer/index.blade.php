@@ -32,7 +32,6 @@
                     <th>Birthday</th>
                     <th>Source</th>
                     <th>Created At</th>
-                    <th>Note</th>
                     <th>Action</th>
                 </tr>
                 <?php foreach ($customers as $customer): ?>
@@ -44,9 +43,12 @@
                         <td>{{ $customer->dob }}</td>
                         <td>{{ ucfirst($customer->source) }}</td>
                         <td>{{$customer->created_at->format('M d, Y \a\t H:i')}}</td>
-                        <td>{{ $customer->note }}</td>
                         <td>
                           <a class="btn btn-primary btn-xs" href="{{ route('admin.customer.show', $customer->id) }}">Edit</a>
+                          <a href="#" class='btn btn-xs btn-danger btn-action-with-confirm' data-method="DELETE" 
+                                data-url="{{route('admin.customer.destroy', $customer->id)}}" data-message="Are you sure want to delete this customer?">
+                                <i class="fa fa-times"></i> Delete
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

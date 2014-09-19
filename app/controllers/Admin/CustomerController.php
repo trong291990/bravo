@@ -34,12 +34,15 @@ class CustomerController extends AdminBaseController {
   public function update($id) {
     $customer = Customer::findOrFail($id);
     $customer->update(Input::all());
-    Session::flash('success', 'Customer info has been updated');
+    Session::flash('success', 'Customer info updated successfully');
     return Redirect::back();
   }
 
   public function destroy($id) {
-    //
+    $customer = Customer::findOrFail($id);
+    $customer->delete();
+    Session::flash('success', 'Customer info has been removed');
+    return Redirect::back();
   }
 
 }
