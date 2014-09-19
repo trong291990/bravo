@@ -3,15 +3,15 @@
 @stop
 
 @section('keyword')
-@if($area->keyword_inherit)
-,{{$area->meta_keyword}}
+@if($tour->keyword_inherit)
+,{{$tour->meta_keyword}}
 @else 
-{{$area->meta_keyword}}
+{{$tour->meta_keyword}}
 @endif
 @stop
 
 @section('description')
-{{$area->meta_description}}
+{{$tour->meta_description}}
 @stop
 
 @section('addon_js')

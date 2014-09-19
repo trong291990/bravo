@@ -52,6 +52,7 @@ class TourController extends AdminBaseController {
             $tour->area_id = $data['area_id'];
             $tour->name = $data['name'];
             $tour->meta_keyword = $data['meta_keyword'];
+            $tour->meta_description = $data['meta_description'];
             $tour->price_from = $data['price_from'];
             $tour->duration = $data['duration'];
             $tour->include = $data['include'];
@@ -120,6 +121,7 @@ class TourController extends AdminBaseController {
             $tour->area_id = $data['area_id'];
             $tour->name = $data['name'];
             $tour->meta_keyword = $data['meta_keyword'];
+            $tour->meta_description = $data['meta_description'];
             $tour->price_from = $data['price_from'];
             $tour->duration = $data['duration'];
             $tour->include = $data['include'];
