@@ -1,15 +1,11 @@
-@section('title')
- {{$title}} & Travel Packages | Bravo Indochina Tours
-@stop
+@section('title'){{$title}} & Travel Packages | Bravo Indochina Tours @stop
 @section('area_class')
   class="{{$area->slug}}"  
 @stop
 @section('keyword')
- @if($area->keyword_inherit)
- ,{{$area->meta_keyword}}
- @else 
-    {{$area->meta_keyword}}
- @endif
+ <?php 
+    echo $area->meta_keyword
+ ?>
 @stop
 
 @section('description')

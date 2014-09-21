@@ -3,11 +3,11 @@
 @stop
 
 @section('keyword')
-@if($tour->keyword_inherit)
-,{{$tour->meta_keyword}}
-@else 
-{{$tour->meta_keyword}}
-@endif
+<?php if($tour->keyword_inherit) 
+    {
+        echo ($area && isset($area->meta_keyword)) ?  $area->meta_keyword.','.$tour->meta_keyword : $tour->meta_keyword;
+    }
+       else echo $tour->meta_keyword;?>
 @stop
 
 @section('description')
