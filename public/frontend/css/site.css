@@ -676,8 +676,8 @@ label.css-label {
     color: #f0b32c !important;
 }
 #quick-contact-form {
-    width: 280px;
-    height:76px;
+    width: 76px;
+    height:280px;
     position: fixed;
     background: url('../images/quick-reply.png') top left no-repeat;
     border-radius: 10px;

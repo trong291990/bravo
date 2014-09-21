@@ -185,6 +185,11 @@ and (max-device-width : 1024px) {
         top:90px;
         left: calc(50% - 45px)
     }
+    #quick-contact-form {
+        width: 45.6px;
+        height:168px;
+        background-size: 45.6px 168px;
+    }
 }
 @media(max-width:360px){
     #intro-country-nav li a {
