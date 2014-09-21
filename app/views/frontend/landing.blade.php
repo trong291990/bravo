@@ -51,7 +51,7 @@
                                     Since tailor-made private touring is fundamentally different from group tours, Bravo Indochina Tours was born focusing on the needs of individual travellers who seeks a real experience of Indochina including Vietnam, Laos, Cambodia. and to show that the itineraries we create can be truly unique and flexible. 
                                 
                                 </p>
-                                <p id="intro-des-readmore" class="pull-right"><a href="{}">Read more</a></p>
+                                <p id="intro-des-readmore" class="pull-right"><a href="{{Request::root()}}/about-us">Read more</a></p>
                             </div>
                             <div class="col-sm-3">
                                 <img src="{{Request::root()}}/frontend/images/page/bravo_us.png" alt="Bravo us" class="img-responsive" />
@@ -59,10 +59,10 @@
                         </div>
                         <div id="intro-socials">
                             <ul class="list-unstyled list-inline">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="https://facebook.com/bravoindochinatour"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/bravo-indochina-tours"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://plus.google.com/+bravoindochina"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                     </div>
