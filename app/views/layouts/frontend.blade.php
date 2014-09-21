@@ -139,7 +139,7 @@
             </div>
         </div>
         <a id="quick-contact-form" class="clearfix" href="mailto:sales@bravoindochinatour.com">
-            <i class="fa fa-angle-double-right" id="toggle-quick-contact-form"></i>
+            <i class="" id="toggle-quick-contact-form"></i>
             
         </a>
             
