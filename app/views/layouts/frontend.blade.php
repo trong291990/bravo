@@ -138,26 +138,10 @@
                 </div>
             </div>
         </div>
-        <div id="quick-contact-form" class="clearfix">
-            <div class="toggle">
-                <span>
-                    <i class="fa fa-envelope"></i>
-                </span>
-            </div>
-            <div class="contact-content">
-                {{Former::open('quick-contact')->class('validate')}}
-                <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="Your email" required="required" />
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" required="required" placeholder="The message"></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary pull-right" > Send </button>
-                </div>
-                {{Former::close()}}
-            </div>
-        </div>
+        <a id="quick-contact-form" class="clearfix" href="mailto:sales@bravoindochinatour.com">
+            <i class="fa fa-angle-double-right" id="toggle-quick-contact-form"></i>
+            
+        </a>
             
         <div class="modal fade" id="booking-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">

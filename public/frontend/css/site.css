@@ -676,28 +676,19 @@ label.css-label {
     color: #f0b32c !important;
 }
 #quick-contact-form {
-    width: 290px;
+    width: 280px;
+    height:76px;
     position: fixed;
-    background: #146ABD;
+    background: url('../images/quick-reply.png') top left no-repeat;
+    border-radius: 10px;
     padding: 15px;
     bottom: 200px;
-    right:0px;
+    right:-8px;
+    cursor: pointer;
 }
-#quick-contact-form .toggle {
-    width: 44px;
-    float: left;
-}
-#quick-contact-form .toggle span {
-    padding: 5px;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    cursor: pointer
-}
-#quick-contact-form .toggle i {
-    font-size: 1.5em;
+#toggle-quick-contact-form {
     color: #fff;
-}
-#quick-contact-form .contact-content {
-    width: 210px;
-    float: right;
+    position: relative;
+    top:-13px;
+    padding:3px
 }

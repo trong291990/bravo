@@ -52,7 +52,7 @@
                             <select id='travel-style-sort'>
                                 <option value="">Sort by travel style</option>
                                 <?php foreach (TravelStyle::all() as $key => $style) :?>
-                                <option <?php if($key==$sorts['travel_style']) echo 'selected="selected"'; ?> value="{{$style->id}}">{{$style->name}}</option>
+                                <option <?php if($key==$sorts['travel_style']-1) echo 'selected="selected"'; ?> value="{{$style->id}}">{{$style->name}}</option>
                                 <?php endforeach;?>
                             </select>
                         </div>
