@@ -540,3 +540,6 @@ body {
 #main-nav .dropdown-menu {
     background-color: rgba(3, 3, 3, 0.47);
 }
+.archive .entry-title a {
+font-weight:bold
+}
