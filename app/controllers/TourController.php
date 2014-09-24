@@ -157,10 +157,10 @@ class TourController extends FrontendBaseController {
         if ($validator->passes()) {
             $inquiry = new Inquiry($inputs);
             $inquiry->save();
-            // Mail::send('emails.notify.new_inquiry', ['inquiry' => $inquiry], function($message) {
-            //             $message->to('support@bravoindochinatour.com')
-            //                     ->subject('Bravo Tour - Received new inquiry from customer');
-            //         });
+             Mail::send('emails.notify.new_inquiry', ['inquiry' => $inquiry], function($message) {
+                         $message->to('support@bravoindochinatour.com')
+                                 ->subject('Bravo Tour - Received new inquiry from customer');
+                     });
             Session::flash('success', "Your booking request has been sent. We will contact with you in 2 hours");
             return Redirect::back();
         } else {
