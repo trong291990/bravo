@@ -134,7 +134,7 @@ class TourController extends FrontendBaseController {
             $reservation->is_by_admin = true;
             $reservation->save();
             Mail::send('emails.notify.new_booking', ['reservation' => $reservation], function($message) {
-                        $message->to('support@bravoindochinatour.com')
+                        $message->to('vntourismjsc@gmail.com')
                                 ->subject('Bravo Tour - Customer booked tour');
                     });
             Session::flash('booking_success', "Your booking request has been sent. We will contact with you in 2 hours");
@@ -158,7 +158,7 @@ class TourController extends FrontendBaseController {
             $inquiry = new Inquiry($inputs);
             $inquiry->save();
              Mail::send('emails.notify.new_inquiry', ['inquiry' => $inquiry], function($message) {
-                         $message->to('support@bravoindochinatour.com')
+                         $message->to('vntourismjsc@gmail.com')
                                  ->subject('Bravo Tour - Received new inquiry from customer');
                      });
             Session::flash('success', "Your booking request has been sent. We will contact with you in 2 hours");

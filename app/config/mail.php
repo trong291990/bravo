@@ -47,7 +47,7 @@ return array(
       | used globally for all e-mails that are sent by your application.
       |
      */
-    'from' => array('address' => 'support@bravoindochinatour.com', 'name' => 'Bravo Tour'),
+    'from' => array('address' => 'no-reply@bravoindochinatour.com', 'name' => 'Bravo Tour'),
     /*
       |--------------------------------------------------------------------------
       | E-Mail Encryption Protocol
@@ -69,7 +69,7 @@ return array(
       | connection. You may also set the "password" value below this one.
       |
      */
-    'username' => 'support@bravoindochinatour.com',
+    'username' => 'no-reply@bravoindochinatour.com',
     /*
       |--------------------------------------------------------------------------
       | SMTP Server Password
