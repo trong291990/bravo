@@ -4,21 +4,23 @@
 @stop
 @section('keyword')
  <?php 
-    echo $area->meta_keyword
+    echo ($place && isset($place->meta_keyword) && $place->meta_keyword ) ? $place->meta_keyword : $area->meta_keyword;
  ?>
 @stop
 
 @section('description')
-{{$area->meta_description}}
+<?php 
+    echo ($place && isset($place->meta_description) && $place->meta_description ) ? $place->meta_description : $area->meta_description;
+ ?>
 @stop
 
 @section('content')
             <div class="row">
                 <div class="col-sm-12">
-                    <h1>Best of {{$area->name}}</h1>
+                    <h1>Best of <?php echo ($place && isset($place->name) && $place->name ) ? $place->name :  $area->name ?></h1>
                 </div>
                 <div class="col-sm-12">
-                    {{$area->description}}
+                    <?php echo ($place && isset($place->description) && $place->description ) ? $place->description :  $area->description ?>
                 </div>
             </div>
            @include('frontend.tours.partials.features')
@@ -79,7 +81,7 @@
                     <div class="tour-sliders">
                         @if($tour->photo)
                         <a class="thumbnail" href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}">
-                            <img src="{{$tour->photoUrl()}}" class="img-responsive" />
+                            <img  src="{{$tour->photoUrl()}}" alt="{{$tour->name}}" class="img-responsive" />
                         </a>
                         @endif
                     </div>

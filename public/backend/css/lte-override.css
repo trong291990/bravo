@@ -92,7 +92,7 @@ label.radio input[type="radio"]{
     font-size: 12px;
 }
 #admin-logo {
-    background-image: url('../images/logo.png');
+    background-image: url('/backend/images/logo.png');
     background-position: top left;
     background-repeat: no-repeat;
 }
@@ -159,7 +159,7 @@ label.radio input[type="radio"]{
     padding: 0;
 }
 [class^="icon-"], [class*=" icon-"] {
-    background-image: url("../images/glyphicons-halflings.png");
+    background-image: url("/backend/images/glyphicons-halflings.png");
     background-repeat: no-repeat;
     display: inline-block;
     height: 14px;

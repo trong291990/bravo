@@ -7,18 +7,25 @@
         <meta name="description" content="Bravo Indochina Tours are the  leading experts in private tours and tailor-made holidays to Indochina including Vietnam, Laos, Cambodia. Your best choice for Indochina Travel"/>
         <meta name="viewport" content="width=device-width">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-        {{ HTML::style('/shared/css/bootstrap.min.css') }}
-        {{ HTML::style('/fonts/font-awesome.min.css') }}
-        {{ HTML::style('/fonts/augushand.css') }}
-        {{ HTML::style('/frontend/css/site.css') }}
-        {{ HTML::style('/frontend/css/media.css') }}
-        {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
-        {{ HTML::style('/plugins/icheck/skins/all.css') }}
-        
-        {{ HTML::script('/shared/js/jquery-2.0.3.min.js') }}
-        {{ HTML::script('/shared/js/bootstrap.min.js') }}
-        {{ HTML::script('/frontend/js/layout.js') }} 
-        {{ HTML::script('/frontend/js/functions.js') }}  
+        {{ Minify::stylesheet( array(
+                        '/shared/css/bootstrap.css',
+                        '/fonts/font-awesome.css',
+                        '/fonts/augushand.css',
+                        '/frontend/css/site.css',
+                        '/frontend/css/media.css',
+                        '/plugins/bootstrap-select/bootstrap-select.min.css',
+                        '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
+                        '/plugins/icheck/skins/all.css',
+                        '/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css'
+                    )
+            ) 
+        }}
+         {{ Minify::javascript(array(
+               '/shared/js/jquery-2.0.3.min.js',
+               '/shared/js/bootstrap.min.js',
+               '/frontend/js/layout.js',
+               '/frontend/js/functions.js'
+         )) }}
     </head>
     <body>
         <div id="intro_wrapper">

@@ -64,7 +64,8 @@ class TourController extends FrontendBaseController {
                 ->with('tours', $tours)
                 ->with('sorts', $sorts)
                 ->with('title', $title)
-                ->with('toursParent', $toursParent);
+                ->with('toursParent', $toursParent)
+                ->with('place',$place);
     }
 
     public function search() {

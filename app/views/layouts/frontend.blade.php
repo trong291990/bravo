@@ -7,15 +7,19 @@
         <meta name="keyword" content="@yield('keyword')" />
         <meta name="description" content="@yield('description')"/>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-        {{ HTML::style('/shared/css/bootstrap.min.css') }}
-        {{ HTML::style('/fonts/font-awesome.min.css') }}
-        {{ HTML::style('/fonts/augushand.css') }}
-        {{ HTML::style('/frontend/css/site.css') }}
-        {{ HTML::style('/frontend/css/media.css') }}
-        {{ HTML::style('/plugins/bootstrap-select/bootstrap-select.min.css') }}
-        {{ HTML::style('/plugins/bootstrap-datepicker/bootstrap-datepicker3.css') }}
-        {{ HTML::style('/plugins/icheck/skins/all.css') }}
-        {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
+        {{ Minify::stylesheet( array(
+                        '/shared/css/bootstrap.css',
+                        '/fonts/font-awesome.css',
+                        '/fonts/augushand.css',
+                        '/frontend/css/site.css',
+                        '/frontend/css/media.css',
+                        '/plugins/bootstrap-select/bootstrap-select.min.css',
+                        '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
+                        '/plugins/icheck/skins/all.css',
+                        '/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css'
+                    )
+            ) 
+        }}
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -232,18 +236,21 @@
                 </div>
             </div>
         </div>
-        {{ HTML::script('/shared/js/jquery-2.0.3.min.js') }}
-        {{ HTML::script('/shared/js/bootstrap.min.js') }}
-        {{ HTML::script('/plugins/bootstrap-select/bootstrap-select.min.js') }}
-        {{ HTML::script('/plugins/icheck/icheck.min.js') }}
-        {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
-        {{ HTML::script('/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js') }}
-        {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
-        {{ HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js') }} 
-        {{ HTML::script('/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}
-        {{ HTML::script('/plugins/jquery.validate.min.js') }}
-        {{ HTML::script('/frontend/js/functions.js') }}
-        {{ HTML::script('/frontend/js/layout.js') }}
+        {{ Minify::javascript(array(
+               '/shared/js/jquery-2.0.3.min.js',
+               '/shared/js/bootstrap.min.js',
+               '/frontend/js/layout.js',
+               '/plugins/bootstrap-select/bootstrap-select.min.js',
+               '/plugins/icheck/icheck.min.js',
+               '/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js',
+               '/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js',
+               '/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js',
+               '/plugins/bootstrap-datepicker/bootstrap-datepicker.js',
+               '/plugins/jquery.validate.min.js',
+               '/frontend/js/functions.js',
+               '/frontend/js/layout.js'
+         )) }}
+       
         @if(Session::has('booking_success'))
         <script>
             $('#booking-success').modal('show');

@@ -42,7 +42,7 @@ a:focus {
 }
 /************* INTRO ***************/
 #intro_wrapper {
-    background: url("../images/page/intro_bg.jpg") center center no-repeat;
+    background: url("/frontend/images/page/intro_bg.jpg") center center no-repeat;
     background-size: cover;
     width: 100%;
     min-height: 100vh;
@@ -135,7 +135,7 @@ a:focus {
 
 /********** TOUR ******************/
 #header {
-    background: url('../images/page/hoi-an.jpg') center center no-repeat;
+    background: url('/frontend/images/page/hoi-an.jpg') center center no-repeat;
     height: 530px;
     background-size: cover;
     border-bottom: 13px solid #f0b32c;
@@ -544,7 +544,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
     background-position: 0 -28px;
 }
 label.css-label {
-    background-image:url(../images/common/csscheckbox.png);
+    background-image:url(/frontend/images/common/csscheckbox.png);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -621,13 +621,13 @@ label.css-label {
     margin-right: 0;
 }
 #header.vietnam-tours {
-    background: url("../images/header/vietnam.jpg") no-repeat scroll top center / cover  rgba(0, 0, 0, 0);
+    background: url("/frontend/images/header/vietnam.jpg") no-repeat scroll top center / cover  rgba(0, 0, 0, 0);
 }
 #header.cambodia-tours {
-    background: url("../images/header/cambodia.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
+    background: url("/frontend/images/header/cambodia.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
 }
 #header.laos-tours {
-    background: url("../images/header/laos.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
+    background: url("/frontend/images/header/laos.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
 }
 #header.vietnam-tours #main-nav ul.nav li a {
     color: #146abd
@@ -679,7 +679,7 @@ label.css-label {
     width: 76px;
     height:280px;
     position: fixed;
-    background: url('../images/quick-reply.png') top left no-repeat;
+    background: url('/frontend/images/quick-reply.png') top left no-repeat;
     border-radius: 10px;
     padding: 15px;
     bottom: 200px;

@@ -124,7 +124,8 @@ return array(
                 'Way\Generators\GeneratorsServiceProvider',
                 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
                 'DaveJamesMiller\Breadcrumbs\ServiceProvider',
-                'RyanNielson\Shareable\ShareableServiceProvider'
+                'RyanNielson\Shareable\ShareableServiceProvider',
+                'CeesVanEgmond\Minify\MinifyServiceProvider',
 	),
 
 	/*
