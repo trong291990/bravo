@@ -12,7 +12,6 @@
                         '/fonts/font-awesome.css',
                         '/fonts/augushand.css',
                         '/frontend/css/site.css',
-                        '/frontend/css/media.css',
                         '/plugins/bootstrap-select/bootstrap-select.min.css',
                         '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
                         '/plugins/icheck/skins/all.css',
@@ -20,7 +19,8 @@
                     )
             ) 
         }}
-         {{ Minify::javascript(array(
+        {{HTML::style( '/frontend/css/media.css')}}
+        {{ Minify::javascript(array(
                '/shared/js/jquery-2.0.3.min.js',
                '/shared/js/bootstrap.min.js',
                '/frontend/js/layout.js',
