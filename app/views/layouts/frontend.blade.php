@@ -96,7 +96,7 @@
             <div id="footer" class="row">
                 <div class="col-sm-8  clearfix" id="footer-left">
                    <div class="col-sm-3 no-padding-left">
-                        <p>What other travel Bravo Us <br/> &nbsp;</p>
+                       <p style="text-align: center">What other travel Bravo Us <br/> &nbsp;</p>
                         <div>
                             <a href="http://www.yelp.com.sg/biz/bravo-indochina-tours-and-travel-singapore">
                                 <img style="height: 50px;margin: auto" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/badge.jpg">
