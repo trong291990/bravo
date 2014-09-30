@@ -99,7 +99,7 @@
                         <p>What other travel Bravo Us <br/> &nbsp;</p>
                         <div>
                             <a href="http://www.yelp.com.sg/biz/bravo-indochina-tours-and-travel-singapore">
-                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/badge.jpg">
+                                <img style="height: 50px" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/badge.jpg">
                             </a>
                         </div>
                     </div>
