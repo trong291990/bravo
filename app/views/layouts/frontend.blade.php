@@ -95,9 +95,13 @@
             @include('frontend.partials.order_book')
             <div id="footer" class="row">
                 <div class="col-sm-8  clearfix" id="footer-left">
-                    <div class="col-sm-3 no-padding-left">
-                        <script type="text/javascript" language="JavaScript" src="http://www.responsibletravel.com/badge/js.asp?mid=6970&sid=100001&bid=1&i=650"></script>
-                        <div id="_rtBadge650"><a href="http://www.responsibletravel.com/">responsibletravel recommends </a></div>
+                   <div class="col-sm-3 no-padding-left">
+                        <p>What other travel Bravo Us <br/> &nbsp;</p>
+                        <div>
+                            <a href="http://www.yelp.com.sg/biz/bravo-indochina-tours-and-travel-singapore">
+                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/badge.jpg">
+                            </a>
+                        </div>
                     </div>
                     <div class="col-sm-3">
                         <p>Checkout what other travelers <br/>Bravo us On TripAdvisor</p>
