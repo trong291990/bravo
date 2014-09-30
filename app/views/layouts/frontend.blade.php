@@ -32,13 +32,13 @@
                 <div class="container">
                     <div class="navbar-header">
                         <button data-target="#main-nav" data-toggle="collapse" class="navbar-toggle" type="button">
-                            <span class="sr-only">Toggle navigation</span>
+                            <span class="sr-only">Bravo Tour</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
                         <a href="#" class="navbar-brand" id="main-logo">
-                            <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
+                            <img alt="Bravo Tour" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
                             <span class="sr-only">Bravo Tour Since 2009</span>
                         </a>
                     </div>
@@ -96,18 +96,14 @@
             <div id="footer" class="row">
                 <div class="col-sm-8  clearfix" id="footer-left">
                     <div class="col-sm-3 no-padding-left">
-                        <p>What other travel Bravo Us <br/> &nbsp;</p>
-                        <div>
-                            <a href="http://www.yelp.com.sg/biz/bravo-indochina-tours-and-travel-singapore">
-                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/yelp.png">
-                            </a>
-                        </div>
+                        <script type="text/javascript" language="JavaScript" src="http://www.responsibletravel.com/badge/js.asp?mid=6970&sid=100001&bid=1&i=650"></script>
+                        <div id="_rtBadge650"><a href="http://www.responsibletravel.com/">responsibletravel recommends </a></div>
                     </div>
                     <div class="col-sm-3">
                         <p>Checkout what other travelers <br/>Bravo us On TripAdvisor</p>
                         <div>
                             <a target="_blank" href="http://www.tripadvisor.com/Attraction_Review-g293925-d7065652-Reviews-Bravo_Indochina_Tours_Day_Tours-Ho_Chi_Minh_City.html">
-                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/tripadvisor.png">
+                                <img alt="Bravo us On TripAdvisor" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/tripadvisor.png">
                             </a>
                         </div>
                     </div>
@@ -115,7 +111,7 @@
                         <p>Checkout what our client said <br/> &nbsp;</p>
                         <div>
                             <a href="http://www.reviewcentre.com/Tour-Companies/Bravo-Indochina-Tours-www-bravoindochinatour-com-reviews_2826805">
-                                <img class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/review_cente.png">
+                                <img alt="Checkout what our client said " class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/review_cente.png">
                             </a>
                         </div>
                     </div>
@@ -199,7 +195,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3>Booking success</h3>
+                        <h3>Your enquiry has been sent successful.</h3>
                     </div>
                     <div class="modal-body" style="padding: 0">
                         <div id='success-modal-content' style="margin-top:20px">
