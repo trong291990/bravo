@@ -153,7 +153,7 @@
 
                             <div class="relationship-tour-item">
                                 <div class="img-thumbnail">
-                                    <img src="{{$tour->thumbnail()}}" class="img-responsive" />
+                                    <img alt="{{$tour->name}}" src="{{$tour->thumbnail()}}" class="img-responsive" />
                                 </div>
                                 <div>
                                     <a href="{{route('tour.show', array($area->slug, $tour->slug))}}">

@@ -1,4 +1,11 @@
-@section('title'){{$title}} & Travel Packages | Bravo Indochina Tours @stop
+@section('title')
+<?php if($place && isset($place->title)){
+            echo $place->title;
+        } else{
+            echo $title;
+        }
+?>
+@stop
 @section('area_class')
   class="{{$area->slug}}"  
 @stop

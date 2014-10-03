@@ -38,7 +38,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a href="#" class="navbar-brand" id="main-logo">
-                            <img alt="Bravo Tour" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
+                            <img alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
                             <span class="sr-only">Bravo Tour Since 2009</span>
                         </a>
                     </div>
