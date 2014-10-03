@@ -109,3 +109,9 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Square Bulleted List',	element: 'ul',		styles: { 'list-style-type': 'square' } }
 ] );
 
+try{
+    CKEDITOR.config.allowedContent = true;
+    editor.config.extraAllowedContent = 'div(*)';
+}catch (e){
+    console.log(e);
+}

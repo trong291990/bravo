@@ -1,5 +1,6 @@
 try{
     CKEDITOR.config.allowedContent = true;
+    editor.config.extraAllowedContent = 'div(*)';
 }catch (e){
     console.log(e);
 }
