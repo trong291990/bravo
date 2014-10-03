@@ -13,7 +13,7 @@ class TourController extends FrontendBaseController {
         if ($area) {
             $toursQuery = Tour::where('area_id', '=', $area->id)->orderBy('viewed', 'desc');
             $toursParent = $area->slug;
-            $title = $area->name . " Tours";
+            $title = $area->name;
         } else {
             $place = Place::where('slug', '=', trim(str_replace('-tours', '', $slug)))->first();
             if ($place) {
