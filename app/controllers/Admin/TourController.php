@@ -59,6 +59,11 @@ class TourController extends AdminBaseController {
             $tour->not_include = $data['not_include'];
             $tour->overview = $data['overview'];
             $travelStyles = $data['travel_styles'];
+            $keyword_inherit = 0;
+            if(isset($data['keyword_inherit']) && $data['keyword_inherit']){
+                $keyword_inherit = 1;
+            }
+            $tour->keyword_inherit = $keyword_inherit;
             $tour->save();
             $tour->travelStyles()->sync($travelStyles);
             $tour->places()->sync($data['places']);
@@ -145,6 +150,7 @@ class TourController extends AdminBaseController {
             Session::flash('success', "The tour {$tour->name} has been updated successful");
             return Redirect::route('admin.tour.edit', array($tour->id));
         } else {
+            //print_r($validator->errors()->toArray());die();
             Session::flash('error', "The tour has could not be save");
             return Redirect::back()->withInput()->withErrors($validator->errors());
         }
