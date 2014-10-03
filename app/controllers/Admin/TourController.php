@@ -127,6 +127,11 @@ class TourController extends AdminBaseController {
             $tour->include = $data['include'];
             $tour->not_include = $data['not_include'];
             $tour->overview = $data['overview'];
+            $keyword_inherit = 0;
+            if(isset($data['keyword_inherit']) && $data['keyword_inherit']){
+                $keyword_inherit = 1;
+            }
+            $tour->keyword_inherit = $keyword_inherit;
             $travelStyles = $data['travel_styles'];
             $tour->save();
             $tour->travelStyles()->sync($travelStyles);
