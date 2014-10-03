@@ -1,9 +1,4 @@
-try{
-    CKEDITOR.config.allowedContent = true;
-    editor.config.extraAllowedContent = 'div(*)';
-}catch (e){
-    console.log(e);
-}
+
 $(document).ready(function() {
     $('textarea.wysihtml5').each(function() {
         $(this).wysihtml5();
