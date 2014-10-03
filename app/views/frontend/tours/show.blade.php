@@ -1,5 +1,5 @@
 @section('title')
- {{$tour->name}} Tours | Bravo Indochina Tours
+ {{$tour->name}} | Bravo Indochina Tours
 @stop
 
 @section('keyword')
