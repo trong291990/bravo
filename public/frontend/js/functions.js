@@ -1,8 +1,4 @@
-try{
-    CKEDITOR.config.allowedContent = true;
-}catch (e){
-    console.log(e);
-}
+
 $(document).ready(function() {
     $('select').selectpicker();
 //    $('input:not(checkbox)').iCheck({

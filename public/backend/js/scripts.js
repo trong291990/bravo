@@ -1,3 +1,8 @@
+try{
+    CKEDITOR.config.allowedContent = true;
+}catch (e){
+    console.log(e);
+}
 $(document).ready(function() {
     $('textarea.wysihtml5').each(function() {
         $(this).wysihtml5();
