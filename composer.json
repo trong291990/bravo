@@ -13,7 +13,8 @@
             "barryvdh/laravel-ide-helper": "1.*",
             "doctrine/dbal": "~2.3",
             "ryannielson/shareable": "dev-master",
-            "ceesvanegmond/minify": "2.0.*"
+            "ceesvanegmond/minify": "2.0.*",
+            "fitztrev/laravel-html-minify": "1.*"
 	},
 	"autoload": {
 		"classmap": [

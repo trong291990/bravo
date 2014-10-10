@@ -12,8 +12,8 @@
                     <div class="col-xs-2 no-padding">
                         <i class="fa fa-3x fa-chevron-circle-down"></i>
                     </div>
-                    <div class="col-xs-10 no-padding">
-                        <h3>First class</h3>
+                    <div class="col-xs-10 no-padding mycalss">
+                        <h3>First class </h3>
                         <p>
                             Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
                         </p>

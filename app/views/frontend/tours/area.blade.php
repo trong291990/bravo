@@ -22,7 +22,7 @@
 @stop
 
 @section('content')
-            <div class="row">
+            <div class="row fefef">
                 <div class="col-sm-12">
                     <h1>Best of <?php echo ($place && isset($place->name) && $place->name ) ? $place->name :  $area->name ?></h1>
                 </div>

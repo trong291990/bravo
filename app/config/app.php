@@ -126,6 +126,7 @@ return array(
                 'DaveJamesMiller\Breadcrumbs\ServiceProvider',
                 'RyanNielson\Shareable\ShareableServiceProvider',
                 'CeesVanEgmond\Minify\MinifyServiceProvider',
+                'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider'
 	),
 
 	/*
