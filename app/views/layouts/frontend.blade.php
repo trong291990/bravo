@@ -143,6 +143,15 @@
                 </div>
             </div>
         </div>
+        <footer style="display: none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h4>Viet Nam</h4>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <a id="quick-contact-form" class="clearfix" href="mailto:sales@bravoindochinatour.com">
             <i class="" id="toggle-quick-contact-form"></i>
             
