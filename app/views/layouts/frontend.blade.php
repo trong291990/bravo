@@ -4,7 +4,7 @@
         <title>@yield('title')</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <meta name="keyword" content="@yield('keyword')" />
+        <meta name="keywords" content="@yield('keyword')" />
         <meta name="description" content="@yield('description')"/>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
         {{ Minify::stylesheet( array(
