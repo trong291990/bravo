@@ -692,3 +692,6 @@ label.css-label {
     top:-13px;
     padding:3px
 }
+#footer-ext ul {
+    padding: 0;
+}

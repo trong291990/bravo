@@ -148,6 +148,74 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <h4>Viet Nam</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4>Viet Nam</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4>Viet Nam</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4>Viet Nam</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                            <li><a href="#">Clasic hightail</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="divider" />
+                <div class="row" id="footer-ext">
+                    <div class="col-sm-3">
+                        <h4>Check out what clients Bravo us on </h4>
+                        <ul>
+                            <li class="clearfix">
+                                <div class="col-xs-4">
+                                    <img class="img-responsive" src="/frontend/images/footer/responsible.png" al="Responsible Travel" />
+                                </div>
+                                <div class="col-xs-8 no-padding-left">
+                                    <p> Responsible Travel</p>
+                                    <p>A company registered in England and Wales with the company number 03902313</p>
+                                </div>
+                            </li>
+                            <li class="row">
+                                <div class="col-xs-4">
+                                    <img class="img-responsive" src="/frontend/images/footer/getyourguide.png" al="Responsible Travel" />
+                                </div>
+                                <div class="col-xs-8 no-padding-left">
+                                    <p> Responsible Travel</p>
+                                    <p>A company registered in England and Wales with the company number 03902313</p>
+                                </div>
+                            </li>
+                            <li class="row">
+                                <div class="col-xs-4">
+                                    <img class="img-responsive" src="/frontend/images/footer/viator.png" al="Responsible Travel" />
+                                </div>
+                                <div class="col-xs-8 no-padding-left">
+                                    <p> Responsible Travel</p>
+                                    <p>A company registered in England and Wales with the company number 03902313</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
