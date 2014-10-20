@@ -11,3 +11,4 @@ composer.lock
 .DS_Store
 Thumbs.db
 public/uploads
+public/assets_builds
