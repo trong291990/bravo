@@ -695,3 +695,57 @@ label.css-label {
 #footer-ext ul {
     padding: 0;
 }
+footer {
+    background: #006fc0;
+     color: #fff;
+}
+footer ul li a ,footer ul li,footer ul  a{
+    color: #fff;
+}
+#copyright {
+    text-align: center;
+    padding: 0px 0px 20px 0px;
+}
+#copyright a {
+    color:#df7e21;
+}
+footer ul {
+    margin-left: 0;
+}
+footer p {
+    margin-bottom: 0
+}
+#bravo-clients li,#bravo-other li,#bravo-member li {
+    margin-bottom: 15px;
+}
+#bravo-clients li .col-xs-4 {
+   width: 80px;
+}
+#bravo-clients li .col-xs-8 {
+    padding-left: 0;
+    width: calc(100%-80px)
+}
+#bravo-clients div p:last-child {
+    font-size: 0.8em
+}
+#bravo-contact h5 {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+#bravo-contact a {
+    color:#fff;
+}
+#bravo-contact > .row {
+    margin-bottom: 15px;
+}
+#bravo-tour-footer h4 {
+    font-weight: bold;
+    margin-top: 25px;
+}
+#bravo-tour-footer li {
+    padding-bottom: 10px;
+}
+#bravo-tour-footer li a:hover {
+    color: #fff;
+}

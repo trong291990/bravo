@@ -91,10 +91,10 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" >
             @yield('content')
             @include('frontend.partials.order_book')
-            <div id="footer" class="row">
+            <div id="footer" class="row" style="display: none">
                 <div class="col-sm-8  clearfix" id="footer-left">
                    <div class="col-sm-3 no-padding-left">
                        <p style="text-align: center">What other travel Bravo Us <br/> &nbsp;</p>
@@ -143,43 +143,42 @@
                 </div>
             </div>
         </div>
-        <footer style="display: none">
+        <footer >
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-3">
+                <div class="row" id="bravo-tour-footer">
+                    <?php 
+                        $styles = TravelStyle::all();
+                    ?>
+                    <div class="col-sm-3" >
                         <h4>Viet Nam</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
+                            <?php foreach ($styles as $s) : ?>
+                            <li><a href="<?php echo Request::root() ?>/vietnam-tour/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="col-sm-3">
-                        <h4>Viet Nam</h4>
+                        <h4>Lao</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
+                            <?php foreach ($styles as $s) : ?>
+                            <li><a href="<?php echo Request::root() ?>/lao-tour/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="col-sm-3">
-                        <h4>Viet Nam</h4>
+                        <h4>Cambodia</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
+                           <?php foreach ($styles as $s) : ?>
+                            <li><a href="<?php echo Request::root() ?>/cambodia-tour/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="col-sm-3">
-                        <h4>Viet Nam</h4>
+                        <h4>Thai</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
-                            <li><a href="#">Clasic hightail</a></li>
+                           <?php foreach ($styles as $s) : ?>
+                            <li><a href="<?php echo Request::root() ?>/thai-tour/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
@@ -187,10 +186,10 @@
                 <div class="row" id="footer-ext">
                     <div class="col-sm-3">
                         <h4>Check out what clients Bravo us on </h4>
-                        <ul>
-                            <li class="clearfix">
+                        <ul class="list-unstyled" id="bravo-clients">
+                            <li class="row">
                                 <div class="col-xs-4">
-                                    <img class="img-responsive" src="/frontend/images/footer/responsible.png" al="Responsible Travel" />
+                                    <img class="img-responsive" src="/frontend/images/footer/responsible.png" alt="Responsible Travel" />
                                 </div>
                                 <div class="col-xs-8 no-padding-left">
                                     <p> Responsible Travel</p>
@@ -199,7 +198,7 @@
                             </li>
                             <li class="row">
                                 <div class="col-xs-4">
-                                    <img class="img-responsive" src="/frontend/images/footer/getyourguide.png" al="Responsible Travel" />
+                                    <img class="img-responsive" src="/frontend/images/footer/getyourguide.png" alt="Responsible Travel" />
                                 </div>
                                 <div class="col-xs-8 no-padding-left">
                                     <p> Responsible Travel</p>
@@ -208,7 +207,7 @@
                             </li>
                             <li class="row">
                                 <div class="col-xs-4">
-                                    <img class="img-responsive" src="/frontend/images/footer/viator.png" al="Responsible Travel" />
+                                    <img class="img-responsive" src="/frontend/images/footer/viator.png" alt="Responsible Travel" />
                                 </div>
                                 <div class="col-xs-8 no-padding-left">
                                     <p> Responsible Travel</p>
@@ -217,6 +216,84 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="col-sm-3">
+                        <h4>Check out other travelers Bravo us On TripAdvisor</h4>
+                        <ul class="list-unstyled" id="bravo-other">
+                            <li class="row">
+                                <div class="col-sm-6">
+                                    Ho Chi Minh
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="/frontend/images/footer/tripadvisor.png" alt="Check out other travelers Bravo us On TripAdvisor" />
+                                </div>
+                            </li>
+                            <li class="row">
+                                <div class="col-sm-6">
+                                    Ha Noi
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="/frontend/images/footer/tripadvisor.png" alt="Check out other travelers Bravo us On TripAdvisor" />
+                                </div>
+                            </li>
+                            <li class="row">
+                                <div class="col-sm-6">
+                                    Vientiane
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="/frontend/images/footer/tripadvisor.png" alt="Check out other travelers Bravo us On TripAdvisor" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4>Proud to be a member of</h4>
+                        <ul class="list-unstyled" id="bravo-member">
+                            <li><img src="/frontend/images/footer/pata.png" alt="Bravo Pata" /></li>
+                            <li><img src="/frontend/images/footer/skal.png" alt="Bravo Skal" /></li>
+                            <li><img src="/frontend/images/footer/asta.png" alt="Bravo Asta" /></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3" id="bravo-contact">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <img src="/frontend/images/footer/phone.png" alt="phone" />
+                            </div>
+                            <div class="col-xs-10">
+                                <h5>Chat with us</h5>
+                                <p>Tel/Fax: +86 (871) 653 705 69</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <img src="/frontend/images/footer/email.png" alt="phone" />
+                            </div>
+                            <div class="col-xs-10">
+                                <h5>Send us an Email</h5>
+                                <p><a href="mailto:support@bravoindochinatour">support@bravoindochinatour</a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <img src="/frontend/images/footer/user.png" alt="phone" />
+                            </div>
+                            <div class="col-xs-10">
+                                <h5>Office Hours</h5>
+                                <p>Monday to Friday: 9am - 5pm (UTC/GMT +7)</p>
+                            </div>
+                        </div>
+                        <div id="intro-socials">
+                            <ul class="list-unstyled list-inline">
+                                <li><a href="https://facebook.com/bravoindochinatour"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/bravo-indochina-tours"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://plus.google.com/+bravoindochina"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider" />
+                <div id="copyright">
+                    Powered by <a href="#">Bravo Indochina Tour</a>. All right Reserved
                 </div>
             </div>
         </footer>
