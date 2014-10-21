@@ -715,6 +715,10 @@ footer ul {
 footer p {
     margin-bottom: 0
 }
+#bravo-clients li a:hover,#bravo-other a:hover {
+    color: #fff;
+    text-decoration: underline
+}
 #bravo-clients li,#bravo-other li,#bravo-member li {
     margin-bottom: 15px;
 }

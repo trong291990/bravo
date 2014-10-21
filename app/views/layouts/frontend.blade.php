@@ -197,22 +197,26 @@
                                 </div>
                             </li>
                             <li class="row">
+                                <a href="http://www.getyourguide.com/bravo-indochina-tour-s3531/">
                                 <div class="col-xs-4">
                                     <img class="img-responsive" src="/frontend/images/footer/getyourguide.png" alt="Responsible Travel" />
                                 </div>
                                 <div class="col-xs-8 no-padding-left">
-                                    <p> Responsible Travel</p>
-                                    <p>A company registered in England and Wales with the company number 03902313</p>
+                                    <p>GetYourGuide</p>
+                                    <p> From its founding in 2008, GetYourGuide has grown to be one of the world’s most successful online travel startups.</p>
                                 </div>
+                                </a>
                             </li>
                             <li class="row">
+                                <a href="#">
                                 <div class="col-xs-4">
                                     <img class="img-responsive" src="/frontend/images/footer/viator.png" alt="Responsible Travel" />
                                 </div>
                                 <div class="col-xs-8 no-padding-left">
-                                    <p> Responsible Travel</p>
-                                    <p>A company registered in England and Wales with the company number 03902313</p>
+                                    <p>Viator</p>
+                                    <p>Viator is the world's leading resource for researching, finding and booking the best travel experiences worldwide</p>
                                 </div>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -220,20 +224,24 @@
                         <h4>Check out other travelers Bravo us On TripAdvisor</h4>
                         <ul class="list-unstyled" id="bravo-other">
                             <li class="row">
+                                <a href="http://www.tripadvisor.com/Attraction_Review-g293925-d7065652-Reviews-Bravo_Indochina_Tours_Day_Tours-Ho_Chi_Minh_City.html">
                                 <div class="col-sm-6">
                                     Ho Chi Minh
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="/frontend/images/footer/tripadvisor.png" alt="Check out other travelers Bravo us On TripAdvisor" />
                                 </div>
+                                </a>
                             </li>
                             <li class="row">
+                                <a href="http://www.tripadvisor.com/Attraction_Review-g293924-d7057241-Reviews-Bravo_Tours_Day_Tours-Hanoi.html">
                                 <div class="col-sm-6">
                                     Ha Noi
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="/frontend/images/footer/tripadvisor.png" alt="Check out other travelers Bravo us On TripAdvisor" />
                                 </div>
+                                </a>
                             </li>
                             <li class="row">
                                 <div class="col-sm-6">
@@ -293,7 +301,7 @@
                 </div>
                 <hr class="divider" />
                 <div id="copyright">
-                    Powered by <a href="#">Bravo Indochina Tour</a>. All right Reserved
+                    Powered by <a href="<?php echo Request::root() ?>">Bravo Indochina Tour</a>. All right Reserved
                 </div>
             </div>
         </footer>
