@@ -153,7 +153,7 @@
                         <h4>Viet Nam</h4>
                         <ul class="list-unstyled">
                             <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/vietnam-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/vietnam-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -161,7 +161,7 @@
                         <h4>Lao</h4>
                         <ul class="list-unstyled">
                             <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/laos-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/laos-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -169,7 +169,7 @@
                         <h4>Cambodia</h4>
                         <ul class="list-unstyled">
                            <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/cambodia-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/cambodia-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -177,7 +177,7 @@
                         <h4>Thai</h4>
                         <ul class="list-unstyled">
                            <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/thai-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/thai-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
