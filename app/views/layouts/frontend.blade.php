@@ -28,6 +28,30 @@
         @yield('addon_stylesheets')
     </head>
     <body>
+        <header>
+            <div class="container">
+                <div class="col-sm-6">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="#">USD($)</a></li>
+                        <li><a href="#">English</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="list-inline list-unstyled pull-right">
+                        <li>
+                            <i class="fa fa-lock"></i>
+                            <a href="#">Login </a> / <a href="#">Register </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span id="wishlist-span"><i class="fa fa-list"></i></span>
+                                Wishlist
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
         <div id="header" @yield('area_class')>
              <div role="navigation" class="navbar navbar-default" id="main-nav-warrper" >
                 <div class="container">

@@ -756,3 +756,23 @@ footer p {
 #intro-socials li {
     margin-left: 10px;
 }
+header {
+    background: #006fc0;
+    min-height: 50px;
+    line-height: 60px;
+    color: #fff;
+    font-size: 1.15em;
+}
+header a {
+    text-transform:uppercase;
+    color: #fff;
+}
+header a :hover {
+    color: #fff !important;
+    text-decoration: underline
+}
+#wishlist-span {
+    padding: 3px 6px;
+    border-radius: 50%;
+    border :1px solid #fff;
+}
