@@ -753,3 +753,6 @@ footer p {
 #bravo-tour-footer li a:hover {
     color: #fff;
 }
+#intro-socials li {
+    margin-left: 10px;
+}

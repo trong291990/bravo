@@ -258,6 +258,7 @@
                         <ul class="list-unstyled" id="bravo-member">
                             <li><img src="/frontend/images/footer/pata.png" alt="Bravo Pata" /></li>
                             <li><img src="/frontend/images/footer/skal.png" alt="Bravo Skal" /></li>
+                            <li><img src="/frontend/images/footer/iata.png" alt="Bravo Asta" /></li>
                             <li><img src="/frontend/images/footer/asta.png" alt="Bravo Asta" /></li>
                         </ul>
                     </div>
@@ -268,7 +269,7 @@
                             </div>
                             <div class="col-xs-10">
                                 <h5>Chat with us</h5>
-                                <p>Tel/Fax: +86 (871) 653 705 69</p>
+                                <p>Tel/Fax:  (+84) 917 391 106</p>
                             </div>
                         </div>
                         <div class="row">
@@ -277,7 +278,7 @@
                             </div>
                             <div class="col-xs-10">
                                 <h5>Send us an Email</h5>
-                                <p><a href="mailto:support@bravoindochinatour">support@bravoindochinatour</a></p>
+                                <p><a href="mailto:support@bravoindochinatour.com">support@bravoindochinatour.com</a></p>
                             </div>
                         </div>
                         <div class="row">
@@ -290,7 +291,7 @@
                             </div>
                         </div>
                         <div id="intro-socials">
-                            <ul class="list-unstyled list-inline">
+                            <ul class="list-unstyled list-inline pull-right">
                                 <li><a href="https://facebook.com/bravoindochinatour"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://www.linkedin.com/company/bravo-indochina-tours"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
