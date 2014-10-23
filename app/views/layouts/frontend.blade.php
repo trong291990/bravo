@@ -413,7 +413,7 @@
                 <div id="copyright">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-5 col-sm-offset-3">
+                            <div class="col-sm-5 col-sm-offset-3" style="line-height: 45px">
                                 Powered by <a href="<?php echo Request::root() ?>">Bravo Indochina Tour</a>. All right Reserved
                             </div>
                             <div class="col-sm-4">

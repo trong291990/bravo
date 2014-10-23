@@ -719,8 +719,14 @@ footer p {
     color: #fff;
     text-decoration: underline
 }
-#bravo-clients li,#bravo-other li,#bravo-member li {
+#bravo-clients li,#bravo-other li{
     margin-bottom: 15px;
+}
+#bravo-member {
+    margin: 0
+}
+#bravo-member li {
+    margin:0; 
 }
 #bravo-clients li .col-xs-4 {
    width: 80px;
