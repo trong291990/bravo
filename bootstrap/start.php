@@ -24,11 +24,10 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
-
-	'local' => array(gethostname()),
-  'production' => array('*.com')
-));
+$env = $app->detectEnvironment(function() {
+    return $SERVER_NAME == 'bravoindochinatour.com' ? 'production' : 'local';
+  }
+);
 
 /*
 |--------------------------------------------------------------------------
