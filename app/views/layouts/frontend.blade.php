@@ -67,15 +67,15 @@
                               English  <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="http://www.viatorcom.de">Deutsch</a></li>
-                                <li><a href="http://www.viatorcom.fr">Français</a></li>
-                                <li><a href="http://es.viator.com">Español</a></li>
-                                <li><a href="http://br.viator.com">Português (Brasil)</a></li>
-                                <li><a href="http://www.viatorcom.dk">Dansk</a></li>
-                                <li><a href="http://www.viatorcom.nl">Nederlands</a></li>
-                                <li><a href="http://www.viatorcom.no">Norsk</a></li>
-                                <li><a href="http://www.viatorcom.se">Svenska</a></li>
-                                <li><a href="http://www.viatorcom.jp">日本語</a></li>
+                                <li><a href="#">Deutsch</a></li>
+                                <li><a href="#">Français</a></li>
+                                <li><a href="#">Español</a></li>
+                                <li><a href="#">Português (Brasil)</a></li>
+                                <li><a href="#">Dansk</a></li>
+                                <li><a href="#">Nederlands</a></li>
+                                <li><a href="#">Norsk</a></li>
+                                <li><a href="#">Svenska</a></li>
+                                <li><a href="#">日本語</a></li>
                             
                             </ul>
                         </li>
@@ -87,25 +87,25 @@
                             <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
                             <ul class="dropdown-menu" role="menu">
                         
-                            <li><a href="https://www.viator.com/content/account/SSL/signIn-form.jspa">
+                            <li><a href="#">
                                 <i class="icon icon-menu-avatar mrm"></i>Log In</a></li>
                             <li>
                                 
                                 
-                                    <a href="https://www.viator.com/content/account/SSL/signUp-form.jspa">
+                                    <a href="#">
                                         <i class="icon icon-menu-pen mrm"></i>Register</a>
                                 
                             </li>
                             <li>
-                                <a href="/content/account/SSL/referAFriend.jspa"><i class="icon icon-menu-people mrm"></i>Refer a Friend</a>
+                                <a href="#"><i class="icon icon-menu-people mrm"></i>Refer a Friend</a>
                             </li>
                             
                             <li>
-                                <a onclick="Viator.Dialog.modal('/content/account/ajax-showOffers.jspa');return false;">
+                                <a href="#">
                                     <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span></a>
                             </li>
                             <li>
-                                <a onclick="Viator.Common.showWishlistManager();return false;">
+                                <a href="#">
                                     <i class="icon icon-menu-heart mrm"></i>Wishlist<span class="unitRight circle-number-s mlm" id="wishlistCount" style="display: none;">0</span></a>
                             </li>
                         
@@ -348,12 +348,27 @@
                         </ul>
                     </div>
                     <div class="col-sm-3">
-                        <h4>Proud to be a member of</h4>
-                        <ul class="list-unstyled" id="bravo-member">
-                            <li><img src="/frontend/images/footer/pata.png" alt="Bravo Pata" /></li>
-                            <li><img src="/frontend/images/footer/skal.png" alt="Bravo Skal" /></li>
-                            <li><img src="/frontend/images/footer/iata.png" alt="Bravo Asta" /></li>
-                            <li><img src="/frontend/images/footer/asta.png" alt="Bravo Asta" /></li>
+                        <h4>Check out travellers Bravo us on Google & Facebook</h4>
+                        <ul class="list-unstyled" id="social-votes">
+                            <li>
+                                <div>
+                                    <img class="img-responsive" src="/frontend/images/footer/google_star.png" alt="Google Vote" />
+                                </div>
+                                <p>
+                                    Bravo Indochina Tours is rated 5/5 from client reviews
+                                </p>
+                                <div>
+                                    <img class="img-responsive" src="/frontend/images/footer/footer_google.png" alt="Google Vote" />
+                                </div>
+                            </li>
+                            <li>
+                                <p>
+                                    Bravo Indochina Tours is rated 5/5  from client reviews
+                                </p>
+                                <div>
+                                    <img class="img-responsive" src="/frontend/images/footer/footer_facebook_star.png" alt="Google Vote" />
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-sm-3" id="bravo-contact">
@@ -396,7 +411,21 @@
                 </div>
                 <hr class="divider" />
                 <div id="copyright">
-                    Powered by <a href="<?php echo Request::root() ?>">Bravo Indochina Tour</a>. All right Reserved
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5 col-sm-offset-3">
+                                Powered by <a href="<?php echo Request::root() ?>">Bravo Indochina Tour</a>. All right Reserved
+                            </div>
+                            <div class="col-sm-4">
+                                 <ul class="list-unstyled list-inline pull-right" id="bravo-member">
+                                    <li><img src="/frontend/images/footer/pata.png" alt="Bravo Pata" /></li>
+                                    <li><img src="/frontend/images/footer/skal.png" alt="Bravo Skal" /></li>
+                                    <li><img src="/frontend/images/footer/iata.png" alt="Bravo Asta" /></li>
+                                    <li><img src="/frontend/images/footer/asta.png" alt="Bravo Asta" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>

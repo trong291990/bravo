@@ -779,12 +779,16 @@ header a :hover {
 .nav li > a {
     border:none
 }
-.nav .open > a, .nav .open > a:hover, .nav .open > a:focus,.nav .open > a:hover {
+header .nav .open > a, .nav .open > a:hover, .nav .open > a:focus,.nav .open > a:hover {
     background-color: transparent;
     border-color: transparent;
 }
-.nav > li {
+header .nav > li {
     margin-bottom: 0;
+    border-left: 1px solid #0090b1;
+}
+header .nav > li:last-child {
+    border-right: 1px solid #0090b1;
 }
 .nav > li > a {
   display: block;
@@ -817,4 +821,11 @@ li.dropdown .dropdown-menu li a {
 .nav-tabs > li > a:hover {
     background: none;
     border:none
+}
+#social-votes li {
+    margin-bottom: 15px;
+    text-align: center
+}
+#social-votes li img {
+    margin: auto;
 }

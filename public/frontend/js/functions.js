@@ -36,32 +36,32 @@ $(document).ready(function() {
 });
 
 function showMap(dom, locations, zoom) {
-    if (typeof google !== 'undefined') {
-        var map = new google.maps.Map(dom, {
-            zoom: zoom,
-            center: new google.maps.LatLng(locations[0].lat, locations[0].lng),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
-        var infowindow = new google.maps.InfoWindow();
-        var marker, i;
-
-        for (i = 0; i < locations.length; i++) {
-            if ((locations[i].lat !== null) && (locations[i].lng !== null)) {
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-                    map: map,
-                    icon: "/frontend/images/common/map.png"
-                });
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
-                        infowindow.setContent(locations[i].name);
-                        infowindow.open(map, marker);
-                    };
-                })(marker, i));
-            }
-        }
-    }
+//    if (typeof google !== 'undefined') {
+//        var map = new google.maps.Map(dom, {
+//            zoom: zoom,
+//            center: new google.maps.LatLng(locations[0].lat, locations[0].lng),
+//            mapTypeId: google.maps.MapTypeId.ROADMAP
+//        });
+//
+//        var infowindow = new google.maps.InfoWindow();
+//        var marker, i;
+//
+//        for (i = 0; i < locations.length; i++) {
+//            if ((locations[i].lat !== null) && (locations[i].lng !== null)) {
+//                marker = new google.maps.Marker({
+//                    position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+//                    map: map,
+//                    icon: "/frontend/images/common/map.png"
+//                });
+//                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+//                    return function() {
+//                        infowindow.setContent(locations[i].name);
+//                        infowindow.open(map, marker);
+//                    };
+//                })(marker, i));
+//            }
+//        }
+//    }
 }
 /**
  * Load tour's place coordinate and draw map
