@@ -351,22 +351,26 @@
                         <h4>Check out travellers Bravo us on Google & Facebook</h4>
                         <ul class="list-unstyled" id="social-votes">
                             <li>
-                                <div>
+                                <div class="footer-social-logo">
                                     <img class="img-responsive" src="/frontend/images/footer/google_star.png" alt="Google Vote" />
                                 </div>
                                 <p>
                                     Bravo Indochina Tours is rated 5/5 from client reviews
                                 </p>
-                                <div>
+                                <div class="footer-social-logo">
+                                    <a href="http://plus.google.com/+Bravoindochinatour-BIT/reviews">
                                     <img class="img-responsive" src="/frontend/images/footer/footer_google.png" alt="Google Vote" />
+                                    </a>
                                 </div>
                             </li>
-                            <li>
+                            <li style="margin-bottom: 0">
                                 <p>
                                     Bravo Indochina Tours is rated 5/5  from client reviews
                                 </p>
-                                <div>
-                                    <img class="img-responsive" src="/frontend/images/footer/footer_facebook_star.png" alt="Google Vote" />
+                                <div class="footer-social-logo" style="padding-bottom: 0">
+                                    <a href="http://facebook.com/bravoindochinatour">
+                                    <img class="img-responsive" src="/frontend/images/footer/footer_facebook_star.png" alt="Facebook Vote" />
+                                    </a>
                                 </div>
                             </li>
                         </ul>
