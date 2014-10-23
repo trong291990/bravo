@@ -776,3 +776,45 @@ header a :hover {
     border-radius: 50%;
     border :1px solid #fff;
 }
+.nav li > a {
+    border:none
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus,.nav .open > a:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+.nav > li {
+    margin-bottom: 0;
+}
+.nav > li > a {
+  display: block;
+  padding: 22px 10px;
+  position: relative;
+}
+.nav-tabs {
+    border:none
+}
+li.dropdown:hover .dropdown-menu {
+    display: block;
+}
+li.dropdown .dropdown-menu {
+    background: #006FC0;
+    border:none;
+    padding: 0;
+    margin:0;
+}
+li.dropdown .dropdown-menu li:first-child {
+    border-top:none;
+}
+li.dropdown .dropdown-menu li {
+    padding: 15px 10px;
+    border-top: 1px solid #0090B1;
+}
+li.dropdown .dropdown-menu li a {
+    color:#fff;
+    background: none;
+}
+.nav-tabs > li > a:hover {
+    background: none;
+    border:none
+}

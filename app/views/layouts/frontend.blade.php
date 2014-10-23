@@ -31,16 +31,86 @@
         <header>
             <div class="container">
                 <div class="col-sm-6">
-                    <ul class="list-inline list-unstyled">
-                        <li><a href="#">USD($)</a></li>
-                        <li><a href="#">English</a></li>
-                    </ul>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            USD($)  <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu" role="menu">
+        
+            <li><a class="txtC" onclick="changeCurrency('GBP');">GBP
+                (£)</a></li>
+            <li><a class="txtC" onclick="changeCurrency('EUR');">EUR
+                (€)</a></li>
+        
+    
+        
+            <li><a class="txtC" onclick="changeCurrency('AUD');">AUD
+                ($)</a></li>
+        
+    
+        
+            <li><a class="txtC" onclick="changeCurrency('CAD');">CAD
+                ($)</a></li>
+        
+    
+        
+            <li><a class="txtC" onclick="changeCurrency('NZD');">NZD
+                ($)</a></li>
+        
+    
+    
+                          </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                              English  <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="http://www.viatorcom.de">Deutsch</a></li>
+                                <li><a href="http://www.viatorcom.fr">Français</a></li>
+                                <li><a href="http://es.viator.com">Español</a></li>
+                                <li><a href="http://br.viator.com">Português (Brasil)</a></li>
+                                <li><a href="http://www.viatorcom.dk">Dansk</a></li>
+                                <li><a href="http://www.viatorcom.nl">Nederlands</a></li>
+                                <li><a href="http://www.viatorcom.no">Norsk</a></li>
+                                <li><a href="http://www.viatorcom.se">Svenska</a></li>
+                                <li><a href="http://www.viatorcom.jp">日本語</a></li>
+                            
+                            </ul>
+                        </li>
+                      </ul>
                 </div>
                 <div class="col-sm-6">
-                    <ul class="list-inline list-unstyled pull-right">
-                        <li>
-                            <i class="fa fa-lock"></i>
-                            <a href="#">Login </a> / <a href="#">Register </a>
+                    <ul class="nav nav-tabs pull-right" role="tablist">
+                        <li class="dropdown">
+                            <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
+                            <ul class="dropdown-menu" role="menu">
+                        
+                            <li><a href="https://www.viator.com/content/account/SSL/signIn-form.jspa">
+                                <i class="icon icon-menu-avatar mrm"></i>Log In</a></li>
+                            <li>
+                                
+                                
+                                    <a href="https://www.viator.com/content/account/SSL/signUp-form.jspa">
+                                        <i class="icon icon-menu-pen mrm"></i>Register</a>
+                                
+                            </li>
+                            <li>
+                                <a href="/content/account/SSL/referAFriend.jspa"><i class="icon icon-menu-people mrm"></i>Refer a Friend</a>
+                            </li>
+                            
+                            <li>
+                                <a onclick="Viator.Dialog.modal('/content/account/ajax-showOffers.jspa');return false;">
+                                    <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span></a>
+                            </li>
+                            <li>
+                                <a onclick="Viator.Common.showWishlistManager();return false;">
+                                    <i class="icon icon-menu-heart mrm"></i>Wishlist<span class="unitRight circle-number-s mlm" id="wishlistCount" style="display: none;">0</span></a>
+                            </li>
+                        
+                        
+                    </ul>
                         </li>
                         <li>
                             <a href="#">
@@ -198,10 +268,10 @@
                         </ul>
                     </div>
                     <div class="col-sm-3">
-                        <h4>Thai</h4>
+                        <h4>Thailand</h4>
                         <ul class="list-unstyled">
                            <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/tours/thai-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/thailand-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
