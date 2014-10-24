@@ -418,8 +418,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-5 col-sm-offset-3" style="line-height: 45px">
-                                Powered by <a href="<?php echo Request::root() ?>">Bravo Indochina Tour</a>. All right Reserved
-                            </div>
+                                Copyright &copy; 2014 Bravo Tours Co.,Ltd. All rights reserved</div>
                             <div class="col-sm-4">
                                  <ul class="list-unstyled list-inline pull-right" id="bravo-member">
                                     <li><img src="/frontend/images/footer/pata.png" alt="Bravo Pata" /></li>
