@@ -359,7 +359,7 @@
                                 </p>
                                 <div class="footer-social-logo">
                                     <a href="http://plus.google.com/+Bravoindochinatour-BIT/reviews">
-                                    <img class="img-responsive" src="/frontend/images/footer/footer_google.png" alt="Google Vote" />
+                                    <img width="130px" class="img-responsive" src="/frontend/images/footer/footer_google.png" alt="Google Vote" />
                                     </a>
                                 </div>
                             </li>
@@ -404,7 +404,7 @@
                             </div>
                         </div>
                         <div id="intro-socials">
-                            <ul class="list-unstyled list-inline pull-right">
+                            <ul class="list-unstyled list-inline pull-left">
                                 <li><a href="https://facebook.com/bravoindochinatour"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://www.linkedin.com/company/bravo-indochina-tours"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>

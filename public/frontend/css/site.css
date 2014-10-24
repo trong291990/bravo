@@ -760,7 +760,8 @@ footer p {
     color: #fff;
 }
 #intro-socials li {
-    margin-left: 10px;
+    margin-right: 3px;
+    padding-right: 0;
 }
 header {
     background: #006fc0;
