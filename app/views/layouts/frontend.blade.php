@@ -369,7 +369,7 @@
                                 </p>
                                 <div class="footer-social-logo" style="padding-bottom: 0">
                                     <a href="http://facebook.com/bravoindochinatour">
-                                    <img class="img-responsive" src="/frontend/images/footer/footer_facebook_star.png" alt="Facebook Vote" />
+                                        <img width="130px" class="img-responsive" src="/frontend/images/footer/footer_facebook_star.png" alt="Facebook Vote" />
                                     </a>
                                 </div>
                             </li>

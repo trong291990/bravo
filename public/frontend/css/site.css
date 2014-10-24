@@ -829,12 +829,12 @@ li.dropdown .dropdown-menu li a {
     border:none
 }
 #social-votes li {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     text-align: center
 }
 #social-votes li img {
     margin: auto;
 }
 .footer-social-logo {
-    padding: 10px 0px
+    padding: 5px 0px
 }
