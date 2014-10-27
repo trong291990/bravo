@@ -103,7 +103,8 @@ return array(
             'area_id' => 'Area',
             'tour_id' => 'Tour',
             'price_from' => 'Price from',
-            'dob' => 'Birthday'
+            'dob' => 'Birthday',
+            'category_id' => 'Category'
         ),
 
 );

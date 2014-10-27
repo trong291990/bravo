@@ -242,3 +242,23 @@ label.radio input[type="radio"]{
 .an-itinerary textarea {
     min-height: 300px
 }
+.uploaded-photo-container {
+    border: 1px solid #dadada;
+    margin: 5px 0;
+    padding: 5px;
+    overflow-y: auto;
+}
+.uploaded-photo-thumb {
+    width: 150px;
+    border: 1px solid #dadada;
+    padding: 5px;
+    float: left;
+}
+.uploaded-photo-controls {
+    float: left;
+    margin-left: 10px;
+}
+.uploaded-photo-controls input[type=text]{
+    width: 290px;
+}
+

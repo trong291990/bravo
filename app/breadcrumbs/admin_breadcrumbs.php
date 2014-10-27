@@ -53,3 +53,7 @@ Breadcrumbs::register('customers', function($breadcrumbs) {
             $breadcrumbs->parent('dashboard');
             $breadcrumbs->push('Customers', route('admin.customer.index'));
         });
+Breadcrumbs::register('albums', function($breadcrumbs) {
+            $breadcrumbs->parent('dashboard');
+            $breadcrumbs->push('Travel Albums', route('admin.album.index'));
+        });

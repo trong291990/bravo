@@ -41,7 +41,18 @@
                 <li><a href="{{ route('admin.customer.create') }}"><i class="fa fa-angle-double-right"></i> New</a></li>
                 @endif
             </ul>
-        </li>             
+        </li>        
+        <li class="treeview active">
+            <a href="#">
+                <i class="fa fa-picture-o"></i>
+                <span>Travel Albums</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('admin.album.index') }}"><i class="fa fa-angle-double-right"></i> List albums</a></li>
+                <li><a href="{{ route('admin.album.create') }}"><i class="fa fa-angle-double-right"></i> New Album</a></li>
+            </ul>
+        </li>            
         <li class="treeview active">
             <a href="#">
                 <i class="fa fa-cogs"></i>

@@ -14,7 +14,8 @@
             "doctrine/dbal": "~2.3",
             "ryannielson/shareable": "dev-master",
             "ceesvanegmond/minify": "2.0.*",
-            "fitztrev/laravel-html-minify": "1.*"
+            "fitztrev/laravel-html-minify": "1.*",
+            "intervention/image": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

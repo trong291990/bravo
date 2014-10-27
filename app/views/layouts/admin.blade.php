@@ -9,6 +9,7 @@
         {{ HTML::style('/fonts/font-awesome.min.css') }}
         {{ HTML::style('/plugins/bootstrap-datepicker/datepicker3.css') }}
         {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
+        {{ HTML::style('/plugins/uploadfile/uploadfile.css') }}
         {{ HTML::style('/backend/css/lte.css') }}
         {{ HTML::style('/backend/css/lte-override.css') }}        
         <meta content="{{Session::token()}}" name="csrf-token" />
@@ -44,7 +45,8 @@
         {{ HTML::script('plugins/jquery.slimscroll.min.js') }}
         {{ HTML::script('plugins/bootbox.min.js') }}
         {{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
-        {{ HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js') }}        
+        {{ HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js') }}  
+        {{ HTML::script('/plugins/uploadfile/jquery.uploadfile.min.js') }}
         <!-- END LIBRARIES & PLUGINS -->
 
         {{ HTML::script('backend/js/helper.js') }}
