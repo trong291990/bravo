@@ -436,7 +436,18 @@
             <i class="" id="toggle-quick-contact-form"></i>
             
         </a>
-            
+        <div itemscope="itemscope" itemtype="http://schema.org/LocalBusiness" style="display:none">
+			<span itemprop="name">Bravo Indochina Tours</span>
+			<div itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
+				<span itemprop="streetAddress">15751 Brookhurst St, Suite 203 Westminster</span>
+				<span itemprop="addressLocality">California</span>,
+				<span itemprop="addressRegion">CA</span>
+				<span itemprop="postalCode">92683</span>
+				<span itemprop="addressCountry">US</span>
+			</div>
+			Phone: <span itemprop="telephone">(714) 765-9999</span>
+			Website: <a itemprop="URL">http://www.bravoindochinatour.com/</a>
+		</div> 
         <div class="modal fade" id="booking-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
