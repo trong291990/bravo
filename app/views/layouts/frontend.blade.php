@@ -352,14 +352,14 @@
                         <ul class="list-unstyled" id="social-votes">
                             <li>
                                 <div class="footer-social-logo">
-                                    <img class="img-responsive" src="/frontend/images/footer/google.jpg" alt="Google Vote" />
+                                    <img class="img-responsive" src="/frontend/images/footer/google_star.png" alt="Google Vote" />
                                 </div>
                                 <p>
                                     Bravo Indochina Tours is rated 5/5 from client reviews
                                 </p>
                                 <div class="footer-social-logo">
                                     <a href="http://plus.google.com/+Bravoindochinatour-BIT/reviews">
-                                    <img width="130px" class="img-responsive" src="/frontend/images/footer/facebook.png" alt="Google Vote" />
+                                    <img width="130px" class="img-responsive" src="/frontend/images/footer/google.jpg" alt="Google Vote" />
                                     </a>
                                 </div>
                             </li>
@@ -369,7 +369,7 @@
                                 </p>
                                 <div class="footer-social-logo" style="padding-bottom: 0">
                                     <a href="http://facebook.com/bravoindochinatour">
-                                        <img width="130px" class="img-responsive" src="/frontend/images/footer/footer_facebook_star.png" alt="Facebook Vote" />
+                                        <img width="130px" class="img-responsive" src="/frontend/images/footer/facebook.png" alt="Facebook Vote" />
                                     </a>
                                 </div>
                             </li>
