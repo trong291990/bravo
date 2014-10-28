@@ -50,6 +50,7 @@
             </a>
             <ul class="treeview-menu">
                 <li><a href="{{ route('admin.album.index') }}"><i class="fa fa-angle-double-right"></i> List albums</a></li>
+                <li><a href="{{ route('admin.album_category.index') }}"><i class="fa fa-angle-double-right"></i> Categories</a></li>
                 <li><a href="{{ route('admin.album.create') }}"><i class="fa fa-angle-double-right"></i> New Album</a></li>
             </ul>
         </li>            

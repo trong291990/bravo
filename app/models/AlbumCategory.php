@@ -20,7 +20,7 @@ class AlbumCategory extends \Eloquent {
                 });
     }
 
-    public function albums($param) {
+    public function albums() {
         return $this->hasMany('Album', 'category_id');
     }
 

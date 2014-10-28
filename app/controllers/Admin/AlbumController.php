@@ -2,7 +2,6 @@
 
 namespace Admin;
 
-use \Request;
 use \Response;
 use \Session;
 use \Redirect;
