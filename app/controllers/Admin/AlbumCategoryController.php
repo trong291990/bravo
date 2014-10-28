@@ -21,6 +21,13 @@ class AlbumCategoryController extends AdminBaseController {
                 ->with(compact('categories'));
     }
 
+    public function update($id) {
+        $cat = AlbumCategory::findOrFail($id);
+        $cat->name = Input::get('name');
+        $cat->save();
+        return Response::json(['success' => true]);
+    }
+
     public function destroy($id) {
         $cat = AlbumCategory::findOrFail($id);
         $cat->delete();

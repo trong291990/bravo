@@ -30,7 +30,7 @@
                         </td>
                         <td>{{ $category->created_at->format('M d, Y \a\t H:i')}}</td>
                         <td>
-                            <a class="btn btn-primary btn-xs" href="#">Edit</a>
+                            <button class="btn btn-primary btn-xs btn-edit-category-name" data-url='{{route("admin.album_category.update", $category->id)}}'>Edit</button>
                             <a href="#" class='btn btn-xs btn-danger btn-action-with-confirm' data-method="DELETE" 
                                data-url="{{route('admin.album_category.destroy', $category->id)}}" 
                                data-message="Are you sure want to delete this category?">
@@ -59,5 +59,31 @@
             }
         });
     });
+    $('.btn-edit-category-name').click(function(e) {
+        e.preventDefault();
+        var $_this = $(this);
+        var promptOptions = {
+            title: "Enter new name: ",
+            buttons: {
+                confirm: {
+                    label: "Save"
+                },
+                cancel: {
+                     label: "Cancel"
+                }
+            },
+            callback: function(cat) {
+                if (cat !== null && cat.trim().length > 3) {
+                    $.post($_this.data('url'), {name: cat.trim(), '_method': 'PUT'})
+                            .done(function(data) {
+                        location.reload();
+                    });
+                }
+            }
+        };
+        bootbox.prompt(promptOptions);
+    });
+
+
 </script>
 @stop
