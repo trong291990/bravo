@@ -26,8 +26,8 @@ class Album extends \Eloquent {
                 });
 
         static::created(function($album) {
-                    File::makeDirectory($album->originPhotoPath(), 0666, true, true);
-                    File::makeDirectory($album->thumbPhotoPath(), 0666, true, true);
+                    File::makeDirectory($album->originPhotoPath(), 0777, true, true);
+                    File::makeDirectory($album->thumbPhotoPath(), 0777, true, true);
                 });
         static::deleted(function($album) {
                     $album->photos()->delete();
