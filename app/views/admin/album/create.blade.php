@@ -16,8 +16,8 @@
         {{ View::make('admin.album._form')->with('categories', $categories) }}
     </div>
     <div class="box-footer text-center">
-        <button class="btn btn-primary">Save</button>
         <a class="btn btn-default" href="{{route('admin.album.index')}}">Back to list</a>
+        <button class="btn btn-primary">Save</button>
     </div>
     {{ Former::close()}}
 </div>

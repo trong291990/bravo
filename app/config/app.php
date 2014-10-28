@@ -180,3 +180,4 @@ return array(
         'Image' => 'Intervention\Image\Facades\Image'
     ),
 );
+// touch

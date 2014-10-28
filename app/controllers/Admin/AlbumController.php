@@ -34,7 +34,7 @@ class AlbumController extends AdminBaseController {
             $album = new Album(Input::all());
             $album->save();
             Session::flash('success', "The album has been created successful");
-            return Redirect::route('admin.album.index');
+            return Redirect::route('admin.album.show', $album->id );
         } else {
             return Redirect::back()->withInput()->withErrors($validator->errors());
         }
