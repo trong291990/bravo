@@ -16,9 +16,10 @@ use \AlbumPhoto;
 class AlbumController extends AdminBaseController {
 
     public function index() {
-        $albums = Album::with('category')->orderBy('created_at', 'DESC')->paginate(20);
+        $categories = AlbumCategory::all();
+        $albums = Album::loadOrSearch(Input::all());
         $this->layout->content = View::make('admin.album.index')
-                ->with(compact('albums'));
+                ->with(compact('albums', 'categories'));
     }
 
     public function create() {
@@ -49,27 +50,63 @@ class AlbumController extends AdminBaseController {
     public function uploadPhoto($id) {
         $album = Album::findOrFail($id);
         $uploadFile = Input::file('photo');
-        $photo = $album->uploadPhoto(
-                $uploadFile, Input::get('title', null), Input::get('is_primary', false)
-        );
+        $photo = $album->uploadPhoto($uploadFile);
         return Response::json([
                     'success' => true,
-                    'id' => $photo->id,
-                    'thumb_url' => asset($photo->thumb_path)
+                    'photo_form' => View::make('admin.album._photo_form')->with('photo', $photo)->render()
         ]);
     }
 
+    public function addCategory() {
+        $validator = Validator::make(Input::all(), AlbumCategory::$rules);
+        $response = [];
+        $response['success'] = $validator->passes();
+        if ($response['success']) {
+            $cat = new AlbumCategory;
+            $cat->name = Input::get('name');
+            $cat->save();
+            $response['message'] = 'Successfully created category <b>' . $cat->name . '</b>';
+        } else {
+            $response['message'] = 'Error: ' . $validator->errors()->first();
+        }
+        return Response::json($response);
+    }
+
     public function edit($id) {
-        //
+        
     }
 
     public function update($id) {
+        $album = Album::findOrFail($id);
         $primaryPhotoID = Input::get('is_primary');
         $photos = Input::get('photos');
+
+        // Update album
+        $album->update(Input::all());
+
+        // Update photos
+        if ($photos) {
+            foreach ($photos as $photoID => $attrs) {
+                $photo = $album->photos()->findOrFail($photoID);
+                $photo->is_primary = ($photoID == $primaryPhotoID);
+                $photo->title = $attrs['title'];
+                $photo->save();
+            }
+        }
+        return Redirect::back();
     }
 
     public function destroy($id) {
-        //
+        $album = Album::findOrFail($id);
+        $album->delete();
+        Session::flash('success', 'Album and photos has been deleted');
+        return Redirect::route('admin.album.index');
+    }
+
+    public function deletePhoto($photo_id) {
+        $photo = AlbumPhoto::findOrFail($photo_id);
+        $photo->delete();
+        return Response::json([]);
     }
 
 }

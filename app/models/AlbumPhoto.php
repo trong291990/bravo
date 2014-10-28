@@ -9,7 +9,8 @@ class AlbumPhoto extends \Eloquent {
         parent::boot();
 
         static::deleted(function($photo) {
-                    // TODO: Delete file
+                    File::delete(public_path($photo->thumb_path));
+                     File::delete(public_path($photo->origin_path));
                 });
     }
 

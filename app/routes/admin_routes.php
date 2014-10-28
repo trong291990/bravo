@@ -37,6 +37,8 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
         Route::resource('customer', 'CustomerController');
         Route::resource('album', 'AlbumController');
         Route::post('album/{album_id}/upload-photo', array('as' => 'admin.album.upload_photo', 'uses' => 'AlbumController@uploadPhoto'));
+        Route::post('album/add-category', array('as' => 'admin.album.add_category', 'uses' => 'AlbumController@addCategory'));
+        Route::post('album/delete-photo/{photo_id}', array('as' => 'admin.album.delete_photo', 'uses' => 'AlbumController@deletePhoto'));
         
         Route::get('review', array('as' => 'admin.review.index', 'uses' => 'ReviewController@index'));
         Route::post('review/{id}/approve', array('as' => 'admin.review.approve', 'uses' => 'ReviewController@approve'));

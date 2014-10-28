@@ -18,11 +18,16 @@
                 <div class="form-group">
                     <label for="name" class="control-label col-lg-2 col-sm-3">Uploaded</label>
                     <div class="col-lg-10 col-sm-9">
-                        <div id="uploaded-files-area"></div>
+                        <div id="uploaded-files-area">
+                            <?php foreach ($album->photos as $photo): ?>
+                                {{View::make('admin.album._photo_form')->with('photo', $photo)}}
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>  
                 <div class="text-center">
-                    <button class="btn btn-primary" type='submit'>Save</button>
+                    <a class="btn btn-default" href="{{route('admin.album.index')}}">Back to list</a>
+                    <button class="btn btn-primary" type='submit'><i class="fa fa-save"></i> Save</button>
                 </div>
             </div>
             {{ Former::close()}}
@@ -39,10 +44,6 @@
             </div>
         </div>
     </div>
-    <div class="box-footer text-center">
-        <a class="btn btn-default" href="{{route('admin.album.index')}}">Back to list</a>
-    </div>
-
 </div>
 @stop
 
@@ -69,32 +70,30 @@
             dragdropWidth: 'auto',
             onSuccess: function(files, data, xhr) {
                 if (data.success) {
-                    var html = '<div class="uploaded-photo-container">'
-                            + '<img class="uploaded-photo-thumb" src="' + data.thumb_url + '">'
-                            + '<div class="uploaded-photo-controls">'
-                            + '<input type="hidden" value="' + data.id + '">'
-                            + '<label>Title</label><input type="text" class="form-control" name="photos[' + data.id + '][title]">'
-                            + '<label>Primary <input type="radio" class="checkbox" name="is_primary" value="' + data.id + '"></label>'
-                            + '</div>'
-                            + '</div>';
-                    $("#uploaded-files-area").append(html);
+                    $("#uploaded-files-area").append(data.photo_form);
                 } else {
-                    alert('error');
+                    bootbox.alert('An error has occurred');
                 }
-                // TODO: append return thumb url to uploaded box
             },
             afterUploadAll: function() {
-                console.log('upload all success');
+                Helper.scroll_to($("#uploaded-files-area .uploaded-photo-container:last-child"));
             },
             onError: function(files, status, errMsg) {
-            },
-            onSelect: function(files) {
-                console.log($('.ajax-file-upload-statusbar').length);
-                return true;
             }
         });
         $('#btn-start-upload').click(function(e) {
             uploaderObj.startUpload();
+            return false;
+        });
+        $(document).on('click', '.btn-delete-photo', function(e) {
+            var $_this = $(this);
+            bootbox.confirm('Are you sure want to delete?', function(res) {
+                if (res) {
+                    $.post($_this.data('url'), function(res) {
+                        $_this.closest('.uploaded-photo-container').fadeOut(500);
+                    });
+                }
+            });
             return false;
         });
     });

@@ -11,7 +11,8 @@
         {{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
         {{ HTML::style('/plugins/uploadfile/uploadfile.css') }}
         {{ HTML::style('/backend/css/lte.css') }}
-        {{ HTML::style('/backend/css/lte-override.css') }}        
+        {{ HTML::style('/backend/css/lte-override.css') }} 
+         {{ HTML::style('/backend/css/addon.css') }}    
         <meta content="{{Session::token()}}" name="csrf-token" />
         @yield('addon_stylesheets')
         <!--[if lt IE 9]>

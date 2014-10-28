@@ -136,6 +136,9 @@ label.radio input[type="radio"]{
 .mtb-5{
     margin: 5px 0;
 }
+.mt-10{
+    margin-top: 10px;
+}
 .mlr-5{
     margin: 0 5px;
 }
@@ -149,9 +152,9 @@ label.radio input[type="radio"]{
     padding: 10px 20px 10px; 
     margin-top: 5px;
 }
-.bootbox-confirm .bootbox-body {
+.bootbox-body {
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
 }
 /* Fix select 2 */
 .select2-container.form-control {
@@ -242,23 +245,7 @@ label.radio input[type="radio"]{
 .an-itinerary textarea {
     min-height: 300px
 }
-.uploaded-photo-container {
-    border: 1px solid #dadada;
-    margin: 5px 0;
-    padding: 5px;
-    overflow-y: auto;
-}
-.uploaded-photo-thumb {
-    width: 150px;
-    border: 1px solid #dadada;
-    padding: 5px;
-    float: left;
-}
-.uploaded-photo-controls {
-    float: left;
-    margin-left: 10px;
-}
-.uploaded-photo-controls input[type=text]{
-    width: 290px;
-}
 
+.pagination {
+    margin: 5px 0;
+}
