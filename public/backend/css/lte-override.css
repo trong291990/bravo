@@ -69,7 +69,7 @@ label.radio input[type="radio"]{
     padding: 8px 5px 8px 15px;
 }
 #flash-message-autohide {
-    width: calc(100% - 450px);
+    width: calc(100% - 465px);
     position: fixed;
     top:10px;
     margin: 0 0 0 60px;
