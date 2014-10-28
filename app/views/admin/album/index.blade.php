@@ -39,10 +39,10 @@
             <?php foreach ($albums as $album): ?>
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
                     <div class="album-box">
-                        <h5 class='album-name text-info'>
+                        <h5 class='album-name'>
                             {{$album->category->name or 'Uncategorized'}}
                             <br> 
-                            <b>{{truncate_words($album->name, 5)}}</b>
+                            <b class='text-info'>{{truncate_words($album->name, 5)}}</b>
                         </h5>
                         <?php $thumb_url = asset('backend/images/no-image.gif') ?>
                         <?php
