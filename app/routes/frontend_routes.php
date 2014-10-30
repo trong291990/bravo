@@ -23,3 +23,6 @@ foreach (StaticPage::$VALID_NAMES as $page_name) {
         'uses' => 'HomeController@staticPage']
     );
 }
+
+Route::get('/paymento/confirmpayment', array('uses' => 'PaypalPaymentController@getConfirmpayment'));
+Route::resource('payment', 'PaypalPaymentController');

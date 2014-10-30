@@ -1,0 +1,145 @@
+[29-10-2014 03:46:25] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[29-10-2014 03:46:25] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 03:46:25] PayPal\Core\PPHttpConnection: FINE: Authorization: Basic QVZKeDBSQXJRemtDQ3NXQzBldlppMVNzb080Z3hqRGtrVUxRQmRtUE5CWlQ0ZmMxNEFST1VxLWV0TUVZOkVINUYwQkF4cW9uVm5QOE00YTBjNmV6VUhxLVVULUNXZkdjaVBOUU9kVWxUcFdQa055dVM2ZUROLXRwQQ==
+[29-10-2014 03:46:25] PayPal\Core\PPHttpConnection: FINE: Accept: */*
+[29-10-2014 03:46:25] PayPal\Core\PPHttpConnection: FINE: Payload : grant_type=client_credentials
+
+[29-10-2014 03:46:27] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 03:46:29] PayPal\Core\PPHttpConnection: FINE: Response : {"scope":"https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/vault/credit-card/.*","access_token":"A015lnQVR9bzeCIxv3wTBMGyxrbWcwO1FTjFofdyQlkDnR0","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":28800}
+
+
+[29-10-2014 03:46:29] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/payments/payment
+[29-10-2014 03:46:29] PayPal\Core\PPHttpConnection: FINE: Content-Type: application/json
+[29-10-2014 03:46:29] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 03:46:29] PayPal\Core\PPHttpConnection: FINE: Authorization: Bearer A015lnQVR9bzeCIxv3wTBMGyxrbWcwO1FTjFofdyQlkDnR0
+[29-10-2014 03:46:29] PayPal\Core\PPHttpConnection: FINE: PayPal-Request-Id: DINHTRONG-PC3356141459758434756
+[29-10-2014 03:46:29] PayPal\Core\PPHttpConnection: FINE: Payload : {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost:8000\/payment\/confirmpayment","cancel_url":"http:\/\/localhost:8000\/payment\/cancelpayment"},"transactions":[{"amount":{"currency":"USD","total":"1.00"},"description":"This is the payment description."}]}
+
+[29-10-2014 03:46:30] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 03:46:33] PayPal\Core\PPHttpConnection: FINE: Response : {"id":"PAY-8TE39337C2692305XKRIQXVY","create_time":"2014-10-29T15:46:31Z","update_time":"2014-10-29T15:46:32Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"1.00","currency":"USD","details":{"subtotal":"1.00"}},"description":"This is the payment description.","related_resources":[]}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-8TE39337C2692305XKRIQXVY","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-3FW453736L6018742","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-8TE39337C2692305XKRIQXVY/execute","rel":"execute","method":"POST"}]}
+
+
+[29-10-2014 04:04:30] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[29-10-2014 04:04:30] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:04:30] PayPal\Core\PPHttpConnection: FINE: Authorization: Basic QVZKeDBSQXJRemtDQ3NXQzBldlppMVNzb080Z3hqRGtrVUxRQmRtUE5CWlQ0ZmMxNEFST1VxLWV0TUVZOkVINUYwQkF4cW9uVm5QOE00YTBjNmV6VUhxLVVULUNXZkdjaVBOUU9kVWxUcFdQa055dVM2ZUROLXRwQQ==
+[29-10-2014 04:04:30] PayPal\Core\PPHttpConnection: FINE: Accept: */*
+[29-10-2014 04:04:30] PayPal\Core\PPHttpConnection: FINE: Payload : grant_type=client_credentials
+
+[29-10-2014 04:04:31] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:04:33] PayPal\Core\PPHttpConnection: FINE: Response : {"scope":"https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/vault/credit-card/.*","access_token":"A015V1TCVXByUAGOrS581i-rRGAA7m1upZNfayibCC5i1zE","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":28800}
+
+
+[29-10-2014 04:04:33] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/payments/payment
+[29-10-2014 04:04:33] PayPal\Core\PPHttpConnection: FINE: Content-Type: application/json
+[29-10-2014 04:04:33] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:04:33] PayPal\Core\PPHttpConnection: FINE: Authorization: Bearer A015V1TCVXByUAGOrS581i-rRGAA7m1upZNfayibCC5i1zE
+[29-10-2014 04:04:33] PayPal\Core\PPHttpConnection: FINE: PayPal-Request-Id: DINHTRONG-PC335614145986709430
+[29-10-2014 04:04:33] PayPal\Core\PPHttpConnection: FINE: Payload : {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost:8000\/payment\/confirmpayment","cancel_url":"http:\/\/localhost:8000\/payment\/cancelpayment"},"transactions":[{"amount":{"currency":"USD","total":"1.00"},"description":"This is the payment description."}]}
+
+[29-10-2014 04:04:35] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:04:40] PayPal\Core\PPHttpConnection: FINE: Response : {"id":"PAY-23X418836T526713WKRIRAFY","create_time":"2014-10-29T16:04:39Z","update_time":"2014-10-29T16:04:39Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"1.00","currency":"USD","details":{"subtotal":"1.00"}},"description":"This is the payment description.","related_resources":[]}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-23X418836T526713WKRIRAFY","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-4SS228799R727574N","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-23X418836T526713WKRIRAFY/execute","rel":"execute","method":"POST"}]}
+
+
+[29-10-2014 04:05:28] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[29-10-2014 04:05:28] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:05:28] PayPal\Core\PPHttpConnection: FINE: Authorization: Basic QVZKeDBSQXJRemtDQ3NXQzBldlppMVNzb080Z3hqRGtrVUxRQmRtUE5CWlQ0ZmMxNEFST1VxLWV0TUVZOkVINUYwQkF4cW9uVm5QOE00YTBjNmV6VUhxLVVULUNXZkdjaVBOUU9kVWxUcFdQa055dVM2ZUROLXRwQQ==
+[29-10-2014 04:05:28] PayPal\Core\PPHttpConnection: FINE: Accept: */*
+[29-10-2014 04:05:28] PayPal\Core\PPHttpConnection: FINE: Payload : grant_type=client_credentials
+
+[29-10-2014 04:05:29] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:05:32] PayPal\Core\PPHttpConnection: FINE: Response : {"scope":"https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/vault/credit-card/.*","access_token":"A015Q8zRZdgaT4U9-GKSF2-J8SQ.U2ujAoCViH.yy5qD9i4","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":28800}
+
+
+[29-10-2014 04:05:32] PayPal\Core\PPHttpConnection: INFO: GET https://api.sandbox.paypal.com/v1/payments/payment/confirmpayment
+[29-10-2014 04:05:32] PayPal\Core\PPHttpConnection: FINE: Content-Type: application/json
+[29-10-2014 04:05:32] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:05:32] PayPal\Core\PPHttpConnection: FINE: Authorization: Bearer A015Q8zRZdgaT4U9-GKSF2-J8SQ.U2ujAoCViH.yy5qD9i4
+[29-10-2014 04:05:32] PayPal\Core\PPHttpConnection: FINE: Payload : 
+
+[29-10-2014 04:05:33] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:05:34] PayPal\Core\PPHttpConnection: FINE: Response : {"name":"INVALID_RESOURCE_ID","message":"The requested resource ID was not found","information_link":"https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID","debug_id":"6a6a75b8d75b1"}
+
+
+[29-10-2014 04:11:09] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[29-10-2014 04:11:09] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:11:09] PayPal\Core\PPHttpConnection: FINE: Authorization: Basic QVZKeDBSQXJRemtDQ3NXQzBldlppMVNzb080Z3hqRGtrVUxRQmRtUE5CWlQ0ZmMxNEFST1VxLWV0TUVZOkVINUYwQkF4cW9uVm5QOE00YTBjNmV6VUhxLVVULUNXZkdjaVBOUU9kVWxUcFdQa055dVM2ZUROLXRwQQ==
+[29-10-2014 04:11:09] PayPal\Core\PPHttpConnection: FINE: Accept: */*
+[29-10-2014 04:11:09] PayPal\Core\PPHttpConnection: FINE: Payload : grant_type=client_credentials
+
+[29-10-2014 04:11:10] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:11:14] PayPal\Core\PPHttpConnection: FINE: Response : {"scope":"https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/vault/credit-card/.*","access_token":"A015xaYncR0EC3FOmqTyeTUFItqQkRoP3E.UFSl3BXEi6VU","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":28800}
+
+
+[29-10-2014 04:11:14] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/payments/payment
+[29-10-2014 04:11:14] PayPal\Core\PPHttpConnection: FINE: Content-Type: application/json
+[29-10-2014 04:11:14] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:11:14] PayPal\Core\PPHttpConnection: FINE: Authorization: Bearer A015xaYncR0EC3FOmqTyeTUFItqQkRoP3E.UFSl3BXEi6VU
+[29-10-2014 04:11:14] PayPal\Core\PPHttpConnection: FINE: PayPal-Request-Id: DINHTRONG-PC3356141459906964517
+[29-10-2014 04:11:14] PayPal\Core\PPHttpConnection: FINE: Payload : {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost:8000\/payment\/confirmpayment","cancel_url":"http:\/\/localhost:8000\/payment\/cancelpayment"},"transactions":[{"amount":{"currency":"USD","total":"1.00"},"description":"This is the payment description."}]}
+
+[29-10-2014 04:11:15] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:11:17] PayPal\Core\PPHttpConnection: FINE: Response : {"id":"PAY-7H4295911H640032KKRIRDIY","create_time":"2014-10-29T16:11:15Z","update_time":"2014-10-29T16:11:15Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"1.00","currency":"USD","details":{"subtotal":"1.00"}},"description":"This is the payment description.","related_resources":[]}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7H4295911H640032KKRIRDIY","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8C359294CW465841Y","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7H4295911H640032KKRIRDIY/execute","rel":"execute","method":"POST"}]}
+
+
+[29-10-2014 04:12:16] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[29-10-2014 04:12:16] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:12:16] PayPal\Core\PPHttpConnection: FINE: Authorization: Basic QVZKeDBSQXJRemtDQ3NXQzBldlppMVNzb080Z3hqRGtrVUxRQmRtUE5CWlQ0ZmMxNEFST1VxLWV0TUVZOkVINUYwQkF4cW9uVm5QOE00YTBjNmV6VUhxLVVULUNXZkdjaVBOUU9kVWxUcFdQa055dVM2ZUROLXRwQQ==
+[29-10-2014 04:12:16] PayPal\Core\PPHttpConnection: FINE: Accept: */*
+[29-10-2014 04:12:16] PayPal\Core\PPHttpConnection: FINE: Payload : grant_type=client_credentials
+
+[29-10-2014 04:12:16] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:12:23] PayPal\Core\PPHttpConnection: FINE: Response : {"scope":"https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/vault/credit-card/.*","access_token":"A015Fw3ITLUSVVZKAhkIwiq0XMjuWLmS6ecsvrjEcdPkdus","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":28800}
+
+
+[29-10-2014 04:12:23] PayPal\Core\PPHttpConnection: INFO: GET https://api.sandbox.paypal.com/v1/payments/payment/confirmpayment
+[29-10-2014 04:12:23] PayPal\Core\PPHttpConnection: FINE: Content-Type: application/json
+[29-10-2014 04:12:23] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:12:23] PayPal\Core\PPHttpConnection: FINE: Authorization: Bearer A015Fw3ITLUSVVZKAhkIwiq0XMjuWLmS6ecsvrjEcdPkdus
+[29-10-2014 04:12:23] PayPal\Core\PPHttpConnection: FINE: Payload : 
+
+[29-10-2014 04:12:25] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:12:27] PayPal\Core\PPHttpConnection: FINE: Response : {"name":"INVALID_RESOURCE_ID","message":"The requested resource ID was not found","information_link":"https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID","debug_id":"dd436b7d727b3"}
+
+
+[29-10-2014 04:33:51] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[29-10-2014 04:33:51] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:33:51] PayPal\Core\PPHttpConnection: FINE: Authorization: Basic QVZKeDBSQXJRemtDQ3NXQzBldlppMVNzb080Z3hqRGtrVUxRQmRtUE5CWlQ0ZmMxNEFST1VxLWV0TUVZOkVINUYwQkF4cW9uVm5QOE00YTBjNmV6VUhxLVVULUNXZkdjaVBOUU9kVWxUcFdQa055dVM2ZUROLXRwQQ==
+[29-10-2014 04:33:51] PayPal\Core\PPHttpConnection: FINE: Accept: */*
+[29-10-2014 04:33:51] PayPal\Core\PPHttpConnection: FINE: Payload : grant_type=client_credentials
+
+[29-10-2014 04:33:53] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:33:56] PayPal\Core\PPHttpConnection: FINE: Response : {"scope":"https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/vault/credit-card/.*","access_token":"A015x4WTsHF.xEWBhQPIMg5V0qrDX2EZnURhgCwiDYHrJT0","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":28800}
+
+
+[29-10-2014 04:33:56] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/payments/payment
+[29-10-2014 04:33:56] PayPal\Core\PPHttpConnection: FINE: Content-Type: application/json
+[29-10-2014 04:33:56] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:33:56] PayPal\Core\PPHttpConnection: FINE: Authorization: Bearer A015x4WTsHF.xEWBhQPIMg5V0qrDX2EZnURhgCwiDYHrJT0
+[29-10-2014 04:33:56] PayPal\Core\PPHttpConnection: FINE: PayPal-Request-Id: DINHTRONG-PC3356141460043027646
+[29-10-2014 04:33:56] PayPal\Core\PPHttpConnection: FINE: Payload : {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost:8000\/paymento\/confirmpayment","cancel_url":"http:\/\/localhost:8000\/payment\/cancelpayment"},"transactions":[{"amount":{"currency":"USD","total":"1.00"},"description":"This is the payment description."}]}
+
+[29-10-2014 04:33:57] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:33:58] PayPal\Core\PPHttpConnection: FINE: Response : {"id":"PAY-4C157517GF267703SKRIRN5I","create_time":"2014-10-29T16:33:57Z","update_time":"2014-10-29T16:33:57Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"1.00","currency":"USD","details":{"subtotal":"1.00"}},"description":"This is the payment description.","related_resources":[]}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-4C157517GF267703SKRIRN5I","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-71905102WB298134K","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-4C157517GF267703SKRIRN5I/execute","rel":"execute","method":"POST"}]}
+
+
+[29-10-2014 04:44:41] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[29-10-2014 04:44:41] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:44:41] PayPal\Core\PPHttpConnection: FINE: Authorization: Basic QVZKeDBSQXJRemtDQ3NXQzBldlppMVNzb080Z3hqRGtrVUxRQmRtUE5CWlQ0ZmMxNEFST1VxLWV0TUVZOkVINUYwQkF4cW9uVm5QOE00YTBjNmV6VUhxLVVULUNXZkdjaVBOUU9kVWxUcFdQa055dVM2ZUROLXRwQQ==
+[29-10-2014 04:44:41] PayPal\Core\PPHttpConnection: FINE: Accept: */*
+[29-10-2014 04:44:41] PayPal\Core\PPHttpConnection: FINE: Payload : grant_type=client_credentials
+
+[29-10-2014 04:44:42] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:44:43] PayPal\Core\PPHttpConnection: FINE: Response : {"scope":"https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/vault/credit-card/.*","access_token":"A015tlD88Tpu7RMUFUSA1UtVE1sbYJdvqaxW67-k13VXqnM","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":28800}
+
+
+[29-10-2014 04:44:43] PayPal\Core\PPHttpConnection: INFO: POST https://api.sandbox.paypal.com/v1/payments/payment
+[29-10-2014 04:44:43] PayPal\Core\PPHttpConnection: FINE: Content-Type: application/json
+[29-10-2014 04:44:43] PayPal\Core\PPHttpConnection: FINE: User-Agent: PayPalSDK/rest-sdk-php 0.13.2 (lang=PHP;v=5.4.27;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.35.0)
+[29-10-2014 04:44:43] PayPal\Core\PPHttpConnection: FINE: Authorization: Bearer A015tlD88Tpu7RMUFUSA1UtVE1sbYJdvqaxW67-k13VXqnM
+[29-10-2014 04:44:43] PayPal\Core\PPHttpConnection: FINE: PayPal-Request-Id: DINHTRONG-PC335614146010811485
+[29-10-2014 04:44:43] PayPal\Core\PPHttpConnection: FINE: Payload : {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost:8000\/paymento\/confirmpayment","cancel_url":"http:\/\/localhost:8000\/payment\/cancelpayment"},"transactions":[{"amount":{"currency":"USD","total":"1.00"},"description":"This is the payment description."}]}
+
+[29-10-2014 04:44:44] PayPal\Core\PPHttpConnection: INFO: Invalid or no certificate authority found - Retrying using bundled CA certs file
+[29-10-2014 04:44:45] PayPal\Core\PPHttpConnection: FINE: Response : {"id":"PAY-4U552363H8309974GKRIRS7A","create_time":"2014-10-29T16:44:44Z","update_time":"2014-10-29T16:44:44Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"1.00","currency":"USD","details":{"subtotal":"1.00"}},"description":"This is the payment description.","related_resources":[]}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-4U552363H8309974GKRIRS7A","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8GV57215N20156218","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-4U552363H8309974GKRIRS7A/execute","rel":"execute","method":"POST"}]}
+
+

@@ -113,7 +113,9 @@ return array(
         'RyanNielson\Shareable\ShareableServiceProvider',
         'CeesVanEgmond\Minify\MinifyServiceProvider',
         'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
-        'Intervention\Image\ImageServiceProvider'
+        'Intervention\Image\ImageServiceProvider',
+        'LogicalGrape\PayPalIpnLaravel\PayPalIpnServiceProvider',
+        'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
     ),
     /*
       |--------------------------------------------------------------------------
@@ -177,7 +179,8 @@ return array(
         'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
         'Former' => 'Former\Facades\Former',
         'Shareable' => 'RyanNielson\Shareable\Facades\Shareable',
-        'Image' => 'Intervention\Image\Facades\Image'
+        'Image' => 'Intervention\Image\Facades\Image',
+        'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
     ),
 );
 // touch

@@ -15,7 +15,9 @@
             "ryannielson/shareable": "dev-master",
             "ceesvanegmond/minify": "2.0.*",
             "fitztrev/laravel-html-minify": "1.*",
-            "intervention/image": "dev-master"
+            "intervention/image": "dev-master",
+            "anouar/paypalpayment": "dev-master",
+            "logicalgrape/paypal-ipn-laravel": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
