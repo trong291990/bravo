@@ -126,7 +126,8 @@ return array(
                 'DaveJamesMiller\Breadcrumbs\ServiceProvider',
                 'RyanNielson\Shareable\ShareableServiceProvider',
                 'CeesVanEgmond\Minify\MinifyServiceProvider',
-                'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider'
+                'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
+                'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
 	),
 
 	/*
@@ -194,7 +195,8 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
                 'Breadcrumbs'     => 'DaveJamesMiller\Breadcrumbs\Facade',
                 'Former' => 'Former\Facades\Former',
-                'Shareable' => 'RyanNielson\Shareable\Facades\Shareable'
+                'Shareable' => 'RyanNielson\Shareable\Facades\Shareable',
+                'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
 	),
 
 );
