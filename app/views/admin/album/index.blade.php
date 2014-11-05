@@ -20,7 +20,7 @@
             {{Former::open()->method('GET')->class('form-filter')}}
             <div class="row">
                 <div class="col-md-5">
-                    {{Former::select('area_id')->label(false)->addOption('All countries', 'all')->options(areas_for_select($areas))->class('form-control submit-on-change')}}
+                    {{Former::select('area_id')->label(false)->addOption('All countries', '')->options(areas_for_select($areas))->class('form-control submit-on-change')}}
                 </div>
                 <div class="col-md-5">
                     {{Former::text('keyword')->label(false)->placeholder('Keyword ...')}}

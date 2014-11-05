@@ -41,12 +41,8 @@ class Album extends \Eloquent {
 
         if (isset($options['area_id'])) {
             $area_id = trim($options['area_id']);
-            if ($area_id != 'all') {
-                if ($area_id == '') {
-                    $query = $query->where('area_id', NULL);
-                } else {
-                    $query = $query->where('area_id', $area_id);
-                }
+            if ($area_id != '') {
+                $query = $query->where('area_id', $area_id);
             }
         }
         if (isset($options['keyword']) && trim($options['keyword'])) {
