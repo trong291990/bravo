@@ -7,7 +7,7 @@ class StaticPage extends Eloquent {
     protected $fillable = ['title', 'content', 'meta_keyword', 'meta_description'];
     static $VALID_NAMES = [
         'why-travel-with-us', 'terms-and-condition', 'faq',
-        'join-our-team', 'travel-album', 'about-us', 'contact', 'responsible-policy'
+        'join-our-team', 'about-us', 'contact', 'responsible-policy'
     ];
 
     public static function findOrCreateByName($name) {

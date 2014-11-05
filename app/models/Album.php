@@ -36,6 +36,10 @@ class Album extends \Eloquent {
                 });
     }
 
+    public static function recent($count = 8) {
+        return self::with('area')->orderBy('created_at', 'DESC')->take($count)->get();
+    }
+
     public static function loadOrSearch($options = []) {
         $query = self::select('*')->with('area', 'photos');
 
@@ -75,7 +79,7 @@ class Album extends \Eloquent {
         if ($absolute) {
             $prefix = public_path() . '/';
         }
-        return $prefix . self::ALBUMS_PATH . '/' . $this->id . '/' . self::ORIGIN_DIR . '/';
+        return $prefix . self::ALBUMS_PATH . '/' . self::ORIGIN_DIR . '/' . $this->id . '/';
     }
 
     public function thumbPhotoPath($absolute = true) {
@@ -83,7 +87,7 @@ class Album extends \Eloquent {
         if ($absolute) {
             $prefix = public_path() . '/';
         }
-        return $prefix . self::ALBUMS_PATH . '/' . $this->id . '/' . self::THUMB_DIR . '/';
+        return $prefix . self::ALBUMS_PATH . '/' . self::THUMB_DIR . '/' . $this->id . '/';
     }
 
     public function uploadPhoto($uploadedFile) {
@@ -105,6 +109,11 @@ class Album extends \Eloquent {
         $photo->thumb_path = $this->thumbPhotoPath(false) . $thumbFileName;
         $photo->save();
         return $photo;
+    }
+
+    public function increaseViews() {
+        $this->views += 1;
+        $this->save();
     }
 
 }

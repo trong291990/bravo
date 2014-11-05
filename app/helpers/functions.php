@@ -123,4 +123,14 @@ function areas_for_select($areas) {
     return $options;
 }
 
+function show_album_url($album) {
+    return route('travel_album.show', [slug_string($album->area->name), $album->slug . '-' . $album->id]);
+}
+
+function string_to_int($str) {
+    $val = 0;
+    $val = preg_replace("/[^0-9]/", "", $str);
+    return $val;
+}
+
 ?>

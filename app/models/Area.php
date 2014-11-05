@@ -16,6 +16,7 @@ class Area extends Eloquent {
                     }
                 });
     }
+
     public function scopeNotIsParent($query) {
         return $query->where('parent_id', '<>', 'NULL');
     }
@@ -24,10 +25,18 @@ class Area extends Eloquent {
         return $this->hasMany('Place', 'area_id');
     }
 
+    public function albums() {
+        return $this->hasMany('Album', 'area_id');
+    }
+
+    public function mostViewAlbums() {
+        return $this->albums()->orderBy('views', 'DESC')->take(4)->get();
+    }
+
     public function tours() {
         return $this->hasMany('Tour', 'area_id');
     }
-    
+
     public function scopeOnMenu($query) {
         return $query->where('is_on_menu', true);
     }
