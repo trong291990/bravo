@@ -14,7 +14,7 @@
             {{ Former::open(route('admin.album.update', $album->id))->class('form-horizontal')->method('PUT') }}
             {{ Former::populate($album) }}            
             <div class="col-md-7">
-                {{ View::make('admin.album._form')->with('categories', $categories) }}
+                {{ View::make('admin.album._form')->with('areas', $areas) }}
                 <div class="form-group">
                     <label for="name" class="control-label col-lg-2 col-sm-3">Uploaded</label>
                     <div class="col-lg-10 col-sm-9">

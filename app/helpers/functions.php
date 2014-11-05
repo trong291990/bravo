@@ -115,11 +115,10 @@ function gravatar_url($email, $size = 100) {
             "&s=" . $size;
 }
 
-function categories_for_select($categories) {
+function areas_for_select($areas) {
     $options = [];
-    $options[''] = 'Uncategorized';
-    foreach ($categories as $cat) {
-        $options[$cat->id . ''] = $cat->name;
+    foreach ($areas as $area) {
+        $options[$area->id . ''] = $area->name;
     }
     return $options;
 }

@@ -1,3 +1,3 @@
 {{ Former::text('name') }}
-{{ Former::select('category_id')->options(categories_for_select($categories)) }}
+{{ Former::select('area_id')->options(areas_for_select($areas)) }}
 {{ Former::textarea('description')->rows(4) }}

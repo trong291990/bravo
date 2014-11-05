@@ -114,8 +114,8 @@ return array(
         'CeesVanEgmond\Minify\MinifyServiceProvider',
         'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
         'Intervention\Image\ImageServiceProvider',
-        'LogicalGrape\PayPalIpnLaravel\PayPalIpnServiceProvider',
-        'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
+//        'LogicalGrape\PayPalIpnLaravel\PayPalIpnServiceProvider',
+//        'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
     ),
     /*
       |--------------------------------------------------------------------------
@@ -180,7 +180,7 @@ return array(
         'Former' => 'Former\Facades\Former',
         'Shareable' => 'RyanNielson\Shareable\Facades\Shareable',
         'Image' => 'Intervention\Image\Facades\Image',
-        'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
+//        'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
     ),
 );
 // touch
