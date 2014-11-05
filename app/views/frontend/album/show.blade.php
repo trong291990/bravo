@@ -6,8 +6,8 @@
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Album</a></li>
-            <li class="active">Hanoi Day Tours</li>
+            <li><a href="#">{{$area->name}} Travel Album</a></li>
+            <li class="active">{{$album->name}}</li>
         </ul>
     </div>
 
