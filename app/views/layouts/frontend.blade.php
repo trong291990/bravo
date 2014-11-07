@@ -21,6 +21,8 @@
         }}
         
         {{HTML::style('/frontend/css/media.css')}}
+        {{HTML::script('/shared/js/jquery-2.0.3.min.js')}}
+        
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -537,8 +539,40 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="make-payment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3>Your enquiry has been sent successful. Please make a payment.</h3>
+                    </div>
+                    <div class="modal-body" style="padding: 0">
+                        <div id='payment-modal-content' style="margin:30px 0px">
+                            <form style="margin:auto;width:100px" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                            <input type="hidden" name="cmd" value="_cart">
+                            <input type="hidden" name="business" value="support@bravoindochinatour.com">
+                            <input type="hidden" name="item_name" value="hat">
+                            <input type="hidden" name="item_number" value="123">
+                            <input type="hidden" name="amount" value="15.00">
+                            <input type="hidden" name="first_name" value="Bravo">
+                            <input type="hidden" name="last_name" value="Indochinatour">
+                            <input type="hidden" name="address1" value="Ho Chi Minh">
+                            <input type="hidden" name="address2" value="Ho Chi Minh">
+                            <input type="hidden" name="city" value="Ho Chi Minh">
+                            <input type="hidden" name="state" value="VN">
+                            <input type="image" name="submit" border="0"
+                            src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+                            alt="PayPal - The safer, easier way to pay online">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin: 0">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{ Minify::javascript(array(
-               '/shared/js/jquery-2.0.3.min.js',
                '/shared/js/bootstrap.min.js',
                '/frontend/js/layout.js',
                '/plugins/bootstrap-select/bootstrap-select.min.js',

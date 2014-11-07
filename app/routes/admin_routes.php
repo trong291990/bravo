@@ -35,7 +35,13 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
         Route::resource('tour', 'TourController');
         Route::resource('reservation', 'ReservationController');
         Route::resource('customer', 'CustomerController');
+        Route::resource('album', 'AlbumController');
+        Route::resource('album_category', 'AlbumCategoryController', array('only' => ['index', 'update', 'destroy']));
 
+        Route::post('album/{album_id}/upload-photo', array('as' => 'admin.album.upload_photo', 'uses' => 'AlbumController@uploadPhoto'));
+        Route::post('album/add-category', array('as' => 'admin.album.add_category', 'uses' => 'AlbumController@addCategory'));
+        Route::post('album/delete-photo/{photo_id}', array('as' => 'admin.album.delete_photo', 'uses' => 'AlbumController@deletePhoto'));
+        
         Route::get('review', array('as' => 'admin.review.index', 'uses' => 'ReviewController@index'));
         Route::post('review/{id}/approve', array('as' => 'admin.review.approve', 'uses' => 'ReviewController@approve'));
         Route::post('review/{id}/reject', array('as' => 'admin.review.reject', 'uses' => 'ReviewController@reject'));
@@ -49,5 +55,6 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
 
         Route::get('/setting/pages/edit', ['as' => 'admin.static_page.edit', 'uses' => 'StaticPageController@edit']);
         Route::post('/setting/pages/update', ['as' => 'admin.static_page.update', 'uses' => 'StaticPageController@update']);
+    
     });
 });

@@ -69,7 +69,7 @@ label.radio input[type="radio"]{
     padding: 8px 5px 8px 15px;
 }
 #flash-message-autohide {
-    width: calc(100% - 450px);
+    width: calc(100% - 465px);
     position: fixed;
     top:10px;
     margin: 0 0 0 60px;
@@ -136,6 +136,9 @@ label.radio input[type="radio"]{
 .mtb-5{
     margin: 5px 0;
 }
+.mt-10{
+    margin-top: 10px;
+}
 .mlr-5{
     margin: 0 5px;
 }
@@ -149,9 +152,9 @@ label.radio input[type="radio"]{
     padding: 10px 20px 10px; 
     margin-top: 5px;
 }
-.bootbox-confirm .bootbox-body {
+.bootbox-body {
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
 }
 /* Fix select 2 */
 .select2-container.form-control {
@@ -241,4 +244,8 @@ label.radio input[type="radio"]{
 }
 .an-itinerary textarea {
     min-height: 300px
+}
+
+.pagination {
+    margin: 5px 0;
 }
