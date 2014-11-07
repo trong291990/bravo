@@ -90,14 +90,11 @@
                             <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
                             <ul class="dropdown-menu" role="menu">
                         
-                            <li><a href="#">
-                                <i class="icon icon-menu-avatar mrm"></i>Log In</a></li>
                             <li>
-                                
-                                
-                                    <a href="#">
-                                        <i class="icon icon-menu-pen mrm"></i>Register</a>
-                                
+                                <a href="#modal-login" data-toggle='modal'><i class="icon icon-menu-avatar mrm"></i>Log In</a>
+                            </li>
+                            <li>
+                                <a href="#modal-register" data-toggle='modal'><i class="icon icon-menu-pen mrm"></i>Register</a>   
                             </li>
                             <li>
                                 <a href="#"><i class="icon icon-menu-people mrm"></i>Refer a Friend</a>
@@ -573,6 +570,121 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+              </div>
+              <div class="modal-body">
+                {{ Former::open(route('customer_login')) }}
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                              <input type="text" class="form-control" placeholder="Email">
+                            </div>   
+                        </div>   
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                              <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="Submit" class="btn btn-primary btn-block">Login</button>
+                            <br>
+                            <p class="text-center">
+                                Don't have a account? <a href="#">Register</a>
+                                |
+                                <a href="#">Forgot password?</a> 
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="#" class="btn btn-block btn-primary">
+                                <i class="fa fa-facebook-square"></i> Facebook
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="#" class="btn btn-block btn-danger"><i class="fa fa-google-plus-square"></i> Google +</a>
+                        </div>
+                    </div>
+                {{ Former::close() }}
+              </div>
+            </div>
+          </div>
+        </div>     
+        <!-- End modal login    -->
+        <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Register</h4>
+              </div>
+              <div class="modal-body">
+                {{ Former::open(route('customer_register')) }}
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                              <input type="text" name='name' class="form-control" placeholder="Your Name">
+                            </div>   
+                        </div>   
+                    </div>                
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                              <input type="text" name='email' class="form-control" placeholder="Email">
+                            </div>   
+                        </div>   
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                              <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="Submit" class="btn btn-primary btn-block">Register</button>
+                            <br/>
+                            <p class="text-center">
+                                Already have account? <a href="#">Login</a>
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="#" class="btn btn-block btn-primary">
+                                <i class="fa fa-facebook-square"></i> Facebook
+                            </a>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="#" class="btn btn-block btn-danger"><i class="fa fa-google-plus-square"></i> Google +</a>
+                        </div>
+                    </div>
+                {{ Former::close() }}
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- End modal register -->
+
         {{ Minify::javascript(array(
                '/shared/js/bootstrap.min.js',
                '/frontend/js/layout.js',

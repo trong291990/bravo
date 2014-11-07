@@ -116,6 +116,7 @@ return array(
         'Intervention\Image\ImageServiceProvider',
         'LogicalGrape\PayPalIpnLaravel\PayPalIpnServiceProvider',
         'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
+        'Artdarek\OAuth\OAuthServiceProvider'
     ),
     /*
       |--------------------------------------------------------------------------
@@ -181,6 +182,7 @@ return array(
         'Shareable' => 'RyanNielson\Shareable\Facades\Shareable',
         'Image' => 'Intervention\Image\Facades\Image',
         'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
+        'OAuth' => 'Artdarek\OAuth\Facade\OAuth'
     ),
 );
 // touch
