@@ -12,6 +12,7 @@
                         '/fonts/font-awesome.css',
                         '/fonts/augushand.css',
                         '/frontend/css/site.css',
+                        '/frontend/css/album.css',
                         '/plugins/bootstrap-select/bootstrap-select.min.css',
                         '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
                         '/plugins/icheck/skins/all.css',
@@ -579,10 +580,10 @@
                '/plugins/icheck/icheck.min.js',
                '/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js',
                '/plugins/bootstrap-datepicker/bootstrap-datepicker.js',
-               '/plugins/jquery.validate.min.js',
-               '/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js',
-               '/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js'
+               '/plugins/jquery.validate.min.js'
          )) }}
+        {{HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js')}} 
+        {{HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js')}} 
         {{ 
             Minify::javascript(array(
                '/frontend/js/functions.js',

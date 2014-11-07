@@ -8,23 +8,23 @@ use \Redirect;
 use \Input;
 use \View;
 use \Validator;
-use \AlbumCategory;
+use \Area;
 use \Album;
 use \AlbumPhoto;
 
 class AlbumController extends AdminBaseController {
 
     public function index() {
-        $categories = AlbumCategory::all();
+        $areas = Area::all();
         $albums = Album::loadOrSearch(Input::all());
         $this->layout->content = View::make('admin.album.index')
-                ->with(compact('albums', 'categories'));
+                ->with(compact('albums', 'areas'));
     }
 
     public function create() {
-        $categories = AlbumCategory::all();
+        $areas = Area::all();
         $this->layout->content = View::make('admin.album.create')
-                ->with(compact('categories'));
+                ->with(compact('areas'));
     }
 
     public function store() {
@@ -40,10 +40,10 @@ class AlbumController extends AdminBaseController {
     }
 
     public function show($id) {
-        $categories = AlbumCategory::all();
+        $areas = Area::all();
         $album = Album::findOrFail($id);
         $this->layout->content = View::make('admin.album.show')
-                ->with(compact('album', 'categories'));
+                ->with(compact('album', 'areas'));
     }
 
     public function uploadPhoto($id) {
@@ -54,21 +54,6 @@ class AlbumController extends AdminBaseController {
                     'success' => true,
                     'photo_form' => View::make('admin.album._photo_form')->with('photo', $photo)->render()
         ]);
-    }
-
-    public function addCategory() {
-        $validator = Validator::make(Input::all(), AlbumCategory::$rules);
-        $response = [];
-        $response['success'] = $validator->passes();
-        if ($response['success']) {
-            $cat = new AlbumCategory;
-            $cat->name = Input::get('name');
-            $cat->save();
-            $response['message'] = 'Successfully created category <b>' . $cat->name . '</b>';
-        } else {
-            $response['message'] = 'Error: ' . $validator->errors()->first();
-        }
-        return Response::json($response);
     }
 
     public function edit($id) {

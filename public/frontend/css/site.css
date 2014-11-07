@@ -839,3 +839,6 @@ li.dropdown .dropdown-menu li a {
 .footer-social-logo {
     padding: 5px 0px
 }
+.pagination {
+    margin: 5px 0;
+}

@@ -13,7 +13,7 @@
     </div>
     {{ Former::open(route('admin.album.store'))->class('form-horizontal') }}
     <div class="box-body">
-        {{ View::make('admin.album._form')->with('categories', $categories) }}
+        {{ View::make('admin.album._form')->with('areas', $areas) }}
     </div>
     <div class="box-footer text-center">
         <a class="btn btn-default" href="{{route('admin.album.index')}}">Back to list</a>

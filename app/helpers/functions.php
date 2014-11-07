@@ -115,13 +115,22 @@ function gravatar_url($email, $size = 100) {
             "&s=" . $size;
 }
 
-function categories_for_select($categories) {
+function areas_for_select($areas) {
     $options = [];
-    $options[''] = 'Uncategorized';
-    foreach ($categories as $cat) {
-        $options[$cat->id . ''] = $cat->name;
+    foreach ($areas as $area) {
+        $options[$area->id . ''] = $area->name;
     }
     return $options;
+}
+
+function show_album_url($album) {
+    return route('travel_album.show', [slug_string($album->area->name), $album->slug . '-' . $album->id]);
+}
+
+function string_to_int($str) {
+    $val = 0;
+    $val = preg_replace("/[^0-9]/", "", $str);
+    return $val;
 }
 
 ?>
