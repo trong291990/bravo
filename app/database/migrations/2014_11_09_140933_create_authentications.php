@@ -11,6 +11,7 @@ class CreateAuthentications extends Migration {
       $t->integer('customer_id');
       $t->string('uid');
       $t->string('provider');
+      $t->string('avatar_url', 255)->nullable();
 			$t->timestamps();
     });    
 	}
