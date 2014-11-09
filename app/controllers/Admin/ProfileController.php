@@ -17,13 +17,13 @@ class ProfileController extends AdminBaseController {
      * GET /admin/profile
      */
     public function show() {
-    	$adminAccount = Auth::user();
+    	$adminAccount = Auth::admin()->get();
         $this->layout->content = View::make('admin.profile')
         	->with(compact('adminAccount'));
     }
 
     public function update() {
-    	$adminAccount = Auth::user();
+    	$adminAccount = Auth::admin()->get();
     	$inputs = Input::all();
     	$validator = Validator::make(Input::all(), $adminAccount->updateProfileRules());
     	if($validator->passes()) {
@@ -38,7 +38,7 @@ class ProfileController extends AdminBaseController {
     public function updatePassword() {
   		$validator = Validator::make(Input::all(), AdminUser::$updatePasswordRules);
     	if($validator->passes()) {
-    		$adminAccount = Auth::user();
+    		$adminAccount = Auth::admin()->get();
     		$adminAccount->password = Input::get('password');
     		$adminAccount->save();
     		Session::flash('success', 'Your password has been updated');

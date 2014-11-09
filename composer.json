@@ -18,7 +18,8 @@
             "intervention/image": "dev-master",
             "anouar/paypalpayment": "dev-master",
             "logicalgrape/paypal-ipn-laravel": "dev-master",
-            "artdarek/oauth-4-laravel": "dev-master"
+            "artdarek/oauth-4-laravel": "dev-master",
+            "ollieread/multiauth": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

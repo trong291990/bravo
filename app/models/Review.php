@@ -8,8 +8,8 @@ class Review extends Eloquent {
 
     public static function boot() {
         static::created(function($review) {
-            Customer::createFromSource(
-              Customer::FROM_REVIEW,
+            Contact::createFromSource(
+              Contact::FROM_REVIEW,
               [
                 'name' => $review->fullName(),
                 'email' => $review->email

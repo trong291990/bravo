@@ -15,7 +15,7 @@ class AuthController extends AdminBaseController {
         if (Request::isMethod('GET')) {
             return View::make('admin.login');
         } else {
-            $checkLogin = Auth::attempt(array(
+            $checkLogin = Auth::admin()->attempt(array(
                 'email' => Input::get('email'),
                 'password' => Input::get('password')
                 ), Input::has('remember_me')
@@ -32,7 +32,7 @@ class AuthController extends AdminBaseController {
     }
 
     public function logout() {
-        Auth::logout();
+        Auth::admin()->logout();
         return Redirect::route('admin.login');
     }
 

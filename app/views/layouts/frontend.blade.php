@@ -87,15 +87,21 @@
                 <div class="col-sm-6">
                     <ul class="nav nav-tabs pull-right" role="tablist">
                         <li class="dropdown">
-                            <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
+                            <?php if($loggedCustomer): ?>
+                                <a href="#"> {{ Auth::customer()->get()->name }} <span class="caret"></span> </a>
+                            <?php else : ?>
+                                <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
+                            <?php endif; ?>
+
                             <ul class="dropdown-menu" role="menu">
-                        
+                            <?php if(!$loggedCustomer): ?>
                             <li>
                                 <a href="#modal-login" data-toggle='modal'><i class="icon icon-menu-avatar mrm"></i>Log In</a>
                             </li>
                             <li>
                                 <a href="#modal-register" data-toggle='modal'><i class="icon icon-menu-pen mrm"></i>Register</a>   
                             </li>
+                            <?php endif; ?>
                             <li>
                                 <a href="#"><i class="icon icon-menu-people mrm"></i>Refer a Friend</a>
                             </li>
@@ -104,12 +110,24 @@
                                 <a href="#">
                                     <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span></a>
                             </li>
+                            
                             <li>
                                 <a href="#">
-                                    <i class="icon icon-menu-heart mrm"></i>Wishlist<span class="unitRight circle-number-s mlm" id="wishlistCount" style="display: none;">0</span></a>
+                                    <i class="icon icon-menu-heart mrm"></i>Wishlist<span class="unitRight circle-number-s mlm" id="wishlistCount" style="display: none;">0</span>
+                                </a>
                             </li>
-                        
-                        
+                            <?php if($loggedCustomer): ?>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-user"></i> Profile
+                                </a>
+                            </li>                                      
+                            <li>
+                                <a href="{{route('customer_logout', ['back_url' => Request::url()])}}">
+                                    <i class="fa fa-sign-out"></i> Log out
+                                </a>
+                            </li>                                
+                            <?php endif; ?>    
                     </ul>
                         </li>
                         <li>
@@ -576,15 +594,18 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Login</h4>
+                <h4 class="modal-title">Login</h4>
               </div>
               <div class="modal-body">
-                {{ Former::open(route('customer_login')) }}
+                {{ Former::open(route('customer_login'))->id('form-login') }}
+                    <div class="row">
+                        <div class="col-sm-12 form-messages"></div>
+                    </div>                
                     <div class="form-group">
                         <div class="col-sm-12">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                              <input type="text" class="form-control" placeholder="Email">
+                              <input type="text" name="email" class="form-control" placeholder="Email">
                             </div>   
                         </div>   
                     </div>
@@ -592,7 +613,7 @@
                         <div class="col-sm-12">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                              <input type="password" class="form-control" placeholder="Password">
+                              <input type="password" name="password" class="form-control" placeholder="Password">
                             </div>
                         </div>
                     </div>                    
@@ -601,7 +622,7 @@
                             <button type="Submit" class="btn btn-primary btn-block">Login</button>
                             <br>
                             <p class="text-center">
-                                Don't have a account? <a href="#">Register</a>
+                                Don't have a account? <a href="#modal-register" data-toggle='modal'>Register</a>
                                 |
                                 <a href="#">Forgot password?</a> 
                             </p>
@@ -610,13 +631,13 @@
                     <hr>
                     <div class="form-group">
                         <div class="col-sm-6 col-xs-6">
-                            <a href="#" class="btn btn-block btn-primary">
+                            <a href="{{route('facebook_auth', ['back_url' => Request::url()])}}" class="btn btn-block btn-primary">
                                 <i class="fa fa-facebook-square"></i> Facebook
                             </a>
                         </div>
 
                         <div class="col-sm-6 col-xs-6">
-                            <a href="#" class="btn btn-block btn-danger"><i class="fa fa-google-plus-square"></i> Google +</a>
+                            <a href="{{route('google_auth', ['back_url' => Request::url()])}}" class="btn btn-block btn-danger"><i class="fa fa-google-plus-square"></i> Google +</a>
                         </div>
                     </div>
                 {{ Former::close() }}
@@ -632,8 +653,11 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="myModalLabel">Register</h4>
               </div>
+              {{ Former::open(route('customer_register'))->id('form-register') }}
               <div class="modal-body">
-                {{ Former::open(route('customer_register')) }}
+                    <div class="row">
+                        <div class="col-sm-12 form-messages"></div>
+                    </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <div class="input-group">
@@ -654,7 +678,7 @@
                         <div class="col-sm-12">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                              <input type="password" class="form-control" placeholder="Password">
+                              <input type="password" name="password" class="form-control" placeholder="Password">
                             </div>
                         </div>
                     </div>                    
@@ -663,23 +687,24 @@
                             <button type="Submit" class="btn btn-primary btn-block">Register</button>
                             <br/>
                             <p class="text-center">
-                                Already have account? <a href="#">Login</a>
+                                Already have account? <a href="#modal-login" data-toggle='modal'>Login</a>
                             </p>
                         </div>
                     </div>
                     <hr>
                     <div class="form-group">
                         <div class="col-sm-6 col-xs-6">
-                            <a href="#" class="btn btn-block btn-primary">
+                            <a href="{{route('facebook_auth', ['back_url' => Request::url()])}}" class="btn btn-block btn-primary">
                                 <i class="fa fa-facebook-square"></i> Facebook
                             </a>
                         </div>
+
                         <div class="col-sm-6 col-xs-6">
-                            <a href="#" class="btn btn-block btn-danger"><i class="fa fa-google-plus-square"></i> Google +</a>
+                            <a href="{{route('google_auth', ['back_url' => Request::url()])}}" class="btn btn-block btn-danger"><i class="fa fa-google-plus-square"></i> Google +</a>
                         </div>
                     </div>
-                {{ Former::close() }}
               </div>
+              {{ Former::close() }}
             </div>
           </div>
         </div> 
@@ -698,6 +723,7 @@
         {{HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js')}} 
         {{ 
             Minify::javascript(array(
+               '/backend/js/helper.js',
                '/frontend/js/functions.js',
                '/frontend/js/layout.js'
             ))

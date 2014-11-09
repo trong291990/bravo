@@ -98,9 +98,9 @@ Route::filter('csrf', function() {
 });
 
 Route::filter('admin.auth', function() {
-    if (!Auth::check()) {
+    if (!Auth::admin()->check()) {
         Session::put('url.intended', URL::full());
-        Session::flash('error', 'You need signed in before continue');
+        Session::flash('error', 'Please sign in for continue');
         return Redirect::route('admin.login');
     }
 });

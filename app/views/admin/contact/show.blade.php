@@ -1,9 +1,9 @@
 @section('header_content')
-   <h1>Customer Info</h1>
+   <h1>Contact Info</h1>
 @stop
 
 @section('breadcrumbs')
-   @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('customers')))
+   @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('contacts')))
 @stop
 
 
@@ -11,8 +11,8 @@
 <div class="box box-primary">
   <div class="box-header">
   </div>
-  {{ Former::populate($customer) }}
-  {{ Former::open(route('admin.customer.update', $customer->id))->method('PUT') }}
+  {{ Former::populate($contact) }}
+  {{ Former::open(route('admin.contact.update', $contact->id))->method('PUT') }}
     <div class="box-body">
       <div class="row">
         <div class="col-md-6">
@@ -43,7 +43,7 @@
     </div>
 
     <div class="box-footer text-center">
-      <a href="{{route('admin.customer.index')}}" class="btn btn-sm btn-default">Back to list</a>
+      <a href="{{route('admin.contact.index')}}" class="btn btn-sm btn-default">Back to list</a>
       <button type="submit" class="btn btn-sm btn-primary">Update</button>  
     </div>    
   {{ Former::close() }}

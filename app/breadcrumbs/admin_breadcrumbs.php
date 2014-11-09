@@ -49,6 +49,10 @@ Breadcrumbs::register('static_pages', function($breadcrumbs) {
             $breadcrumbs->parent('dashboard');
             $breadcrumbs->push('Setting', route('admin.setting.static_pages'));
         });
+Breadcrumbs::register('contacts', function($breadcrumbs) {
+            $breadcrumbs->parent('dashboard');
+            $breadcrumbs->push('Contacts', route('admin.contact.index'));
+        });
 Breadcrumbs::register('customers', function($breadcrumbs) {
             $breadcrumbs->parent('dashboard');
             $breadcrumbs->push('Customers', route('admin.customer.index'));

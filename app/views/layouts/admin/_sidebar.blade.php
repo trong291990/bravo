@@ -32,13 +32,13 @@
         <li class="treeview active">
             <a href="#">
                 <i class="fa fa-user"></i>
-                <span>Customer data</span>
+                <span>Contacts</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('admin.customer.index') }}"><i class="fa fa-angle-double-right"></i> List customers</a></li>
+                <li><a href="{{ route('admin.contact.index') }}"><i class="fa fa-angle-double-right"></i> List contacts</a></li>
                 @if(false)
-                <li><a href="{{ route('admin.customer.create') }}"><i class="fa fa-angle-double-right"></i> New</a></li>
+                <li><a href="{{ route('admin.contact.create') }}"><i class="fa fa-angle-double-right"></i> New contact</a></li>
                 @endif
             </ul>
         </li>        

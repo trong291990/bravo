@@ -17,8 +17,8 @@ class Inquiry extends Eloquent {
     public static function boot() {
         parent::boot();
         static::created(function($inquiry) {
-           Customer::createFromSource(
-              Customer::FROM_INQUIRY,
+           Contact::createFromSource(
+              Contact::FROM_INQUIRY,
               [
                 'name' => $inquiry->fullName(),
                 'email' => $inquiry->email,

@@ -1,53 +1,92 @@
 <?php
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Customer extends Eloquent {
-  const FROM_REVIEW  = 'Review';
-  const FROM_BOOKING = 'Booking';
-  const FROM_INQUIRY = 'Inquiry';
-  const FROM_NEWSLETTER = 'Subscribe Enewsletter';
-  
-  const FROM_OTHER = 'Other';
+class Customer extends \Eloquent implements UserInterface, RemindableInterface  {
+    protected $fillable = ['name'];
 
-  public static $sources = [
-    self::FROM_REVIEW, self::FROM_BOOKING, self::FROM_INQUIRY, self::FROM_NEWSLETTER, self::FROM_OTHER
-  ];
+    protected $table = 'customers';
 
+    public static $registerRules = [
+      'name' => 'required',
+      'email' => 'required|email|unique:customers,email',
+      'password' => 'required|min:6'
+    ];
 
-  protected $table = 'customers';
-  protected $guarded = ['id', 'source'];
-
-  public static function boot() {
-    parent::boot();
-    static::saving(function($customer) {
-      if (!$customer->source) {
-          $customer->source = self::FROM_OTHER;
+    public static function findOrCreateByOmniath($provider, $data) {
+      $auth = Authentication::findByProviderAndUID($provider, $data['id']);
+      if($auth) {
+        return $auth->customer;
+      } else {
+        return self::createByOmniath($provider, $data);
       }
-      if (!$customer->dob) {
-        $customer->dob = null;
+    }
+
+    public static function createByOmniath($provider, $data) {
+      $customer = new Customer;
+      $auth = new Authentication;
+      $auth->provider = $provider;
+      $auth->uid = $data['id'];
+      $customer->email  = $data['email'];
+      switch ($provider) {
+        case Authentication::FACEBOOK_PROVIDER:
+          $customer->name   = $data['first_name'] . ' ' . $data['last_name'];
+          $customer->gender = $data['gender'];
+          break;
+        case Authentication::GOOGLE_PROVIDER:
+          $customer->name   = $data['name'];
+          $customer->avatar_url = $data['picture'];
+          break;
+        default:
+          return null;
+          break;
       }
-    });
-  }
-
-  public static function createFromSource($source, $data = []) {
-    $customer = new static($data);
-    if(trim($source)) {
-      $customer->source = $source;
+      $customer->password = Hash::make(str_random(10));
+      if($customer->save()) {
+        $auth->customer_id = $customer->id;
+        $auth->save();
+      }
+      return $customer;
     }
-    $customer->save();
-  }
 
-  public static function loadOrSearch($options = []) {
-    $query = self::select('*');
-    if(isset($options['source']) && trim($options['source'])) {
-      $query = $query->where('source','LIKE', '%' . $options['source'] . '%');
+    public static function register($data) {
+      $customer = new Customer;
+      $customer->name = $data['name'];
+      $customer->email = $data['email'];
+      $customer->password = Hash::make($data['password']);
+      $customer->save();
+      return $customer;
     }
-    return $query->orderBy('created_at', 'DESC')->paginate(15);   
-  }
 
-  public static function loadSources() {
+    public function authentications() {
+      return $this->hasMany('authentications', 'customer_id');
+    }
 
+    public function avatarUrl() {
 
-    return self::lists('source');
-  }
+    }
 
+    public function getAuthIdentifier() {
+        return $this->getKey();
+    }
+
+    public function getAuthPassword() {
+        return $this->password;
+    }
+
+    public function getRememberToken() {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value) {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName() {
+        return 'remember_token';
+    }
+
+    public function getReminderEmail() {
+        return $this->email;
+    }    
 }

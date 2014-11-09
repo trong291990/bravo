@@ -32,8 +32,8 @@ class Reservation extends Eloquent {
             }
         });
         static::created(function($reservation) {
-            Customer::createFromSource(
-              Customer::FROM_BOOKING,
+            Contact::createFromSource(
+              Contact::FROM_BOOKING,
               [
                 'name' => $reservation->customer_name,
                 'email' => $reservation->customer_email,
