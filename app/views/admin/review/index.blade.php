@@ -31,7 +31,7 @@
                 </tr>
                 <?php foreach ($reviews as $review): ?>
                     <tr>
-                        <td>{{$review->fullName()}}</td>
+                        <td>{{$review->fullName()}} <br> {{$review->nationality}}</td>
                         <td>{{$review->email}}</td>
                         <td>
                             <div style="margin-bottom: 15px">
