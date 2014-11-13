@@ -14,18 +14,11 @@
                         '/frontend/css/site.css',
                         '/plugins/bootstrap-select/bootstrap-select.min.css',
                         '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
-                        '/plugins/icheck/skins/all.css',
-                        '/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css'
+                        '/plugins/icheck/skins/all.css'
                     )
             ) 
         }}
         {{HTML::style( '/frontend/css/media.css')}}
-        {{ Minify::javascript(array(
-               '/shared/js/jquery-2.0.3.min.js',
-               '/shared/js/bootstrap.min.js',
-               '/frontend/js/layout.js',
-               '/frontend/js/functions.js'
-         )) }}
     </head>
     <body>
         <div id="intro_wrapper">
@@ -76,6 +69,11 @@
                 </div>
             </div>
         </div>
+        {{ Minify::javascript(array(
+               '/shared/js/jquery-2.0.3.min.js',
+               '/shared/js/bootstrap.min.js',
+               '/frontend/js/layout.js'
+         )) }}        
 </html>
 
 

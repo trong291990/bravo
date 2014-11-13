@@ -23,16 +23,6 @@
     //document.addEventListener('copy', addLink);
 $(document).ready(function() {
     $('select').selectpicker();
-//    $('input:not(checkbox)').iCheck({
-//        checkboxClass: 'icheckbox_square-orange',
-//        radioClass: 'iradio_minimal',
-//        increaseArea: '40%'
-//    });
-//    $('input:checkbox').screwDefaultButtons({
-//        image: 'url("plugins/screwdefaultbuttons/images/checkbox.jpg")',
-//        width: 40,
-//        height: 40
-//    });
     $('[data-toggle="modal"]').click(function(){
         $('.modal.in').modal('hide');
     });
@@ -146,11 +136,10 @@ $('.booking-tour').on('click',function(){
    $('#booking-modal').modal('show');
    $('#booking-tour-id').val($(this).data('id'));
 });
+
 $('.datepicker').datepicker({
     format: 'yyyy-mm-dd',
     autoclose: true
 });
+
 $('form').validate();
-$('.html5-editor').wysihtml5({
-    stylesheets: false
-});
