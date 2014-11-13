@@ -135,7 +135,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
                     </div>
                     <div class="form-group">
                         <label >Your review</label>
-                        <textarea class="form-control html5-editor" name="content">
+                        <textarea class="form-control ckeditor" name="content">
                         </textarea>
                     </div>      
                     <div class="form-group">
@@ -149,6 +149,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
 @stop
 @section('addon_js')
 {{ HTML::script('/plugins/raty/jquery.raty.js') }}
+{{ HTML::script('/plugins/ckeditor-bootstrap/ckeditor.js') }}
 @stop
 @section('inline_scripts')
 <script>
@@ -157,6 +158,11 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
         $(this).raty({starType: 'i', 'score': dataRaty, readOnly: true});
     });
     $('#client-raty').raty({starType: 'i', 'score': 4});
+
     $('#review-form').removeAttr('novalidate');
+
+    $('.ckeditor').each(function(e) {
+        CKEDITOR.replace(this);
+    });
 </script>
 @stop

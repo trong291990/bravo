@@ -13,7 +13,7 @@
                     <label for="tour_id" class='col-xs-3'>Tour</label>
                     <div class="col-xs-9 no-padding">
                         {{
-                        Former::select('tour_id')->addOption('-- Select one --', null)
+                        Former::select('tour_id')->addOption('-- Select Tour --', null)
                         ->fromQuery($tours,'name','id')
                         ->label(false)
                         ->class('select2-able submit-on-change')
