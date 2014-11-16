@@ -70,6 +70,10 @@ class Customer extends \Eloquent implements UserInterface, RemindableInterface {
         return $this->hasMany('Review', 'customer_id');
     }
 
+    /*
+     * Authenticate functions
+     */
+
     public function getAuthIdentifier() {
         return $this->getKey();
     }

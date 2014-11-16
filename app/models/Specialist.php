@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
+class Specialist extends Eloquent implements UserInterface, RemindableInterface {
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+    protected $table = 'specialists';
+    protected $fillable = ['first_name', 'last_name', 'email', 'nationality', 'bio', 'languages', 'specialties'];
 
-    protected $table = 'users';
-    protected $hidden = array('password');
+    /*
+     * Authenticate functions
+     */
 
     public function getAuthIdentifier() {
         return $this->getKey();
