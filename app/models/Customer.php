@@ -9,7 +9,7 @@ class Customer extends \Eloquent implements UserInterface, RemindableInterface {
     protected $table = 'customers';
     public static $registerRules = [
         'name' => 'required',
-        'email' => 'required|email|unique:customers,email|unique:admin_users,email',
+        'email' => 'required|email|unique:customers,email|unique:admin_users,email|unique:specialists,email',
         'password' => 'required|min:6'
     ];
 

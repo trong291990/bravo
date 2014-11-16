@@ -15,7 +15,7 @@ class AdminUser extends Eloquent implements UserInterface, RemindableInterface {
     );
     public static $rules = array(
         'name' => 'required',
-        'email' => 'required|email|unique:admin_users,email|unique:customers,email',
+        'email' => 'required|email|unique:admin_users,email|unique:customers,email|unique:specialists,email',
         'password' => 'required|min:6',
         'password_confirmation' => 'required|same:password',
     );
