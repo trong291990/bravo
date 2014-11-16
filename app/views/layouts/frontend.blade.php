@@ -716,7 +716,8 @@
                '/plugins/icheck/icheck.min.js',
                '/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js',
                '/plugins/bootstrap-datepicker/bootstrap-datepicker.js',
-               '/plugins/jquery.validate.min.js'
+               '/plugins/jquery.validate.min.js',
+               '/plugins/bootbox.min.js'
          )) }}
         {{ 
             Minify::javascript(array(

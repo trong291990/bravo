@@ -14,15 +14,7 @@ Route::post('/package-compare', array('as' => 'package_compare', 'uses' => 'Tour
 Route::post('/booking', array('as' => 'booking', 'uses' => 'TourController@booking'));
 Route::get('/customize-your-trip', array('as' => 'inquiry.create', 'uses' => 'TourController@createInquiry'));
 Route::post('/inquiry', array('as' => 'inquiry.store', 'uses' => 'TourController@storeInquiry'));
-Route::post('/review/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
-
 Route::post('/subscribe', ['as' => 'subscribe_newsletter', 'uses' => 'HomeController@subscribeNewsletter']);
-foreach (StaticPage::$VALID_NAMES as $page_name) {
-    Route::get('/' . $page_name, [
-        'as' => str_replace('-', '_', $page_name),
-        'uses' => 'HomeController@staticPage']
-    );
-}
 
 Route::get('/paymento/confirmpayment', array('uses' => 'PaypalPaymentController@getConfirmpayment'));
 Route::resource('payment', 'PaypalPaymentController');
@@ -34,3 +26,14 @@ Route::get('/logout', ['as' => 'customer_logout', 'uses' => 'AuthController@cust
 Route::post('/register', ['as' => 'customer_register', 'uses' => 'AuthController@customerRegister']);
 Route::get('/facebook-auth', ['as' => 'facebook_auth', 'uses' => 'AuthController@facebook']);
 Route::get('/google-auth', ['as' => 'google_auth', 'uses' => 'AuthController@google']);
+
+Route::group(array('before' => 'customer.auth'), function() {
+    Route::post('/review/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
+});
+
+foreach (StaticPage::$VALID_NAMES as $page_name) {
+    Route::get('/' . $page_name, [
+        'as' => str_replace('-', '_', $page_name),
+        'uses' => 'HomeController@staticPage']
+    );
+}

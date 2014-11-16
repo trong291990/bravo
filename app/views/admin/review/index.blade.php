@@ -22,8 +22,7 @@
     <div class="box-body">
         <table class="table table-bordered table-hover">
             <tbody><tr>
-                    <th style="width: 15%">Full name</th>
-                    <th>Email</th>
+                    <th style="width: 15%">Customer</th>
                     <th style="min-width: 50%">Review Detail</th>
                     <th>Status</th>
                     <th>Created At</th>
@@ -31,8 +30,9 @@
                 </tr>
                 <?php foreach ($reviews as $review): ?>
                     <tr>
-                        <td>{{$review->fullName()}} <br> {{$review->nationality}}</td>
-                        <td>{{$review->email}}</td>
+                        <td>
+                            <a href="#">{{$review->customer->name}}</a>
+                        </td>
                         <td>
                             <div style="margin-bottom: 15px">
                                 Departure date :{{$review->departure_date}}

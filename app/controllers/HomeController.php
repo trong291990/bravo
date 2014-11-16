@@ -11,7 +11,7 @@ class HomeController extends FrontendBaseController {
 
     public function review() {
         $this->layout->content = View::make('frontend.pages.review')
-            ->with('reviews', Review::where('is_approved', 1)
+            ->with('reviews', Review::with('customer')->where('is_approved', 1)
             ->paginate(10));
     }
 

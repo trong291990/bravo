@@ -104,3 +104,10 @@ Route::filter('admin.auth', function() {
         return Redirect::route('admin.login');
     }
 });
+
+Route::filter('customer.auth', function() {
+    if (!Auth::customer()->check()) {
+        Session::put('url.intended', URL::full());
+        return Redirect::route('root');
+    }
+});
