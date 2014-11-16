@@ -6,7 +6,7 @@ Route::get('/tours/{slug}', array('as' => 'area_tours', 'uses' => 'TourControlle
 Route::get('/tours/{id}/place_coordinates', array('as' => 'tour.load_place_coordinates', 'uses' => 'TourController@placeCoordinates'));
 Route::get('/tours/{area_slug}/{tour_slug}', array('as' => 'tour.show', 'uses' => 'TourController@show'));
 
-Route::get('/travel-reviews', array('as' => 'review', 'uses' => 'HomeController@review'));
+Route::get('/travel-reviews', array('as' => 'review', 'uses' => 'ReviewController@index'));
 Route::get('/geo', array('as' => 'geo', 'uses' => 'ToolController@geo'));
 Route::get('/tour-slug', array('as' => 'tour.slug', 'uses' => 'ToolController@tourSlug'));
 Route::get('/place-slug', array('as' => 'place.slug', 'uses' => 'ToolController@placeSlug'));
@@ -28,7 +28,7 @@ Route::get('/facebook-auth', ['as' => 'facebook_auth', 'uses' => 'AuthController
 Route::get('/google-auth', ['as' => 'google_auth', 'uses' => 'AuthController@google']);
 
 Route::group(array('before' => 'customer.auth'), function() {
-    Route::post('/review/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
+    Route::post('/travel-reviews/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
 });
 
 foreach (StaticPage::$VALID_NAMES as $page_name) {

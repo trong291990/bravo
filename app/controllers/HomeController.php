@@ -9,12 +9,6 @@ class HomeController extends FrontendBaseController {
         return View::make('frontend.landing');
     }
 
-    public function review() {
-        $this->layout->content = View::make('frontend.pages.review')
-            ->with('reviews', Review::with('customer')->where('is_approved', 1)
-            ->paginate(10));
-    }
-
     public function staticPage() {
         $page_name = Request::path();
         $page = StaticPage::findOrCreateByName($page_name);
