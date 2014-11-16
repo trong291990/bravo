@@ -54,7 +54,17 @@
                 <li><a href="{{ route('admin.customer.index') }}"><i class="fa fa-angle-double-right"></i> List customers</a></li>
             </ul>
         </li>   
-
+        <li class="treeview active">
+            <a href="#">
+                <i class="fa fa-group"></i>
+                <span>Specialists</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('admin.specialist.index') }}"><i class="fa fa-angle-double-right"></i> List specialists</a></li>
+                <li><a href="{{ route('admin.specialist.create') }}"><i class="fa fa-angle-double-right"></i> Add New</a></li>
+            </ul>
+        </li>   
         <li class="treeview active">
             <a href="#">
                 <i class="fa fa-cogs"></i>

@@ -61,3 +61,7 @@ Breadcrumbs::register('albums', function($breadcrumbs) {
             $breadcrumbs->parent('dashboard');
             $breadcrumbs->push('Travel Albums', route('admin.album.index'));
         });
+Breadcrumbs::register('specialists', function($breadcrumbs) {
+            $breadcrumbs->parent('dashboard');
+            $breadcrumbs->push('Specialist', route('admin.specialist.index'));
+        });
