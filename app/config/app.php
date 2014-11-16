@@ -181,6 +181,7 @@ return array(
         'Shareable' => 'RyanNielson\Shareable\Facades\Shareable',
         'Image' => 'Intervention\Image\Facades\Image',
         'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
+        'Zofe\Rapyd\RapydServiceProvider',
     ),
 );
 // touch

@@ -17,7 +17,9 @@
             "fitztrev/laravel-html-minify": "1.*",
             "intervention/image": "dev-master",
             "anouar/paypalpayment": "dev-master",
-            "logicalgrape/paypal-ipn-laravel": "dev-master"
+            "logicalgrape/paypal-ipn-laravel": "dev-master",
+            "stwt/mothership": "*",
+            "anlutro/l4-settings" : "0.2.*"
 	},
 	"autoload": {
 		"classmap": [

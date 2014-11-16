@@ -19,3 +19,14 @@
     <?php echo Former::close() ?>
 </div>
 @stop
+@section('inline_scripts')
+<script>
+    $('#include_payment').on('click',function(){
+        if($(this).prop('checked')){
+            $('#toggle-payment').slideDown();
+        }else{
+            $('#toggle-payment').slideUp();
+        }
+    })
+</script>
+@stop

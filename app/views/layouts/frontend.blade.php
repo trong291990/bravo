@@ -490,7 +490,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Send now</button>   
+                        <button type="submit" class="btn btn-primary">Send now</button>  
+                        <button type="submit" name='payment' class="btn btn-primary">
+                            <img style="width: 18px" src="/frontend/images/paypal.png" alt='Paypal' />
+                            Pay with Paypal</button> 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                     <?php echo Former::close(); ?>

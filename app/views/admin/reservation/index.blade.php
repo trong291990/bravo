@@ -55,6 +55,7 @@
                     <th>Tour</th>
                     <th>Created At</th>
                     <th>Confirmed</th>
+                    <th>Payment</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -73,6 +74,15 @@
                             <?php else : ?>
                                 <span class="text-muted"><i class="fa fa-times"></i></span>
                             <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if($re->include_payment): ?>
+                                <?php if($re->payment_status === 'Completed'): ?>
+                                <i style="color: #006505" class='fa fa-money'> </i> Completed
+                                <?php else:?>
+                                <i style="color: #ccc" class='fa fa-money'> </i> Incomplete
+                                <?php endif;?>
+                            <?php endif;?>
                         </td>
                         <td>
                             <a class='btn btn-xs btn-primary' href="{{Route('admin.reservation.edit',$re->id)}}">Edit</a>

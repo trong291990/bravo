@@ -26,3 +26,5 @@ foreach (StaticPage::$VALID_NAMES as $page_name) {
 
 Route::get('/paymento/confirmpayment', array('uses' => 'PaypalPaymentController@getConfirmpayment'));
 Route::resource('payment', 'PaypalPaymentController');
+
+Route::get('/booking/{tour_slug}/{id}',array('as'=>'booking.form','uses'=>'BookingController@form'));
