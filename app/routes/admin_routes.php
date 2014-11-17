@@ -36,7 +36,9 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
         Route::resource('reservation', 'ReservationController');
         Route::resource('contact', 'ContactController');
         Route::resource('album', 'AlbumController');
-
+        Route::resource('customer', 'CustomerController');
+        Route::resource('specialist', 'SpecialistController');
+        
         Route::post('album/{album_id}/upload-photo', array('as' => 'admin.album.upload_photo', 'uses' => 'AlbumController@uploadPhoto'));
         Route::post('album/delete-photo/{photo_id}', array('as' => 'admin.album.delete_photo', 'uses' => 'AlbumController@deletePhoto'));
         

@@ -31,6 +31,17 @@
         </li>    
         <li class="treeview active">
             <a href="#">
+                <i class="fa fa-picture-o"></i>
+                <span>Travel Albums</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('admin.album.index') }}"><i class="fa fa-angle-double-right"></i> List albums</a></li>
+                <li><a href="{{ route('admin.album.create') }}"><i class="fa fa-angle-double-right"></i> New Album</a></li>
+            </ul>
+        </li>              
+        <li class="treeview active">
+            <a href="#">
                 <i class="fa fa-user"></i>
                 <span>Contacts</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -40,19 +51,20 @@
                 @if(false)
                 <li><a href="{{ route('admin.contact.create') }}"><i class="fa fa-angle-double-right"></i> New contact</a></li>
                 @endif
+                <li><a href="{{ route('admin.customer.index') }}"><i class="fa fa-angle-double-right"></i> List customers</a></li>
             </ul>
-        </li>        
+        </li>   
         <li class="treeview active">
             <a href="#">
-                <i class="fa fa-picture-o"></i>
-                <span>Travel Albums</span>
+                <i class="fa fa-group"></i>
+                <span>Specialists</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('admin.album.index') }}"><i class="fa fa-angle-double-right"></i> List albums</a></li>
-                <li><a href="{{ route('admin.album.create') }}"><i class="fa fa-angle-double-right"></i> New Album</a></li>
+                <li><a href="{{ route('admin.specialist.index') }}"><i class="fa fa-angle-double-right"></i> List specialists</a></li>
+                <li><a href="{{ route('admin.specialist.create') }}"><i class="fa fa-angle-double-right"></i> Add New</a></li>
             </ul>
-        </li>            
+        </li>   
         <li class="treeview active">
             <a href="#">
                 <i class="fa fa-cogs"></i>
@@ -60,7 +72,6 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('admin.profile') }}"><i class="fa fa-angle-double-right"></i> Profile</a></li>
                 <li><a href="{{ route('admin.setting.static_pages') }}"><i class="fa fa-angle-double-right"></i> Static pages</a></li>
             </ul>
         </li>         
