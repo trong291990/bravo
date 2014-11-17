@@ -39,7 +39,7 @@
                         </div>
                         <div class="country-nav" id="intro-country-nav">
                             <ul class="list-unstyled list-inline">
-                                <li><a href="{{Request::root()}}/tours/indochina-tours">Indochina</a></li>
+                                <li style="display: none"><a href="{{Request::root()}}/tours/indochina-tours">Indochina</a></li>
                                 <li><a href="{{Request::root()}}/tours/vietnam-tours">Vietnam</a></li>
                                 <li><a href="{{Request::root()}}/tours/cambodia-tours">Cambodia</a></li>
                                 <li><a href="{{Request::root()}}/tours/laos-tours">Lao</a></li>
