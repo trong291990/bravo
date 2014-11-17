@@ -186,6 +186,7 @@
                             <li><a href="{{Request::root()}}/tours/vietnam-tours">Vietnam</a></li>
                             <li><a href="{{Request::root()}}/tours/cambodia-tours">Cambodia</a></li>
                             <li><a href="{{Request::root()}}/tours/laos-tours">Lao</a></li>
+                            <li><a href="{{Request::root()}}/tours/thai-tours">Thailand</a></li>
                         </ul>
                     </div>
                 </div>
@@ -739,6 +740,9 @@
         <script>
             $('#thanks-modal-content').html( {{Session::get('thanks')}});
             $('#thanks-modal').modal('show');
+            function changeCurrency(type){
+                
+            }
         </script>
         @endif
         @yield('addon_js')

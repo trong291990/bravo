@@ -199,10 +199,13 @@ a:focus {
     text-align: center;
     margin-right: 15px
 }
+#country-main-nav-wrapper li {
+    padding:9px 0px;
+}
 #country-main-nav-wrapper li a {
     text-align: center;
     font-family: "Conv_Augushand",sans-serif,tahoma;
-    font-size: 2.8em;
+    font-size: 2.4em;
     color: #fff;
     padding: 8px 20px;
 }
