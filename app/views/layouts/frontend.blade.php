@@ -186,7 +186,7 @@
                             <li><a href="{{Request::root()}}/tours/vietnam-tours">Vietnam</a></li>
                             <li><a href="{{Request::root()}}/tours/cambodia-tours">Cambodia</a></li>
                             <li><a href="{{Request::root()}}/tours/laos-tours">Lao</a></li>
-                            <li><a href="{{Request::root()}}/tours/thai-tours">Thailand</a></li>
+                            <li><a href="{{Request::root()}}/tours/thailand-tours">Thailand</a></li>
                         </ul>
                     </div>
                 </div>
