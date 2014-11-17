@@ -1,8 +1,3 @@
-//CKEDITOR
-//if (typeof (CKEDITOR) !== 'undefined') {
-//	CKEDITOR.replace('ck-editor');
-//}
-//SELECT2
 $('.select2').select2();
 //DELETE FORM
 $('a[data-method="delete"]').on('click', function() {

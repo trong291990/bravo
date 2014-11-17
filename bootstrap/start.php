@@ -25,7 +25,7 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(function() {
-    return $_SERVER['SERVER_NAME'] == 'bravoindochinatour.com' ? 'production' : 'local';
+    return (isset($_SERVER['SERVER_NAME']) && ($_SERVER['SERVER_NAME'] == 'bravoindochinatour.com')) ? 'production' : 'local';
   }
 );
 

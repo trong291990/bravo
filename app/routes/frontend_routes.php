@@ -27,4 +27,14 @@ foreach (StaticPage::$VALID_NAMES as $page_name) {
 Route::get('/paymento/confirmpayment', array('uses' => 'PaypalPaymentController@getConfirmpayment'));
 Route::resource('payment', 'PaypalPaymentController');
 
+
 Route::get('/booking/{tour_slug}/{id}',array('as'=>'booking.form','uses'=>'BookingController@form'));
+
+Route::get('/travel-albums', array('as' => 'travel_album' ,'uses' => 'AlbumController@index'));
+Route::get('/travel-albums/{area_slug}', array('as' => 'album.area' ,'uses' => 'AlbumController@area'));
+Route::get('/travel-albums/{area_slug}/{album_id}', array('as' => 'travel_album.show' ,'uses' => 'AlbumController@show'));
+Route::post('/login', ['as' => 'customer_login', 'uses' => 'AuthController@customerLogin']);
+Route::get('/logout', ['as' => 'customer_logout', 'uses' => 'AuthController@customerLogout']);
+Route::post('/register', ['as' => 'customer_register', 'uses' => 'AuthController@customerRegister']);
+Route::get('/facebook-auth', ['as' => 'facebook_auth', 'uses' => 'AuthController@facebook']);
+Route::get('/google-auth', ['as' => 'google_auth', 'uses' => 'AuthController@google']);

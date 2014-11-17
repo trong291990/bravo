@@ -13,7 +13,7 @@
         <?php echo Former::text('start_date')->addClass('datepicker')->data_date_format('yyyy-mm-dd') ?>
         <?php echo Former::select('status')->options(Reservation::statusesForSelect()) ?>
         <?php echo Former::text('traveling')->placeholder('How many traveling ?') ?>
-        <?php echo Former::textarea('message')?>
+        <?php echo Former::textarea('message')->rows(5)?>
     </fieldset>
 </div>
 <div class="col-md-12">

@@ -15,7 +15,7 @@ Helper = {
     },
     create_message_panel: function(type, message) {
         var div = $('<div data-alert="alert" class="alert alert-dismissable fade in">' +
-          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>');
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>');
         $(div).addClass("alert-" + type);
 
         // Fix for compatibility with frontend css

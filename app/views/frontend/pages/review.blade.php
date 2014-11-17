@@ -59,9 +59,14 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
             <div class="col-sm-3">
                 <img style="width: 120px;margin: auto" src="{{gravatar_url($review->email)}}" class="img-responsive img-circle" />
                 <div class="client-review-data-meta">
-                    <h4 class="center">{{$review->first_name}} {{$review->last_name}}</h4>
+                    <h4 class="center">
+                    {{$review->first_name}} {{$review->last_name}} 
+                    @if($review->nationality)
+                        <span class="text-muted">({{$review->nationality}})</span>
+                    @endif
+                    </h4>
                     @if($review->departure_date) 
-                    <h4>Travel with us from <?php echo date('Y', strtotime($review->departure_date)) ?></h4>
+                    <h4>Travel with us from <?php echo date('M Y', strtotime($review->departure_date)) ?></h4>
                     @endif
                 </div>
             </div>
@@ -109,10 +114,22 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input name='email' type="email" required="required" class="form-control"  />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input name='email' type="email" required="required" class="form-control"  />
+                            </div>                        
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Nationality</label>
+                                <input name='nationality' type="text" class="form-control" />
+                            </div>                            
+                        </div>                        
                     </div>
+
+
                     <div class="row">
                         <div class="col-sm-12">
                             <span style="font-size: 1.3em">YOUR RATE ON OUR SERVICE</span> <span id="client-raty"></span>
@@ -135,7 +152,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
                     </div>
                     <div class="form-group">
                         <label >Your review</label>
-                        <textarea class="form-control html5-editor" name="content">
+                        <textarea class="form-control ckeditor" name="content">
                         </textarea>
                     </div>      
                     <div class="form-group">
@@ -149,6 +166,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
 @stop
 @section('addon_js')
 {{ HTML::script('/plugins/raty/jquery.raty.js') }}
+{{ HTML::script('/plugins/ckeditor-bootstrap/ckeditor.js') }}
 @stop
 @section('inline_scripts')
 <script>
@@ -157,6 +175,11 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
         $(this).raty({starType: 'i', 'score': dataRaty, readOnly: true});
     });
     $('#client-raty').raty({starType: 'i', 'score': 4});
+
     $('#review-form').removeAttr('novalidate');
+
+    $('.ckeditor').each(function(e) {
+        CKEDITOR.replace(this);
+    });
 </script>
 @stop

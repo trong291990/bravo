@@ -3,16 +3,19 @@
 class Review extends Eloquent {
 
     protected $table = 'reviews';
-    protected $fillable = ['first_name', 'last_name', 'email', 'departure_date', 'destination', 'content', 'score'];	
+    protected $fillable = [
+        'first_name', 'last_name', 'email', 'departure_date', 'destination', 'content', 'score', 'nationality'
+    ];	
     
 
     public static function boot() {
         static::created(function($review) {
-            Customer::createFromSource(
-              Customer::FROM_REVIEW,
+            Contact::createFromSource(
+              Contact::FROM_REVIEW,
               [
                 'name' => $review->fullName(),
-                'email' => $review->email
+                'email' => $review->email,
+                'nationality' => $review->nationality
               ]
            );   
         });

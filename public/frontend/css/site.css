@@ -848,3 +848,21 @@ li.dropdown .dropdown-menu li a {
 .footer-social-logo {
     padding: 5px 0px
 }
+.pagination {
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    #modal-login .modal-dialog, #modal-register .modal-dialog  {
+        width: 420px;
+    }
+}
+
+#modal-login hr, #modal-register hr {
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+#modal-login .btn, #modal-login .form-control, #modal-login .input-group-addon, 
+#modal-register .btn, #modal-register .form-control, #modal-register .input-group-addon {
+    border-radius: 1px;
+}

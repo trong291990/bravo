@@ -1,9 +1,9 @@
 @section('header_content')
-   <h1>List Customers</h1>
+   <h1>List Contacts</h1>
 @stop
 
 @section('breadcrumbs')
-   @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('customers')))
+   @include('admin/partials/breadcrumbs', array('breadcrumbs' => Breadcrumbs::generate('contacts')))
 @stop
 
 
@@ -16,7 +16,7 @@
                         <label class="col-xs-4" for="status">Status</label>
                         <div class="col-xs-8 no-padding">
                            <?php echo Former::select('source')
-                           ->options(customer_sources_for_select())->label(false)->class('form-control submit-on-change') ?>
+                           ->options(contact_sources_for_select())->label(false)->class('form-control submit-on-change') ?>
                         </div>
                     </div>
         </form>
@@ -34,19 +34,19 @@
                     <th>Created At</th>
                     <th>Action</th>
                 </tr>
-                <?php foreach ($customers as $customer): ?>
+                <?php foreach ($contacts as $contact): ?>
                     <tr>
-                        <td>{{ $customer->name }}</td>
-                        <td>{{ $customer->email }}</td>
-                        <td>{{ $customer->nationality }}</td>
-                        <td>{{ $customer->phone }}</td>
-                        <td>{{ $customer->dob }}</td>
-                        <td>{{ ucfirst($customer->source) }}</td>
-                        <td>{{$customer->created_at->format('M d, Y \a\t H:i')}}</td>
+                        <td>{{ $contact->name }}</td>
+                        <td>{{ $contact->email }}</td>
+                        <td>{{ $contact->nationality }}</td>
+                        <td>{{ $contact->phone }}</td>
+                        <td>{{ $contact->dob }}</td>
+                        <td>{{ ucfirst($contact->source) }}</td>
+                        <td>{{$contact->created_at->format('M d, Y \a\t H:i')}}</td>
                         <td>
-                          <a class="btn btn-primary btn-xs" href="{{ route('admin.customer.show', $customer->id) }}">Edit</a>
+                          <a class="btn btn-primary btn-xs" href="{{ route('admin.contact.show', $contact->id) }}">Edit</a>
                           <a href="#" class='btn btn-xs btn-danger btn-action-with-confirm' data-method="DELETE" 
-                                data-url="{{route('admin.customer.destroy', $customer->id)}}" data-message="Are you sure want to delete this customer?">
+                                data-url="{{route('admin.contact.destroy', $contact->id)}}" data-message="Are you sure want to delete this contact?">
                                 <i class="fa fa-times"></i> Delete
                             </a>
                         </td>
@@ -59,10 +59,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-left">
-                    <?php echo View::make('partials._paging_info')->with('items', $customers)->render() ?>
+                    <?php echo View::make('partials._paging_info')->with('items', $contacts)->render() ?>
                 </div>
                 <div class="pull-right">
-                    {{$customers->appends(Input::except('page'))->links()}}
+                    {{$contacts->appends(Input::except('page'))->links()}}
                 </div>
             </div>
         </div>

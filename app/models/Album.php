@@ -2,7 +2,7 @@
 
 class Album extends \Eloquent {
 
-    protected $fillable = ['name', 'category_id', 'description'];
+    protected $fillable = ['name', 'area_id', 'description'];
     protected $table = 'albums';
 
     const ALBUMS_PATH = 'uploads/albums'; // albums/:id/origin & albums/:id/thumb
@@ -20,8 +20,8 @@ class Album extends \Eloquent {
                     if (!$album->slug) {
                         $album->slug = slug_string($album->name);
                     }
-                    if (!$album->category_id) {
-                        $album->category_id = NULL;
+                    if (!$album->area_id) {
+                        $album->area_id = NULL;
                     }
                 });
 
@@ -36,17 +36,17 @@ class Album extends \Eloquent {
                 });
     }
 
-    public static function loadOrSearch($options = []) {
-        $query = self::select('*')->with('category', 'photos');
+    public static function recent($count = 8) {
+        return self::with('area')->orderBy('created_at', 'DESC')->take($count)->get();
+    }
 
-        if (isset($options['category_id'])) {
-            $category_id = trim($options['category_id']);
-            if ($category_id != 'all') {
-                if ($category_id == '') {
-                    $query = $query->where('category_id', NULL);
-                } else {
-                    $query = $query->where('category_id', $category_id);
-                }
+    public static function loadOrSearch($options = []) {
+        $query = self::select('*')->with('area', 'photos');
+
+        if (isset($options['area_id'])) {
+            $area_id = trim($options['area_id']);
+            if ($area_id != '') {
+                $query = $query->where('area_id', $area_id);
             }
         }
         if (isset($options['keyword']) && trim($options['keyword'])) {
@@ -58,8 +58,8 @@ class Album extends \Eloquent {
         return $query->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
 
-    public function category() {
-        return $this->belongsTo('AlbumCategory', 'category_id');
+    public function area() {
+        return $this->belongsTo('Area', 'area_id');
     }
 
     public function photos() {
@@ -79,7 +79,7 @@ class Album extends \Eloquent {
         if ($absolute) {
             $prefix = public_path() . '/';
         }
-        return $prefix . self::ALBUMS_PATH . '/' . $this->id . '/' . self::ORIGIN_DIR . '/';
+        return $prefix . self::ALBUMS_PATH . '/' . self::ORIGIN_DIR . '/' . $this->id . '/';
     }
 
     public function thumbPhotoPath($absolute = true) {
@@ -87,7 +87,7 @@ class Album extends \Eloquent {
         if ($absolute) {
             $prefix = public_path() . '/';
         }
-        return $prefix . self::ALBUMS_PATH . '/' . $this->id . '/' . self::THUMB_DIR . '/';
+        return $prefix . self::ALBUMS_PATH . '/' . self::THUMB_DIR . '/' . $this->id . '/';
     }
 
     public function uploadPhoto($uploadedFile) {
@@ -109,6 +109,11 @@ class Album extends \Eloquent {
         $photo->thumb_path = $this->thumbPhotoPath(false) . $thumbFileName;
         $photo->save();
         return $photo;
+    }
+
+    public function increaseViews() {
+        $this->views += 1;
+        $this->save();
     }
 
 }
