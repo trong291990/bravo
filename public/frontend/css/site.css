@@ -869,3 +869,6 @@ li.dropdown .dropdown-menu li a {
 #modal-register .btn, #modal-register .form-control, #modal-register .input-group-addon {
     border-radius: 1px;
 }
+#header.thailand-tours {
+  background: url("/frontend/images/header/thailand.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
+}
