@@ -13,19 +13,23 @@
 </div>
 <div class="box box-primary">
     <div class="box-header mt-10">
-        <div class="col-md-3">
+        <div class="col-md-1">
             <a href="{{route('admin.album.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Album</a>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-11">
             {{Former::open()->method('GET')->class('form-filter')}}
+            {{Former::framework('Nude')}}
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-3 col-sm-3 col-xs-6">
                     {{Former::select('area_id')->label(false)->addOption('All countries', '')->options(areas_for_select($areas))->class('form-control submit-on-change')}}
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    {{Former::select('type')->label(false)->addOption('All types', '')->options(album_types_for_select())->class('form-control submit-on-change')}}
+                </div>                
+                <div class="col-md-3 col-sm-3 col-xs-6">
                     {{Former::text('keyword')->label(false)->placeholder('Keyword ...')}}
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-3 col-xs-6">
                     <button class="btn btn-primary"><i class="fa fa-search"></i></button>
                     <a href='{{route("admin.album.index")}}' class="btn btn-sm btn-default"><i class="fa fa-times"></i></a>
                 </div>

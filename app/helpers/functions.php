@@ -133,4 +133,12 @@ function string_to_int($str) {
     return $val;
 }
 
+function album_types_for_select() {
+    $options = [];
+    foreach (Album::availableTypes() as $type) {
+        $options[$type] = ucfirst($type);
+    }
+    return $options;
+}
+
 ?>
