@@ -26,10 +26,10 @@
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     {{Former::select('type')->label(false)->addOption('All types', '')->options(album_types_for_select())->class('form-control submit-on-change')}}
                 </div>                
-                <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="col-md-4 col-sm-4 col-xs-6">
                     {{Former::text('keyword')->label(false)->placeholder('Keyword ...')}}
                 </div>
-                <div class="col-md-2 col-sm-3 col-xs-6">
+                <div class="col-md-2 col-sm-2 col-xs-6">
                     <button class="btn btn-primary"><i class="fa fa-search"></i></button>
                     <a href='{{route("admin.album.index")}}' class="btn btn-sm btn-default"><i class="fa fa-times"></i></a>
                 </div>
