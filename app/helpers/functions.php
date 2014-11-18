@@ -41,7 +41,9 @@ function reservation_statuses_for_select() {
     return [
         'any' => 'Any',
         'pending' => 'Pending',
-        'confirmed' => 'Confirmed'
+        'confirmed' => 'Confirmed',
+        'payment_incomplete'=>'Incomplete Payment',
+        'payment_completed' => 'Completed Payment'
     ];
 }
 

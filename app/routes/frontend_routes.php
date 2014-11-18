@@ -18,6 +18,10 @@ Route::post('/subscribe', ['as' => 'subscribe_newsletter', 'uses' => 'HomeContro
 
 Route::get('/paymento/confirmpayment', array('uses' => 'PaypalPaymentController@getConfirmpayment'));
 Route::resource('payment', 'PaypalPaymentController');
+
+
+Route::get('/booking/{tour_slug}/{id}',array('as'=>'booking.form','uses'=>'BookingController@form'));
+
 Route::get('/travel-albums', array('as' => 'travel_album' ,'uses' => 'AlbumController@index'));
 Route::get('/travel-albums/{area_slug}', array('as' => 'album.area' ,'uses' => 'AlbumController@area'));
 Route::get('/travel-albums/{area_slug}/{album_id}', array('as' => 'travel_album.show' ,'uses' => 'AlbumController@show'));

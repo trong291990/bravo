@@ -48,6 +48,7 @@ class ReservationController extends AdminBaseController {
         if ($validator->passes()) {
             $reservation = new Reservation(Input::all());
             $reservation->is_by_admin = true;
+            $reservation->payment_token = md5(uniqid('bravopayment').microtime());
             $reservation->save();
             Session::flash('success', "The reservation has been created successful");
             return Redirect::route('admin.reservation.index');

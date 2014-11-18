@@ -186,6 +186,7 @@
                             <li><a href="{{Request::root()}}/tours/vietnam-tours">Vietnam</a></li>
                             <li><a href="{{Request::root()}}/tours/cambodia-tours">Cambodia</a></li>
                             <li><a href="{{Request::root()}}/tours/laos-tours">Lao</a></li>
+                            <li><a href="{{Request::root()}}/tours/thailand-tours">Thailand</a></li>
                         </ul>
                     </div>
                 </div>
@@ -505,7 +506,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Send now</button>   
+                        <button type="submit" class="btn btn-primary">Send now</button>  
+                        <button type="submit" name='payment' class="btn btn-primary">
+                            <img style="width: 18px" src="/frontend/images/paypal.png" alt='Paypal' />
+                            Pay with Paypal</button> 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                     <?php echo Former::close(); ?>
@@ -736,6 +740,9 @@
         <script>
             $('#thanks-modal-content').html( {{Session::get('thanks')}});
             $('#thanks-modal').modal('show');
+            function changeCurrency(type){
+                
+            }
         </script>
         @endif
         @yield('addon_js')

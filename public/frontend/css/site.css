@@ -1,3 +1,12 @@
+.rotate {
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+      -ms-transform: rotate(-90.0deg);  /* IE9+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Safari 3.1+, Chrome */
+          transform: rotate(-90.0deg);  /* Standard */
+}
 html {
 
 }
@@ -190,10 +199,13 @@ a:focus {
     text-align: center;
     margin-right: 15px
 }
+#country-main-nav-wrapper li {
+    padding:9px 0px;
+}
 #country-main-nav-wrapper li a {
     text-align: center;
     font-family: "Conv_Augushand",sans-serif,tahoma;
-    font-size: 2.8em;
+    font-size: 2.4em;
     color: #fff;
     padding: 8px 20px;
 }
@@ -856,4 +868,7 @@ li.dropdown .dropdown-menu li a {
 #modal-login .btn, #modal-login .form-control, #modal-login .input-group-addon, 
 #modal-register .btn, #modal-register .form-control, #modal-register .input-group-addon {
     border-radius: 1px;
+}
+#header.thailand-tours {
+  background: url("/frontend/images/header/thailand.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
 }
