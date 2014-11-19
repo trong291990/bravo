@@ -897,6 +897,7 @@ li.dropdown .dropdown-menu li a {
     border-color: #ac2925;
 }
 .wishlist-container .tour-thumbnail {
+    margin: 5px;
     padding: 4px;
     background-color: #fff;
     border: 1px solid #ddd;
