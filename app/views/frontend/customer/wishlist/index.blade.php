@@ -18,10 +18,10 @@
             <?php foreach ($wishlists as $item) : ?>
               <?php $tour = $item->tour ?>
                 <div class="row wishlist-row">
-                  <div class="tour-thumbnail col-md-4 col-xs-12">
+                  <div class="tour-thumbnail col-md-5 col-xs-12">
                     <div class="tour-thumbnail-img" style="background-image: url({{$tour->photoUrl()}})"></div>
                   </div>
-                  <div class="tour-short-info col-md-4 col-xs-12">
+                  <div class="tour-short-info col-md-5 col-xs-12">
                     <ul class="list-unstyled">
                       <li>
                         <h3><a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}">{{$item->tour->name}}</a>
@@ -40,15 +40,13 @@
                         Starting at: ${{$tour->price_from}}
                       </li>                                                       
                     </ul>
-                  </div>
-                  <div class="tour-short-info col-md-4 col-xs-12">
-                    <a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}" class="btn btn-primary">Details</a>
+                   <a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}" class="btn btn-primary">Details</a>
                     <button type="button" 
                         data-add-url="{{route('wishlist.add', $tour->id)}}"
                         data-remove-url="{{route('wishlist.remove', $tour->id)}}"
                         class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
                         {{in_array($tour->id, $wishlist_items) ? 'Remove from Wishlist' : 'Add to Wishlist'}}
-                    </button>                    
+                    </button>                      
                   </div>
                 </div>
             <?php endforeach; ?>          
