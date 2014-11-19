@@ -22,6 +22,37 @@
     // tempollary disable
     //document.addEventListener('copy', addLink);
 $(document).ready(function() {
+    $(document).on('click','.btn-add-wishlist', function(e) {
+        var $this = $(this);
+        $this.attr('disabled',true).addClass('btn-inprogress');
+        $.post($this.data('add-url'), function(res) {
+            if(res.success) {
+                bootbox.alert(res.message);
+                $this.text('Remove from Wishlist');
+                $this.removeClass('btn-inprogress')
+                    .removeClass('btn-add-wishlist')
+                    .addClass('btn-remove-wishlist')
+                    .attr('disabled',false);                
+            }
+
+        });   
+    });
+
+    $(document).on('click','.btn-remove-wishlist', function(e) {
+        var $this = $(this);
+        $this.attr('disabled',true).addClass('btn-inprogress');
+        $.post($this.data('remove-url'), function(res) {
+            if(res.success) {
+                bootbox.alert(res.message);
+                $this.text('Add to Wishlist');
+                $this.removeClass('btn-inprogress')
+                    .removeClass('btn-remove-wishlist')
+                    .addClass('btn-add-wishlist')
+                    .attr('disabled',false);                
+            }            
+        });      
+    });
+
     $('select').selectpicker();
     $('[data-toggle="modal"]').click(function(){
         $('.modal.in').modal('hide');

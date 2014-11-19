@@ -21,7 +21,7 @@
 @section('content')
 <div id="tour-detail">
     <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-7">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Tours</a></li>
@@ -29,7 +29,7 @@
             </ol>
         </div>
         
-        <div class="col-sm-7">
+        <div class="col-sm-5">
             <ul class="list-unstyled list-inline" id="tour-detail-actions">
                 <li><i class="fa fa-envelope"></i> EMAIL TO FRIEND</li>
                 <li><i class="fa fa-print"></i> PRINT THIS PAGE</li>
@@ -50,9 +50,18 @@
                     </p>
                 <?php endforeach; ?>
             </div>
-            <div class="row">
-                <div class='col-sm-6 col-sm-offset-3'>
-                    <button style="margin-bottom: 20px;margin-top: 10px" type="button" data-id='{{$tour->id}}' class="btn booking-tour  btn-warning tour-booking">Enquiry Now</button>
+            <div class="row" style="margin-bottom: 20px;">
+                <div class='col-sm-12'>
+                    <?php if($loggedCustomer): ?>
+                        <button type="button" 
+                            data-add-url="{{route('wishlist.add', $tour->id)}}"
+                            data-remove-url="{{route('wishlist.remove', $tour->id)}}"
+                            class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
+                            {{in_array($tour->id, $wishlist_items) ? 'Remove from Wishlist' : 'Add to Wishlist'}}
+                        </button>
+                     <?php endif; ?>                 
+                    <button  type="button" data-id='{{$tour->id}}' 
+                    class="btn booking-tour btn-warning tour-booking">Enquiry Now</button>
                 </div>
             </div>
         </div>
