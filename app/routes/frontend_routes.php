@@ -31,9 +31,13 @@ Route::post('/register', ['as' => 'customer_register', 'uses' => 'AuthController
 Route::get('/facebook-auth', ['as' => 'facebook_auth', 'uses' => 'AuthController@facebook']);
 Route::get('/google-auth', ['as' => 'google_auth', 'uses' => 'AuthController@google']);
 
-Route::group(array('before' => 'customer.auth'), function() {
+Route::group(['before' => 'customer.auth'], function() {
     Route::post('/travel-reviews/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
 });
+
+Route::get('/wishlist', ['as' => 'wishlist.index', 'uses' => 'WishlistController@index']);
+Route::post('/wishlist/add/{tour_id}', ['as' => 'wishlist.add', 'uses' => 'WishlistController@add']);
+Route::post('/wishlist/remove/{tour_id}', ['as' => 'wishlist.remove', 'uses' => 'WishlistController@remove']);
 
 foreach (StaticPage::$VALID_NAMES as $page_name) {
     Route::get('/' . $page_name, [

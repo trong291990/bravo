@@ -109,12 +109,6 @@
                                 <a href="#">
                                     <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span></a>
                             </li>
-                            
-                            <li>
-                                <a href="#">
-                                    <i class="icon icon-menu-heart mrm"></i>Wishlist<span class="unitRight circle-number-s mlm" id="wishlistCount" style="display: none;">0</span>
-                                </a>
-                            </li>
                             <?php if($loggedCustomer): ?>
                             <li>
                                 <a href="#">
@@ -129,12 +123,14 @@
                             <?php endif; ?>    
                     </ul>
                         </li>
+                        <?php if($loggedCustomer): ?>
                         <li>
-                            <a href="#">
+                            <a href="{{route('wishlist.index')}}">
                                 <span id="wishlist-span"><i class="fa fa-list"></i></span>
                                 Wishlist
                             </a>
                         </li>
+                        <?php endif; ?>   
                     </ul>
                 </div>
             </div>

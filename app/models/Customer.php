@@ -62,6 +62,19 @@ class Customer extends \Eloquent implements UserInterface, RemindableInterface {
         return $this->hasMany('authentications', 'customer_id');
     }
 
+    public function wishlists() {
+        return $this->hasMany('Wishlist', 'customer_id');
+    }
+
+    public function addOrRemoveFromWishlist($tour_id) {
+        $item = $this->wishlists()->where('tour_id', $tour_id)->first();
+        if($item) {
+            $item->delete();
+        } elseif(Tour::find($tour_id)) {
+                $this->wishlists()->save(new Wishlist(['tour_id' => $tour_id]));
+        }
+    }
+
     public function avatarUrl() {
         
     }

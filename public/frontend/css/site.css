@@ -297,7 +297,7 @@ h3.tour-title a {
 }
 .tour-item .tour-booking {
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 5px
 }
 .tour-item .tour-actions p {
@@ -878,6 +878,7 @@ li.dropdown .dropdown-menu li a {
 #header.thailand-tours {
   background: url("/frontend/images/header/thailand.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
 }
+
 #album-index-list .panel-heading:before {
     background-color: #357ebd
 }
@@ -892,3 +893,69 @@ li.dropdown .dropdown-menu li a {
     text-transform: initial;
     font-weight: normal
 }
+/* Start wishlist styles */
+.tour-actions {
+    padding-left: 5px;
+}
+.btn-add-wishlist {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btn-add-wishlist:hover, .btn-add-wishlist:focus, .btn-add-wishlist:active, .btn-add-wishlist.active {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+.btn-remove-wishlist {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.btn-remove-wishlist:hover, .btn-remove-wishlist:focus, .btn-remove-wishlist:active, .btn-remove-wishlist.active {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+.wishlist-container .tour-thumbnail {
+    margin: 5px;
+    padding: 4px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.wishlist-container .tour-thumbnail-img {
+    max-width: 100%;
+    min-height: 180px;
+    background-size: cover;
+}
+
+.wishlist-row:not(:first-child) {
+    margin-top: 10px;
+}
+.tour-short-info h3{
+    margin-top: 5px;
+}
+
+.tour-short-info li {
+    margin-bottom: 5px;
+    font-weight: 600;   
+}
+
+/* End wishlist styles */
+.btn-inprogress {
+    opacity: 1 !important;
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -moz-animation: progress-bar-stripes 2s linear infinite;
+    -ms-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
+    background-size: 40px 40px;
+    background-image: -moz-linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent);
+}
+
+.bootbox-body {
+    font-size: 18px;
+}
+
