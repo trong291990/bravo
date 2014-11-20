@@ -15,16 +15,18 @@
 				{{ Form::label('tour_name', 'Tour name') }}
 				{{ Form::text('booking[tour_name]', @$booking->tour_name, ['class'=>'form-control']) }}
 			</div>
-			<div class='form-group'>
-				<!-- `Travel date` Field -->
-				{{ Form::label('travel_date', 'Travel date') }}
-				{{ Form::text('booking[travel_date]', @$booking->travel_date, ['class'=>'form-control']) }}
-			</div>
-			<div class='form-group'>
-				<!-- `Room type` Field -->
-				{{ Form::label('room_type', 'Room type') }}
-				{{ Form::text('booking[room_type]', @$booking->room_type, ['class'=>'form-control']) }}
-			</div>
+                        <div class="row">
+                            <div class='form-group col-sm-6'>
+                                <!-- `Travel date` Field -->
+                                {{ Form::label('travel_date', 'Travel date') }}
+                                {{ Form::text('booking[travel_date]', @$booking->travel_date, ['class'=>'form-control']) }}
+                            </div>
+                            <div class='form-group col-sm-6'>
+                                    <!-- `Room type` Field -->
+                                    {{ Form::label('room_type', 'Room type') }}
+                                    {{ Form::text('booking[room_type]', @$booking->room_type, ['class'=>'form-control']) }}
+                            </div>
+                        </div>
 			<div class='form-group'>
 				<!-- `Main contact` Field -->
 				{{ Form::label('main_contact', 'Main contact') }}

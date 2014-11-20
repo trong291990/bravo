@@ -50,7 +50,7 @@ class BookingController extends AdminBaseController {
 
 	    Booking::create($data);
 
-	    $this->layout->content =  Redirect::route('bookings.index');
+	    $this->layout->content =  Redirect::route('admin.booking.index');
 	}
 
 	/**
@@ -98,7 +98,7 @@ class BookingController extends AdminBaseController {
 
 		$booking->update($data);
 
-		$this->layout->content =  Redirect::route('bookings.index');
+		$this->layout->content =  Redirect::route('admin.booking.index');
 	}
 
 	/**

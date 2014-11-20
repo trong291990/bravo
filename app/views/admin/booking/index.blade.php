@@ -14,6 +14,7 @@
 					<th>Contact number</th>
 					<th>Total</th>
 					<th>Deposit</th>
+                                        <th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -27,10 +28,13 @@
 					<td>{{ @$booking->contact_number }}</td>
 					<td>{{ @$booking->total }}</td>
 					<td>{{ @$booking->deposit }}</td>
-					<td><a href='admin/booking/{{$booking->id}}/edit' class='btn btn-default'>Edit</a></td>
+                                        <td>
+                                            
+                                        </td>
+					<td><a href='/admin/booking/{{$booking->id}}/edit' class='btn btn-primary'>Edit</a></td>
 					<td>
 						{{ Form::open(['url'=>'admin/booking/'.$booking->id, 'method'=>'delete']) }}
-							<button type='submit' class='btn btn-default btn-primary'>Delete</button>
+							<button type='submit' class='btn btn-default btn-danger'>Delete</button>
 						{{ Form::close() }}
 					</td>
 				</tr>

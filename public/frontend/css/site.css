@@ -49,6 +49,12 @@ a:focus {
 .underline {
     text-decoration: underline;
 }
+.no-br {
+    border-radius: 0;
+}
+#album-index-search .selectpicker  {
+    border-radius: 0;
+}
 /************* INTRO ***************/
 #intro_wrapper {
     background: url("/frontend/images/page/intro_bg.jpg") center center no-repeat;
@@ -871,4 +877,18 @@ li.dropdown .dropdown-menu li a {
 }
 #header.thailand-tours {
   background: url("/frontend/images/header/thailand.jpg") no-repeat scroll center center / cover  rgba(0, 0, 0, 0);
+}
+#album-index-list .panel-heading:before {
+    background-color: #357ebd
+}
+#album-index-list .panel-heading {
+    font-size:16px;
+    font-weight: bold;
+    text-transform: uppercase
+}
+#album-index-list .panel-heading a {
+    font-size:14px;
+    font-weight: bold;
+    text-transform: initial;
+    font-weight: normal
 }
