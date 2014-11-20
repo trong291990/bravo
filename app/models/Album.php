@@ -9,7 +9,6 @@ class Album extends \Eloquent {
     const ORIGIN_DIR = 'origin';
     const THUMB_DIR = 'thumb';
     const PER_PAGE = 15;
-
     const TYPE_SCENIC = 'scenic';
     const TYPE_HOTEL = 'hotel';
     const TYPE_RESTAURANT = 'restaurant';
@@ -46,28 +45,13 @@ class Album extends \Eloquent {
 
     public static function availableTypes() {
         return [
-            self::TYPE_SCENIC, self::TYPE_HOTEL, 
+            self::TYPE_SCENIC, self::TYPE_HOTEL,
             self::TYPE_RESTAURANT, self::TYPE_OTHER
         ];
     }
 
     public static function isValidType($type) {
         return in_array($type, self::availableTypes());
-    }
-
-    /*
-    * Scope by types
-    */
-    public function scopeScenic($query) {
-        return $query->where('type', self::TYPE_SCENIC);
-    }
-
-    public function scopeHotel($query) {
-        return $query->where('type', self::TYPE_HOTEL);
-    }
-
-    public function scopeRestaurant($query) {
-        return $query->where('type', self::TYPE_RESTAURANT);
     }
 
     public static function recent($count = 8) {
@@ -86,7 +70,7 @@ class Album extends \Eloquent {
 
         if (isset($options['type']) && trim($options['type'])) {
             $type = trim($options['type']);
-            if(self::isValidType($type)) {
+            if (self::isValidType($type)) {
                 $query = $query->where('type', $type);
             }
         }
@@ -98,6 +82,22 @@ class Album extends \Eloquent {
                     });
         }
         return $query->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
+    }
+
+    /*
+     * Scope by types
+     */
+
+    public function scopeScenic($query) {
+        return $query->where('type', self::TYPE_SCENIC);
+    }
+
+    public function scopeHotel($query) {
+        return $query->where('type', self::TYPE_HOTEL);
+    }
+
+    public function scopeRestaurant($query) {
+        return $query->where('type', self::TYPE_RESTAURANT);
     }
 
     public function area() {
@@ -156,6 +156,27 @@ class Album extends \Eloquent {
     public function increaseViews() {
         $this->views += 1;
         $this->save();
+    }
+
+    public function zippedFileName() {
+        return $this->slug . '-album.zip';
+    }
+
+    public function getZippedPath() {
+        $dirPath = $this->originPhotoPath();
+        $zippedFilePath = $dirPath . str_random(32) . '.zip';
+
+        $zipArchive = new ZipArchive();
+        if ($zipArchive->open($zippedFilePath, ZIPARCHIVE::OVERWRITE)) {
+            foreach (glob($dirPath . "/*.{jpeg,png,gif,JPEG,PNG,GIF}", GLOB_BRACE) as $file) {
+                $new_filename = substr($file, strrpos($file, '/') + 1);
+                $zipArchive->addFile($file, $new_filename);
+            }
+            $zipArchive->close();
+            return $zippedFilePath;
+        } else {
+            return null;
+        }
     }
 
 }
