@@ -37,6 +37,10 @@ function addLink() {
 // tempollary disable
 //document.addEventListener('copy', addLink);
 $(document).ready(function() {
+    $('.btn-email-friend').click(function(e) {
+        $(this).closest('.tour-item').find('.st_email_hcount').click();
+        return false;
+    });
     $(document).on('click', '.btn-add-wishlist', function(e) {
         var $this = $(this);
         $this.busyOn();
