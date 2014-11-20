@@ -1,67 +1,80 @@
+(function($) {
+    /**
+     * Turn on/off busy state of buttons with in-progressing style 
+     * See class .btn-inprogress in site.css
+     */
+    $.fn.busyOn = function() {
+        this.addClass('btn-inprogress').attr('disabled', true);
+        return this;
+    };
 
-    function addLink() {
-        //Get the selected text and append the extra info
-        var selection = window.getSelection(),
+    $.fn.busyOff = function() {
+        this.removeClass('btn-inprogress').removeAttr('disabled');
+        return this;
+    };
+})(jQuery);
+
+function addLink() {
+    //Get the selected text and append the extra info
+    var selection = window.getSelection(),
             pagelink = '<br /><br /> Read more at: ' + document.location.href,
             copytext = selection + pagelink,
             newdiv = document.createElement('div');
 
-        //hide the newly created container
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
+    //hide the newly created container
+    newdiv.style.position = 'absolute';
+    newdiv.style.left = '-99999px';
 
-        //insert the container, fill it with the extended text, and define the new selection
-        document.body.appendChild(newdiv);
-        newdiv.innerHTML = copytext;
-        selection.selectAllChildren(newdiv);
+    //insert the container, fill it with the extended text, and define the new selection
+    document.body.appendChild(newdiv);
+    newdiv.innerHTML = copytext;
+    selection.selectAllChildren(newdiv);
 
-        window.setTimeout(function () {
-            document.body.removeChild(newdiv);
-        }, 100);
-    }
-    // tempollary disable
-    //document.addEventListener('copy', addLink);
+    window.setTimeout(function() {
+        document.body.removeChild(newdiv);
+    }, 100);
+}
+// tempollary disable
+//document.addEventListener('copy', addLink);
 $(document).ready(function() {
-    $(document).on('click','.btn-add-wishlist', function(e) {
+    $(document).on('click', '.btn-add-wishlist', function(e) {
         var $this = $(this);
-        $this.attr('disabled',true).addClass('btn-inprogress');
+        $this.busyOn();
         $.post($this.data('add-url'), function(res) {
-            if(res.success) {
+            if (res.success) {
                 bootbox.alert(res.message);
                 $this.text('Remove from Wishlist');
-                $this.removeClass('btn-inprogress')
-                    .removeClass('btn-add-wishlist')
-                    .addClass('btn-remove-wishlist')
-                    .attr('disabled',false);                
+                $this.busyOff()
+                        .removeClass('btn-add-wishlist')
+                        .addClass('btn-remove-wishlist');
             }
 
-        });   
+        });
     });
 
-    $(document).on('click','.btn-remove-wishlist', function(e) {
+    $(document).on('click', '.btn-remove-wishlist', function(e) {
         var $this = $(this);
-        $this.attr('disabled',true).addClass('btn-inprogress');
+        $this.busyOn();
         $.post($this.data('remove-url'), function(res) {
-            if(res.success) {
+            if (res.success) {
                 bootbox.alert(res.message);
                 $this.text('Add to Wishlist');
-                $this.removeClass('btn-inprogress')
-                    .removeClass('btn-remove-wishlist')
-                    .addClass('btn-add-wishlist')
-                    .attr('disabled',false);                
-            }            
-        });      
+                $this.busyOff()
+                        .removeClass('btn-remove-wishlist')
+                        .addClass('btn-add-wishlist');
+            }
+        });
     });
 
     $('select').selectpicker();
-    $('[data-toggle="modal"]').click(function(){
+    $('[data-toggle="modal"]').click(function() {
         $('.modal.in').modal('hide');
     });
 
     /*
-      Handler register form
-    */
-    $('#form-register').submit(function(e){
+     Handler register form
+     */
+    $('#form-register').submit(function(e) {
         e.preventDefault();
         var $this = $(this);
         $.ajax({
@@ -74,7 +87,7 @@ $(document).ready(function() {
             },
             success: function(res) {
                 console.log(res);
-                if(res.success) {
+                if (res.success) {
                     location.reload();
                 } else {
                     var messagesHtml = '<ul class="list-unstyled">';
@@ -93,9 +106,9 @@ $(document).ready(function() {
         return false;
     });
     /*
-      Handler login form
-    */
-    $('#form-login').submit(function(e){
+     Handler login form
+     */
+    $('#form-login').submit(function(e) {
         e.preventDefault();
         var $this = $(this);
         $.ajax({
@@ -108,7 +121,7 @@ $(document).ready(function() {
             },
             success: function(res) {
                 console.log(res);
-                if(res.success) {
+                if (res.success) {
                     location.reload();
                 } else {
                     Helper.flash_message('danger', 'Email or password is invalid', $this.find('.form-messages'), 5000);
@@ -163,9 +176,9 @@ $('.tour-map-container').each(function() {
         }
     });
 });
-$('.booking-tour').on('click',function(){
-   $('#booking-modal').modal('show');
-   $('#booking-tour-id').val($(this).data('id'));
+$('.booking-tour').on('click', function() {
+    $('#booking-modal').modal('show');
+    $('#booking-tour-id').val($(this).data('id'));
 });
 
 $('.datepicker').datepicker({
