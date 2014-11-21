@@ -86,14 +86,14 @@
                 <div class="col-sm-6">
                     <ul class="nav nav-tabs pull-right" role="tablist">
                         <li class="dropdown">
-                            <?php if($loggedCustomer): ?>
+                            <?php if(@$loggedCustomer): ?>
                                 <a href="#"> {{ Auth::customer()->get()->name }} <span class="caret"></span> </a>
                             <?php else : ?>
                                 <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
                             <?php endif; ?>
 
                             <ul class="dropdown-menu" role="menu">
-                            <?php if(!$loggedCustomer): ?>
+                            <?php if(!@$loggedCustomer): ?>
                             <li>
                                 <a href="#modal-login" data-toggle='modal'><i class="icon icon-menu-avatar mrm"></i>Log In</a>
                             </li>
@@ -109,7 +109,7 @@
                                 <a href="#">
                                     <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span></a>
                             </li>
-                            <?php if($loggedCustomer): ?>
+                            <?php if(@$loggedCustomer): ?>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-user"></i> Profile
@@ -123,7 +123,7 @@
                             <?php endif; ?>    
                     </ul>
                         </li>
-                        <?php if($loggedCustomer): ?>
+                        <?php if(@$loggedCustomer): ?>
                         <li>
                             <a href="{{route('wishlist.index')}}">
                                 <span id="wishlist-span"><i class="fa fa-list"></i></span>
@@ -717,7 +717,8 @@
                '/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js',
                '/plugins/bootstrap-datepicker/bootstrap-datepicker.js',
                '/plugins/jquery.validate.min.js',
-               '/plugins/bootbox.min.js'
+               '/plugins/bootbox.min.js',
+               '/plugins/brickwall.js'
          )) }}
         {{ 
             Minify::javascript(array(
