@@ -7,12 +7,24 @@
         <meta name="keywords" content="@yield('keyword')" />
         <meta name="description" content="@yield('description')"/>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-546dfa262e2da9aa" async="async"></script>
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">
+            stLight.options({
+                publisher: "ur-a6195c9c-896b-1fbe-df4e-8ec7d00b8f9", 
+                doNotHash: false, 
+                doNotCopy: false, 
+                hashAddressBar: false
+            });
+        </script>
         {{ Minify::stylesheet( array(
                         '/shared/css/bootstrap.css',
                         '/fonts/font-awesome.css',
                         '/fonts/augushand.css',
                         '/frontend/css/site.css',
                         '/frontend/css/album.css',
+                        '/frontend/css/addon.css',
                         '/plugins/bootstrap-select/bootstrap-select.min.css',
                         '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
                         '/plugins/icheck/skins/all.css'

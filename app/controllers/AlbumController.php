@@ -13,6 +13,16 @@ class AlbumController extends FrontendBaseController {
 
     protected $layout = 'layouts.frontend';
 
+    public function __construct() {
+        parent::__construct();
+        $this->beforeFilter(function() {
+                    if (!$this->loggedCustomer) {
+                        return Redirect::to(url('/tours/indochina-tours'));
+                    }
+                }, ['only' => ['download']]
+        );
+    }
+
     public function index() {
         $areas = Area::all();
         $albums = Album::recent();
@@ -41,6 +51,13 @@ class AlbumController extends FrontendBaseController {
 
     public function postReview($album_id) {
         
+    }
+
+    public function download($album_id) {
+        $album = Album::findOrFail($album_id);
+        $zippedPath = $album->getZippedPath();
+        $headers = array('Content-Type: application/zip', 'Content-Description' => 'File Transfer');
+        return Response::download($zippedPath, $album->zippedFileName(), $headers);
     }
 
 }

@@ -23,6 +23,7 @@ Route::resource('payment', 'PaypalPaymentController');
 Route::get('/booking/{tour_slug}/{id}',array('as'=>'booking.form','uses'=>'BookingController@form'));
 
 Route::get('/travel-albums', array('as' => 'travel_album' ,'uses' => 'AlbumController@index'));
+Route::get('/travel-albums/{album_id}/download', array('as' => 'travel_album.download' ,'uses' => 'AlbumController@download'));
 Route::get('/travel-albums/{area_slug}', array('as' => 'album.area' ,'uses' => 'AlbumController@area'));
 Route::get('/travel-albums/{area_slug}/{album_id}', array('as' => 'travel_album.show' ,'uses' => 'AlbumController@show'));
 Route::post('/login', ['as' => 'customer_login', 'uses' => 'AuthController@customerLogin']);
