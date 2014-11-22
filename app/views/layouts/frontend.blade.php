@@ -27,7 +27,9 @@
                         '/frontend/css/addon.css',
                         '/plugins/bootstrap-select/bootstrap-select.min.css',
                         '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
-                        '/plugins/icheck/skins/all.css'
+                        '/plugins/icheck/skins/all.css',
+                        '/plugins/justifiedgallery/justifiedgallery.css',
+                        '/plugins/photor/photor.css'
                     )
             ) 
         }}
@@ -730,7 +732,8 @@
                '/plugins/bootstrap-datepicker/bootstrap-datepicker.js',
                '/plugins/jquery.validate.min.js',
                '/plugins/bootbox.min.js',
-               '/plugins/brickwall.js'
+               '/plugins/justifiedgallery/justifiedgallery.js',
+               '/plugins/photor/photor.js'
          )) }}
         {{ 
             Minify::javascript(array(

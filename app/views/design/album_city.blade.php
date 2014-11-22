@@ -28,25 +28,70 @@
             </div>
         </form>
     </div>
+    <h2 id="album-city-heading">HA NOI</h2>
     <div id="album-city" class="clearfix">
-        <ul class="list-unstyled list-inline">
-            @for($i=1;$i<=20;$i++)
-            <li><a href="#" title="The Old Room of Macabre Detritus"><img  src="<?php echo url('/dummy_images/1.jpg') ?>" width="<?php echo rand(200,500) ?>px" height="180px" focus-y="<?php echo rand(1,4) ?>" focus-x="<?php echo rand(1,4) ?>"  /></a></li>
-            @endfor
-        </ul>
+        <a href="<?php echo asset('dummy_images') ?>/photos/8083451788_552becfbc7_b.jpg" title="What's your destination?">
+                <img alt="What's your destination?" src="<?php echo asset('dummy_images') ?>/photos/8083451788_552becfbc7_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/7948632554_01f6ae6b6f_b.jpg" title="Just in a dream Place">
+                <img alt="Just in a dream Place" src="<?php echo asset('dummy_images') ?>/photos/7948632554_01f6ae6b6f_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/7893834940_8fcbb47c14_b.jpg" title="Il Capo at Palermo">
+                <img alt="Il Capo at Palermo" src="<?php echo asset('dummy_images') ?>/photos/7893834940_8fcbb47c14_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/7302459122_19fa1d8223_b.jpg" title="Truthful Innocence">
+                <img alt="Truthful Innocence" src="<?php echo asset('dummy_images') ?>/photos/7302459122_19fa1d8223_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/7222046648_5bf70e893a_b.jpg" title="Simply my Brother">
+                <img alt="Simply my Brother" src="<?php echo asset('dummy_images') ?>/photos/7222046648_5bf70e893a_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/7002395006_29fdc85f7a_b.jpg" title="Freedom">
+                <img alt="Freedom" src="<?php echo asset('dummy_images') ?>/photos/7002395006_29fdc85f7a_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/7062575651_b23918b11a_b.jpg" title="Maybe spring">
+                <img alt="Maybe spring" src="<?php echo asset('dummy_images') ?>/photos/7062575651_b23918b11a_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6841267340_855273fd7e_b.jpg" title="Love">
+                <img alt="Love" src="<?php echo asset('dummy_images') ?>/photos/6841267340_855273fd7e_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6958456697_e56a37bb5f_b.jpg" title="Young Lovers' Wall and the Old Rain">
+                <img alt="Young Lovers' Wall and the Old Rain" src="<?php echo asset('dummy_images') ?>/photos/6958456697_e56a37bb5f_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6791628438_affaa19e10_b.jpg" title="This is the colors I love">
+                <img alt="This is the colors I love" src="<?php echo asset('dummy_images') ?>/photos/6791628438_affaa19e10_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6916180091_9c9559e463_b.jpg" title="The Hope">
+                <img alt="The Hope" src="<?php echo asset('dummy_images') ?>/photos/6916180091_9c9559e463_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6880502467_d4b3c4b2a8_b.jpg" title="Florence streets. Florence people.">
+                <img alt="Florence streets. Florence people." src="<?php echo asset('dummy_images') ?>/photos/6880502467_d4b3c4b2a8_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6876412479_6268c6e2aa_b.jpg" title="I Love You">
+                <img alt="I Love You" src="<?php echo asset('dummy_images') ?>/photos/6876412479_6268c6e2aa_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6840627709_92ed52fb41_b.jpg" title="The painter in Florence">
+                <img alt="The painter in Florence" src="<?php echo asset('dummy_images') ?>/photos/6840627709_92ed52fb41_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6812090617_5fd5bbdda0_b.jpg" title="Me and My Belover">
+                <img alt="Me and My Belover" src="<?php echo asset('dummy_images') ?>/photos/6812090617_5fd5bbdda0_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6806687375_07d2b7a1f9_b.jpg" title="Fiocco">
+                <img alt="Fiocco" src="<?php echo asset('dummy_images') ?>/photos/6806687375_07d2b7a1f9_t.jpg" />
+        </a>
+        <a href="<?php echo asset('dummy_images') ?>/photos/6798453217_72dea2d06e_b.jpg" title="My first clothespin">
+                <img alt="My first clothespin" src="<?php echo asset('dummy_images') ?>/photos/6798453217_72dea2d06e_t.jpg" />
+        </a>
     </div>
 </div>
 @stop
 @section('inline_scripts')
 <script type="text/javascript">
-        $(function() {
-                $('#album-city ul img').each(function(i, element) {
-                        var focusY = Math.floor((Math.random()*4)+1);
-                        var focusX = Math.floor((Math.random()*4)+1);
-                        $(element).attr({'focus-y': focusY, 'focus-x': focusX});
-                });
-                $('#album-city ul').brickwall();
-        });
+        $('#album-city').justifiedGallery({
+                lastRow : 'nojustify', 
+                rowHeight : 200, 
+                rel : 'gallery1', //replace with 'gallery1' the rel attribute of each link
+                margins : 1
+        })
 </script>
 @stop
                 

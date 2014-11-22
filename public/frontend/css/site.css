@@ -959,3 +959,7 @@ li.dropdown .dropdown-menu li a {
     font-size: 18px;
 }
 #album-city img {opacity: 1 !important}
+#album-city-heading {
+    margin:20px 0px;
+    font-weight: bold;
+}

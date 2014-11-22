@@ -17,4 +17,7 @@ class DesignController extends \BaseController {
     public function albumCity(){
         $this->layout->content = \View::make('design.album_city');
     }
+    public function detailAlbum(){
+        $this->layout->content = \View::make('design.album_detail');
+    }
 }
