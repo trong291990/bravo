@@ -9,7 +9,7 @@ class Album extends \Eloquent {
     const ORIGIN_DIR = 'origin';
     const THUMB_DIR = 'thumb';
     const PER_PAGE = 15;
-    const TYPE_SCENIC = 'scenic';
+    const TYPE_PLACE = 'place';
     const TYPE_HOTEL = 'hotel';
     const TYPE_RESTAURANT = 'restaurant';
     const TYPE_OTHER = 'other';
@@ -45,7 +45,7 @@ class Album extends \Eloquent {
 
     public static function availableTypes() {
         return [
-            self::TYPE_SCENIC, self::TYPE_HOTEL,
+            self::TYPE_PLACE, self::TYPE_HOTEL,
             self::TYPE_RESTAURANT, self::TYPE_OTHER
         ];
     }
@@ -89,7 +89,7 @@ class Album extends \Eloquent {
      */
 
     public function scopeScenic($query) {
-        return $query->where('type', self::TYPE_SCENIC);
+        return $query->where('type', self::TYPE_PLACE);
     }
 
     public function scopeHotel($query) {
