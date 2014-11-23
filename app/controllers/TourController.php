@@ -1,10 +1,11 @@
 <?php
 
 class TourController extends FrontendBaseController {
-    
+
     private $_apiContext;
-    private $_ClientId='AVJx0RArQzkCCsWC0evZi1SsoO4gxjDkkULQBdmPNBZT4fc14AROUq-etMEY';
-    private $_ClientSecret='EH5F0BAxqonVnP8M4a0c6ezUHq-UT-CWfGciPNQOdUlTpWPkNyuS6eDN-tpA';
+    private $_ClientId = 'AVJx0RArQzkCCsWC0evZi1SsoO4gxjDkkULQBdmPNBZT4fc14AROUq-etMEY';
+    private $_ClientSecret = 'EH5F0BAxqonVnP8M4a0c6ezUHq-UT-CWfGciPNQOdUlTpWPkNyuS6eDN-tpA';
+
     public function area($slug) {
         $area = Area::where('slug', '=', trim($slug))->first();
         $place = null;
@@ -22,10 +23,10 @@ class TourController extends FrontendBaseController {
             if ($place) {
                 $toursQuery = Tour::with('places')
                         ->whereHas('places', function($query) use ($place) {
-                            $query->where('places.id', $place->id);
-                        })
+                                    $query->where('places.id', $place->id);
+                                })
                         ->whereHas('travelStyles', function($query) use ($sorts) {
-                            $query->where('travel_styles.id','1');
+                            $query->where('travel_styles.id', '1');
                         });
             }
             //sort
@@ -33,13 +34,14 @@ class TourController extends FrontendBaseController {
             $title = $place->name . " Tours";
             $toursParent = $place->slug;
         }
-        
+
         if ($sorts['travel_style']) {
             $toursQuery->whereHas('travelStyles', function($query) use ($sorts) {
                         $query->where('travel_styles.id', $sorts['travel_style']);
                     });
         } else {
-            if(!$place) $toursQuery = $toursQuery->with('places');
+            if (!$place)
+                $toursQuery = $toursQuery->with('places');
 //            if ($sorts['travel_style']) {
 //                $toursQuery = $area->tours()->with('places')->whereHas('travelStyles', function($query) use ($sorts) {
 //                            $query->where('travel_styles.id', $sorts['travel_style']);
@@ -58,9 +60,9 @@ class TourController extends FrontendBaseController {
         }
         $tours = $toursQuery->paginate(9);
         View::composer(Paginator::getViewName(), function($view) {
-                $query = array_except( Input::query(), Paginator::getPageName() );
-                $view->paginator->appends($query);
-        });
+                    $query = array_except(Input::query(), Paginator::getPageName());
+                    $view->paginator->appends($query);
+                });
         $searchPlaces = $area->places()->where('search_able', '>', 0)->orderBy('search_able')->get();
         $this->layout->content = View::make('frontend.tours.area')->with('area', $area)
                 ->with('searchPlaces', $searchPlaces)
@@ -68,15 +70,13 @@ class TourController extends FrontendBaseController {
                 ->with('sorts', $sorts)
                 ->with('title', $title)
                 ->with('toursParent', $toursParent)
-                ->with('place',$place);
+                ->with('place', $place);
     }
 
     public function search() {
         $keyword = trim(Input::get('keyword'));
         $tours = Tour::searchByKeyword($keyword);
-        $title = 'Unknown';
-        $this->layout->content = View::make('frontend.tours.search')
-                ->with(compact('tours', 'title'));
+        $this->layout->content = View::make('frontend.tours.search', compact('tours'));
     }
 
     public function show($areaSlug, $tourSlug) {
@@ -143,10 +143,10 @@ class TourController extends FrontendBaseController {
                                 ->subject('Bravo Tour - Customer booked tour');
                     });
             Session::flash('booking_success', "Your booking request has been sent. We will contact with you in 2 hours");
-            if(isset($data['payment'])){
+            if (isset($data['payment'])) {
                 Session::push('tourId', $reservation->tour_id);
                 return Redirect::to('/payment/create');
-            }else {
+            } else {
                 return Redirect::to('/tours/indochina-tours');
             }
         } else {
@@ -154,60 +154,61 @@ class TourController extends FrontendBaseController {
             return Redirect::to('/');
         }
     }
-    private function settingPayment(){
-         $this->_apiContext = Paypalpayment:: ApiContext(
-            Paypalpayment::OAuthTokenCredential(
-                $this->_ClientId,
-                $this->_ClientSecret
-            )
+
+    private function settingPayment() {
+        $this->_apiContext = Paypalpayment:: ApiContext(
+                        Paypalpayment::OAuthTokenCredential(
+                                $this->_ClientId, $this->_ClientSecret
+                        )
         );
-         $this->_apiContext->setConfig(array(
+        $this->_apiContext->setConfig(array(
             'mode' => 'sandbox',
             'http.ConnectionTimeOut' => 30,
             'log.LogEnabled' => true,
-            'log.FileName' => storage_path().'/logs/PayPal.log',
+            'log.FileName' => storage_path() . '/logs/PayPal.log',
             'log.LogLevel' => 'FINE'
         ));
     }
-    private function createPayment(){
-         $this->settingPayment();
-         $payer = Paypalpayment::Payer();
-            $payer->setPayment_method("paypal");
 
-            $amount = Paypalpayment:: Amount();
-            $amount->setCurrency("USD");
-            $amount->setTotal("1.00");
+    private function createPayment() {
+        $this->settingPayment();
+        $payer = Paypalpayment::Payer();
+        $payer->setPayment_method("paypal");
 
-            $transaction = Paypalpayment:: Transaction();
-            $transaction->setAmount($amount);
-            $transaction->setDescription("This is the payment description.");
+        $amount = Paypalpayment:: Amount();
+        $amount->setCurrency("USD");
+        $amount->setTotal("1.00");
 
-            $baseUrl = Request::root();
-            $redirectUrls = Paypalpayment:: RedirectUrls();
-            $redirectUrls->setReturn_url($baseUrl.'/paymento/confirmpayment');
-            $redirectUrls->setCancel_url($baseUrl.'/paymento/cancelpayment');
-            //var_dump($baseUrl);die();
-            $payment = Paypalpayment:: Payment();
-            $payment->setIntent("sale");
-            $payment->setPayer($payer);
-            $payment->setRedirectUrls($redirectUrls);
-            $payment->setTransactions(array($transaction));
+        $transaction = Paypalpayment:: Transaction();
+        $transaction->setAmount($amount);
+        $transaction->setDescription("This is the payment description.");
 
-            $response = $payment->create($this->_apiContext);
+        $baseUrl = Request::root();
+        $redirectUrls = Paypalpayment:: RedirectUrls();
+        $redirectUrls->setReturn_url($baseUrl . '/paymento/confirmpayment');
+        $redirectUrls->setCancel_url($baseUrl . '/paymento/cancelpayment');
+        //var_dump($baseUrl);die();
+        $payment = Paypalpayment:: Payment();
+        $payment->setIntent("sale");
+        $payment->setPayer($payer);
+        $payment->setRedirectUrls($redirectUrls);
+        $payment->setTransactions(array($transaction));
 
-            //set the trasaction id , make sure $_paymentId var is set within your class
-            $this->_paymentId = $response->id;
+        $response = $payment->create($this->_apiContext);
 
-            //dump the repose data when create the payment
-            $redirectUrl = $response->links[1]->href;
+        //set the trasaction id , make sure $_paymentId var is set within your class
+        $this->_paymentId = $response->id;
 
-            //this is will take you to complete your payment on paypal
-            //when you confirm your payment it will redirect you back to the rturned url set above
-            //inmycase sitename/payment/confirmpayment this will execute the getConfirmpayment function bellow
-            //the return url will content a PayerID var
-            return Redirect::to( $redirectUrl );
+        //dump the repose data when create the payment
+        $redirectUrl = $response->links[1]->href;
 
+        //this is will take you to complete your payment on paypal
+        //when you confirm your payment it will redirect you back to the rturned url set above
+        //inmycase sitename/payment/confirmpayment this will execute the getConfirmpayment function bellow
+        //the return url will content a PayerID var
+        return Redirect::to($redirectUrl);
     }
+
     public function createInquiry() {
         $areas = Area::with('places')->notIsParent()->get();
         $this->layout->content =
@@ -220,10 +221,10 @@ class TourController extends FrontendBaseController {
         if ($validator->passes()) {
             $inquiry = new Inquiry($inputs);
             $inquiry->save();
-             Mail::send('emails.notify.new_inquiry', ['inquiry' => $inquiry], function($message) {
-                         $message->to('vntourismjsc@gmail.com')
-                                 ->subject('Bravo Tour - Received new inquiry from customer');
-                     });
+            Mail::send('emails.notify.new_inquiry', ['inquiry' => $inquiry], function($message) {
+                        $message->to('vntourismjsc@gmail.com')
+                                ->subject('Bravo Tour - Received new inquiry from customer');
+                    });
             Session::flash('success', "Your booking request has been sent. We will contact with you in 2 hours");
             return Redirect::back();
         } else {

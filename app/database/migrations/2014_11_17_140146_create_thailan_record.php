@@ -11,7 +11,7 @@ class CreateThailanRecord extends Migration {
      * @return void
      */
     public function up() {
-        //DB::statement("INSERT INTO `areas` (name,parent_id,slug,is_on_menu,menu_order) VALUES('ThaiLan',NULL, 'thailan',1,4)");
+        //DB::statement("INSERT INTO `areas` (name,parent_id,slug,is_on_menu,menu_order) VALUES('ThaiLand',NULL, 'thailand-tours',1,4)");
     }
 
     /**
