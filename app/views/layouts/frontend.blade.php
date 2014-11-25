@@ -43,7 +43,7 @@
         <![endif]-->
         @yield('addon_stylesheets')
     </head>
-    <body>
+    <body class="<?php echo @Route::currentRouteName() ?>">
         <header>
             <div class="container">
                 <div class="col-sm-6">
@@ -213,7 +213,7 @@
                 </div>
             </div>
         </div>
-        <div class="container" >
+        <div class="container <?php if(@Route::currentRouteName()) echo Route::currentRouteName().'-content' ?>">
             @yield('content')
             @include('frontend.partials.order_book')
             <div id="footer" class="row" style="display: none">
@@ -733,7 +733,8 @@
                '/plugins/jquery.validate.min.js',
                '/plugins/bootbox.min.js',
                '/plugins/justifiedgallery/justifiedgallery.js',
-               '/plugins/photor/photor.js'
+               '/plugins/photor/photor.js',
+               '/plugins/galleria/galleria-1.4.2.min.js'
          )) }}
         {{ 
             Minify::javascript(array(

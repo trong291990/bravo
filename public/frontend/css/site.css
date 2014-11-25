@@ -963,3 +963,81 @@ li.dropdown .dropdown-menu li a {
     margin:20px 0px;
     font-weight: bold;
 }
+.detail-album-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+#album-wrapper {
+    background:
+            -webkit-linear-gradient(45deg, hsla(92, 13%, 0%, 1) 0%, hsla(92, 13%, 0%, 0) 70%),
+            -webkit-linear-gradient(315deg, hsla(213, 15%, 66%, 1) 10%, hsla(213, 15%, 66%, 0) 80%),
+            -webkit-linear-gradient(225deg, hsla(168, 9%, 0%, 1) 10%, hsla(168, 9%, 0%, 0) 80%),
+            -webkit-linear-gradient(135deg, hsla(359, 31%, 0%, 1) 100%, hsla(359, 31%, 0%, 0) 70%);
+    background:
+            linear-gradient(45deg, hsla(92, 13%, 0%, 1) 0%, hsla(92, 13%, 0%, 0) 70%),
+            linear-gradient(135deg, hsla(213, 15%, 66%, 1) 10%, hsla(213, 15%, 66%, 0) 80%),
+            linear-gradient(225deg, hsla(168, 9%, 0%, 1) 10%, hsla(168, 9%, 0%, 0) 80%),
+            linear-gradient(315deg, hsla(359, 31%, 0%, 1) 100%, hsla(359, 31%, 0%, 0) 70%);
+}
+#galleria {
+    margin-top:55px;
+    margin-bottom: 20px;
+}
+.galleria-thumbnails img {
+    height: 30px !important; 
+}
+.galleria-theme-classic .galleria-thumbnails-container {
+    height: 30px;
+    margin-top: 20px;
+}
+.galleria-theme-classic {
+    background:transparent !important;
+}
+#album-backlink a,#album-actions a {
+    color:#fff;
+}
+#album-backlink,#album-actions {
+    position:absolute;
+    bottom:-480px;
+}
+#album-backlink {
+    left:20px;
+}
+#album-actions {
+    right:20px;
+}
+#album-faves-author {
+    border:1px solid #ccc;
+    border-left-width: 0;
+    border-right-width: 0;
+    padding:15px 0px;
+    margin-top:15px;
+    margin-bottom: 5px;
+}
+.album-comment-item {
+    padding:15px 0px;
+}
+.album-comment-item .album-comment-author {
+   margin-bottom: 10px;
+}
+.album-comment-item .album-comment-author a{
+   font-weight: bold;
+}
+#album-statictis {
+    font-size: 2.2em;
+    line-height: 90%;
+    margin-top:20px;
+    text-align: center
+    
+}
+#album-statictis small {
+    display: block !important;
+    font-size:11px !important;
+}
+#album-licence p {
+    margin:0;
+}
+#album-licence {
+    margin-top:20px
+}

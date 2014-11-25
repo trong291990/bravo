@@ -15,16 +15,13 @@
             "ryannielson/shareable": "dev-master",
             "ceesvanegmond/minify": "2.0.*",
             "fitztrev/laravel-html-minify": "1.*",
-<<<<<<< HEAD
-            "anouar/paypalpayment": "dev-master"
-=======
+            "anouar/paypalpayment": "dev-master",
             "intervention/image": "dev-master",
             "anouar/paypalpayment": "dev-master",
             "logicalgrape/paypal-ipn-laravel": "dev-master",
             "anlutro/l4-settings" : "0.2.*",
             "artdarek/oauth-4-laravel": "dev-master",
             "ollieread/multiauth": "dev-master"
->>>>>>> 694d14929affdc11955b24ff3a01af422d9aba96
 	},
 	"autoload": {
 		"classmap": [
