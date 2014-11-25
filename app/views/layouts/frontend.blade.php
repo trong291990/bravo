@@ -7,15 +7,29 @@
         <meta name="keywords" content="@yield('keyword')" />
         <meta name="description" content="@yield('description')"/>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-546dfa262e2da9aa" async="async"></script>
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">
+            stLight.options({
+                publisher: "ur-a6195c9c-896b-1fbe-df4e-8ec7d00b8f9", 
+                doNotHash: false, 
+                doNotCopy: false, 
+                hashAddressBar: false
+            });
+        </script>
         {{ Minify::stylesheet( array(
                         '/shared/css/bootstrap.css',
                         '/fonts/font-awesome.css',
                         '/fonts/augushand.css',
                         '/frontend/css/site.css',
                         '/frontend/css/album.css',
+                        '/frontend/css/addon.css',
                         '/plugins/bootstrap-select/bootstrap-select.min.css',
                         '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
-                        '/plugins/icheck/skins/all.css'
+                        '/plugins/icheck/skins/all.css',
+                        '/plugins/justifiedgallery/justifiedgallery.css',
+                        '/plugins/photor/photor.css'
                     )
             ) 
         }}
@@ -86,14 +100,14 @@
                 <div class="col-sm-6">
                     <ul class="nav nav-tabs pull-right" role="tablist">
                         <li class="dropdown">
-                            <?php if($loggedCustomer): ?>
+                            <?php if(@$loggedCustomer): ?>
                                 <a href="#"> {{ Auth::customer()->get()->name }} <span class="caret"></span> </a>
                             <?php else : ?>
                                 <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
                             <?php endif; ?>
 
                             <ul class="dropdown-menu" role="menu">
-                            <?php if(!$loggedCustomer): ?>
+                            <?php if(!@$loggedCustomer): ?>
                             <li>
                                 <a href="#modal-login" data-toggle='modal'><i class="icon icon-menu-avatar mrm"></i>Log In</a>
                             </li>
@@ -109,7 +123,7 @@
                                 <a href="#">
                                     <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span></a>
                             </li>
-                            <?php if($loggedCustomer): ?>
+                            <?php if(@$loggedCustomer): ?>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-user"></i> Profile
@@ -123,7 +137,7 @@
                             <?php endif; ?>    
                     </ul>
                         </li>
-                        <?php if($loggedCustomer): ?>
+                        <?php if(@$loggedCustomer): ?>
                         <li>
                             <a href="{{route('wishlist.index')}}">
                                 <span id="wishlist-span"><i class="fa fa-list"></i></span>
@@ -717,7 +731,9 @@
                '/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js',
                '/plugins/bootstrap-datepicker/bootstrap-datepicker.js',
                '/plugins/jquery.validate.min.js',
-               '/plugins/bootbox.min.js'
+               '/plugins/bootbox.min.js',
+               '/plugins/justifiedgallery/justifiedgallery.js',
+               '/plugins/photor/photor.js'
          )) }}
         {{ 
             Minify::javascript(array(

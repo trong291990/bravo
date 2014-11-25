@@ -24,9 +24,12 @@
                   <div class="tour-short-info col-md-5 col-xs-12">
                     <ul class="list-unstyled">
                       <li>
-                        <h3><a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}">{{$item->tour->name}}</a>
+                        <h3><a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}">{{$tour->name}}</a>
                         </h3>
                       </li>
+                      <li>
+                        Country: {{$tour->area->name}}
+                      </li>                 
                       <li>
                         Tour code: {{$tour->code}}
                       </li>
