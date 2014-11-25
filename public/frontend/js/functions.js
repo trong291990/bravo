@@ -70,7 +70,7 @@ $(document).ready(function() {
         });
     });
 
-    $('select').selectpicker();
+    
     $('[data-toggle="modal"]').click(function() {
         $('.modal.in').modal('hide');
     });
@@ -184,10 +184,16 @@ $('.booking-tour').on('click', function() {
     $('#booking-modal').modal('show');
     $('#booking-tour-id').val($(this).data('id'));
 });
-
-$('.datepicker').datepicker({
+try {
+   $('.datepicker').datepicker({
     format: 'yyyy-mm-dd',
     autoclose: true
-});
+}); 
+$('select').selectpicker();
+} catch (ex) {
+    
+}
+
+
 
 $('form').validate();
