@@ -726,15 +726,15 @@
         {{ Minify::javascript(array(
                '/shared/js/bootstrap.min.js',
                '/frontend/js/layout.js',
-               '/plugins/bootstrap-select/bootstrap-select.min.js',
-               '/plugins/icheck/icheck.min.js',
+               '/plugins/bootstrap-select/bootstrap-select.js',
+               '/plugins/icheck/icheck.js',
                '/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js',
                '/plugins/bootstrap-datepicker/bootstrap-datepicker.js',
-               '/plugins/jquery.validate.min.js',
-               '/plugins/bootbox.min.js',
+               '/plugins/jquery.validate.js',
+               '/plugins/bootbox.js',
                '/plugins/justifiedgallery/justifiedgallery.js',
                '/plugins/photor/photor.js',
-               '/plugins/galleria/galleria-1.4.2.min.js'
+               '/plugins/galleria/galleria-1.4.2.js'
          )) }}
         {{ 
             Minify::javascript(array(
