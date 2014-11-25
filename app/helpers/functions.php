@@ -41,7 +41,9 @@ function reservation_statuses_for_select() {
     return [
         'any' => 'Any',
         'pending' => 'Pending',
-        'confirmed' => 'Confirmed'
+        'confirmed' => 'Confirmed',
+        'payment_incomplete'=>'Incomplete Payment',
+        'payment_completed' => 'Completed Payment'
     ];
 }
 
@@ -72,10 +74,10 @@ function area_cities_options_for_select($areas) {
     return $options;
 }
 
-function customer_sources_for_select() {
+function contact_sources_for_select() {
     $sources = [];
     $sources[''] = 'Any';
-    foreach (Customer::$sources as $source) {
+    foreach (Contact::$sources as $source) {
         $sources[$source] = $source;
     }
     return $sources;
@@ -131,6 +133,14 @@ function string_to_int($str) {
     $val = 0;
     $val = preg_replace("/[^0-9]/", "", $str);
     return $val;
+}
+
+function album_types_for_select() {
+    $options = [];
+    foreach (Album::availableTypes() as $type) {
+        $options[$type] = ucfirst($type);
+    }
+    return $options;
 }
 
 ?>

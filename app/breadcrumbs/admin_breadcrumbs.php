@@ -49,6 +49,10 @@ Breadcrumbs::register('static_pages', function($breadcrumbs) {
             $breadcrumbs->parent('dashboard');
             $breadcrumbs->push('Setting', route('admin.setting.static_pages'));
         });
+Breadcrumbs::register('contacts', function($breadcrumbs) {
+            $breadcrumbs->parent('dashboard');
+            $breadcrumbs->push('Contacts', route('admin.contact.index'));
+        });
 Breadcrumbs::register('customers', function($breadcrumbs) {
             $breadcrumbs->parent('dashboard');
             $breadcrumbs->push('Customers', route('admin.customer.index'));
@@ -56,4 +60,8 @@ Breadcrumbs::register('customers', function($breadcrumbs) {
 Breadcrumbs::register('albums', function($breadcrumbs) {
             $breadcrumbs->parent('dashboard');
             $breadcrumbs->push('Travel Albums', route('admin.album.index'));
+        });
+Breadcrumbs::register('specialists', function($breadcrumbs) {
+            $breadcrumbs->parent('dashboard');
+            $breadcrumbs->push('Specialist', route('admin.specialist.index'));
         });

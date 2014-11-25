@@ -56,3 +56,9 @@ textarea {
     float:right;
     cursor: pointer;
 }
+.select2-container {
+    max-width: 100% !important;
+}
+.input-block {
+    width: 100%;
+}

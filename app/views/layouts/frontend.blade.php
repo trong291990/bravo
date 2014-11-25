@@ -15,8 +15,7 @@
                         '/frontend/css/album.css',
                         '/plugins/bootstrap-select/bootstrap-select.min.css',
                         '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
-                        '/plugins/icheck/skins/all.css',
-                        '/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css'
+                        '/plugins/icheck/skins/all.css'
                     )
             ) 
         }}
@@ -87,18 +86,21 @@
                 <div class="col-sm-6">
                     <ul class="nav nav-tabs pull-right" role="tablist">
                         <li class="dropdown">
-                            <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
+                            <?php if($loggedCustomer): ?>
+                                <a href="#"> {{ Auth::customer()->get()->name }} <span class="caret"></span> </a>
+                            <?php else : ?>
+                                <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
+                            <?php endif; ?>
+
                             <ul class="dropdown-menu" role="menu">
-                        
-                            <li><a href="#">
-                                <i class="icon icon-menu-avatar mrm"></i>Log In</a></li>
+                            <?php if(!$loggedCustomer): ?>
                             <li>
-                                
-                                
-                                    <a href="#">
-                                        <i class="icon icon-menu-pen mrm"></i>Register</a>
-                                
+                                <a href="#modal-login" data-toggle='modal'><i class="icon icon-menu-avatar mrm"></i>Log In</a>
                             </li>
+                            <li>
+                                <a href="#modal-register" data-toggle='modal'><i class="icon icon-menu-pen mrm"></i>Register</a>   
+                            </li>
+                            <?php endif; ?>
                             <li>
                                 <a href="#"><i class="icon icon-menu-people mrm"></i>Refer a Friend</a>
                             </li>
@@ -107,20 +109,28 @@
                                 <a href="#">
                                     <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span></a>
                             </li>
+                            <?php if($loggedCustomer): ?>
                             <li>
                                 <a href="#">
-                                    <i class="icon icon-menu-heart mrm"></i>Wishlist<span class="unitRight circle-number-s mlm" id="wishlistCount" style="display: none;">0</span></a>
-                            </li>
-                        
-                        
+                                    <i class="fa fa-user"></i> Profile
+                                </a>
+                            </li>                                      
+                            <li>
+                                <a href="{{route('customer_logout', ['back_url' => Request::url()])}}">
+                                    <i class="fa fa-sign-out"></i> Log out
+                                </a>
+                            </li>                                
+                            <?php endif; ?>    
                     </ul>
                         </li>
+                        <?php if($loggedCustomer): ?>
                         <li>
-                            <a href="#">
+                            <a href="{{route('wishlist.index')}}">
                                 <span id="wishlist-span"><i class="fa fa-list"></i></span>
                                 Wishlist
                             </a>
                         </li>
+                        <?php endif; ?>   
                     </ul>
                 </div>
             </div>
@@ -172,6 +182,7 @@
                             <li><a href="{{Request::root()}}/tours/vietnam-tours">Vietnam</a></li>
                             <li><a href="{{Request::root()}}/tours/cambodia-tours">Cambodia</a></li>
                             <li><a href="{{Request::root()}}/tours/laos-tours">Lao</a></li>
+                            <li><a href="{{Request::root()}}/tours/thailand-tours">Thailand</a></li>
                         </ul>
                     </div>
                 </div>
@@ -491,7 +502,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Send now</button>   
+                        <button type="submit" class="btn btn-primary">Send now</button>  
+                        <button type="submit" name='payment' class="btn btn-primary">
+                            <img style="width: 18px" src="/frontend/images/paypal.png" alt='Paypal' />
+                            Pay with Paypal</button> 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                     <?php echo Former::close(); ?>
@@ -573,6 +587,128 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Login</h4>
+              </div>
+              <div class="modal-body">
+                {{ Former::open(route('customer_login'))->id('form-login') }}
+                    <div class="row">
+                        <div class="col-sm-12 form-messages"></div>
+                    </div>                
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                              <input type="text" name="email" class="form-control" placeholder="Email">
+                            </div>   
+                        </div>   
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                              <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="Submit" class="btn btn-primary btn-block">Login</button>
+                            <br>
+                            <p class="text-center">
+                                Don't have a account? <a href="#modal-register" data-toggle='modal'>Register</a>
+                                |
+                                <a href="#">Forgot password?</a> 
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="{{route('facebook_auth', ['back_url' => Request::url()])}}" class="btn btn-block btn-primary">
+                                <i class="fa fa-facebook-square"></i> Facebook
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="{{route('google_auth', ['back_url' => Request::url()])}}" class="btn btn-block btn-danger"><i class="fa fa-google-plus-square"></i> Google +</a>
+                        </div>
+                    </div>
+                {{ Former::close() }}
+              </div>
+            </div>
+          </div>
+        </div>     
+        <!-- End modal login    -->
+        <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Register</h4>
+              </div>
+              {{ Former::open(route('customer_register'))->id('form-register') }}
+              <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 form-messages"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                              <input type="text" name='name' class="form-control" placeholder="Your Name">
+                            </div>   
+                        </div>   
+                    </div>                
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                              <input type="text" name='email' class="form-control" placeholder="Email">
+                            </div>   
+                        </div>   
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                              <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="Submit" class="btn btn-primary btn-block">Register</button>
+                            <br/>
+                            <p class="text-center">
+                                Already have account? <a href="#modal-login" data-toggle='modal'>Login</a>
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="{{route('facebook_auth', ['back_url' => Request::url()])}}" class="btn btn-block btn-primary">
+                                <i class="fa fa-facebook-square"></i> Facebook
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="{{route('google_auth', ['back_url' => Request::url()])}}" class="btn btn-block btn-danger"><i class="fa fa-google-plus-square"></i> Google +</a>
+                        </div>
+                    </div>
+              </div>
+              {{ Former::close() }}
+            </div>
+          </div>
+        </div> 
+        <!-- End modal register -->
+
         {{ Minify::javascript(array(
                '/shared/js/bootstrap.min.js',
                '/frontend/js/layout.js',
@@ -580,12 +716,12 @@
                '/plugins/icheck/icheck.min.js',
                '/plugins/screwdefaultbuttons/jquery.screwdefaultbuttonsV2.min.js',
                '/plugins/bootstrap-datepicker/bootstrap-datepicker.js',
-               '/plugins/jquery.validate.min.js'
+               '/plugins/jquery.validate.min.js',
+               '/plugins/bootbox.min.js'
          )) }}
-        {{HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js')}} 
-        {{HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js')}} 
         {{ 
             Minify::javascript(array(
+               '/backend/js/helper.js',
                '/frontend/js/functions.js',
                '/frontend/js/layout.js'
             ))
@@ -600,6 +736,9 @@
         <script>
             $('#thanks-modal-content').html( {{Session::get('thanks')}});
             $('#thanks-modal').modal('show');
+            function changeCurrency(type){
+                
+            }
         </script>
         @endif
         @yield('addon_js')

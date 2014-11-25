@@ -1,7 +1,10 @@
 <?php
 
 class TourController extends FrontendBaseController {
-
+    
+    private $_apiContext;
+    private $_ClientId='AVJx0RArQzkCCsWC0evZi1SsoO4gxjDkkULQBdmPNBZT4fc14AROUq-etMEY';
+    private $_ClientSecret='EH5F0BAxqonVnP8M4a0c6ezUHq-UT-CWfGciPNQOdUlTpWPkNyuS6eDN-tpA';
     public function area($slug) {
         $area = Area::where('slug', '=', trim($slug))->first();
         $place = null;
@@ -129,6 +132,7 @@ class TourController extends FrontendBaseController {
 
     public function booking() {
         $data = Input::all();
+        //print_r($data);die();
         $validator = Validator::make($data, Reservation::$rules);
         if ($validator->passes()) {
             $reservation = new Reservation($data);
@@ -139,13 +143,71 @@ class TourController extends FrontendBaseController {
                                 ->subject('Bravo Tour - Customer booked tour');
                     });
             Session::flash('booking_success', "Your booking request has been sent. We will contact with you in 2 hours");
-            return Redirect::to('/tours/indochina-tours');
+            if(isset($data['payment'])){
+                Session::push('tourId', $reservation->tour_id);
+                return Redirect::to('/payment/create');
+            }else {
+                return Redirect::to('/tours/indochina-tours');
+            }
         } else {
             //print_r($validator->errors()->toArray());die();
             return Redirect::to('/');
         }
     }
+    private function settingPayment(){
+         $this->_apiContext = Paypalpayment:: ApiContext(
+            Paypalpayment::OAuthTokenCredential(
+                $this->_ClientId,
+                $this->_ClientSecret
+            )
+        );
+         $this->_apiContext->setConfig(array(
+            'mode' => 'sandbox',
+            'http.ConnectionTimeOut' => 30,
+            'log.LogEnabled' => true,
+            'log.FileName' => storage_path().'/logs/PayPal.log',
+            'log.LogLevel' => 'FINE'
+        ));
+    }
+    private function createPayment(){
+         $this->settingPayment();
+         $payer = Paypalpayment::Payer();
+            $payer->setPayment_method("paypal");
 
+            $amount = Paypalpayment:: Amount();
+            $amount->setCurrency("USD");
+            $amount->setTotal("1.00");
+
+            $transaction = Paypalpayment:: Transaction();
+            $transaction->setAmount($amount);
+            $transaction->setDescription("This is the payment description.");
+
+            $baseUrl = Request::root();
+            $redirectUrls = Paypalpayment:: RedirectUrls();
+            $redirectUrls->setReturn_url($baseUrl.'/paymento/confirmpayment');
+            $redirectUrls->setCancel_url($baseUrl.'/paymento/cancelpayment');
+            //var_dump($baseUrl);die();
+            $payment = Paypalpayment:: Payment();
+            $payment->setIntent("sale");
+            $payment->setPayer($payer);
+            $payment->setRedirectUrls($redirectUrls);
+            $payment->setTransactions(array($transaction));
+
+            $response = $payment->create($this->_apiContext);
+
+            //set the trasaction id , make sure $_paymentId var is set within your class
+            $this->_paymentId = $response->id;
+
+            //dump the repose data when create the payment
+            $redirectUrl = $response->links[1]->href;
+
+            //this is will take you to complete your payment on paypal
+            //when you confirm your payment it will redirect you back to the rturned url set above
+            //inmycase sitename/payment/confirmpayment this will execute the getConfirmpayment function bellow
+            //the return url will content a PayerID var
+            return Redirect::to( $redirectUrl );
+
+    }
     public function createInquiry() {
         $areas = Area::with('places')->notIsParent()->get();
         $this->layout->content =

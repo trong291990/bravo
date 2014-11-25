@@ -126,10 +126,19 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 no-padding-right tour-actions">
+                                <?php if($loggedCustomer): ?>
+                                    <button type="button" 
+                                        data-add-url="{{route('wishlist.add', $tour->id)}}"
+                                        data-remove-url="{{route('wishlist.remove', $tour->id)}}"
+                                        class="btn btn-block {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
+                                        {{in_array($tour->id, $wishlist_items) ? 'Remove from Wishlist' : 'Add to Wishlist'}}
+                                    </button>
+                                 <?php endif; ?> 
                                 <button type="button" data-id='{{$tour->id}}' class="btn booking-tour btn-block btn-warning tour-booking">Enquiry Now</button>
                                 <p><i class="fa fa-envelope"></i> EMAIL TO FRIEND</p>
                                 <p><i class="fa fa-print"></i> PRINT THIS PAGE</p>
                                 <p><i class="fa fa-phone-square"></i> 19008198</p>
+
                             </div>
                         </div>
                     </div>

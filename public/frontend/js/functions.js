@@ -19,20 +19,108 @@
             document.body.removeChild(newdiv);
         }, 100);
     }
-
-    document.addEventListener('copy', addLink);
+    // tempollary disable
+    //document.addEventListener('copy', addLink);
 $(document).ready(function() {
+    $(document).on('click','.btn-add-wishlist', function(e) {
+        var $this = $(this);
+        $this.attr('disabled',true).addClass('btn-inprogress');
+        $.post($this.data('add-url'), function(res) {
+            if(res.success) {
+                bootbox.alert(res.message);
+                $this.text('Remove from Wishlist');
+                $this.removeClass('btn-inprogress')
+                    .removeClass('btn-add-wishlist')
+                    .addClass('btn-remove-wishlist')
+                    .attr('disabled',false);                
+            }
+
+        });   
+    });
+
+    $(document).on('click','.btn-remove-wishlist', function(e) {
+        var $this = $(this);
+        $this.attr('disabled',true).addClass('btn-inprogress');
+        $.post($this.data('remove-url'), function(res) {
+            if(res.success) {
+                bootbox.alert(res.message);
+                $this.text('Add to Wishlist');
+                $this.removeClass('btn-inprogress')
+                    .removeClass('btn-remove-wishlist')
+                    .addClass('btn-add-wishlist')
+                    .attr('disabled',false);                
+            }            
+        });      
+    });
+
     $('select').selectpicker();
-//    $('input:not(checkbox)').iCheck({
-//        checkboxClass: 'icheckbox_square-orange',
-//        radioClass: 'iradio_minimal',
-//        increaseArea: '40%'
-//    });
-//    $('input:checkbox').screwDefaultButtons({
-//        image: 'url("plugins/screwdefaultbuttons/images/checkbox.jpg")',
-//        width: 40,
-//        height: 40
-//    });
+    $('[data-toggle="modal"]').click(function(){
+        $('.modal.in').modal('hide');
+    });
+
+    /*
+      Handler register form
+    */
+    $('#form-register').submit(function(e){
+        e.preventDefault();
+        var $this = $(this);
+        $.ajax({
+            url: $this.attr('action'),
+            type: 'POST',
+            data: $this.serialize(),
+            beforeSend: function() {
+                $this.find('[type="submit"]').attr('disabled', true);
+                $this.find('.form-messages').html('');
+            },
+            success: function(res) {
+                console.log(res);
+                if(res.success) {
+                    location.reload();
+                } else {
+                    var messagesHtml = '<ul class="list-unstyled">';
+                    $.each(res.errors, function(index, errors) {
+                        messagesHtml += '<li> ' + errors[0] + ' </li>'
+                    });
+                    messagesHtml += '</ul>';
+                    Helper.flash_message('danger', messagesHtml, $this.find('.form-messages'), 5000);
+                }
+
+            },
+            complete: function() {
+                $this.find('[type="submit"]').attr('disabled', false);
+            }
+        });
+        return false;
+    });
+    /*
+      Handler login form
+    */
+    $('#form-login').submit(function(e){
+        e.preventDefault();
+        var $this = $(this);
+        $.ajax({
+            url: $this.attr('action'),
+            type: 'POST',
+            data: $this.serialize(),
+            beforeSend: function() {
+                $this.find('[type="submit"]').attr('disabled', true);
+                $this.find('.form-messages').html('');
+            },
+            success: function(res) {
+                console.log(res);
+                if(res.success) {
+                    location.reload();
+                } else {
+                    Helper.flash_message('danger', 'Email or password is invalid', $this.find('.form-messages'), 5000);
+                }
+
+            },
+            complete: function() {
+                $this.find('[type="submit"]').attr('disabled', false);
+            }
+        });
+        return false;
+    });
 });
 
 function showMap(dom, locations, zoom) {
@@ -79,9 +167,10 @@ $('.booking-tour').on('click',function(){
    $('#booking-modal').modal('show');
    $('#booking-tour-id').val($(this).data('id'));
 });
+
 $('.datepicker').datepicker({
     format: 'yyyy-mm-dd',
     autoclose: true
 });
+
 $('form').validate();
-$('.html5-editor').wysihtml5();

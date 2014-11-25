@@ -39,29 +39,30 @@ class PaypalPaymentController extends BaseController{
             'mode' => 'sandbox',
             'http.ConnectionTimeOut' => 30,
             'log.LogEnabled' => true,
-            'log.FileName' => __DIR__.'/../PayPal.log',
+            'log.FileName' => storage_path().'/logs/PayPal.log',
             'log.LogLevel' => 'FINE'
         ));
 
     }
     public function create()
     {
+            $tourId = Session::get('tourId');
+            $tour = Tour::findOrFail($tourId);
             $payer = Paypalpayment::Payer();
             $payer->setPayment_method("paypal");
 
             $amount = Paypalpayment:: Amount();
             $amount->setCurrency("USD");
-            $amount->setTotal("1.00");
+            $amount->setTotal($tour->price_from);
 
             $transaction = Paypalpayment:: Transaction();
             $transaction->setAmount($amount);
-            $transaction->setDescription("This is the payment description.");
+            $transaction->setDescription($tour->name);
 
             $baseUrl = Request::root();
             $redirectUrls = Paypalpayment:: RedirectUrls();
             $redirectUrls->setReturn_url($baseUrl.'/paymento/confirmpayment');
-            $redirectUrls->setCancel_url($baseUrl.'/payment/cancelpayment');
-            //var_dump($baseUrl);die();
+            $redirectUrls->setCancel_url($baseUrl.'/paymento/cancelpayment');
             $payment = Paypalpayment:: Payment();
             $payment->setIntent("sale");
             $payment->setPayer($payer);
@@ -93,8 +94,13 @@ class PaypalPaymentController extends BaseController{
        print_r($payment->getPayer());die();
     }
     public function getConfirmpayment(){
+        
         $payer_id = Input::get('PayerID');
+<<<<<<< HEAD
         $this->_paymentId = Session::get('paymentId');
+=======
+        $this->_paymentId = Request::query('paymentId');
+>>>>>>> 694d14929affdc11955b24ff3a01af422d9aba96
         $payment = Paypalpayment::get($this->_paymentId, $this->_apiContext);
 
         $paymentExecution = Paypalpayment::PaymentExecution();

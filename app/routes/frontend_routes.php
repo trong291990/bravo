@@ -6,7 +6,7 @@ Route::get('/tours/{slug}', array('as' => 'area_tours', 'uses' => 'TourControlle
 Route::get('/tours/{id}/place_coordinates', array('as' => 'tour.load_place_coordinates', 'uses' => 'TourController@placeCoordinates'));
 Route::get('/tours/{area_slug}/{tour_slug}', array('as' => 'tour.show', 'uses' => 'TourController@show'));
 
-Route::get('/travel-reviews', array('as' => 'review', 'uses' => 'HomeController@review'));
+Route::get('/travel-reviews', array('as' => 'review', 'uses' => 'ReviewController@index'));
 Route::get('/geo', array('as' => 'geo', 'uses' => 'ToolController@geo'));
 Route::get('/tour-slug', array('as' => 'tour.slug', 'uses' => 'ToolController@tourSlug'));
 Route::get('/place-slug', array('as' => 'place.slug', 'uses' => 'ToolController@placeSlug'));
@@ -14,18 +14,34 @@ Route::post('/package-compare', array('as' => 'package_compare', 'uses' => 'Tour
 Route::post('/booking', array('as' => 'booking', 'uses' => 'TourController@booking'));
 Route::get('/customize-your-trip', array('as' => 'inquiry.create', 'uses' => 'TourController@createInquiry'));
 Route::post('/inquiry', array('as' => 'inquiry.store', 'uses' => 'TourController@storeInquiry'));
-Route::post('/review/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
-
 Route::post('/subscribe', ['as' => 'subscribe_newsletter', 'uses' => 'HomeController@subscribeNewsletter']);
+
+Route::get('/paymento/confirmpayment', array('uses' => 'PaypalPaymentController@getConfirmpayment'));
+Route::resource('payment', 'PaypalPaymentController');
+
+
+Route::get('/booking/{tour_slug}/{id}',array('as'=>'booking.form','uses'=>'BookingController@form'));
+
+Route::get('/travel-albums', array('as' => 'travel_album' ,'uses' => 'AlbumController@index'));
+Route::get('/travel-albums/{area_slug}', array('as' => 'album.area' ,'uses' => 'AlbumController@area'));
+Route::get('/travel-albums/{area_slug}/{album_id}', array('as' => 'travel_album.show' ,'uses' => 'AlbumController@show'));
+Route::post('/login', ['as' => 'customer_login', 'uses' => 'AuthController@customerLogin']);
+Route::get('/logout', ['as' => 'customer_logout', 'uses' => 'AuthController@customerLogout']);
+Route::post('/register', ['as' => 'customer_register', 'uses' => 'AuthController@customerRegister']);
+Route::get('/facebook-auth', ['as' => 'facebook_auth', 'uses' => 'AuthController@facebook']);
+Route::get('/google-auth', ['as' => 'google_auth', 'uses' => 'AuthController@google']);
+
+Route::group(['before' => 'customer.auth'], function() {
+    Route::post('/travel-reviews/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
+});
+
+Route::get('/wishlist', ['as' => 'wishlist.index', 'uses' => 'WishlistController@index']);
+Route::post('/wishlist/add/{tour_id}', ['as' => 'wishlist.add', 'uses' => 'WishlistController@add']);
+Route::post('/wishlist/remove/{tour_id}', ['as' => 'wishlist.remove', 'uses' => 'WishlistController@remove']);
+
 foreach (StaticPage::$VALID_NAMES as $page_name) {
     Route::get('/' . $page_name, [
         'as' => str_replace('-', '_', $page_name),
         'uses' => 'HomeController@staticPage']
     );
 }
-
-Route::get('/paymento/confirmpayment', array('uses' => 'PaypalPaymentController@getConfirmpayment'));
-Route::resource('payment', 'PaypalPaymentController');
-Route::get('/travel-albums', array('as' => 'travel_album' ,'uses' => 'AlbumController@index'));
-Route::get('/travel-albums/{area_slug}', array('as' => 'album.area' ,'uses' => 'AlbumController@area'));
-Route::get('/travel-albums/{area_slug}/{album_id}', array('as' => 'travel_album.show' ,'uses' => 'AlbumController@show'));

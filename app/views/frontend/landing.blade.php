@@ -14,18 +14,11 @@
                         '/frontend/css/site.css',
                         '/plugins/bootstrap-select/bootstrap-select.min.css',
                         '/plugins/bootstrap-datepicker/bootstrap-datepicker3.css',
-                        '/plugins/icheck/skins/all.css',
-                        '/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css'
+                        '/plugins/icheck/skins/all.css'
                     )
             ) 
         }}
         {{HTML::style( '/frontend/css/media.css')}}
-        {{ Minify::javascript(array(
-               '/shared/js/jquery-2.0.3.min.js',
-               '/shared/js/bootstrap.min.js',
-               '/frontend/js/layout.js',
-               '/frontend/js/functions.js'
-         )) }}
     </head>
     <body>
         <div id="intro_wrapper">
@@ -46,10 +39,11 @@
                         </div>
                         <div class="country-nav" id="intro-country-nav">
                             <ul class="list-unstyled list-inline">
-                                <li><a href="{{Request::root()}}/tours/indochina-tours">Indochina</a></li>
+                                <li style="display: none"><a href="{{Request::root()}}/tours/indochina-tours">Indochina</a></li>
                                 <li><a href="{{Request::root()}}/tours/vietnam-tours">Vietnam</a></li>
                                 <li><a href="{{Request::root()}}/tours/cambodia-tours">Cambodia</a></li>
                                 <li><a href="{{Request::root()}}/tours/laos-tours">Lao</a></li>
+                                <li><a href="{{Request::root()}}/tours/thailand-tours">Thailand</a></li>
                             </ul>
                         </div>
                         <div class="row" id="intro-description">
@@ -76,6 +70,11 @@
                 </div>
             </div>
         </div>
+        {{ Minify::javascript(array(
+               '/shared/js/jquery-2.0.3.min.js',
+               '/shared/js/bootstrap.min.js',
+               '/frontend/js/layout.js'
+         )) }}        
 </html>
 
 

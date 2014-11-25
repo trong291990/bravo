@@ -2,13 +2,18 @@
 
 class Album extends \Eloquent {
 
-    protected $fillable = ['name', 'area_id', 'description'];
+    protected $fillable = ['name', 'area_id', 'description', 'type'];
     protected $table = 'albums';
 
     const ALBUMS_PATH = 'uploads/albums'; // albums/:id/origin & albums/:id/thumb
     const ORIGIN_DIR = 'origin';
     const THUMB_DIR = 'thumb';
     const PER_PAGE = 15;
+
+    const TYPE_SCENIC = 'scenic';
+    const TYPE_HOTEL = 'hotel';
+    const TYPE_RESTAURANT = 'restaurant';
+    const TYPE_OTHER = 'other';
 
     public static $rules = array(
         'name' => 'required'
@@ -23,6 +28,9 @@ class Album extends \Eloquent {
                     if (!$album->area_id) {
                         $album->area_id = NULL;
                     }
+                    if (!$album->type) {
+                        $album->type = self::TYPE_OTHER;
+                    }
                 });
 
         static::created(function($album) {
@@ -34,6 +42,32 @@ class Album extends \Eloquent {
                     // Delete album directory
                     File::deleteDirectory(public_path(self::ALBUMS_PATH . '/' . $album->id));
                 });
+    }
+
+    public static function availableTypes() {
+        return [
+            self::TYPE_SCENIC, self::TYPE_HOTEL, 
+            self::TYPE_RESTAURANT, self::TYPE_OTHER
+        ];
+    }
+
+    public static function isValidType($type) {
+        return in_array($type, self::availableTypes());
+    }
+
+    /*
+    * Scope by types
+    */
+    public function scopeScenic($query) {
+        return $query->where('type', self::TYPE_SCENIC);
+    }
+
+    public function scopeHotel($query) {
+        return $query->where('type', self::TYPE_HOTEL);
+    }
+
+    public function scopeRestaurant($query) {
+        return $query->where('type', self::TYPE_RESTAURANT);
     }
 
     public static function recent($count = 8) {
@@ -49,6 +83,14 @@ class Album extends \Eloquent {
                 $query = $query->where('area_id', $area_id);
             }
         }
+
+        if (isset($options['type']) && trim($options['type'])) {
+            $type = trim($options['type']);
+            if(self::isValidType($type)) {
+                $query = $query->where('type', $type);
+            }
+        }
+
         if (isset($options['keyword']) && trim($options['keyword'])) {
             $keyword = '%' . trim($options['keyword']) . '%';
             $query = $query->where(function($query) use($keyword) {

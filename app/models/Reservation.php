@@ -9,14 +9,15 @@ class Reservation extends Eloquent {
 
     protected $table = 'reservations';
     protected $fillable = ['tour_id', 'customer_name', 'customer_email',
-        'customer_phone', 'message', 'status', 'start_date','traveling','travel_date'
+        'customer_phone', 'message', 'status', 'start_date','traveling','travel_date',
+        'include_payment','pricing','fee','fee_description','payment_status','payment_detail','payment_method'
     ];
     public static $rules = array(
         'tour_id' => 'required',
         'customer_name' => 'required',
         'customer_email' => 'required'
     );
-
+    
     public static function boot() {
         parent::boot();
         static::creating(function($reservation) {
@@ -32,8 +33,8 @@ class Reservation extends Eloquent {
             }
         });
         static::created(function($reservation) {
-            Customer::createFromSource(
-              Customer::FROM_BOOKING,
+            Contact::createFromSource(
+              Contact::FROM_BOOKING,
               [
                 'name' => $reservation->customer_name,
                 'email' => $reservation->customer_email,
@@ -66,6 +67,10 @@ class Reservation extends Eloquent {
         if(isset($sanitized_options['status']) && in_array($sanitized_options['status'], ['pending','confirmed'])) {
             $k = $sanitized_options['status'] == 'confirmed' ? '1' : '0';
             $query = $query->where('status', $k);
+        }
+        if(isset($sanitized_options['status']) && in_array($sanitized_options['status'], ['payment_incomplete','payment_completed'])) {
+            $k = $sanitized_options['status'] == 'payment_incomplete' ? 'Incomplete' : 'Completed';
+            $query = $query->where('payment_status', $k);
         }
         return $query->orderBy('created_at', 'DESC')->paginate();        
     }
