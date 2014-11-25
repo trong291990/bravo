@@ -999,7 +999,7 @@ li.dropdown .dropdown-menu li a {
 }
 #album-backlink,#album-actions {
     position:absolute;
-    bottom:-480px;
+    bottom:-400px;
 }
 #album-backlink {
     left:20px;
