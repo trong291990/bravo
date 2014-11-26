@@ -66,7 +66,7 @@ class AlbumController extends FrontendBaseController {
     public function show($area_slug, $album_id) {
         $areas = Area::all();
         $area = Area::where('name', 'LIKE', '%' . $area_slug . '%')->first();
-        $album = Album::findOrFail(string_to_int($album_id));
+        $album = Album::findOrFail(substr($album_id, strrpos($album_id, '-') + 1));
         $album->increaseViews('views');
         $this->layout->content = View::make('frontend.album.show')
             ->with(compact('album', 'area', 'areas'));

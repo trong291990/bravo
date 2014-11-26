@@ -21,9 +21,7 @@ class Album extends \Eloquent {
     public static function boot() {
         parent::boot();
         static::saving(function($album) {
-            if (!$album->slug) {
-                $album->slug = slug_string($album->name);
-            }
+            $album->slug = slug_string($album->name);
             if (!$album->area_id) {
                 $album->area_id = NULL;
             }
