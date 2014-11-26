@@ -16,19 +16,43 @@ class AlbumController extends FrontendBaseController {
     public function __construct() {
         parent::__construct();
         $this->beforeFilter(function() {
-                    if (!$this->loggedCustomer) {
-                        return Redirect::to(url('/tours/indochina-tours'));
-                    }
-                }, ['only' => ['download']]
+            if (!$this->loggedCustomer) {
+                return Redirect::to(url('/tours/indochina-tours'));
+            }
+        }, ['only' => ['download']]
         );
     }
 
     public function index() {
         $areas = Area::all();
-        $albums = Album::recent();
-        $mostViewAlbums = Album::all();
-        $this->layout->content = View::make('frontend.album.index')
-                ->with(compact('albums', 'areas', 'mostViewAlbums'));
+        if (inputHasAny(['country', 'type', 'keyword'])) {
+            // Do searching
+            $selectedArea = null;
+            $albumQuery = Album::orderBy('views', 'DESC');
+            if (Input::has('country') && ($selectedArea = Area::findByName(Input::get('country')))) {
+                $albumQuery = $albumQuery->withAreaID($selectedArea->id);
+            }
+
+            $selectedType = Input::get('type', null);
+            if ($selectedType && Album::isValidType(Input::get('type'))) {
+                $albumQuery = $albumQuery->withType($selectedType);
+            }
+
+            $keyword = Input::get('keyword', null);
+            if ($keyword) {
+                $albumQuery = $albumQuery->withKeyword($selectedType);
+            }
+            $albums = $albumQuery->get();
+            dd($albums->count());
+            $this->layout->content = View::make('frontend.album.search', compact('areas', 'albums'));
+        } else {
+            $cityAlbums = Album::city()->mostView()->get();
+            $hotelAlbums = Album::hotel()->mostView()->get();
+            $travellerAlbums = Album::traveller()->mostView()->get();
+            $this->layout->content = View::make(
+                    'frontend.album.index', compact('areas', 'cityAlbums', 'hotelAlbums', 'travellerAlbums')
+            );
+        }
     }
 
     public function area($area_slug) {
@@ -37,7 +61,7 @@ class AlbumController extends FrontendBaseController {
         $albums = $area->albums()->orderBy('created_at', 'DESC')->paginate(4);
         $mostViewAlbums = $area->mostViewAlbums();
         $this->layout->content = View::make('frontend.album.area')
-                ->with(compact('albums', 'mostViewAlbums', 'areas', 'area'));
+            ->with(compact('albums', 'mostViewAlbums', 'areas', 'area'));
     }
 
     public function show($area_slug, $album_id) {
@@ -46,7 +70,7 @@ class AlbumController extends FrontendBaseController {
         $album = Album::findOrFail(string_to_int($album_id));
         $album->increaseViews('views');
         $this->layout->content = View::make('frontend.album.show')
-                ->with(compact('album', 'area', 'areas'));
+            ->with(compact('album', 'area', 'areas'));
     }
 
     public function postReview($album_id) {

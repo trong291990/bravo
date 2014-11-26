@@ -42,7 +42,7 @@ function reservation_statuses_for_select() {
         'any' => 'Any',
         'pending' => 'Pending',
         'confirmed' => 'Confirmed',
-        'payment_incomplete'=>'Incomplete Payment',
+        'payment_incomplete' => 'Incomplete Payment',
         'payment_completed' => 'Completed Payment'
     ];
 }
@@ -112,9 +112,9 @@ function create_file_if_not_exists($file_path) {
 function gravatar_url($email, $size = 100) {
     $default = asset('/images/default_avatar.png');
     return "http://www.gravatar.com/avatar/" .
-            md5(strtolower(trim($email))) .
-            "?d=" . urlencode($default) .
-            "&s=" . $size;
+        md5(strtolower(trim($email))) .
+        "?d=" . urlencode($default) .
+        "&s=" . $size;
 }
 
 function areas_for_select($areas) {
@@ -135,12 +135,13 @@ function string_to_int($str) {
     return $val;
 }
 
-function album_types_for_select() {
-    $options = [];
-    foreach (Album::availableTypes() as $type) {
-        $options[$type] = ucfirst($type);
+function inputHasAny($keys = []) {
+    foreach ($keys as $key) {
+        if(Input::has($key)) {
+            return true;
+        }
     }
-    return $options;
+    return false;
 }
 
 ?>

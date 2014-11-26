@@ -184,16 +184,10 @@ $('.booking-tour').on('click', function() {
     $('#booking-modal').modal('show');
     $('#booking-tour-id').val($(this).data('id'));
 });
-try {
-   $('.datepicker').datepicker({
+
+$('.datepicker').datepicker({
     format: 'yyyy-mm-dd',
     autoclose: true
 }); 
-$('select').selectpicker();
-} catch (ex) {
-    
-}
-
-
-
+$('select:not(.not-picker)').selectpicker();
 $('form').validate();

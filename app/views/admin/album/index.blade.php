@@ -24,7 +24,7 @@
                     {{Former::select('area_id')->label(false)->addOption('All countries', '')->options(areas_for_select($areas))->class('form-control submit-on-change')}}
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
-                    {{Former::select('type')->label(false)->addOption('All types', '')->options(album_types_for_select())->class('form-control submit-on-change')}}
+                    {{Former::select('type')->label(false)->addOption('All types', '')->options(Album::typesLabelsMap())->class('form-control submit-on-change')}}
                 </div>                
                 <div class="col-md-4 col-sm-4 col-xs-6">
                     {{Former::text('keyword')->label(false)->placeholder('Keyword ...')}}

@@ -12,7 +12,6 @@ Travel Album – Bravo Indochina Tours
             <div class=" form-group col-sm-3">
                 <label>Select Country</label>
                 <select class="form-control no-br not-picker" id="select-album-country" name="country">
-                    <option value="">-- Select one --</option>
                     <?php foreach ($areas as $area): ?>
                         <option value='{{strtolower($area->name)}}' data-url="{{route('album.area', slug_string($area->name))}}">{{$area->name}}</option>
                     <?php endforeach; ?>

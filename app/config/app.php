@@ -118,7 +118,8 @@ return array(
         'CeesVanEgmond\Minify\MinifyServiceProvider',
         'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
         'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
-        'Artdarek\OAuth\OAuthServiceProvider'
+        'Artdarek\OAuth\OAuthServiceProvider',
+        'Intervention\Image\ImageServiceProvider'
     ),
     /*
       |--------------------------------------------------------------------------

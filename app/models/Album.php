@@ -9,9 +9,9 @@ class Album extends \Eloquent {
     const ORIGIN_DIR = 'origin';
     const THUMB_DIR = 'thumb';
     const PER_PAGE = 15;
-    const TYPE_PLACE = 'place';
-    const TYPE_HOTEL = 'hotel';
-    const TYPE_RESTAURANT = 'restaurant';
+    const TYPE_CITY = 'city_attraction';
+    const TYPE_HOTEL = 'hotel_resort';
+    const TYPE_TRAVELLER = 'traveller';
     const TYPE_OTHER = 'other';
 
     public static $rules = array(
@@ -21,33 +21,45 @@ class Album extends \Eloquent {
     public static function boot() {
         parent::boot();
         static::saving(function($album) {
-                    if (!$album->slug) {
-                        $album->slug = slug_string($album->name);
-                    }
-                    if (!$album->area_id) {
-                        $album->area_id = NULL;
-                    }
-                    if (!$album->type) {
-                        $album->type = self::TYPE_OTHER;
-                    }
-                });
+            if (!$album->slug) {
+                $album->slug = slug_string($album->name);
+            }
+            if (!$album->area_id) {
+                $album->area_id = NULL;
+            }
+            if (!$album->type) {
+                $album->type = self::TYPE_OTHER;
+            }
+        });
 
         static::created(function($album) {
-                    File::makeDirectory($album->originPhotoPath(), 0777, true, true);
-                    File::makeDirectory($album->thumbPhotoPath(), 0777, true, true);
-                });
+            File::makeDirectory($album->originPhotoPath(), 0777, true, true);
+            File::makeDirectory($album->thumbPhotoPath(), 0777, true, true);
+        });
         static::deleted(function($album) {
-                    $album->photos()->delete();
-                    // Delete album directory
-                    File::deleteDirectory(public_path(self::ALBUMS_PATH . '/' . $album->id));
-                });
+            $album->photos()->delete();
+            // Delete album directory
+            File::deleteDirectory(public_path(self::ALBUMS_PATH . '/' . $album->id));
+        });
     }
 
     public static function availableTypes() {
         return [
-            self::TYPE_PLACE, self::TYPE_HOTEL,
-            self::TYPE_RESTAURANT, self::TYPE_OTHER
+            self::TYPE_CITY, self::TYPE_HOTEL,
+            self::TYPE_TRAVELLER, self::TYPE_OTHER
         ];
+    }
+
+    public static function typesLabelsMap($includeOther = true) {
+        $arr = [
+            self::TYPE_CITY => 'City Attraction',
+            self::TYPE_HOTEL => 'Hotel & Resort',
+            self::TYPE_TRAVELLER => 'Traveller Album'
+        ];
+        if ($includeOther) {
+            $arr[self::TYPE_OTHER] = 'Other';
+        }
+        return $arr;
     }
 
     public static function isValidType($type) {
@@ -78,8 +90,8 @@ class Album extends \Eloquent {
         if (isset($options['keyword']) && trim($options['keyword'])) {
             $keyword = '%' . trim($options['keyword']) . '%';
             $query = $query->where(function($query) use($keyword) {
-                        $query->where('name', 'LIKE', $keyword);
-                    });
+                $query->where('name', 'LIKE', $keyword);
+            });
         }
         return $query->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
@@ -88,16 +100,36 @@ class Album extends \Eloquent {
      * Scope by types
      */
 
-    public function scopeScenic($query) {
-        return $query->where('type', self::TYPE_PLACE);
+    public function scopeWithType($query, $type) {
+        return $query->where('type', $type);
+    }
+
+    public function scopeCity($query) {
+        return $query->where('type', self::TYPE_CITY);
     }
 
     public function scopeHotel($query) {
         return $query->where('type', self::TYPE_HOTEL);
     }
 
-    public function scopeRestaurant($query) {
-        return $query->where('type', self::TYPE_RESTAURANT);
+    public function scopeTraveller($query) {
+        return $query->where('type', self::TYPE_TRAVELLER);
+    }
+
+    /*
+     * More scopes
+     */
+
+    public function scopeMostView($query, $count = 8) {
+        return $query->orderBy('views', 'DESC')->take($count);
+    }
+
+    public function scopeWithAreaID($query, $area_id) {
+        return $query->where('area_id', $area_id);
+    }
+
+    public function scopeWithKeyword($query, $keyword) {
+        return $query->where('name', 'LIKE', '%' . $keyword . '%');
     }
 
     public function area() {
@@ -142,8 +174,8 @@ class Album extends \Eloquent {
         $uploadedFile->move($this->originPhotoPath(), $originFileName);
         // Make thumb
         Image::make($this->originPhotoPath() . $originFileName)
-                ->resize(300, 200)
-                ->save($this->thumbPhotoPath() . $thumbFileName);
+            ->resize(300, 200)
+            ->save($this->thumbPhotoPath() . $thumbFileName);
         // Save to DB
         $photo = new AlbumPhoto;
         $photo->album_id = $this->id;

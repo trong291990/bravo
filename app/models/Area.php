@@ -40,5 +40,10 @@ class Area extends Eloquent {
     public function scopeOnMenu($query) {
         return $query->where('is_on_menu', true);
     }
+    
+    public static function findByName($name) {
+        return static::where('name', 'LIKE', '%' . $name .'%')->first();
+    }
+    
 
 }
