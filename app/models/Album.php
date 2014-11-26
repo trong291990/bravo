@@ -132,6 +132,11 @@ class Album extends \Eloquent {
         return $query->where('name', 'LIKE', '%' . $keyword . '%');
     }
 
+    public function typeLabel() {
+        $labels = static::typesLabelsMap();
+        return $labels[$this->type];
+    }
+
     public function area() {
         return $this->belongsTo('Area', 'area_id');
     }

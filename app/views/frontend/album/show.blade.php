@@ -1,157 +1,106 @@
 @section('title')
 {{$album->name}} - {{$area->name}} Travel Album – Bravo Indochina Tours
 @stop
+@section('body_class')
+detail-album
+@stop
+@section('container_class')
+detail-album-content
+@stop
 @section('content')
-<section id="content">
+<div id="album-wrapper">
     <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">{{$area->name}} Travel Album</a></li>
-            <li class="active">{{$album->name}}</li>
-        </ul>
+        <div class="row relative">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div id="galleria" style="height: 420px">
+                    <?php foreach($album->photos as $photo) :?>
+                    <a href="{{asset($photo->origin_path)}}">
+                        <img 
+                            src="{{asset($photo->thumb_path)}}"
+                            data-big="{{asset($photo->origin_path)}}"
+                            data-title="{{$photo->title}}"
+                            data-description="{{$photo->title}}"
+                            >
+                    </a>
+                    <?php endforeach; ?>
+                </div>
+
+            </div>
+            <div id="album-backlink"><a href="{{route('travel_album')}}">Back to search</a></div>
+            <ul id="album-actions" class="list-inline list-unstyled">
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-mail-forward"></i></a></li>
+                
+                <?php if($loggedCustomer) :?>
+                <li><a href="{{route('travel_album.download', $album->id)}}"><i class="fa fa-download"></i></a></li>
+                <?php else :?>
+                  <li><a href="#modal-login" data-toggle='modal'><i class="fa fa-download"></i></a></li>
+                <?php endif;?>
+               
+            </ul>
+        </div>
     </div>
-
-    <div class="container">
-        <?php echo View::make('frontend.album._sidebar')->with('areas', $areas) ?>
-        <div id="album-detail" class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-            <div class="panel panel-default">
-                <div class="panel-heading red">{{$album->name}}</div>
-                <div class="panel-body">
-
-                    <!-- album info -->
-                    <div class="album-info">
-                    <!--    <span class="author">
-                            <span><i class="fa fa-pencil"></i>Write By: </span> 
-                            <span class="t-color">admin</span>
-                        </span>-->
-
-                        <span class="hits">
-                            <span><i class="fa fa-eye"></i>Views: </span>
-                            <span class="t-color">{{$album->views}}</span>
-                        </span>
-
-                        <span class="comment_count">
-                            <span><i class="fa fa-comment"></i>Comment: </span>
-                            <span class="t-color">0</span>
-                        </span>
-
-                        <span class="date-crate">
-                            <span><i class="fa fa-calendar"></i>Date create: </span>
-                            <span class="t-color">{{$album->created_at->format('Y-m-d')}}</span>
-                        </span>
-
-                        <button type="button" class="btn btn-default pull-right"><i class="fa fa-arrow-circle-down"></i>
-                            DOWNLOAD</button>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>{{ $album->name }}</h2>
+            <p>
+                {{ $album->description }}
+            </p>
+        </div>
+        <div class="col-sm-3">
+            <div class="row" id="album-statictis">
+                <div class="col-xs-4">
+                    {{$album->views}} <small>View</small>
+                </div>
+                <div class="col-xs-4">
+                    965 <small>faves</small>
+                </div>
+                <div class="col-xs-4">
+                    965 <small>comments</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div id="album-licence">
+                <p>Taken October 2014</p>
+                <p><i style="font-size: 1.2em">&COPY; </i> All rights reserved </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="album-faves-author">
+                <i class="fa fa-star"></i>  <a href="#">Tran Dinh Trong</a> ,  <a href="#">Ht Luan</a> and 22 more people like this
+            </div>
+            <div class="row album-comment-item">
+                <div class="col-sm-2">
+                    <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/1517419_580090252071910_1609177855_n.jpg?oh=69547dc339dbe3ebdf4d9e8a31b1ab2d&oe=550D99B5&__gda__=1427808026_50f21fe0df3d4abda105febb28a8d60b"
+                         class="img-responsive img-thumbnail img-circle no-padding" />
+                </div>
+                <div class="col-sm-10">
+                    <div class="album-comment-author">
+                        <a href="#">Trong</a> 1 mo
                     </div>
-
-                    <div class="images">
-                        <div>
-                            <img class="show-icon img-responsive" src="{{asset($album->primaryPhoto()->origin_path)}}" alt="{{$album->name}}" />
-                        </div>
-                    </div>
-
-                    <!-- slide show -->
-                    <div class="slide-wapper">
-                        <div id="carousel-album" class="carousel slide" data-ride="carousel">
-
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <!-- Slice with 4 photos -->
-                                <?php
-                                $photos_groups = array_chunk($album->photos->toArray(), 4);
-                                ?>
-                                <?php foreach ($photos_groups as $index => $photos) : ?>
-                                    <div class="item <?php echo $index == 0 ? 'active' : '' ?>">
-                                        <div class="row">
-                                            <?php foreach ($photos as $photo) : ?>
-                                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                    <a class="thumbnail" href="{{asset($photo['origin_path'])}}">
-                                                        <img class="icon-album img-responsive" src="{{asset($photo['thumb_path'])}}" alt="...">
-                                                    </a>
-                                                </div>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-
-                            <!-- Controls -->
-                            <a class="left carousel-control" href="#carousel-album" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-album" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- tab description and comment -->
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabborder" role="tablist">
-                        <li class="active"><a href="#description" role="tab" data-toggle="tab">Description</a></li>
-                        <li><a href="#review" role="tab" data-toggle="tab">Reviews</a></li>
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="description">
-                            {{$album->description}}
-                        </div>
-                        <div class="tab-pane" id="review">
-                            <div id="review-content">
-                                <div class="media">
-                                    <a href="#" class="pull-left">
-                                        <img alt="64x64" data-src="holder.js/64x64" class="media-object" style="width: 64px; height: 64px;" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Media heading on 22/02/2014</h4>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a href="#" class="pull-left">
-                                        <img alt="64x64" data-src="holder.js/64x64" class="media-object" style="width: 64px; height: 64px;" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Media heading on 22/02/2014</h4>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="write-review">
-                                <h2 id="review-title">Write a review</h2>
-                                <form role="form">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Your Name:</label>
-                                        <input type="text" class="form-control" >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Your Review:</label>
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-default pull-right">Submit</button>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="album-comment-content">
+                        If you're unable to log in to your account using your payment service provider ID (PSPID) and password, it may be due to one of the following reasons:
+                        <br/>
+                        1. You could be in the wrong environment. Are you using your test PSPID and/or password in the production environment, or your production PSPID and/or password in the test environment? You can check the environment at the top of the login screen – it will say either: 'Identification Production' or 'Identification TEST'. To switch environments, use the link under the login box. 
                     </div>
                 </div>
             </div>
-
         </div>
-</section>
-
+    </div>
+</div>
 @stop
-
 @section('inline_scripts')
-<script type='text/javascript'>
+<script>
     $(document).ready(function() {
-        $("a.thumbnail").click(function(event) {
-            event.preventDefault();
-            var originUrl = $(this).attr("href");
-            $(".show-icon").attr("src", originUrl);
-        });
+        Helper.scroll_to($('.detail-album-content'));
+        Galleria.loadTheme('/plugins/galleria/galleria.classic.min.js');
+        Galleria.run('#galleria', {showInfo: false});
     });
 </script>
 @stop
+

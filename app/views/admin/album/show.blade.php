@@ -90,7 +90,9 @@
             bootbox.confirm('Are you sure want to delete?', function(res) {
                 if (res) {
                     $.post($_this.data('url'), function(res) {
-                        $_this.closest('.uploaded-photo-container').fadeOut(500);
+                        $_this.closest('.uploaded-photo-container').fadeOut(500, function() {
+                            $(this).remove();
+                        });
                     });
                 }
             });

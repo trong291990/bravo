@@ -40,10 +40,9 @@ class AlbumController extends FrontendBaseController {
 
             $keyword = Input::get('keyword', null);
             if ($keyword) {
-                $albumQuery = $albumQuery->withKeyword($selectedType);
+                $albumQuery = $albumQuery->withKeyword($keyword);
             }
             $albums = $albumQuery->get();
-            dd($albums->count());
             $this->layout->content = View::make('frontend.album.search', compact('areas', 'albums'));
         } else {
             $cityAlbums = Album::city()->mostView()->get();

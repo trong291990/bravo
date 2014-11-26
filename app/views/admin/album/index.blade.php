@@ -45,7 +45,9 @@
                         <h5 class='album-name'>
                             {{$album->area->name}}
                             <br> 
-                            <b class='text-info'>{{truncate_words($album->name, 5)}}</b>
+                            <a href="{{route('admin.album.show', $album->id)}}">
+                                <b class='text-info'>{{truncate_words($album->name, 5)}}</b>
+                            </a>
                         </h5>
                         <?php $thumb_url = asset('backend/images/no-image.gif') ?>
                         <?php
@@ -53,7 +55,9 @@
                             $thumb_url = asset($album->primaryPhoto()->thumb_path);
                         }
                         ?>
-                        <img class='album-thumb' src='{{$thumb_url}}'>
+                        <a href="{{route('admin.album.show', $album->id)}}">
+                            <img class='album-thumb' src='{{$thumb_url}}'>
+                        </a>
                         <div class="album-controls">
                             <a href="{{route('admin.album.show', $album->id)}}" class='btn btn-xs btn-primary'>
                                 <i class="fa fa-pencil"></i> Edit
@@ -63,7 +67,7 @@
                                     data-method="DELETE" data-message="Are you sure want to delete this album?">
                                 <i class="fa fa-trash-o"></i>
                             </button>
-                            <span class='text-muted pull-right'>{{$album->photos->count()}} pics</span>
+                            <span class='text-muted pull-right'> {{$album->typeLabel()}} | {{$album->photos->count()}} pics</span>
                         </div>
                     </div>
                 </div>

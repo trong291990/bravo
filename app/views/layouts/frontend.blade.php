@@ -43,7 +43,7 @@
         <![endif]-->
         @yield('addon_stylesheets')
     </head>
-    <body class="<?php echo @Route::currentRouteName() ?>">
+    <body class="{{trim($__env->yieldContent('body_class'))}}">
         <header>
             <div class="container">
                 <div class="col-sm-6">
@@ -213,7 +213,7 @@
                 </div>
             </div>
         </div>
-        <div class="container <?php if(@Route::currentRouteName()) echo Route::currentRouteName().'-content' ?>">
+        <div class="container {{trim($__env->yieldContent('container_class'))}}">
             @yield('content')
             @include('frontend.partials.order_book')
             <div id="footer" class="row" style="display: none">
