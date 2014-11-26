@@ -12,7 +12,7 @@ Travel Album – Bravo Indochina Tours
     <div id="album-index-list">
         <div class="panel panel-default album">
             <div class="panel-heading">TOP CITIES IN INDOCHINA
-                <a class="view-more pull-right" href="#">View more</a>
+                <a class="view-more pull-right" href="{{route('travel_album',['type' => Album::TYPE_CITY])}}">View more</a>
             </div>
             <div class="panel-body">
                 <div class="row album-row">
@@ -24,7 +24,7 @@ Travel Album – Bravo Indochina Tours
         </div>
         <div class="panel panel-default album">
             <div class="panel-heading">HOTES & RESORTS
-                <a class="view-more pull-right" href="#">View more</a>
+                <a class="view-more pull-right" href="{{route('travel_album',['type' => Album::TYPE_HOTEL])}}">View more</a>
             </div>
             <div class="panel-body">
                 <div class="row album-row">
@@ -37,7 +37,7 @@ Travel Album – Bravo Indochina Tours
 
         <div class="panel panel-default album">
             <div class="panel-heading">Traveller Albums
-                <a class="view-more pull-right" href="#">View more</a>
+                <a class="view-more pull-right" href="{{route('travel_album',['type' => Album::TYPE_TRAVELLER])}}">View more</a>
             </div>
             <div class="panel-body">
                 <div class="row album-row">
