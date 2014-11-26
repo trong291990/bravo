@@ -1,4 +1,5 @@
 <div id="gui-ebooks" class='row'>
+    <div class="container">
     <div class="col-lg-6 col-sm-6">
         {{Former::open()->method('GET')}}
         <input type="text" value="" placeholder="Top 10 South Indochina Tour" />
@@ -19,4 +20,5 @@
         <img src="{{Request::root()}}/frontend/images/page/guide.png" alt="Gui To South Indochina Travel" />
         {{Former::close()}}
     </div>
+        </div> 
 </div>
