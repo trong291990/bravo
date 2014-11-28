@@ -1050,3 +1050,6 @@ li.dropdown .dropdown-menu li a {
 #album-city {
     margin: 20px 0px;
 }
+#galleria .galleria-thumbnails {
+    margin: auto;
+}
