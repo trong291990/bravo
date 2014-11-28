@@ -48,8 +48,8 @@ class BookingController extends AdminBaseController {
 	        return  Redirect::back()->withErrors($validator)->withInput();
 	    }
 
-	    Booking::create($data);
-
+	    $booing = Booking::create($data);
+            Session::flash('success', "The booking {$booing->name} has been updated successful");
 	    $this->layout->content =  Redirect::route('admin.booking.index');
 	}
 
@@ -91,14 +91,14 @@ class BookingController extends AdminBaseController {
 
 		$validator = Validator::make($data = Input::all(), Booking::$rules);
 
-        if ($validator->fails())
-        {
-            return  Redirect::back()->withErrors($validator)->withInput();
-        }
+                if ($validator->fails())
+                {
+                    return  Redirect::back()->withErrors($validator)->withInput();
+                }
 
 		$booking->update($data);
-
-		$this->layout->content =  Redirect::route('admin.booking.index');
+                Session::flash('success', "The booking {$booking->name} has been updated successful");
+		return  Redirect::route('admin.booking.index');
 	}
 
 	/**

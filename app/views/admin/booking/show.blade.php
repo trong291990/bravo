@@ -1,1 +1,0 @@
-C:\Users\DinhTrong\Projects\bravo\bravo\app/views/bookings/show.blade.php

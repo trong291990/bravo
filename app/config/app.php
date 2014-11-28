@@ -116,7 +116,7 @@ return array(
         'DaveJamesMiller\Breadcrumbs\ServiceProvider',
         'RyanNielson\Shareable\ShareableServiceProvider',
         'CeesVanEgmond\Minify\MinifyServiceProvider',
-        'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
+        //'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
         'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
         'Artdarek\OAuth\OAuthServiceProvider',
         'Intervention\Image\ImageServiceProvider'

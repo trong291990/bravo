@@ -41,16 +41,20 @@ Bravo Indochina Tours are experts in travel throughout Indochina. Call one of ou
                             </b>
                         </p>
                     </div>
+                    {{Former::open()}}
+                    {{Former::framework('Nude')}}
                     <div class="col-lg-9 col-md-12">
                         <h2>ABOUT US</h2>
                         <div style="background:#428bca;padding:15px;font-weight: bold;color:#fff">
                             Thank you for your booking with Bravo IndochinaTours. To book/confirm 
                             your trip please complete the form below and send to us a long with deposit $100/1 person
                         </div>
-                        <table class="table table-bordered">
+                        <div class="relative" id="custom-booking-form-wrapper">
+                             <table class="table table-bordered">
                             <tr>
                                 <td  colspan="4">
                                     <label>Tour name</label>
+                                    {{Former::text('tour_name')->class('form-control')->label(false)->div(false)}}
                                 </td>
                                 <td >
                                     <label>Booking reference</label>
@@ -65,8 +69,8 @@ Bravo Indochina Tours are experts in travel throughout Indochina. Call one of ou
                                 </td>
                             </tr>
                             <tr>
-                                <td  rowspan="2" class="rotate">
-                                    Flight Departure
+                                <td  rowspan="2" id="rotate-visible" style="width: 25px !important;text-align: center;vertical-align: middle;background: #000">
+                                   {{HTML::image('/frontend/images/flight_departure.png')}}
                                 </td>
                                 <td >
                                     <label>Arrival date</label>
@@ -97,6 +101,8 @@ Bravo Indochina Tours are experts in travel throughout Indochina. Call one of ou
                                 <td></td>
                             </tr>
                         </table>
+                        </div>
+                       
                         Our success mantra lies in :
                         <ul>
                             <li>
@@ -182,6 +188,7 @@ Bravo Indochina Tours are experts in travel throughout Indochina. Call one of ou
                             </div>
                         </div>
                 </div>
+                    {{Former::close()}}
     </div>
     </div>
 @stop

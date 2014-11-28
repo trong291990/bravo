@@ -4,3 +4,14 @@
 .stButton .stButton_gradient {
     height: 22px !important;
 }
+#custom-booking-form-wrapper .rotate {
+    width: 100px;
+    height: 25px;
+    font-size: 11px;
+    background: #000;
+    color: #fff;
+}
+#custom-booking-form-wrapper input[type="text"],
+#custom-booking-form-wrapper input[type="email"] {
+    border-radius: 0 !important;
+}

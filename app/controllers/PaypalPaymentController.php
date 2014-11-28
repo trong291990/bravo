@@ -96,11 +96,7 @@ class PaypalPaymentController extends BaseController{
     public function getConfirmpayment(){
         
         $payer_id = Input::get('PayerID');
-<<<<<<< HEAD
         $this->_paymentId = Session::get('paymentId');
-=======
-        $this->_paymentId = Request::query('paymentId');
->>>>>>> 694d14929affdc11955b24ff3a01af422d9aba96
         $payment = Paypalpayment::get($this->_paymentId, $this->_apiContext);
 
         $paymentExecution = Paypalpayment::PaymentExecution();
