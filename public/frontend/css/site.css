@@ -1044,3 +1044,9 @@ li.dropdown .dropdown-menu li a {
 #album-index-list .album-thumb-box a.thumbnail {
     margin:10px;
 }
+#album-index-list .album-row {
+    margin-bottom: 0;
+}
+#album-city {
+    margin: 20px 0px;
+}
