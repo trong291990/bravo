@@ -1,6 +1,7 @@
 <?php
 
 class Album extends \Eloquent {
+use CommentableTrait;
 
     protected $fillable = ['name', 'area_id', 'description', 'type'];
     protected $table = 'albums';
@@ -131,8 +132,12 @@ class Album extends \Eloquent {
     }
 
     public function typeLabel() {
-        $labels = static::typesLabelsMap();
-        return $labels[$this->type];
+        $labels = self::typesLabelsMap();
+        try {
+            return $labels[$this->type];
+        }  catch (Exception $e) {
+            return "Other";
+        }
     }
 
     public function area() {
