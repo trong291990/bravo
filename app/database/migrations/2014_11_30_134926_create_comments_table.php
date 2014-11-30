@@ -12,7 +12,7 @@ class CreateCommentsTable extends Migration {
 			$t->integer('commentable_id'); // Polymophic
 			$t->string('commentable_type');
 			$t->text('content');
-			$t->float('score')->nullable();
+			$t->float('score')->nullable()->default(0.0);
 			$t->timestamps();
 		});
 	}
