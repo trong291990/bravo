@@ -12,7 +12,7 @@ use \Specialist;
 class SpecialistController extends AdminBaseController {
 
     public function index() {
-        $specialists = Specialist::paginate();
+        $specialists = Specialist::loadOrSearch(Input::all());
         $this->layout->content = View::make('admin.specialist.index', compact('specialists'));
     }
 
@@ -26,7 +26,7 @@ class SpecialistController extends AdminBaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         } else {
             Specialist::create($data);
-            return Redirect::route('posts.index');
+            return Redirect::route('admin.specialist.index');
         }
     }
 
@@ -42,12 +42,12 @@ class SpecialistController extends AdminBaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         $specialist->update($data);
-        return Redirect::route('posts.index');
+        return Redirect::route('admin.specialist.index');
     }
 
     public function destroy($id) {
         Specialist::destroy($id);
-        return Redirect::route('posts.index');
+        return Redirect::route('admin.specialist.index');
     }
 
 }

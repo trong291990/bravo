@@ -6,6 +6,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class Specialist extends Eloquent implements UserInterface, RemindableInterface {
 
     protected $table = 'specialists';
+    const PER_PAGE = 15;
     protected $fillable = [
         'first_name', 'last_name', 'email', 'nationality', 'bio', 'languages', 'specialties', 'password'
     ];
@@ -32,6 +33,18 @@ class Specialist extends Eloquent implements UserInterface, RemindableInterface 
                         $specialist->password = Hash::make($specialist->password);
                     }
                 });
+    }
+
+    public static function loadOrSearch($options) {
+        $query = self::select('*');
+        if (isset($options['keyword']) && trim($options['keyword'])) {
+            $keyword = '%' . trim($options['keyword']) . '%';
+            $query = $query->where(function($query) use($keyword) {
+               return $query->whereRaw("CONCAT(first_name,' ',last_name) LIKE '" . $keyword . "'")
+                ->orWhere('email', 'LIKE', $keyword);
+            });
+        }
+        return $query->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
 
     public function fullName() {

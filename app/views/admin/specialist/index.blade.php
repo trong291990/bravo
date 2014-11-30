@@ -25,7 +25,7 @@
                 <div class="col-md-2 col-sm-3 col-xs-3">
                     <div class="input-group-btn">
                         <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        <a href="{{route('admin.reservation.index')}}" title="Clear filter" class="btn btn-sm btn-default"><i class='fa fa-times'></i></a>
+                        <a href="{{route('admin.specialist.index')}}" title="Clear filter" class="btn btn-sm btn-default"><i class='fa fa-times'></i></a>
                     </div>                         
                 </div>  
             </form>
