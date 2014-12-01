@@ -1,6 +1,6 @@
 <div id="album-index-search">
     <form action="" method="GET" class="row" id="form-filter-album">
-        <div class=" form-group col-sm-3">
+        <div class=" form-group col-sm-2">
             <label>Select Country</label>
             <select class="form-control no-br not-picker" id="select-album-country" name="country">
                 <option value="">-- All --</option>
@@ -10,7 +10,7 @@
                         <?php endforeach; ?>
             </select>
         </div>
-        <div class=" form-group col-sm-3">
+        <div class=" form-group col-sm-2 col-sm-offset-1">
             <label>Album type</label>
             <select class="form-control no-br not-picker" id="select-album-type" name="type">
                 <option value="">-- All --</option>
@@ -19,11 +19,11 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-2 col-sm-offset-1">
             <label>Keyword</label>
             <input type="text" class="form-control no-br" id="filter-keyword" name="keyword" value="{{trim(Input::get('keyword'))}}"/>
         </div>
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-2 col-sm-offset-1">
             <label style="display: block">&nbsp;</label>
             <button class="btn btn-primary no-br" type="submit"><i class="fa fa-search"></i> Search</button>
             <?php if (inputHasAny(['country', 'type', 'keyword'])) : ?>

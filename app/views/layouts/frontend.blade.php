@@ -410,7 +410,7 @@
                             </div>
                             <div class="col-xs-10">
                                 <h5>Chat with us</h5>
-                                <p>Tel/Fax:  (+84) 917 391 106</p>
+                                <p>Tel/Fax:   +84-8-2299011</p>
                             </div>
                         </div>
                         <div class="row">
