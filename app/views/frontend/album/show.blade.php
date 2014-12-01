@@ -13,15 +13,15 @@ detail-album-content
         <div class="row relative">
             <div class="col-sm-8 col-sm-offset-2">
                 <div id="galleria" style="height: 420px">
-                    <?php foreach($album->photos as $photo) :?>
-                    <a href="{{asset($photo->origin_path)}}">
-                        <img 
-                            src="{{asset($photo->thumb_path)}}"
-                            data-big="{{asset($photo->origin_path)}}"
-                            data-title="{{$photo->title}}"
-                            data-description="{{$photo->title}}"
-                            >
-                    </a>
+                    <?php foreach ($album->photos as $photo) : ?>
+                        <a href="{{asset($photo->origin_path)}}">
+                            <img 
+                                src="{{asset($photo->thumb_path)}}"
+                                data-big="{{asset($photo->origin_path)}}"
+                                data-title="{{$photo->title}}"
+                                data-description="{{$photo->title}}"
+                                >
+                        </a>
                     <?php endforeach; ?>
                 </div>
 
@@ -30,20 +30,20 @@ detail-album-content
             <ul id="album-actions" class="list-inline list-unstyled">
                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                 <li><a href="#"><i class="fa fa-mail-forward"></i></a></li>
-                
-                <?php if($loggedCustomer) :?>
-                <li><a href="{{route('travel_album.download', $album->id)}}"><i class="fa fa-download"></i></a></li>
-                <?php else :?>
-                  <li><a href="#modal-login" data-toggle='modal'><i class="fa fa-download"></i></a></li>
-                <?php endif;?>
-               
+
+                <?php if ($loggedCustomer) : ?>
+                    <li><a href="{{route('travel_album.download', $album->id)}}"><i class="fa fa-download"></i></a></li>
+                <?php else : ?>
+                    <li><a href="#modal-login" data-toggle='modal'><i class="fa fa-download"></i></a></li>
+                <?php endif; ?>
+
             </ul>
         </div>
     </div>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-7">
             <h2>{{ $album->name }}</h2>
             <p>
                 {{ $album->description }}
@@ -52,47 +52,73 @@ detail-album-content
         <div class="col-sm-3">
             <div class="row" id="album-statictis">
                 <div class="col-xs-4">
-                    {{$album->views}} <small>View</small>
+                    {{$album->views}} <small>Views</small>
                 </div>
                 <div class="col-xs-4">
                     965 <small>faves</small>
                 </div>
                 <div class="col-xs-4">
-                    965 <small>comments</small>
+                    {{$album->comments()->count()}} <small>comments</small>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <div id="album-licence">
-                <p>Taken October 2014</p>
+                <p>Taken {{$album->created_at->format('M Y')}}</p>
                 <p><i style="font-size: 1.2em">&COPY; </i> All rights reserved </p>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-7">
             <div id="album-faves-author">
-                <i class="fa fa-star"></i>  <a href="#">Tran Dinh Trong</a> ,  <a href="#">Ht Luan</a> and 22 more people like this
+                <div class="">
+                    <?php $albumURL = show_album_url($album) ?>
+                    <span class='st_facebook_hcount' st_url="{{ $albumURL }}" st_title="Bravo Tours - {{$album->name}} travel album" displayText='Facebook'></span>
+                    <span class='st_twitter_hcount' st_url="{{ $albumURL }}" st_title="Bravo Tours - {{$album->name}} travel album" displayText='Tweet'></span>
+                    <span class='st_googleplus_hcount' st_url="{{ $albumURL }}" st_title="Bravo Tours - {{$album->name}} travel album" displayText='Google +'></span>
+                </div>                
             </div>
-            <div class="row album-comment-item">
-                <div class="col-sm-2">
-                    <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/1517419_580090252071910_1609177855_n.jpg?oh=69547dc339dbe3ebdf4d9e8a31b1ab2d&oe=550D99B5&__gda__=1427808026_50f21fe0df3d4abda105febb28a8d60b"
-                         class="img-responsive img-thumbnail img-circle no-padding" />
-                </div>
-                <div class="col-sm-10">
-                    <div class="album-comment-author">
-                        <a href="#">Trong</a> 1 mo
-                    </div>
-                    <div class="album-comment-content">
-                        If you're unable to log in to your account using your payment service provider ID (PSPID) and password, it may be due to one of the following reasons:
-                        <br/>
-                        1. You could be in the wrong environment. Are you using your test PSPID and/or password in the production environment, or your production PSPID and/or password in the test environment? You can check the environment at the top of the login screen – it will say either: 'Identification Production' or 'Identification TEST'. To switch environments, use the link under the login box. 
-                    </div>
-                </div>
+            <div id="comments-container">
+                <?php foreach ($album->comments as $comment) : ?>
+                    <?php echo View::make('frontend.album._comment_box', compact('comment')) ?>
+                <?php endforeach; ?>
             </div>
+            <?php if ($loggedCustomer): ?>
+                <h3>Write your comment:</h3>
+                <div id="comment-form">
+                    <?php echo Former::open(route('travel_album.comment.store', $album->id))->id('form-comment') ?>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <h4>Rate:  <span id="comment-box-raty"></span> </h4> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <textarea rows="5" class="form-control" name="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                    <?php echo Former::close() ?>
+                </div>
+            <?php else: ?>
+                <h4>
+                    <a href="#modal-login" data-toggle='modal'>Login</a> to write your comment
+                </h4>
+            <?php endif; ?>
         </div>
     </div>
 </div>
+@stop
+@section('addon_stylesheets')
+{{ HTML::style('/plugins/raty/jquery.raty.css') }}
+@stop
+@section('addon_js')
+{{ HTML::script('/plugins/raty/jquery.raty.js') }}
 @stop
 @section('inline_scripts')
 <script>
@@ -100,6 +126,36 @@ detail-album-content
         Helper.scroll_to($('.detail-album-content'));
         Galleria.loadTheme('/plugins/galleria/galleria.classic.min.js');
         Galleria.run('#galleria', {showInfo: false});
+        $('.comment-raty').each(function() {
+            var scored = $(this).data('scored');
+            $(this).raty({starType: 'i', score: scored, readOnly: true});
+        });
+        $('#comment-box-raty').raty({starType: 'i', 'score': 3});
+        $('#form-comment').submit(function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            var $submitBtn = $this.find('button');
+            $submitBtn.busyOn();
+            $.ajax({
+                url: $this.attr('action'),
+                type: $this.attr('method'),
+                data: $this.serialize(),
+                success: function(res) {
+                    if (res.success) {
+                        $('#comments-container').append(res.html);
+                        var scored = $('.comment-raty:last').data('scored');
+                        $('.comment-raty:last').raty({starType: 'i', score: scored, readOnly: true});
+                        $this.get(0).reset();
+                        $('#comment-box-raty').raty({starType: 'i', 'score': 3});
+                    } else {
+                        bootbox.alert(res.message);
+                    }
+                },
+                complete: function() {
+                    $submitBtn.busyOff();
+                }
+            });
+        });
     });
 </script>
 @stop

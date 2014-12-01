@@ -24,6 +24,7 @@ Route::get('/booking/{tour_slug}/{id}',array('as'=>'booking.form','uses'=>'Booki
 
 Route::get('/travel-albums', array('as' => 'travel_album' ,'uses' => 'AlbumController@index'));
 Route::get('/travel-albums/{album_id}/download', array('as' => 'travel_album.download' ,'uses' => 'AlbumController@download'));
+Route::post('/travel-albums/{album_id}/comments', array('as' => 'travel_album.comment.store' ,'uses' => 'AlbumController@storeComment'));
 Route::get('/travel-albums/{area_slug}', array('as' => 'album.area' ,'uses' => 'AlbumController@area'));
 Route::get('/travel-albums/{area_slug}/{album_id}', array('as' => 'travel_album.show' ,'uses' => 'AlbumController@show'));
 Route::post('/login', ['as' => 'customer_login', 'uses' => 'AuthController@customerLogin']);

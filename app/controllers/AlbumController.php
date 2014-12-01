@@ -16,10 +16,10 @@ class AlbumController extends FrontendBaseController {
     public function __construct() {
         parent::__construct();
         $this->beforeFilter(function() {
-            if (!$this->loggedCustomer) {
-                return Redirect::to(url('/tours/indochina-tours'));
-            }
-        }, ['only' => ['download']]
+                    if (!$this->loggedCustomer) {
+                        return Redirect::to(url('/tours/indochina-tours'));
+                    }
+                }, ['only' => ['download']]
         );
     }
 
@@ -49,7 +49,7 @@ class AlbumController extends FrontendBaseController {
             $hotelAlbums = Album::hotel()->mostView()->get();
             $travellerAlbums = Album::traveller()->mostView()->get();
             $this->layout->content = View::make(
-                    'frontend.album.index', compact('areas', 'cityAlbums', 'hotelAlbums', 'travellerAlbums')
+                            'frontend.album.index', compact('areas', 'cityAlbums', 'hotelAlbums', 'travellerAlbums')
             );
         }
     }
@@ -60,16 +60,16 @@ class AlbumController extends FrontendBaseController {
         $albums = $area->albums()->orderBy('created_at', 'DESC')->paginate(4);
         $mostViewAlbums = $area->mostViewAlbums();
         $this->layout->content = View::make('frontend.album.area')
-            ->with(compact('albums', 'mostViewAlbums', 'areas', 'area'));
+                ->with(compact('albums', 'mostViewAlbums', 'areas', 'area'));
     }
 
     public function show($area_slug, $album_id) {
         $areas = Area::all();
         $area = Area::where('name', 'LIKE', '%' . $area_slug . '%')->first();
-        $album = Album::findOrFail(substr($album_id, strrpos($album_id, '-') + 1));
+        $album = Album::with('comments.customer')->findOrFail(substr($album_id, strrpos($album_id, '-') + 1));
         $album->increaseViews('views');
         $this->layout->content = View::make('frontend.album.show')
-            ->with(compact('album', 'area', 'areas'));
+                ->with(compact('album', 'area', 'areas'));
     }
 
     public function postReview($album_id) {
@@ -81,6 +81,21 @@ class AlbumController extends FrontendBaseController {
         $zippedPath = $album->getZippedPath();
         $headers = array('Content-Type: application/zip', 'Content-Description' => 'File Transfer');
         return Response::download($zippedPath, $album->zippedFileName(), $headers);
+    }
+
+    public function storeComment($album_id) {
+        $album = Album::findOrFail($album_id);
+        $res = [];
+        $comment = $album->buildComment(Input::all());
+        $comment->setCustomer($this->loggedCustomer);
+        if ($comment->save()) {
+            $res['success'] = true;
+            $res['html'] = View::make('frontend.album._comment_box', compact('comment'))->render();
+        } else {
+            $res['success'] = false;
+            $res['message'] = 'Post comment failed, please try again';
+        }
+        return Response::json($res);
     }
 
 }

@@ -287,3 +287,6 @@
 #album-detail .carousel-inner > .item > a > img {
     width: 100%;
 }
+.detail-album-content i[class*='star'] {
+    font-size: 18px;
+}

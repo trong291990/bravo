@@ -60,7 +60,7 @@
                         </a>
                         <div class="album-controls">
                             <a href="{{route('admin.album.show', $album->id)}}" class='btn btn-xs btn-primary'>
-                                <i class="fa fa-pencil"></i> Edit
+                                <i class="fa fa-pencil"></i>
                             </a>  
                             <button class="btn btn-xs btn-danger btn-action-with-confirm" 
                                     data-url='{{route("admin.album.destroy", $album->id)}}'
