@@ -50,22 +50,25 @@ Bravo Indochina Tours are experts in travel throughout Indochina. Call one of ou
                             your trip please complete the form below and send to us a long with deposit $100/1 person
                         </div>
                         <div class="relative" id="custom-booking-form-wrapper">
-                             <table class="table table-bordered">
+                             <table class="table table-bordered" id="date-time-booking-tb">
                             <tr>
                                 <td  colspan="4">
-                                    <label>Tour name</label>
-                                    {{Former::text('tour_name')->class('form-control')->label(false)->div(false)}}
+                                    <h3 style="margin:5px 0px 0px 0px">This is tour name this is is is is is </h3>
                                 </td>
-                                <td >
+                                <td style="width: 35%">
                                     <label>Booking reference</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td  colspan="4">
-                                    <label>Travel date</label>
+                                    <label>Travel Date</label>
+                                    {{Former::text('travel_date')->class('form-control')->label(false)->div(false)->placeholder('Travel Date')}}
                                 </td>
-                                <td  rowspan="3">
-                                    
+                                <td  rowspan="3" id="booking-reference-td">
+                                    {{Former::inline_radios('room_type')->radios(Booking::getRoomTypes())}}
+                                    {{Former::text('main_contact')->label('Main contact')->placeholder('Your name')}}
+                                    {{Former::email('email')->placeholder('Your email')}}
+                                    {{Former::text('contact_number')->placeholder('Your phone number')}}
                                 </td>
                             </tr>
                             <tr>
@@ -73,22 +76,30 @@ Bravo Indochina Tours are experts in travel throughout Indochina. Call one of ou
                                    {{HTML::image('/frontend/images/flight_departure.png')}}
                                 </td>
                                 <td >
-                                    <label>Arrival date</label>
+                                    <label>Arrival Date</label>
+                                    {{Former::text('arrival_date')->class('form-control')->label(false)->div(false)->placeholder('Arrival Date')}}
                                 </td>
-                                <td ><label>Airline Flight No</label></td>
-                                <td >
+                                <td>
+                                    <label>Airline Flight No</label>
+                                    {{Former::text('airline_flight_no')->class('form-control')->label(false)->div(false)->placeholder('Airline Flight No')}}
+                                </td>
+                                <td>
                                     <label>Arrival time</label>
+                                    {{Former::text('arrival_time')->class('form-control')->label(false)->div(false)->placeholder('Arrival time')}}
                                 </td>
                             </tr>
                             <tr>
-                                <td >
-                                     <label>Departure date</label>
+                                <td>
+                                    <label>Departure date</label>
+                                     {{Former::text('departure_date')->class('form-control')->label(false)->div(false)->placeholder('Departure date')}}
                                 </td>
-                                <td >
-                                     <label>Airline Flight No</label>
+                                <td>
+                                    <label>Airline Flight No</label>
+                                     {{Former::text('airline_flight_no')->class('form-control')->label(false)->div(false)->placeholder('Airline Flight No')}}
                                 </td>
-                                <td >
-                                     <label>Departure time</label>
+                                <td>
+                                    <label>Departure time</label>
+                                     {{Former::text('departure_time')->class('form-control')->label(false)->div(false)->placeholder('Departure time')}}
                                 </td>
                             </tr>
                           </table>

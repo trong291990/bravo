@@ -15,3 +15,21 @@
 #custom-booking-form-wrapper input[type="email"] {
     border-radius: 0 !important;
 }
+#date-time-booking-tb label.radio.inline {
+   display: inline-block;
+   font-weight: normal !important;
+   width:80px;
+   padding-top: 0
+}
+#date-time-booking-tb label.radio.inline[for="room_type"] {
+    margin-left: 30px;
+}
+#date-time-booking-tb label[for="room_type"] {
+    display: block;
+}
+#booking-reference-td label {
+    font-size: .9em
+}
+#booking-reference-td input[type="text"],#booking-reference-td input[type="email"] {
+    height: 28px
+}

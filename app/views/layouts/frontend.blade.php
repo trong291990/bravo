@@ -330,7 +330,7 @@
                                 </a>
                             </li>
                             <li class="row">
-                                <a href="#">
+                                <a href="http://www.trip.me/de/profil/8581">
                                 <div class="col-xs-4">
                                     <img class="img-responsive" src="/frontend/images/footer/viator.png" alt="Responsible Travel" />
                                 </div>
