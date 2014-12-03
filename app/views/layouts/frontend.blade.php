@@ -771,11 +771,14 @@
             function changeCurrency(type){
                 
             }
+           
+        </script>
+        @endif
+        <script> 
             $('#footer-tripme').on('click',function(){
                 $(this).find('span').slideToggle();
             });
         </script>
-        @endif
         @yield('addon_js')
 
         @yield('inline_scripts')
