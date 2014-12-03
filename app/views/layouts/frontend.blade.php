@@ -341,17 +341,19 @@
                                 </a>
                             </li>
                              <li class="row">
-                                <a href="http://www.viator.com/search/6730">
+                                
                                 <div class="col-xs-4">
+                                    <a href="http://www.viator.com/search/6730">
                                     <img class="img-responsive" src="/frontend/images/footer/tripme_logo.png" alt="Trip.me" />
+                                     </a>
                                 </div>
                                 <div class="col-xs-8 no-padding-left">
-                                    <p>Trip.me</p>
+                                    <a href="http://www.viator.com/search/6730"><p>Trip.me</p> </a>
                                     <p id="footer-tripme">trip.me is a trusted internet platform where travelers looking for unique experiences can select, 
                                         <span style="display: none">personalize and book trips directly with local agencies all around the world.</span>
                                     </p>
                                 </div>
-                                </a>
+                               
                             </li>
                         </ul>
                     </div>
