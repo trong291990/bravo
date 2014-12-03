@@ -347,7 +347,9 @@
                                 </div>
                                 <div class="col-xs-8 no-padding-left">
                                     <p>Trip.me</p>
-                                    <p>trip.me is a trusted internet platform where travelers looking for unique experiences can select, personalize and book trips directly with local agencies all around the world.</p>
+                                    <p id="footer-tripme">trip.me is a trusted internet platform where travelers looking for unique experiences can select, 
+                                        <span style="display: none">personalize and book trips directly with local agencies all around the world.</span>
+                                    </p>
                                 </div>
                                 </a>
                             </li>
@@ -767,6 +769,9 @@
             function changeCurrency(type){
                 
             }
+            $('#footer-tripme').on('click',function(){
+                $(this).find('span').slideToggle();
+            });
         </script>
         @endif
         @yield('addon_js')
