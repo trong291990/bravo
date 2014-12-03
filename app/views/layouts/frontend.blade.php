@@ -330,13 +330,24 @@
                                 </a>
                             </li>
                             <li class="row">
-                                <a href="http://www.trip.me/de/profil/8581">
+                                <a href="http://www.viator.com/search/6730">
                                 <div class="col-xs-4">
                                     <img class="img-responsive" src="/frontend/images/footer/viator.png" alt="Responsible Travel" />
                                 </div>
                                 <div class="col-xs-8 no-padding-left">
                                     <p>Viator</p>
                                     <p>Viator is the world's leading resource for researching, finding and booking the best travel experiences worldwide</p>
+                                </div>
+                                </a>
+                            </li>
+                             <li class="row">
+                                <a href="http://www.viator.com/search/6730">
+                                <div class="col-xs-4">
+                                    <img class="img-responsive" src="/frontend/images/footer/tripme_logo.png" alt="Trip.me" />
+                                </div>
+                                <div class="col-xs-8 no-padding-left">
+                                    <p>Trip.me</p>
+                                    <p>trip.me is a trusted internet platform where travelers looking for unique experiences can select, personalize and book trips directly with local agencies all around the world.</p>
                                 </div>
                                 </a>
                             </li>
