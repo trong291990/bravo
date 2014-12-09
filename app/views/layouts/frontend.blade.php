@@ -330,7 +330,7 @@
                                 </a>
                             </li>
                             <li class="row">
-                                <a href="http://www.trip.me/de/profil/8581">
+                                <a href="http://www.viator.com/search/6730">
                                 <div class="col-xs-4">
                                     <img class="img-responsive" src="/frontend/images/footer/viator.png" alt="Responsible Travel" />
                                 </div>
@@ -339,6 +339,21 @@
                                     <p>Viator is the world's leading resource for researching, finding and booking the best travel experiences worldwide</p>
                                 </div>
                                 </a>
+                            </li>
+                             <li class="row">
+                                
+                                <div class="col-xs-4">
+                                    <a href="http://www.viator.com/search/6730">
+                                    <img class="img-responsive" src="/frontend/images/footer/tripme_logo.png" alt="Trip.me" />
+                                     </a>
+                                </div>
+                                <div class="col-xs-8 no-padding-left">
+                                    <a href="http://www.viator.com/search/6730"><p>Trip.me</p> </a>
+                                    <p id="footer-tripme">trip.me is a trusted internet platform where travelers looking for unique experiences can select, 
+                                        <span style="display: none">personalize and book trips directly with local agencies all around the world.</span>
+                                    </p>
+                                </div>
+                               
                             </li>
                         </ul>
                     </div>
@@ -756,8 +771,14 @@
             function changeCurrency(type){
                 
             }
+           
         </script>
         @endif
+        <script> 
+            $('#footer-tripme').on('click',function(){
+                $(this).find('span').slideToggle();
+            });
+        </script>
         @yield('addon_js')
 
         @yield('inline_scripts')
