@@ -21,6 +21,7 @@ class AlbumController extends FrontendBaseController {
                     }
                 }, ['only' => ['download']]
         );
+
     }
 
     public function index() {
@@ -73,7 +74,7 @@ class AlbumController extends FrontendBaseController {
     }
 
     public function postReview($album_id) {
-        
+
     }
 
     public function download($album_id) {

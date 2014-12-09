@@ -2,6 +2,7 @@
 /app/config/local
 /app/config/database.php
 /vendor
+/tmp
 nbproject
 public/packages
 composer.phar

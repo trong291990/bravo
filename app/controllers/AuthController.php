@@ -9,7 +9,7 @@ use \Customer;
 use \Authentication;
 
 class AuthController extends FrontendBaseController {
-
+   
   public function customerLogin() {
     $checkLogin = Auth::customer()->attempt(array(
       'email' => Input::get('email'),

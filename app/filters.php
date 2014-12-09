@@ -40,7 +40,7 @@ App::after(function($request, $response) {
         }
         $log .= $sql_log . "\n";
         $log_file = storage_path() . '/' . 'logs' . '/server.log';
-        file_put_contents('php://stdout', $log);            
+        file_put_contents('php://stdout', $log);
 });
 
 /*
@@ -63,7 +63,6 @@ Route::filter('auth', function() {
 Route::filter('auth.basic', function() {
     return Auth::basic();
 });
-
 /*
   |--------------------------------------------------------------------------
   | Guest Filter

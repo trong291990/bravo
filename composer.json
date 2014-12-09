@@ -21,7 +21,8 @@
             "logicalgrape/paypal-ipn-laravel": "dev-master",
             "anlutro/l4-settings" : "0.2.*",
             "artdarek/oauth-4-laravel": "dev-master",
-            "ollieread/multiauth": "dev-master"
+            "ollieread/multiauth": "dev-master",
+            "barryvdh/laravel-debugbar": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

@@ -20,8 +20,9 @@ Route::get('/paymento/confirmpayment', array('uses' => 'PaypalPaymentController@
 Route::resource('payment', 'PaypalPaymentController');
 
 
-Route::get('/booking/{tour_slug}/{id}',array('as'=>'booking.form','uses'=>'BookingController@form'));
-
+Route::get('/booking/{token}',array('as'=>'booking.form','uses'=>'BookingController@form'));
+Route::post('/booking',array('as'=>'booking.deposit','uses'=>'BookingController@deposit'));
+Route::get('/booking/confirmpayment',array('as'=>'booking.confirmpayment','uses'=>'BookingController@confirmPayment'));
 Route::get('/travel-albums', array('as' => 'travel_album' ,'uses' => 'AlbumController@index'));
 Route::get('/travel-albums/{album_id}/download', array('as' => 'travel_album.download' ,'uses' => 'AlbumController@download'));
 Route::post('/travel-albums/{album_id}/comments', array('as' => 'travel_album.comment.store' ,'uses' => 'AlbumController@storeComment'));

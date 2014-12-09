@@ -1,3 +1,6 @@
+a-center {
+    text-align: center;
+}
 .stButton .stFb, .stButton .stTwbutton, .stButton .stMainServices {
     height: 23px !important;
 }
@@ -32,4 +35,22 @@
 }
 #booking-reference-td input[type="text"],#booking-reference-td input[type="email"] {
     height: 28px
+}
+#passengers label,#passengers input,#passengers select {
+    font-size:.8em;
+}
+#passengers label {
+    text-transform: uppercase;
+}
+#passengers select {
+    padding: 6px 0px
+}
+.passenger-item {
+    padding: 5px 0px;
+}
+.passenger-item [class*="col-sm"]:not(:first-child) {
+    padding-left: 7px;
+}
+.passenger-item [class*="col-sm"]:not(:last-child) {
+    padding-right: 7px;
 }

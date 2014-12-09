@@ -8,198 +8,233 @@ Bravo Indochina Tours are experts in travel throughout Indochina. Call one of ou
 <div class="container">
     <div id="about-us" class="tour-sub-page">
         <div class="row">
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb">
-                            <li><a href="{{Request::root()}}">Home</a></li>
-                            <li class="">Tour</li>
-                        </ol>
-                    </div>
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled list-inline" id="tour-detail-actions">
-                            <li><i class="fa fa-envelope"></i> EMAIL TO FRIEND</li>
-                            <li><i class="fa fa-print"></i> PRINT THIS PAGE</li>
-                            <li><i class="fa fa-phone-square"></i> 19008198</li>
-                        </ul>
-                    </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb">
+                    <li><a href="{{Request::root()}}">Home</a></li>
+                    <li class="">Tour</li>
+                </ol>
+            </div>
+            <div class="col-sm-6">
+                <ul class="list-unstyled list-inline" id="tour-detail-actions">
+                    <li><i class="fa fa-envelope"></i> EMAIL TO FRIEND</li>
+                    <li><i class="fa fa-print"></i> PRINT THIS PAGE</li>
+                    <li><i class="fa fa-phone-square"></i> 19008198</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <div id="contact-summary-infor">
+                    <h3 class="has-dividor">About Us </h3>
+                    <p class="small">Email us Directly</p>
+                    <p style="font-size: 16px;"><a href="mailto: support@bravoindochinatour.com">support@bravoindochinatour.com</a></p>
+                    <p class="small">Give us a call</p>
+                    <p style="font-size: 16px;">(+84)917391106</p>
                 </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-12">
-                        <div id="contact-summary-infor">
-                            <h3 class="has-dividor">About Us </h3>
-                            <p class="small">Email us Directly</p>
-                            <p style="font-size: 16px;"><a href="mailto: support@bravoindochinatour.com">support@bravoindochinatour.com</a></p>
-                            <p class="small">Give us a call</p>
-                            <p style="font-size: 16px;">(+84)917391106</p>
+                {{HTML::image('/frontend/images/paypal.jpg','Paypal Bravo',['class'=>'img-responsive'])}}
+                <p>
+                    <b>
+                        Bravo Indochina Tours accepts the payment via Paypal, which is a safer, easier way to make an online payment.
+                        If you own a Paypal account, please login to the account, and complete your transaction after confirming the cost you are supposed to pay with your travel consultant. If you do not have a Paypal account, you can still pay us at Paypal's website by providing your credit card information. Paypal accepts all the major credit cards and debit cards.
+                        Our PayPal account is support@bravoindochinatour.comNote:
+                        Please kindly mark up extra 3% Paypal service fee over the total cost if you choose to pay via Paypal.
+                    </b>
+                </p>
+            </div>
+            {{Former::open(route('booking.deposit'))}}
+            {{Former::framework('Nude')}}
+            {{Former::populate($booking)}}
+            {{Former::hidden('token')}}
+            <div class="col-lg-9 col-md-12">
+                <h2>ABOUT US</h2>
+                <div style="background:#428bca;padding:15px;font-weight: bold;color:#fff">
+                    Thank you for your booking with Bravo IndochinaTours. To book/confirm
+                    your trip please complete the form below and send to us a long with deposit $100/1 person
+                </div>
+                <div class="relative" id="custom-booking-form-wrapper">
+                     <table class="table table-bordered" id="date-time-booking-tb">
+                    <tr>
+                        <td  colspan="4">
+                            <h3 style="margin:5px 0px 0px 0px">
+                                {{$booking->tour_name}}
+                            </h3>
+                        </td>
+                        <td style="width: 35%">
+                            <label>Booking reference</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  colspan="4">
+                            <label>Travel Date</label>
+                            <?php echo date('M d,Y',  strtotime($booking->travel_date)) ?>
+                        </td>
+                        <td  rowspan="3" id="booking-reference-td">
+                            {{Former::inline_radios('room_type')->radios(Booking::getRoomTypes())}}
+                            {{Former::text('main_contact')->label('Main contact')->placeholder('Your name')}}
+                            {{Former::email('email')->placeholder('Your email')}}
+                            {{Former::text('contact_number')->placeholder('Your phone number')}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  rowspan="2" id="rotate-visible" style="width: 25px !important;text-align: center;vertical-align: middle;background: #000">
+                           {{HTML::image('/frontend/images/flight_departure.png')}}
+                        </td>
+                        <td >
+                            <label>Arrival Date</label>
+                            {{Former::text('arrival_date')->class('form-control')->label(false)->div(false)->placeholder('Arrival Date')}}
+                        </td>
+                        <td>
+                            <label>Airline Flight No</label>
+                            {{Former::text('airline_flight_no')->class('form-control')->label(false)->div(false)->placeholder('Airline Flight No')}}
+                        </td>
+                        <td>
+                            <label>Arrival time</label>
+                            {{Former::text('arrival_time')->class('form-control')->label(false)->div(false)->placeholder('Arrival time')}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Departure date</label>
+                             {{Former::text('departure_date')->class('form-control')->label(false)->div(false)->placeholder('Departure date')}}
+                        </td>
+                        <td>
+                            <label>Airline Flight No</label>
+                             {{Former::text('airline_flight_no')->class('form-control')->label(false)->div(false)->placeholder('Airline Flight No')}}
+                        </td>
+                        <td>
+                            <label>Departure time</label>
+                             {{Former::text('departure_time')->class('form-control')->label(false)->div(false)->placeholder('Departure time')}}
+                        </td>
+                    </tr>
+                  </table>
+                <table >
+                    <tr>
+                        <td colspan="4"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+                    <div id="passengers">
+                        <h2>Passengers</h2>
+                        <p>Detail as per passport</p>
+                        <div class="row passenger-item">
+                            <div class="col-sm-1">
+                                <label>Title</label>
+                                <select class="form-control not-picker" name="passengers[title][]">
+                                    <option value="Mr">Mr</option>
+                                    <option value="Mrs">Mrs</option>
+                                    <option value="Miss">Miss</option>
+                                    <option value="Sir">Sir</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Sub name</label>
+                                <input type="text" name="passengers[sub_name][]" class="form-control" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label>First and middle name</label>
+                                <input type="text" name="passengers[first_middle_name][]" class="form-control" />
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Date of birthday</label>
+                                <input type="text" name="passengers[birthday][]" class="form-control datepicker" />
+                            </div>
+                            <div class="col-sm-2">
+                                <label>PP Number</label>
+                                <input type="text" name="passengers[pp_number][]" class="form-control" />
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Nationality</label>
+                                <input type="text" name="passengers[nationality][]" class="form-control" />
+                            </div>
                         </div>
-                        {{HTML::image('/frontend/images/paypal.jpg','Paypal Bravo',['class'=>'img-responsive'])}}
-                        <p>
-                            <b>
-                                Bravo Indochina Tours accepts the payment via Paypal, which is a safer, easier way to make an online payment.
-                                If you own a Paypal account, please login to the account, and complete your transaction after confirming the cost you are supposed to pay with your travel consultant. If you do not have a Paypal account, you can still pay us at Paypal's website by providing your credit card information. Paypal accepts all the major credit cards and debit cards.
-                                Our PayPal account is support@bravoindochinatour.comNote: 
-                                Please kindly mark up extra 3% Paypal service fee over the total cost if you choose to pay via Paypal. 
-                            </b>
+                    </div>
+
+                    <div class="clearfix" style="margin: 10px 0px;">
+                        <a id="passenger-add" href="javascript:void(0)" class="btn btn-primary" >Add passenger</a>
+                    </div>
+                    <div id="booking-conditions">
+                        <p><input type="checkbox" name="booking_term_agree" />
+                            I have read and agree to the Bravo Indochina Tours booking
+                            conditions.
+                        </p>
+                        <p><input type="checkbox" name="booing_vaid_passports" />
+                            All travellers will have valid passports at time of travel, and are
+                            aware of visa requirements.
+                        </p>
+                        <p><input type="checkbox" name="booing_insurance_purchased" />
+                            Travel insurance is strongly recommended when travelling with Bravo
+                            Indochina Tours and should be purchased no later than when final balance is paid.
+                        </p>
+                        <p><input type="checkbox" name="booing_contribute " />
+                            I would like to contribute 10$  to the Bravo Founđation
                         </p>
                     </div>
-                    {{Former::open()}}
-                    {{Former::framework('Nude')}}
-                    <div class="col-lg-9 col-md-12">
-                        <h2>ABOUT US</h2>
-                        <div style="background:#428bca;padding:15px;font-weight: bold;color:#fff">
-                            Thank you for your booking with Bravo IndochinaTours. To book/confirm 
-                            your trip please complete the form below and send to us a long with deposit $100/1 person
-                        </div>
-                        <div class="relative" id="custom-booking-form-wrapper">
-                             <table class="table table-bordered" id="date-time-booking-tb">
-                            <tr>
-                                <td  colspan="4">
-                                    <h3 style="margin:5px 0px 0px 0px">This is tour name this is is is is is </h3>
-                                </td>
-                                <td style="width: 35%">
-                                    <label>Booking reference</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td  colspan="4">
-                                    <label>Travel Date</label>
-                                    {{Former::text('travel_date')->class('form-control')->label(false)->div(false)->placeholder('Travel Date')}}
-                                </td>
-                                <td  rowspan="3" id="booking-reference-td">
-                                    {{Former::inline_radios('room_type')->radios(Booking::getRoomTypes())}}
-                                    {{Former::text('main_contact')->label('Main contact')->placeholder('Your name')}}
-                                    {{Former::email('email')->placeholder('Your email')}}
-                                    {{Former::text('contact_number')->placeholder('Your phone number')}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td  rowspan="2" id="rotate-visible" style="width: 25px !important;text-align: center;vertical-align: middle;background: #000">
-                                   {{HTML::image('/frontend/images/flight_departure.png')}}
-                                </td>
-                                <td >
-                                    <label>Arrival Date</label>
-                                    {{Former::text('arrival_date')->class('form-control')->label(false)->div(false)->placeholder('Arrival Date')}}
-                                </td>
-                                <td>
-                                    <label>Airline Flight No</label>
-                                    {{Former::text('airline_flight_no')->class('form-control')->label(false)->div(false)->placeholder('Airline Flight No')}}
-                                </td>
-                                <td>
-                                    <label>Arrival time</label>
-                                    {{Former::text('arrival_time')->class('form-control')->label(false)->div(false)->placeholder('Arrival time')}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Departure date</label>
-                                     {{Former::text('departure_date')->class('form-control')->label(false)->div(false)->placeholder('Departure date')}}
-                                </td>
-                                <td>
-                                    <label>Airline Flight No</label>
-                                     {{Former::text('airline_flight_no')->class('form-control')->label(false)->div(false)->placeholder('Airline Flight No')}}
-                                </td>
-                                <td>
-                                    <label>Departure time</label>
-                                     {{Former::text('departure_time')->class('form-control')->label(false)->div(false)->placeholder('Departure time')}}
-                                </td>
-                            </tr>
-                          </table>
-                        <table >
-                            <tr>
-                                <td colspan="4"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                        </div>
-                       
-                        Our success mantra lies in :
-                        <ul>
-                            <li>
-                                Personalized, flexible and unique itineraries to make sure you enjoy your trip to the fullest 
-                            </li>
-                            <li>
-                                Specialization in IndoChina to help you plan a wonderful holiday.
-                            </li>
-                            <li>
-                                Unparalleled and trustworthy service as testified by our awards 
-                                from prestigious organizations and rave reviews from our numerous customers. 
-                            </li>
-                        </ul>
-                        <h2 class="has-dividor">What makes Bravo Indochina Tours different?</h2>
-                        <div class="clearfix row">
-                            <div class="col-sm-12 clearfix">
-                                An array of supreme custom-made services makes Bravo Indochina Tours unique from other travel companies and the ultimate choice of travelers across the globe. 
-                            </div>
-                            <div class="col-sm-6 clearfix">
-                                <div class="col-xs-2 no-padding">
-                                    <label class="about-different-order">1</label>
-                                </div>
-                                <div class="col-xs-10">
-                                    <h4>Special Services </h4>
-                                    The first and the most essential step towards planning your holiday is to know well what you want out of your holiday. At Bravo IndoChina Tours, we are all ears to your thoughts and immensely value your ideas in order to provide you suitable suggestions according to our experience and knowledge of the must-visit hotspots and startling attractions. Keeping in mind your thoughts and ideas, we start designing an itinerary that suits your travel needs appropriately. We put in our best efforts to prepare an itinerary that features a date of journey decided according to your choice and convenience and a list of places that you want to visit and also, some special experiences for gifting you a perfect holiday. We follow a meticulous approach to offer you the best itinerary within your budget. Our goal is to make your holiday personal and the one that remains etched in your mind.  
-                                </div>
-                            </div>
-                            <div class="col-sm-6 clearfix">
-                                <div class="col-xs-2 no-padding">
-                                    <label class="about-different-order">2</label>
-                                </div>
-                                <div class="col-xs-10">
-                                    <h4>Personal Guide</h4>
-                                    Exploring a new destination in the company of a local expert is an amazing experience. At Bravo Indochina Tours, we offer you your own personal guide who helps you mingle with the new place and new culture confidently. Our guides are professional, sincere and committed to maintain the highest level of service. They share their knowhow and experiences of a particular locality so that you are able to explore every destination in the best possible way. Your personal guide gives you interesting commentary to make your sightseeing more enjoyable. He or she is always prompt to answer any of your queries. With a tailor-made itinerary, you can adjust your time-span of sight-seeing. You can explore a specific area to your heart’s content, click photographs, do shopping and take tasty bites without frequent peeks at your wrist watch or mobile clock. We ensure that your personal holiday is never compromised. 
-                                </div>
-                            </div>
-                            <div class="col-sm-6 clearfix">
-                                <div class="col-xs-2 no-padding">
-                                    <label class="about-different-order">3</label>
-                                </div>
-                                <div class="col-xs-10">
-                                    <h4>Great Accommodation Choices </h4>
-                                    You can choose the standard of hotels according to your taste and requirements. We provide a variety of accommodation choices in the 3-star, 4-star and 5-star categories. In far-off places, we may have to arrange a lower-standard hotel. We have a list of preferred hotels that includes super luxury properties offering outstanding amenities and unparalleled services. The accommodation choices we offer may not be extremely lavish, but they are first-rate and maintain uniqueness with their fine facilities, high-quality services and rich heritage.  
-                                </div>
-                            </div>
-                            <div class="col-sm-6 clearfix">
-                                <div class="col-xs-2 no-padding">
-                                    <label class="about-different-order">4</label>
-                                </div>
-                                <div class="col-xs-10">
-                                    <h4>Personal Transportation</h4>
-                                    Travelling from one destination to another in your own vehicle is an awesome experience. It also gives you peace of mind that a vehicle is there for you at any time. Bravo IndoChina Tours offers you your own private vehicle. Now, you can travel without any transportation worries and can increase your sight-seeing time-span. We also provide a personal driver and a guide for transfers (although a few transfers may be without a guide). Most of the travel is by flight and some by train. Private transfers to and from airport will always be accompanied by a personal guide who assists with check-in and other formalities at airport. 
-                                </div>
-                            </div>
-                            <div class="col-sm-6 clearfix">
-                                <div class="col-xs-2 no-padding">
-                                    <label class="about-different-order">5</label>
-                                </div>
-                                <div class="col-xs-10">
-                                    <h4>Delicious Local Cuisine </h4>
-                                    The best part of travelling is getting familiar with various food cultures. A trip to IndoChina gives you a chance to savor a large assortment of local delicacies. Each Southeast Asian country has a diverse and delectable cuisine to offer. At Bravo IndoChina Tours, we offer an exquisite menu featuring authentic regional dishes that will stimulate your sense of taste. We also encourage you to embark on a self-discovery of the gastronomic offerings of a region. Get set for this exploration with your personal guide who is a local expert.  
-                                </div>
-                            </div>
-                            <div class="col-sm-6 clearfix">
-                                <div class="col-xs-2 no-padding">
-                                    <label class="about-different-order">6</label>
-                                </div>
-                                <div class="col-xs-10">
-                                    <h4>Unequaled Concierge Service</h4>
-                                    When it comes to finest services, unparalleled luxury and unique experiences, Bravo IndoChina Tours’ Concierge Service comes right at the top. This service features exclusive arrangements and has been carefully crafted to cater to the finickiest luxury travelers. Click here to know more about our special Concierge Service. 
-                                </div>
-                            </div>
+                    <div id="booking-addition-comment">
+                        <label>ADDITION COMMENT</label>
+                        <textarea placeholder="Please let us know of any specific requests, special occasions or anything else we might find useful to help us plan your trip" class="form-control" name="booking-addition-comment"></textarea>
                     </div>
-                        <div class="clearfix">
-                        <h2 class="has-dividor">AWARDS</h2>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                Vietnamtourism is a renowned travel company which specializes in offering custom-made trips to Vietnam and IndoChina, South Asia and more. They have membership in some of the reputed travel associations and have been acknowledged with numerous awards for several years. Several eminent media organizations recommend them on their websites. Large number of accolades from customers gives evidence to the success of Vietnamtourism.
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="{{Request::root()}}/frontend/images/page/awards.png" class="img-responsive" />
-                            </div>
-                        </div>
+                    <div class="form-actions" style="margin-top:20px;text-align: center">
+                        <button class="btn btn-danger btn-lg">{{HTML::image('/frontend/images/paypal-icon.png')}} Pay with Paypal</button>
+                    </div>
                 </div>
-                    {{Former::close()}}
+        </div>
+            {{Former::close()}}
+        </div>
     </div>
+    <div style="display: none" id="passenger-pattern">
+        <div class="row passenger-item">
+            <div class="col-sm-1">
+                <label>Title</label>
+                <select class="form-control not-picker" name="passengers[title][]">
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Sir">Sir</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <label>Sub name</label>
+                <input type="text" name="passengers[sub_name][]" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+                <label>First and middle name</label>
+                <input type="text" name="passengers[first_middle_name][]" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>Date of birthday</label>
+                <input type="text" name="passengers[birthday][]" class="form-control datepicker" />
+            </div>
+            <div class="col-sm-2">
+                <label>PP Number</label>
+                <input type="text" name="passengers[pp_number][]" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>Nationality</label>
+                <input type="text" name="passengers[nationality][]" class="form-control" />
+            </div>
+            <div class="col-sm-12">
+                <a class="pull-right remove-passenger" href="javascript:void(0)">Remove</a>
+            </div>
+        </div>
     </div>
+</div>
 @stop
+@section('inline_scripts')
+<script type="text/javascript">
+    $('#passenger-add').on('click',function(){
+        $('#passengers').append($('#passenger-pattern').html());
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
+    });
+    $('#passengers').on('click','.remove-passenger',function(){
+        //console.log('this is form remoe');
+        $(this).parents('.passenger-item').remove();
+    });
+</script>
+@stop
+

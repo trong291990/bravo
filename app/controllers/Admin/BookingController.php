@@ -19,9 +19,9 @@ class BookingController extends AdminBaseController {
 	 */
 	public function index()
 	{
-	    $bookings = Booking::all();
+		$bookings              = Booking::all();
 
-	    $this->layout->content =  View::make('admin.booking.index', compact('bookings'));
+		$this->layout->content =  View::make('admin.booking.index', compact('bookings'));
 	}
 
 	/**
@@ -47,10 +47,11 @@ class BookingController extends AdminBaseController {
 	    {
 	        return  Redirect::back()->withErrors($validator)->withInput();
 	    }
-
-	    $booing = Booking::create($data);
-            Session::flash('success', "The booking {$booing->name} has been updated successful");
-	    $this->layout->content =  Redirect::route('admin.booking.index');
+		$data['token']         = 'secret_'.md5(microtime().uniqid());
+		$data['expired_at']	   = \Carbon\Carbon::now()->addDays(Config::get('site.booking.expired_at_next_date', 4));
+		$booing                = Booking::create($data);
+		Session::flash('success', "The booking {$booing->name} has been updated successful");
+		$this->layout->content =  Redirect::route('admin.booking.index');
 	}
 
 	/**

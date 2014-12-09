@@ -5,7 +5,7 @@ class PaypalPaymentController extends BaseController{
 
     /**
      * Set the ClientId and the ClientSecret.
-     * @param 
+     * @param
      *string $_ClientId
      *string $_ClientSecret
      */
@@ -13,7 +13,7 @@ class PaypalPaymentController extends BaseController{
     private $_ClientSecret='EH5F0BAxqonVnP8M4a0c6ezUHq-UT-CWfGciPNQOdUlTpWPkNyuS6eDN-tpA';
 
     /*
-     *   These construct set the SDK configuration dynamiclly, 
+     *   These construct set the SDK configuration dynamiclly,
      *   If you want to pick your configuration from the sdk_config.ini file
      *   make sure to update you configuration there then grape the credentials using this code :
      *   $this->_cred= Paypalpayment::OAuthTokenCredential();
@@ -21,10 +21,10 @@ class PaypalPaymentController extends BaseController{
     public function __construct()
     {
         // ### Api Context
-        // Pass in a `ApiContext` object to authenticate 
-        // the call. You can also send a unique request id 
+        // Pass in a `ApiContext` object to authenticate
+        // the call. You can also send a unique request id
         // (that ensures idempotency). The SDK generates
-        // a request id if you do not pass one explicitly. 
+        // a request id if you do not pass one explicitly.
 
         $this->_apiContext = Paypalpayment:: ApiContext(
             Paypalpayment::OAuthTokenCredential(
@@ -47,16 +47,20 @@ class PaypalPaymentController extends BaseController{
     public function create()
     {
             $tourId = Session::get('tourId');
-            $tour = Tour::findOrFail($tourId);
+            $tour = Tour::findOrFail(1);
             $payer = Paypalpayment::Payer();
             $payer->setPayment_method("paypal");
 
             $amount = Paypalpayment:: Amount();
             $amount->setCurrency("USD");
             $amount->setTotal($tour->price_from);
-
+            $item1 = Paypalpayment::Item();
+            $item1->setName('Ground Coffee 40 oz') ->setCurrency('USD') ->setQuantity(1) ->setPrice($tour->price_from);
+            $itemList = Paypalpayment::ItemList();
+            $itemList->setItems(array($item1));
             $transaction = Paypalpayment:: Transaction();
-            $transaction->setAmount($amount);
+            $transaction->setAmount($amount)
+                        ->setItemList($itemList);
             $transaction->setDescription($tour->name);
 
             $baseUrl = Request::root();
@@ -94,7 +98,7 @@ class PaypalPaymentController extends BaseController{
        print_r($payment->getPayer());die();
     }
     public function getConfirmpayment(){
-        
+
         $payer_id = Input::get('PayerID');
         $this->_paymentId = Session::get('paymentId');
         $payment = Paypalpayment::get($this->_paymentId, $this->_apiContext);
@@ -109,6 +113,7 @@ class PaypalPaymentController extends BaseController{
         //....
         $payer = $executePayment->getPayer();
         //echo $payer->getPayerInfo();
+        dd($payment->getState());
         print_r($payer->getPayerInfo());die();
     }
-} 
+}
