@@ -34,10 +34,22 @@ Route::post('/register', ['as' => 'customer_register', 'uses' => 'AuthController
 Route::get('/facebook-auth', ['as' => 'facebook_auth', 'uses' => 'AuthController@facebook']);
 Route::get('/google-auth', ['as' => 'google_auth', 'uses' => 'AuthController@google']);
 
+// Customer routes
 Route::group(['before' => 'customer.auth'], function() {
     Route::post('/travel-reviews/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
+    Route::post('/specialist/{id}/post-review', ['as' => 'specialist.post_review', 'uses' => 'SpecialistController@postReview']);
 });
 
+// Specialist routes
+Route::get('/specialist', ['as' => 'specialist.index', 'uses' => 'SpecialistController@index']);
+Route::get('/specialist/profile/{id}', ['as' => 'specialist.profile', 'uses' => 'SpecialistController@profile']);
+
+Route::group(['before' => 'specialist.auth'], function() {
+  Route::get('/specialist/my-profile', ['as' => 'specialist.edit_profile', 'uses' => 'SpecialistController@editProfile']);  
+  Route::post('/specialist/update-profile', array('as' => 'specialist.update_profile', 'uses' => 'SpecialistController@updateProfile'));
+});
+
+// Wishlist routes
 Route::get('/wishlist', ['as' => 'wishlist.index', 'uses' => 'WishlistController@index']);
 Route::post('/wishlist/add/{tour_id}', ['as' => 'wishlist.add', 'uses' => 'WishlistController@add']);
 Route::post('/wishlist/remove/{tour_id}', ['as' => 'wishlist.remove', 'uses' => 'WishlistController@remove']);
