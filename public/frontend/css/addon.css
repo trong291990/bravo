@@ -1,5 +1,69 @@
-a-center {
-    text-align: center;
+.a-center {
+    text-align: center ;
+}
+.no-margin {
+    margin: 0 !important
+}
+.p10-0 {
+    padding: 10px 0px;
+}
+.pt-10 {
+    padding-top: 10px
+}
+.bs-callout {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
 }
 .stButton .stFb, .stButton .stTwbutton, .stButton .stMainServices {
     height: 23px !important;
@@ -53,4 +117,55 @@ a-center {
 }
 .passenger-item [class*="col-sm"]:not(:last-child) {
     padding-right: 7px;
+}
+.staff-page {
+    background: #EDEDED
+}
+.staff-sidebar .thumbnail {
+    border-radius: 0;
+    padding: 0
+}
+.staff-sidebar,.staff-content {
+    border: 1px solid #cccccc;
+    box-shadow: 1px 1px #ffffff;
+    float: left;
+    padding: 20px 20px 10px;
+    background: #fff;
+    width: 100%;
+    margin-top: 30px;
+}
+.staff-rate-wrapper {
+    width: 200px;
+    float: right;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px #fff;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+}
+.staff-ratied > i {
+    font-size: 1.3em;
+    color: #FFC625
+}
+.staff-meta {
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.staff-trip  {
+    padding: 15px;
+    background: #fff
+}
+.staff-comments .comment-avatar {
+    width: 60px;
+    margin: auto;
+    max-width: 100% !important;
+}
+.staff-comments .comment-text {
+    margin-left: -30px;
+}
+.staff-comments .bs-callout {
+    padding-bottom: 30px;
+}
+.staff-comment-item {
+    margin-bottom: 20px;
 }
