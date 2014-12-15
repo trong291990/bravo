@@ -8,6 +8,7 @@ use \Input;
 use \View;
 use \Validator;
 use \Specialist;
+use \Area;
 
 class SpecialistController extends AdminBaseController {
 
@@ -17,7 +18,8 @@ class SpecialistController extends AdminBaseController {
     }
 
     public function create() {
-        $this->layout->content = View::make('admin.specialist.create');
+        $areas = Area::all();
+        $this->layout->content = View::make('admin.specialist.create', compact('areas'));
     }
 
     public function store() {
@@ -25,14 +27,17 @@ class SpecialistController extends AdminBaseController {
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         } else {
-            Specialist::create($data);
+            $specialist =Specialist::create($data);
+            $specialist->updateAreas(Input::get('area_ids', []));
+            Session::flash('success', "Specialist profile created successfully");
             return Redirect::route('admin.specialist.index');
         }
     }
 
     public function show($id) {
         $specialist = Specialist::find($id);
-        $this->layout->content = View::make('admin.specialist.show', compact('specialist'));
+        $areas = Area::all();
+        $this->layout->content = View::make('admin.specialist.show', compact('specialist', 'areas'));
     }
 
     public function update($id) {
@@ -42,7 +47,9 @@ class SpecialistController extends AdminBaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         $specialist->update($data);
-        return Redirect::route('admin.specialist.index');
+        $specialist->updateAreas(Input::get('area_ids', []));
+        Session::flash('success', "Specialist profile updated successfully");
+        return Redirect::route('admin.specialist.show', $id);
     }
 
     public function destroy($id) {

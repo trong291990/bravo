@@ -100,42 +100,56 @@
                 <div class="col-sm-6">
                     <ul class="nav nav-tabs pull-right" role="tablist">
                         <li class="dropdown">
-                            <?php if(@$loggedCustomer): ?>
-                                <a href="#"> {{ Auth::customer()->get()->name }} <span class="caret"></span> </a>
+                            <?php if(@$loggedCustomer || @$loggedSpecialist): ?>
+                                <?php if(@$loggedCustomer) :?>
+                                    <a href="#"> {{ Auth::customer()->get()->name }} <span class="caret"></span> </a>
+                                <?php else: ?>
+                                    <a href="#"> {{ Auth::specialist()->get()->first_name }} <span class="caret"></span> </a>
+                                <?php endif; ?>
                             <?php else : ?>
                                 <a href="#"><i class="fa fa-lock"></i> Login /Register <span class="caret"></span> </a>
                             <?php endif; ?>
 
                             <ul class="dropdown-menu" role="menu">
-                            <?php if(!@$loggedCustomer): ?>
-                            <li>
-                                <a href="#modal-login" data-toggle='modal'><i class="icon icon-menu-avatar mrm"></i>Log In</a>
-                            </li>
-                            <li>
-                                <a href="#modal-register" data-toggle='modal'><i class="icon icon-menu-pen mrm"></i>Register</a>   
-                            </li>
-                            <?php endif; ?>
-                            <li>
-                                <a href="#"><i class="icon icon-menu-people mrm"></i>Refer a Friend</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#">
-                                    <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span></a>
-                            </li>
-                            <?php if(@$loggedCustomer): ?>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-user"></i> Profile
-                                </a>
-                            </li>                                      
-                            <li>
-                                <a href="{{route('customer_logout', ['back_url' => Request::url()])}}">
-                                    <i class="fa fa-sign-out"></i> Log out
-                                </a>
-                            </li>                                
-                            <?php endif; ?>    
-                    </ul>
+                                <?php if(!@$loggedCustomer && !@$loggedSpecialist): ?>
+                                    <li>
+                                        <a href="#modal-login" data-toggle='modal'><i class="icon icon-menu-avatar mrm"></i>Log In</a>
+                                    </li>
+                                    <li>
+                                        <a href="#modal-register" data-toggle='modal'><i class="icon icon-menu-pen mrm"></i>Register</a>   
+                                    </li>
+                                <?php endif; ?>
+                                <?php if(!@$loggedSpecialist): ?>   
+                                <li>
+                                    <a href="#"><i class="icon icon-menu-people mrm"></i>Refer a Friend</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <i class="icon icon-menu-tag mrm"></i>Deals and Offers<span class="circle-number-s mlm" style="display:none;" id="offersCount">0</span>
+                                    </a>
+                                </li>
+                                <?php endif; ?> 
+                                <?php if(@$loggedCustomer || @$loggedSpecialist): ?>
+                                    <?php 
+                                    if(@$loggedCustomer) {
+                                        $profile_url = '#';
+                                    } else {
+                                        $profile_url = route('specialist.edit_profile');
+                                    }
+                                    ?>
+                                    <li>
+                                        <a href="{{$profile_url}}">
+                                            <i class="fa fa-user"></i> My Account
+                                        </a>
+                                    </li>                                      
+                                    <li>
+                                        <a href="{{route('logout', ['back_url' => Request::url()])}}">
+                                            <i class="fa fa-sign-out"></i> Log out
+                                        </a>
+                                    </li>                                
+                                <?php endif; ?>    
+                            </ul>
                         </li>
                         <?php if(@$loggedCustomer): ?>
                         <li>
@@ -625,7 +639,7 @@
                 <h4 class="modal-title">Login</h4>
               </div>
               <div class="modal-body">
-                {{ Former::open(route('customer_login'))->id('form-login') }}
+                {{ Former::open(route('login'))->id('form-login') }}
                     <div class="row">
                         <div class="col-sm-12 form-messages"></div>
                     </div>                

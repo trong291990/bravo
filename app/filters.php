@@ -63,6 +63,8 @@ Route::filter('auth', function() {
 Route::filter('auth.basic', function() {
     return Auth::basic();
 });
+
+
 /*
   |--------------------------------------------------------------------------
   | Guest Filter
@@ -106,6 +108,13 @@ Route::filter('admin.auth', function() {
 
 Route::filter('customer.auth', function() {
     if (!Auth::customer()->check()) {
+        Session::put('url.intended', URL::full());
+        return Redirect::route('root');
+    }
+});
+
+Route::filter('specialist.auth', function() {
+    if (!Auth::specialist()->check()) {
         Session::put('url.intended', URL::full());
         return Redirect::route('root');
     }

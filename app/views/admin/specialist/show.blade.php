@@ -13,7 +13,7 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <?php echo View::make('admin.specialist._base_fields'); ?>
+                <?php echo View::make('admin.specialist._base_fields', compact('areas', 'specialist'))->render(); ?>
                 {{ Former::textarea('bio')->rows(5)->readonly() }}
             </div>
         </div>

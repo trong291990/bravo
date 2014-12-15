@@ -12,7 +12,7 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-12">
-                <?php echo View::make('admin.specialist._base_fields'); ?>
+                <?php echo View::make('admin.specialist._base_fields', compact('areas'))->render(); ?>
                 {{ Former::password('password')}}
                 {{ Former::password('password_confirmation')->label('confirmation')}}                
             </div>
