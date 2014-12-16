@@ -30,4 +30,21 @@ class Booking extends \Eloquent {
         $status = self::getStatus();
         return isset($status[$id]) ? $status[$id] : '';
     }
+    /*
+    INPUT : array of passengers[sub_name], array of passengers[first_middle_name][]...
+    OUTUT : array of passengers : [[sub_name,first_middle_name], [sub_name,first_middle_name]]
+    */
+    public static function retryPassengersData($passengers){
+        $total = count($passengers['title']);
+        $data = [];
+        foreach($passengers as $k => $p){
+            for($i=0;$i<$total;$i++){
+                if(($k==='sub_name' && !$p[$i]) || ($k==='first_middle_name' && !$p[$i])){
+                    break;
+                }
+                $data[$i][$k] = $p[$i];
+            }
+        }
+        return $data;
+    }
 }

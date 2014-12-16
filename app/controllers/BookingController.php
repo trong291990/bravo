@@ -27,7 +27,7 @@ class BookingController extends PaymentController {
         if(!$booking){
             App:abort(404);
         }
-        $passengers         = $this->_retryPassengersData($data['passengers']);
+        $passengers         = Booking::retryPassengersData($data['passengers']);
         $booking->passenger = json_encode($passengers);
         $booking->save();
         return $this->makePaymentByPaypal($booking,count($passengers)+1);
@@ -81,19 +81,7 @@ class BookingController extends PaymentController {
         //the return url will content a PayerID var
         return Redirect::to( $redirectUrl );
     }
-    private function _retryPassengersData($passengers){
-        $total = count($passengers['title']);
-        $data = [];
-        foreach($passengers as $k => $p){
-            for($i=0;$i<$total;$i++){
-                if($k==='name' && !$p[$i] ){
-                    break;
-                }
-                $data[$i][$k] = $p[$i];
-            }
-        }
-        return $data;
-    }
+    
     public function confirmPayment(){
         $payerId = Input::get('PayerID');
         $paymentId =  Session::get('paymentId');
@@ -114,7 +102,14 @@ class BookingController extends PaymentController {
         if($status==='approved'){
             $booking->status = Booking::BOOKING_DEPONSITED_STATUS;
             $booking->save();
+            return Redirect::to('booking.success');
         }
-        
+        return Redirect::to('booking.faild');
+    }
+    public function success(){
+        $this->layout->content =  View::make('frontend.booking.success');
+    }
+    public function faild(){
+        $this->layout->content =  View::make('frontend.booking.faild');
     }
 }

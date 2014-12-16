@@ -2,7 +2,7 @@
 return [
     [
         'booking' => [
-            'expired_at_next_days' => 4
+            'expired_at_next_days' => 2
         ]
     ]
 ];

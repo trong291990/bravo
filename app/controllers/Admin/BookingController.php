@@ -42,16 +42,16 @@ class BookingController extends AdminBaseController {
 	public function store()
 	{
 	    $validator = Validator::make($data = Input::all(), Booking::$rules);
-
-	    if ($validator->fails())
-	    {
+	    if ($validator->fails()){
 	        return  Redirect::back()->withErrors($validator)->withInput();
 	    }
-		$data['token']         = 'secret_'.md5(microtime().uniqid());
-		$data['expired_at']	   = \Carbon\Carbon::now()->addDays(Config::get('site.booking.expired_at_next_date', 4));
-		$booing                = Booking::create($data);
-		Session::flash('success', "The booking {$booing->name} has been updated successful");
-		$this->layout->content =  Redirect::route('admin.booking.index');
+            $data['token']         = 'secret_'.md5(microtime().uniqid());
+            $data['expired_at']	   = \Carbon\Carbon::now()->addDays(Config::get('site.booking.expired_at_next_date', 4));
+            $passengers         = Booking::retryPassengersData($data['passengers']);
+            $data['passenger'] = json_encode($passengers);
+            $booing                = Booking::create($data);
+            Session::flash('success', "The booking {$booing->name} has been updated successful");
+            $this->layout->content =  Redirect::route('admin.booking.index');
 	}
 
 	/**
