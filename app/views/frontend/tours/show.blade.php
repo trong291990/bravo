@@ -64,6 +64,12 @@
                     class="btn booking-tour btn-warning tour-booking">Enquiry Now</button>
                 </div>
             </div>
+            <div class="row">
+                <!-- Update here -->
+                @foreach($specialists as $s)
+                    {{ $s->fullName() }}
+                @endforeach
+            </div>
         </div>
         <div class="col-sm-57">
             <div class="row">

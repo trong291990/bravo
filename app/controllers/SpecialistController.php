@@ -14,10 +14,11 @@ class SpecialistController extends FrontendBaseController {
      */
     public function profile($id) {
         $specialist = Specialist::findOrFail(extract_id_from_slug($id));
-        $tours = Tour::take(3)->get();
+        $popularTour = $specialist->mostPopularTour();
+        $newestTours = $specialist->newestResponsibleTours(3);
         $comments = $specialist->loadComments();
         $this->layout->content = View::make(
-                        'frontend.specialist.profile', compact('specialist', 'tours', 'comments')
+                        'frontend.specialist.profile', compact('specialist', 'popularTour', 'newestTours', 'comments')
         );
     }
 
@@ -45,9 +46,9 @@ class SpecialistController extends FrontendBaseController {
         $v = Validator::make(Input::all(), ['password' => 'required|min:6|confirmed']);
         if ($v->passes()) {
             $specialist->updatePassword(Input::get('password'));
-             return Redirect::route('specialist.edit_profile');
+            return Redirect::route('specialist.edit_profile');
         } else {
-             return Redirect::route('specialist.edit_profile')->withInput()->withErrors($v);
+            return Redirect::route('specialist.edit_profile')->withInput()->withErrors($v);
         }
     }
 

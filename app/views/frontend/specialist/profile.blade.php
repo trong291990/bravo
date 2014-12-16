@@ -18,33 +18,35 @@ staff-page
                 <li class="agentStrengthsList">{{ $s }}</li>
                 @endforeach
             </ul>
-            <a class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> Send me an email</a>
+            <a class="btn btn-primary btn-block" href="mailto:{{ $specialist->email }}"><i class="fa fa-envelope"></i> Send me an email</a>
         </div>
 
         <div class='staff-sidebar'>
             <h3>Most popular trip</h3>
             <div class='staff-popular-trip'>
-                <div class="thumbnail">
-                    <img src="/frontend/images/page/hoi-an.jpg" class='img-responsive' />
-                </div>
-                <div class="desc vertical">
-                    <div class="trip-box-details">
-                        <h4>Egypt - 8 days</h4>
-                        <h3>A Tour of Ancient Egypt</h3>
-                        <ul class="mainAttractionList">
-                            <li>The Great Pyramids &amp; Sphinx</li>
-                            <li>The Temple of Luxor and Karnak</li>
-                            <li>Queen Hatchipsut's Temple</li>
-                            <li>The Valley of Kings &amp; Queens</li>
-                        </ul>
+                @if($popularTour)
+                    <div class="thumbnail">
+                        <img src="{{ $popularTour->thumbnail }}" class='img-responsive' />
                     </div>
-                    <span class="btn_small">See more</span>
-                    <span class="price">
-                        <sub>price/person</sub>
-                        $ 527               
-                    </span>                    
-                    <div class="clear"></div>
-                </div>
+                    <div class="desc vertical">
+                        <div class="trip-box-details">
+                            <h4>{{ $popularTour->area->name }} - {{ $popularTour->duration }} days</h4>
+                            <h3>{{ $popularTour->name }}</h3>
+                            <ul class="mainAttractionList">
+                                <li>The Great Pyramids &amp; Sphinx</li>
+                                <li>The Temple of Luxor and Karnak</li>
+                                <li>Queen Hatchipsut's Temple</li>
+                                <li>The Valley of Kings &amp; Queens</li>
+                            </ul>
+                        </div>
+                        <span class="btn_small">See more</span>
+                        <span class="price">
+                            <sub>price/person</sub>
+                            $ 527               
+                        </span>                    
+                        <div class="clear"></div>
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -75,16 +77,16 @@ staff-page
         </div>
         <h2>Individual trip deals from {{ $specialist->first_name }}</h2>
         <div class='row staff-trips'>
-            @for($i=1;$i<=3;$i++)
+            @foreach($newestTours as $tour)
             <div class='col-sm-4'>
                 <div class='staff-trip'>
                     <div class="thumbnail">
-                        <img src="/frontend/images/page/hoi-an.jpg" class='img-responsive' />
+                        <img src="{{ $popularTour->thumbnail }}" class='img-responsive' />
                     </div>
                     <div class="desc vertical">
                         <div class="trip-box-details">
-                            <h4>Egypt - 8 days</h4>
-                            <h3>A Tour of Ancient Egypt</h3>
+                            <h4>{{ $tour->area->name }} - {{ $tour->duration }} days</h4>
+                            <h3>{{ $tour->name }}</h3>
                             <ul class="mainAttractionList">
                                 <li>The Great Pyramids &amp; Sphinx</li>
                                 <li>The Temple of Luxor and Karnak</li>
@@ -101,7 +103,7 @@ staff-page
                     </div>
                 </div>
             </div>
-            @endfor
+            @endforeach
         </div>
         <div class='staff-content staff-comments'>
             @foreach($comments as $comment)
@@ -144,9 +146,9 @@ staff-page
                         </div>
                         <?php echo Former::close() ?>
                     <?php else: ?>
-                        <h4>
-                            <a href="#modal-login" data-toggle='modal'>Sign In</a> to write your comment
-                        </h4>
+                        <p>
+                            <a href="#modal-login" data-toggle='modal'>Sign In</a> to write your review
+                        </p>
                     <?php endif; ?>
                 </div>
             </div>

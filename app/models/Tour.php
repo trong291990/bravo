@@ -45,11 +45,11 @@ class Tour extends Eloquent {
     public static function boot() {
         parent::boot();
         static::creating(function($tour) {
-                    $tour->code = self::nextTourCode();
-                });
+            $tour->code = self::nextTourCode();
+        });
         static::saving(function($tour) {
-                    $tour->slug = slug_string($tour->name);
-                });
+            $tour->slug = slug_string($tour->name);
+        });
     }
 
     /**
@@ -67,11 +67,11 @@ class Tour extends Eloquent {
 
     public static function searchByKeyword($keyword) {
         return self::select('*')->with('area', 'places', 'itineraries')
-        ->where(function($query) use($keyword) {
-            $query->where('tours.name', 'LIKE', '%' . $keyword . '%')
-            ->orWhere('tours.meta_keyword', 'LIKE', '%' . $keyword . '%');
-        })
-        ->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
+                        ->where(function($query) use($keyword) {
+                            $query->where('tours.name', 'LIKE', '%' . $keyword . '%')
+                            ->orWhere('tours.meta_keyword', 'LIKE', '%' . $keyword . '%');
+                        })
+                        ->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
 
     public static function loadOrSearch($options = []) {
@@ -82,11 +82,25 @@ class Tour extends Eloquent {
         if (isset($options['keyword']) && trim($options['keyword'])) {
             $keyword = '%' . trim($options['keyword']) . '%';
             $query = $query->where(function($query) use($keyword) {
-                        $query->where('name', 'LIKE', $keyword)
-                                ->orWhere('code', 'LIKE', $keyword);
-                    });
+                $query->where('name', 'LIKE', $keyword)
+                        ->orWhere('code', 'LIKE', $keyword);
+            });
         }
         return $query->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
+    }
+
+    public static function mostBookedWithinAreas($area_ids, $limit) {
+        return self::whereIn('area_id', $area_ids)
+                        ->with('area')
+                        ->leftJoin('reservations', 'tours.id', '=', 'reservations.tour_id')
+                        ->groupBy('tours.id')
+                        ->select('tours.*')
+                        ->orderByRaw("count(reservations.id) DESC")
+                        ->take($limit);
+    }
+
+    public function scopeWithinAreas($query, $area_ids) {
+        return $query->whereIn('area_id', $area_ids);
     }
 
     public function photoUrl($root = null) {
@@ -125,6 +139,10 @@ class Tour extends Eloquent {
 
     public function places() {
         return $this->belongsToMany('Place');
+    }
+
+    public function reservations() {
+        return $this->hasMany('Reservation', 'tour_id');
     }
 
     public function savePhoto($file) {

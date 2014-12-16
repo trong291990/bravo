@@ -58,8 +58,17 @@ class Specialist extends Eloquent implements UserInterface, RemindableInterface 
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function tours() {
-        return $this->hasMany('Tour', 'specialist_id');
+    public function newestResponsibleTours($limit) {
+        return Tour::withinAreas($this->getAreaIds())
+                        ->with('area')
+                        ->orderBy('created_at', 'DESC')
+                        ->take($limit)
+                        ->get();
+    }
+
+    public function mostPopularTour() {
+        $area_ids = $this->getAreaIds();
+        return Tour::mostBookedWithinAreas($area_ids, 1)->first();
     }
 
     public function parseSpecialties() {
@@ -69,6 +78,10 @@ class Specialist extends Eloquent implements UserInterface, RemindableInterface 
     public function updatePassword($new_password) {
         $this->password = $new_password;
         $this->save();
+    }
+
+    public function getAreaIds() {
+        return $this->areas()->lists('id');
     }
 
     public function areas() {

@@ -91,8 +91,10 @@ class TourController extends FrontendBaseController {
         $otherTours = $area->tours()->where('tours.id', '<>', $tour->id)->take(4)->get();
         $itineraries = $tour->itineraries()->orderBy('order', 'ASC')->get();
         $places = $tour->places()->orderBy('order', 'ASC')->get();
+        $specialists = $tour->area->specialists;
+        //$specialists->first()->fullName();
         $this->layout->content = View::make('frontend.tours.show')
-                ->with(compact('area', 'tour', 'itineraries', 'places', 'otherTours'));
+                ->with(compact('area', 'tour', 'itineraries', 'places', 'otherTours', 'specialists'));
     }
 
     public function compare() {

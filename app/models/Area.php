@@ -24,7 +24,11 @@ class Area extends Eloquent {
     public function places() {
         return $this->hasMany('Place', 'area_id');
     }
-
+    
+    public function specialists() {
+        return $this->belongsToMany('Specialist', 'specialists_areas', 'area_id', 'specialist_id');
+    }
+    
     public function albums() {
         return $this->hasMany('Album', 'area_id');
     }
