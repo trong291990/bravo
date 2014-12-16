@@ -191,3 +191,54 @@ $('.datepicker').datepicker({
 }); 
 $('select:not(.not-picker)').selectpicker();
 $('form').validate();
+
+$(':file.bootstrap-input-file').each(function() {
+    var $_this = $(this);
+    var placeholder = 'Choose a file';
+    console.log($_this.attr('multiple'));
+    if($_this.attr('multiple')) {
+        placeholder = 'Choose files'
+    }
+    var default_options = {
+        inputGroupClass: 'input-group',
+        inputClass: 'form-control',
+        inputPlaceholder: placeholder,
+        browseButtonClass: 'btn btn-default',
+        browseButtonText: 'Browse'
+    }
+    var options = default_options;
+    
+
+    var $inputName = $_this.attr('name');
+    var wrapper_html = '<div class="' + options.inputGroupClass + '">' +
+      '<input type="text" autocomplete="off" placeholder="' + options.inputPlaceholder + '" class="' + options.inputClass + '" data-for-input-name="' + $inputName + '">' +
+      '<span class="input-group-btn">' +
+      '<a class="' + options.browseButtonClass + '" data-for-input-name="' + $inputName + '">' + options.browseButtonText + '</a>' + '</span>' +
+      +'</div>';
+    // Hide the real input
+    $_this.css('visibility','hidden');
+    $_this.css('position','absolute');
+    
+    // Insert text input after the file input
+    $(wrapper_html).insertBefore($_this);
+    // Show browse dialog when clicked on to input text or button
+    $('[data-for-input-name="' + $inputName + '"]').on('click', function() {
+        $_this.trigger('click');
+    });
+
+    // Handler change event on file input
+    $_this.change(function() {
+
+        var selected_file_path = $_this.val();
+        var selectedFiles = '';
+        for (var i = 0; i < $_this[0].files.length; i++) {
+            var fileName = $_this[0].files[i].name;
+            // Get actually the selected file name
+            selectedFiles += fileName;
+            if ((i + 1) !== $_this[0].files.length) {
+                selectedFiles += ' , ';
+            }
+        }
+        $('input[data-for-input-name="' + $inputName + '"]').val(selectedFiles);
+    });
+});

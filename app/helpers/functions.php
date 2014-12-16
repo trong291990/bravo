@@ -112,9 +112,9 @@ function create_file_if_not_exists($file_path) {
 function gravatar_url($email, $size = 100) {
     $default = asset('/images/default_avatar.png');
     return "http://www.gravatar.com/avatar/" .
-        md5(strtolower(trim($email))) .
-        "?d=" . urlencode($default) .
-        "&s=" . $size;
+            md5(strtolower(trim($email))) .
+            "?d=" . urlencode($default) .
+            "&s=" . $size;
 }
 
 function areas_for_select($areas) {
@@ -137,11 +137,15 @@ function string_to_int($str) {
 
 function inputHasAny($keys = []) {
     foreach ($keys as $key) {
-        if(Input::has($key)) {
+        if (Input::has($key)) {
             return true;
         }
     }
     return false;
+}
+
+function extract_id_from_slug($slug) {
+    return substr($slug, strrpos($slug, '-') + 1);
 }
 
 ?>

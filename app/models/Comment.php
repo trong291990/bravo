@@ -2,7 +2,17 @@
 
 class Comment extends \Eloquent {
 
-    protected $fillable = ['score', 'content'];
+    protected $fillable = ['customer_id', 'score', 'content'];
+    static $rules = [
+        'content' => 'required|min:10'
+    ];
+
+    /**
+     * Has customer
+     */
+    public function scopeAuthorized($query) {
+        return $query->where('customer_id', '<>', 'NULL');
+    }
 
     public function commentable() {
         return $this->morphTo();

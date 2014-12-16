@@ -87,7 +87,7 @@ class AlbumController extends FrontendBaseController {
     public function storeComment($album_id) {
         $album = Album::findOrFail($album_id);
         $res = [];
-        $comment = $album->buildComment(Input::all());
+        $comment = $album->buildComment($this->loggedCustomer, Input::all());
         $comment->setCustomer($this->loggedCustomer);
         if ($comment->save()) {
             $res['success'] = true;

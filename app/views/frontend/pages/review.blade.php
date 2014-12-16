@@ -215,8 +215,12 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
                         </div>
                         <div class="form-group">
                             <label >Your review</label>
-                            <textarea class="form-control ckeditor" name="content"></textarea>
-                        </div>      
+                            <textarea class="form-control ckeditor" name="content" rows="10"></textarea>
+                        </div>
+                        <h3>UPLOAD YOUR TRIP PHOTOS</h3>      
+                        <div class="form-group">
+                            <input class="form-control bootstrap-input-file" type="file" multiple="true" name="photos"/>
+                        </div>                        
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </div>     

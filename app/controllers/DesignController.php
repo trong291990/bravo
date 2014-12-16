@@ -20,4 +20,7 @@ class DesignController extends \BaseController {
     public function detailAlbum(){
         $this->layout->content = \View::make('design.album_detail');
     }
+    public function staff(){
+        $this->layout->content = \View::make('design.staff_profile');
+    }
 }
