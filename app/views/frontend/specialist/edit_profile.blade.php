@@ -9,8 +9,9 @@ staff-page
     <div class="row staff-edit-profile-page">
         <div class="col-md-12">
             {{ View::make('partials._form_errors')->render() }}
+            {{ View::make('partials._flash_messages')->render() }}
             <div class='col-md-7 col-xs-12'>
-                <h3>Update Profile</h3>
+                <h3>Update Profile <small>(<a href="{{ route('specialist.profile', $specialist->parameterize()) }}">View public profile</a>)</small></h3>
                 {{ Former::framework('Nude') }}
                 {{ Former::populate($specialist) }}
                 {{ Former::open(route('specialist.update_profile'))->method('POST')->class('') }}
