@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class='col-sm-12 text-right'>
-                        <a href="{{ route('specialist.profile', $specialist->parameterize()) }}">Read More <i class="fa fa-plus-square"></i></a>
+                        <a href="{{ route('specialist.profile', $specialist->parameterize()) }}">View Profile <i class="fa fa-plus-square"></i></a>
                     </div>
                 </div>
                 @endforeach
