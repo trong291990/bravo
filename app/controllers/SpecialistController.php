@@ -35,6 +35,7 @@ class SpecialistController extends FrontendBaseController {
         $v = Validator::make(Input::all(), Specialist::updateRules($specialist));
         if ($v->passes()) {
             $specialist->update(Input::all());
+            Session::flash('success', 'Your profile has been updated successfully');
             return Redirect::route('specialist.edit_profile');
         } else {
             return Redirect::route('specialist.edit_profile')->withInput()->withErrors($v);
@@ -46,6 +47,7 @@ class SpecialistController extends FrontendBaseController {
         $v = Validator::make(Input::all(), ['password' => 'required|min:6|confirmed']);
         if ($v->passes()) {
             $specialist->updatePassword(Input::get('password'));
+            Session::flash('success', 'Your passord has been changed successfully');
             return Redirect::route('specialist.edit_profile');
         } else {
             return Redirect::route('specialist.edit_profile')->withInput()->withErrors($v);
