@@ -52,43 +52,31 @@
                 <?php endforeach; ?>
             </div>
             <div class="row" style="margin-bottom: 20px;">
-                <div class='col-sm-12'>
-                    <?php if($loggedCustomer): ?>
-                        <button type="button" 
-                            data-add-url="{{route('wishlist.add', $tour->id)}}"
-                            data-remove-url="{{route('wishlist.remove', $tour->id)}}"
-                            class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
-                            {{in_array($tour->id, $wishlist_items) ? 'Remove from Wishlist' : 'Add to Wishlist'}}
-                        </button>
-                     <?php endif; ?>                 
-                    <button  type="button" data-id='{{$tour->id}}' 
-                    class="btn booking-tour btn-warning tour-booking">Enquiry Now</button>
-                </div>
+
             </div>
             <div id="tour-staffs">
-                <h4>VIETNAM DESTINATION EXPERT</h4>
+                <h4>{{ $tour->area->name }} DESTINATION EXPERT</h4>
                 <!-- Update here -->
-                @for($i=1;$i<4;$i++)
+                @foreach($specialists as $s)
                 <div class="row staff-item">
                     <div class="col-sm-3 no-padding-right">
                         <img class="img-responsive" src="http://bizblogs.nus.edu/alumni/wp-content/uploads/sites/6/2014/10/AdamKhoobig.jpg" />
                     </div>
                     <div class="col-sm-6">
-                        Huyen<br>
-                        Your local<br/>
+                        {{ $s->fullName() }}<br>
                         destination expert
                         <div class="cleafix">
-                            <div class='staff-ratied' data-ratied="4"></div>
+                            <div class='staff-ratied' data-ratied="{{ $s->avgRate() }}"></div>
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <a href="#" class='btn btn-info btn-sm'>Readmore</a>
+                        <a href="{{ route('specialist.profile', $s->parameterize()) }}">Readmore <i class="fa fa-plus-square"></i></a>
                     </div>
                     <div class='col-sm-12'>
                         <p>Personalized itinerary within an estimated 29 hours  </p>
                     </div>
                 </div>
-                @endfor
+                @endforeach
             </div>
         </div>
         <div class="col-sm-57">
@@ -177,6 +165,18 @@
                         <br/><br/>
                         <p><b>Cancellation policy & fees</b></p>
                         You do not have to pay any cancellation fee if you cancel your reservation no less than 30 days prior to scheduled departure date, 20% for 29 -15 days notice, 50% for 14- 7days notice; 50% for 6-0 days notice.
+                        <p style="margin-top: 10px">
+                        <?php if($loggedCustomer): ?>
+                            <button type="button" 
+                                data-add-url="{{route('wishlist.add', $tour->id)}}"
+                                data-remove-url="{{route('wishlist.remove', $tour->id)}}"
+                                class="btn btn-sm {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
+                                {{in_array($tour->id, $wishlist_items) ? 'Remove from Wishlist' : 'Add to Wishlist'}}
+                            </button>
+                         <?php endif; ?>                 
+                        <button type="button" data-id='{{$tour->id}}' 
+                        class="btn btn-sm booking-tour btn-warning tour-booking">Enquiry Now</button>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
 
                             <div class="relationship-tour-item">
                                 <div class="img-thumbnail">
-                                    <img alt="{{$tour->name}}" src="{{$tour->thumbnail()}}" class="img-responsive" />
+                                    <img alt="{{$tour->name}}" src="{{$tour->thumbnailURL()}}" class="img-responsive" />
                                 </div>
                                 <div>
                                     <a href="{{route('tour.show', array($area->slug, $tour->slug))}}">

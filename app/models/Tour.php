@@ -112,7 +112,7 @@ class Tour extends Eloquent {
         }
     }
 
-    public function thumbnail($root = null) {
+    public function thumbnailURL($root = null) {
         $relativePath = self::PHOTO_PATH . '/' . $this->id . '/' . $this->thumbnail;
         if (is_null($root)) {
             return asset($relativePath);

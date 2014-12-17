@@ -26,7 +26,7 @@ staff-page
             <div class='staff-popular-trip'>
                 @if($popularTour)
                     <div class="thumbnail">
-                        <img src="{{ $popularTour->photoUrl() }}" class='img-responsive' />
+                        <img src="{{ $popularTour->thumbnailURL() }}" class='img-responsive' />
                     </div>
                     <div class="desc vertical">
                         <div class="trip-box-details">
@@ -81,12 +81,13 @@ staff-page
             <div class='col-sm-4'>
                 <div class='staff-trip'>
                     <div class="thumbnail">
-                        <img src="{{ $tour->photoUrl() }}" class='img-responsive' />
+                        <img src="{{ $tour->thumbnailURL() }}" class='img-responsive' />
                     </div>
                     <div class="desc vertical">
                         <div class="trip-box-details">
                             <h4>{{ $tour->area->name }} - {{ $tour->duration }} days</h4>
-                            <h3>{{ $tour->name }}</h3>
+                            <h3><a href="{{ route('tour.show', [$tour->area->slug, $tour->slug]) }}">{{ $tour->name }}</a>
+                            </h3>
                             <ul class="mainAttractionList">
                                 <li>The Great Pyramids &amp; Sphinx</li>
                                 <li>The Temple of Luxor and Karnak</li>

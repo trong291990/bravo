@@ -3,8 +3,9 @@
 class Comment extends \Eloquent {
 
     protected $fillable = ['customer_id', 'score', 'content'];
+    
     static $rules = [
-        'content' => 'required|min:10'
+        'content' => 'required|min:15'
     ];
 
     /**

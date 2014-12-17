@@ -59,8 +59,14 @@ class SpecialistController extends FrontendBaseController {
      */
     public function postReview($id) {
         $specialist = Specialist::findOrFail($id);
-        $comment = $specialist->buildComment($this->loggedCustomer, Input::all());
-        $comment->save();
+        if(Validator::make(Input::all(), Comment::$rules)->passes()) {
+            Session::flash('success', 'Your review could not be saved');
+            $comment = $specialist->buildComment($this->loggedCustomer, Input::all());
+            $comment->save();
+        } else {
+            Session::flash('error', 'Your review could not be saved');
+        }
+        
         return Redirect::route('specialist.profile', $specialist->parameterize());
     }
 
