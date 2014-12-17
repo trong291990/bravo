@@ -27,10 +27,10 @@ class SpecialistController extends AdminBaseController {
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         } else {
-            $specialist =Specialist::create($data);
+            $specialist = Specialist::create($data);
             $specialist->updateAreas(Input::get('area_ids', []));
             Session::flash('success', "Specialist profile created successfully");
-            return Redirect::route('admin.specialist.index');
+            return Redirect::route('admin.specialist.show', $specialist->id);
         }
     }
 
