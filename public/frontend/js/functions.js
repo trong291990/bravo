@@ -138,6 +138,7 @@ $(document).ready(function() {
         });
         return false;
     });
+    
 });
 
 function showMap(dom, locations, zoom) {

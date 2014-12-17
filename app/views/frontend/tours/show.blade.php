@@ -16,6 +16,7 @@
 
 @section('addon_js')
 {{ HTML::script("https://maps.googleapis.com/maps/api/js") }}
+{{ HTML::script('/plugins/raty/jquery.raty.js') }}
 @stop
 
 @section('content')
@@ -64,11 +65,30 @@
                     class="btn booking-tour btn-warning tour-booking">Enquiry Now</button>
                 </div>
             </div>
-            <div class="row">
+            <div id="tour-staffs">
+                <h4>VIETNAM DESTINATION EXPERT</h4>
                 <!-- Update here -->
-                @foreach($specialists as $s)
-                    {{ $s->fullName() }}
-                @endforeach
+                @for($i=1;$i<4;$i++)
+                <div class="row staff-item">
+                    <div class="col-sm-3 no-padding-right">
+                        <img class="img-responsive" src="http://bizblogs.nus.edu/alumni/wp-content/uploads/sites/6/2014/10/AdamKhoobig.jpg" />
+                    </div>
+                    <div class="col-sm-6">
+                        Huyen<br>
+                        Your local<br/>
+                        destination expert
+                        <div class="cleafix">
+                            <div class='staff-ratied' data-ratied="4"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#" class='btn btn-info btn-sm'>Readmore</a>
+                    </div>
+                    <div class='col-sm-12'>
+                        <p>Personalized itinerary within an estimated 29 hours  </p>
+                    </div>
+                </div>
+                @endfor
             </div>
         </div>
         <div class="col-sm-57">
@@ -188,4 +208,15 @@
         </div>
     </div>
 </div>
+@stop
+@section('addon_stylesheets')
+{{ HTML::style('/plugins/raty/jquery.raty.css') }}
+@stop
+@section('inline_scripts')
+<script>
+    $('.staff-ratied').each(function() {
+        var dataRaty = $(this).data('ratied');
+        $(this).raty({starType: 'i', 'score': dataRaty,'readOnly':true});
+    });
+</script>   
 @stop
