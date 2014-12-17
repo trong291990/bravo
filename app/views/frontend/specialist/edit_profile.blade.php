@@ -37,6 +37,21 @@ staff-page
                     {{ Former::text('languages')->class('form-control') }}
                 </div>        
                 <div class="form-group">
+                    <label>Specialties</label>
+                    <ul class="list-unstyled staff-specialties">
+                        @foreach($specialist->specialties as $item)
+                            <li>
+                                <input class="form-control input-sm" name="specialties[]" value="{{$item}}" />
+                            </li>
+                        @endforeach
+                        @for($i = 0; $i < (Specialist::MAX_SPECIALTIEST - count($specialist->specialties)); $i++)
+                            <li>
+                                <input class="form-control input-sm" name="specialties[]"/>
+                            </li>
+                        @endfor                         
+                    </ul>
+                </div>                 
+                <div class="form-group">
                     <label>About me</label>
                     {{ Former::textarea('bio')->class('form-control')->rows(7) }}
                 </div>                 

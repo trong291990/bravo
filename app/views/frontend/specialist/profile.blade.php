@@ -14,7 +14,7 @@ staff-page
             <h3 class="staff-name"> {{ $specialist->fullName() }}</h3>
             <p><b>Specialties:</b></p>
             <ul class="agentStrengthsUList">
-                @foreach($specialist->parseSpecialties() as $s)
+                @foreach($specialist->specialties as $s)
                 <li class="agentStrengthsList">{{ $s }}</li>
                 @endforeach
             </ul>

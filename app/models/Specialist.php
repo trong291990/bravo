@@ -11,6 +11,7 @@ class Specialist extends Eloquent implements UserInterface, RemindableInterface 
 
     const PER_PAGE = 15;
     const AVATAR_PATH = 'uploads/specialists';
+    const MAX_SPECIALTIEST = 4;
 
     protected $fillable = [
         'first_name', 'last_name', 'email', 'nationality', 'bio', 'languages', 'specialties', 'password'
@@ -72,8 +73,25 @@ class Specialist extends Eloquent implements UserInterface, RemindableInterface 
         return Tour::mostBookedWithinAreas($area_ids, 1)->first();
     }
 
-    public function parseSpecialties() {
-        return explode(',', $this->specialties);
+    public function getSpecialtiesAttribute($value) {
+        $ss = json_decode($value);
+        if(!is_array($ss)) {
+            return [];
+        } else {
+            return $ss;
+        }
+    }
+
+    public function setSpecialtiesAttribute($value) {
+        $sanitized_items = [];
+        if(is_array($value)) {
+            foreach ($value as $item) {
+                if(trim($item)) {
+                    $sanitized_items[] = trim($item);
+                }
+            }
+        }
+        $this->attributes['specialties'] = json_encode($sanitized_items);
     }
 
     public function updatePassword($new_password) {
