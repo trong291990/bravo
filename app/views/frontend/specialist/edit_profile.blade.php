@@ -15,6 +15,7 @@ staff-page
                 {{ Former::framework('Nude') }}
                 {{ Former::populate($specialist) }}
                 {{ Former::open(route('specialist.update_profile'))->method('POST')->class('') }}
+               
                 <div class="form-group">
                     <label>Email address</label>
                     {{ Former::text('email')->class('form-control') }}
@@ -43,6 +44,22 @@ staff-page
                 {{Former::close() }}                
             </div>
             <div class='col-md-5 col-xs-12'>
+                <h3>Change Avatar</h3>
+                    {{ Former::open(route('specialist.update_avatar'))->method('POST')->class('')->enctype('multipart/form-data') }}
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="thumbnail">
+                                    <img src="{{ $specialist->avatarURL() }}" class="img-responsive">
+                                </div>                                
+                            </div>
+                            <div class="col-sm-8">
+                                {{ Former::file('avatar')->class('form-control bootstrap-input-file')->placeholder('Select photo') }}
+                                <br>
+                                <button class="btn btn-primary" type="submit">Update avatar</button>
+                            </div>
+                        </div>
+                    {{ Former::close() }} 
+                   
                 <h3>Change password</h3>
                 {{ Former::populate($specialist) }}
                 {{ Former::open(route('specialist.update_password'))->method('POST')->class('') }}
@@ -55,7 +72,7 @@ staff-page
                     {{ Former::password('password_confirmation')->class('form-control') }}
                 </div>
                 <button type="submit" class="btn btn-primary">Update Password</button>
-                {{Former::close() }}                
+                {{ Former::close() }}                
             </div>
 
         </div>

@@ -57,23 +57,21 @@
             <div id="tour-staffs">
                 <h4>{{ $tour->area->name }} DESTINATION EXPERT</h4>
                 <!-- Update here -->
-                @foreach($specialists as $s)
+                @foreach($specialists as $specialist)
                 <div class="row staff-item">
                     <div class="col-sm-3 no-padding-right">
-                        <img class="img-responsive" src="http://bizblogs.nus.edu/alumni/wp-content/uploads/sites/6/2014/10/AdamKhoobig.jpg" />
+                        <img class="img-responsive" src="{{ $specialist->avatarURL() }}" />
                     </div>
-                    <div class="col-sm-6">
-                        {{ $s->fullName() }}<br>
-                        destination expert
+                    <div class="col-sm-9">
+                        <a href="{{ route('specialist.profile', $specialist->parameterize()) }}">{{ $specialist->fullName() }}</a>
+                        <br>
+                        {{ $tour->area->name }} Travel Specialist
                         <div class="cleafix">
-                            <div class='staff-ratied' data-ratied="{{ $s->avgRate() }}"></div>
+                            <div class='staff-ratied' data-ratied="{{ $specialist->avgRate() }}"></div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <a href="{{ route('specialist.profile', $s->parameterize()) }}">Readmore <i class="fa fa-plus-square"></i></a>
-                    </div>
-                    <div class='col-sm-12'>
-                        <p>Personalized itinerary within an estimated 29 hours  </p>
+                    <div class='col-sm-12 text-right'>
+                        <a href="{{ route('specialist.profile', $specialist->parameterize()) }}">Read More <i class="fa fa-plus-square"></i></a>
                     </div>
                 </div>
                 @endforeach

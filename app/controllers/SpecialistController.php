@@ -31,6 +31,7 @@ class SpecialistController extends FrontendBaseController {
     }
 
     public function updateProfile() {
+        // dd(Input::file('avatar'));
         $specialist = $this->loggedSpecialist;
         $v = Validator::make(Input::all(), Specialist::updateRules($specialist));
         if ($v->passes()) {
@@ -47,11 +48,18 @@ class SpecialistController extends FrontendBaseController {
         $v = Validator::make(Input::all(), ['password' => 'required|min:6|confirmed']);
         if ($v->passes()) {
             $specialist->updatePassword(Input::get('password'));
-            Session::flash('success', 'Your passord has been changed successfully');
+            Session::flash('success', 'Your passord has been updated successfully');
             return Redirect::route('specialist.edit_profile');
         } else {
             return Redirect::route('specialist.edit_profile')->withInput()->withErrors($v);
         }
+    }
+
+    public function updateAvatar() {
+        $specialist = $this->loggedSpecialist;
+        $specialist->updateAvatar(Input::file('avatar'));
+        Session::flash('success', 'Your avatar has been updated');
+        return Redirect::route('specialist.edit_profile');
     }
 
     /**

@@ -10,6 +10,7 @@ class Specialist extends Eloquent implements UserInterface, RemindableInterface 
     protected $table = 'specialists';
 
     const PER_PAGE = 15;
+    const AVATAR_PATH = 'uploads/specialists';
 
     protected $fillable = [
         'first_name', 'last_name', 'email', 'nationality', 'bio', 'languages', 'specialties', 'password'
@@ -91,6 +92,31 @@ class Specialist extends Eloquent implements UserInterface, RemindableInterface 
     public function updateAreas($area_ids) {
         $areas = Area::whereIn('id', $area_ids)->lists('id');
         $this->areas()->sync($areas);
+    }
+
+    public function avatarURL() {
+        if($this->avatar_url) {
+            return asset(self::AVATAR_PATH . '/' . $this->id . '/' . $this->avatar_url);
+        } else {
+            return asset('/images/default_avatar.png');
+        }
+    }
+
+    /**
+     * Update avatar with given a uploaded file
+     */
+    public function updateAvatar($uploadedFile) {
+        if($this->avatar_url) {
+            $avatar_file = public_path(self::AVATAR_PATH . '/' . $this->id . '/' . $this->avatar_url);
+            if(File::exists($avatar_file)) {
+                File::delete($avatar_file);
+            }
+        }
+        $fileName = sanitize_file_name($uploadedFile->getClientOriginalName());
+        $relativeDir = self::AVATAR_PATH . '/' . $this->id;
+        $uploadedFile->move(public_path() . '/' . $relativeDir, $fileName);
+        $this->avatar_url = $fileName;
+        $this->save();
     }
 
     /*

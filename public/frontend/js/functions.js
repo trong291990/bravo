@@ -196,10 +196,15 @@ $('form').validate();
 $(':file.bootstrap-input-file').each(function() {
     var $_this = $(this);
     var placeholder = 'Choose a file';
-    console.log($_this.attr('multiple'));
+
     if($_this.attr('multiple')) {
         placeholder = 'Choose files'
     }
+
+    if($_this.attr('placeholder')) {
+        placeholder = $_this.attr('placeholder');
+    }    
+
     var default_options = {
         inputGroupClass: 'input-group',
         inputClass: 'form-control',
@@ -207,9 +212,8 @@ $(':file.bootstrap-input-file').each(function() {
         browseButtonClass: 'btn btn-default',
         browseButtonText: 'Browse'
     }
-    var options = default_options;
-    
 
+    var options = default_options;
     var $inputName = $_this.attr('name');
     var wrapper_html = '<div class="' + options.inputGroupClass + '">' +
       '<input type="text" autocomplete="off" placeholder="' + options.inputPlaceholder + '" class="' + options.inputClass + '" data-for-input-name="' + $inputName + '">' +

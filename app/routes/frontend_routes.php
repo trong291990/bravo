@@ -50,6 +50,7 @@ Route::group(['before' => 'specialist.auth'], function() {
   Route::get('/specialist/my-profile', ['as' => 'specialist.edit_profile', 'uses' => 'SpecialistController@editProfile']);  
   Route::post('/specialist/update-profile', array('as' => 'specialist.update_profile', 'uses' => 'SpecialistController@updateProfile'));
   Route::post('/specialist/update-password', array('as' => 'specialist.update_password', 'uses' => 'SpecialistController@updatePassword'));
+  Route::post('/specialist/update-avatar', array('as' => 'specialist.update_avatar', 'uses' => 'SpecialistController@updateAvatar'));
 });
 
 // Wishlist routes

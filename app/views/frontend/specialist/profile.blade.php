@@ -9,7 +9,7 @@ staff-page
     <div class="col-sm-3" id="staff-sidebar-wrapper">
         <div class="staff-sidebar">
             <div class="thumbnail">
-                {{HTML::image(gravatar_url($specialist->email, 48),'',['class'=>'img-responsive','style'=>"width:100%"])}}
+                {{HTML::image($specialist->avatarURL(),'',['class'=>'img-responsive','style'=>"width:100%"])}}
             </div>
             <h3 class="staff-name"> {{ $specialist->fullName() }}</h3>
             <p><b>Specialties:</b></p>
@@ -31,7 +31,7 @@ staff-page
                     <div class="desc vertical">
                         <div class="trip-box-details">
                             <h4>{{ $popularTour->area->name }} - {{ $popularTour->duration }} days</h4>
-                            <h3>{{ $popularTour->name }}</h3>
+                            <h3><a href="{{ route('tour.show', [$popularTour->area->slug, $popularTour->slug]) }}">{{ $popularTour->name }}</a></h3>
                             <ul class="mainAttractionList">
                                 <li>The Great Pyramids &amp; Sphinx</li>
                                 <li>The Temple of Luxor and Karnak</li>
