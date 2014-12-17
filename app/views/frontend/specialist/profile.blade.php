@@ -26,7 +26,7 @@ staff-page
             <div class='staff-popular-trip'>
                 @if($popularTour)
                     <div class="thumbnail">
-                        <img src="{{ $popularTour->thumbnail }}" class='img-responsive' />
+                        <img src="{{ $popularTour->photoUrl() }}" class='img-responsive' />
                     </div>
                     <div class="desc vertical">
                         <div class="trip-box-details">
@@ -81,7 +81,7 @@ staff-page
             <div class='col-sm-4'>
                 <div class='staff-trip'>
                     <div class="thumbnail">
-                        <img src="{{ $popularTour->thumbnail }}" class='img-responsive' />
+                        <img src="{{ $tour->photoUrl() }}" class='img-responsive' />
                     </div>
                     <div class="desc vertical">
                         <div class="trip-box-details">
