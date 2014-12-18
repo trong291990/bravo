@@ -21,7 +21,7 @@
                   <div class="tour-thumbnail col-md-5 col-xs-12">
                     <div class="tour-thumbnail-img" style="background-image: url({{$tour->photoUrl()}})"></div>
                   </div>
-                  <div class="tour-short-info col-md-5 col-xs-12">
+                  <div class="tour-short-info col-md-6 col-xs-12">
                     <ul class="list-unstyled">
                       <li>
                         <h3><a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}">{{$tour->name}}</a>
@@ -48,7 +48,11 @@
                         data-add-url="{{route('wishlist.add', $tour->id)}}"
                         data-remove-url="{{route('wishlist.remove', $tour->id)}}"
                         class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
-                        {{in_array($tour->id, $wishlist_items) ? '- Wishlist' : '+ Wishlist'}}
+                        @if(in_array($tour->id, $wishlist_items))
+                            <i class="fa fa-minus"></i>  <i class="fa fa-shopping-cart"></i>
+                        @else
+                            <i class="fa fa-plus"></i>  <i class="fa fa-shopping-cart"></i>
+                        @endif
                     </button>                      
                   </div>
                 </div>

@@ -133,14 +133,14 @@
                                 <?php if(@$loggedCustomer || @$loggedSpecialist): ?>
                                     <?php 
                                     if(@$loggedCustomer) {
-                                        $profile_url = '#';
+                                        $profile_url = route('customer.edit_profile');
                                     } else {
                                         $profile_url = route('specialist.edit_profile');
                                     }
                                     ?>
                                     <li>
                                         <a href="{{$profile_url}}">
-                                            <i class="fa fa-user"></i> My Account
+                                            <i class="fa fa-user"></i> My Profile
                                         </a>
                                     </li>                                      
                                     <li>

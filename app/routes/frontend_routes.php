@@ -38,8 +38,11 @@ Route::get('/google-auth', ['as' => 'google_auth', 'uses' => 'AuthController@goo
 
 // Customer routes
 Route::group(['before' => 'customer.auth'], function() {
-    Route::post('/travel-reviews/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
-    Route::post('/specialist/{id}/post-review', ['as' => 'specialist.post_review', 'uses' => 'SpecialistController@postReview']);
+  Route::post('/travel-reviews/submit', array('as' => 'review_submit', 'uses' => 'ReviewController@submit'));
+  Route::post('/specialist/{id}/post-review', ['as' => 'specialist.post_review', 'uses' => 'SpecialistController@postReview']);
+  Route::get('/customer/my-profile', ['as' => 'customer.edit_profile', 'uses' => 'CustomerController@editProfile']);
+  Route::post('/customer/update-profile', ['as' => 'customer.update_profile', 'uses' => 'CustomerController@updateProfile']);
+  Route::post('/customer/update-password', ['as' => 'customer.update_password', 'uses' => 'CustomerController@updatePassword']); 
 });
 
 // Specialist routes

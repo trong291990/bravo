@@ -164,16 +164,19 @@
                         <p><b>Cancellation policy & fees</b></p>
                         You do not have to pay any cancellation fee if you cancel your reservation no less than 30 days prior to scheduled departure date, 20% for 29 -15 days notice, 50% for 14- 7days notice; 50% for 6-0 days notice.
                         <p style="margin-top: 10px" class="text-center">
-                        <?php if($loggedCustomer): ?>
-                            <button type="button" 
-                                data-add-url="{{route('wishlist.add', $tour->id)}}"
-                                data-remove-url="{{route('wishlist.remove', $tour->id)}}"
-                                class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
-                                {{in_array($tour->id, $wishlist_items) ? '+ Wishlist' : '- Wishlist'}}
-                            </button>
-                         <?php endif; ?>                 
-                        <button type="button" data-id='{{$tour->id}}' 
-                        class="btn booking-tour btn-warning tour-booking">Enquiry Now</button>
+                            <button type="button" data-id='{{$tour->id}}' class="btn booking-tour btn-warning tour-booking">Enquiry Now</button>
+                            <?php if($loggedCustomer): ?>
+                                <button type="button" 
+                                    data-add-url="{{route('wishlist.add', $tour->id)}}"
+                                    data-remove-url="{{route('wishlist.remove', $tour->id)}}"
+                                    class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
+                                    @if(in_array($tour->id, $wishlist_items))
+                                        <i class="fa fa-minus"></i>  <i class="fa fa-shopping-cart"></i>
+                                    @else
+                                        <i class="fa fa-plus"></i>  <i class="fa fa-shopping-cart"></i>
+                                    @endif
+                                </button>
+                             <?php endif; ?>                 
                         </p>
                     </div>
                 </div>

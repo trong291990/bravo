@@ -131,7 +131,11 @@
                                         data-add-url="{{route('wishlist.add', $tour->id)}}"
                                         data-remove-url="{{route('wishlist.remove', $tour->id)}}"
                                         class="btn btn-block {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
-                                        {{in_array($tour->id, $wishlist_items) ? '- Wishlist' : '+ Wishlist'}}
+                                        @if(in_array($tour->id, $wishlist_items))
+                                            <i class="fa fa-minus"></i>  <i class="fa fa-shopping-cart"></i>
+                                        @else
+                                            <i class="fa fa-plus"></i>  <i class="fa fa-shopping-cart"></i>
+                                        @endif
                                     </button>
                                  <?php endif; ?> 
                                 <button type="button" data-id='{{$tour->id}}' class="btn booking-tour btn-block btn-warning tour-booking">Enquiry Now</button>

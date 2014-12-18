@@ -31,7 +31,6 @@ class SpecialistController extends FrontendBaseController {
     }
 
     public function updateProfile() {
-        // dd(Input::file('avatar'));
         $specialist = $this->loggedSpecialist;
         $v = Validator::make(Input::all(), Specialist::updateRules($specialist));
         if ($v->passes()) {

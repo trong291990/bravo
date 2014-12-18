@@ -5,13 +5,22 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Customer extends \Eloquent implements UserInterface, RemindableInterface {
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'email', 'dob', 'phone', 'nationality'];
     protected $table = 'customers';
     public static $registerRules = [
         'name' => 'required',
         'email' => 'required|email|unique:customers,email|unique:admin_users,email|unique:specialists,email',
         'password' => 'required|min:6'
     ];
+
+    public static function boot() {
+        parent::boot();
+        static::saving(function($customer) {
+            if (Hash::needsRehash($customer->password)) {
+                $customer->password = Hash::make($customer->password);
+            }
+        });
+    }
 
     public static function findOrCreateByOmniath($provider, $data) {
         $auth = Authentication::findByProviderAndUID($provider, $data['id']);
@@ -58,6 +67,13 @@ class Customer extends \Eloquent implements UserInterface, RemindableInterface {
         return $customer;
     }
 
+    public static function updateRules($customer) {
+        return [
+            'name' => 'required|min:3|max:20',
+            'email' => 'required|email|unique:customers,email, ' . $customer->id . '|unique:admin_users,email|unique:specialists,email'
+        ];
+    }
+
     public function authentications() {
         return $this->hasMany('authentications', 'customer_id');
     }
@@ -83,6 +99,10 @@ class Customer extends \Eloquent implements UserInterface, RemindableInterface {
         return $this->hasMany('Review', 'customer_id');
     }
 
+    public function updatePassword($new_password) {
+        $this->password = $new_password;
+        $this->save();
+    }
     /*
      * Authenticate functions
      */
