@@ -184,6 +184,11 @@
     margin:10px 0px 5px 0px;
     border-top:1px solid #ccc;
 }
+#tour-staffs > h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;    
+}
 #tour-staffs .staff-item p {
     margin-bottom:  0;
     margin-top:5px;
