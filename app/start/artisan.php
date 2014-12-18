@@ -10,4 +10,5 @@
 | the console gets access to each of the command object instances.
 |
 */
-
+Artisan::add(new Deploy\UpdateCommand);
+Artisan::add(new Deploy\UpdateComposerCommand);

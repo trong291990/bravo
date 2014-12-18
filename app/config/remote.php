@@ -29,12 +29,12 @@ return array(
 	'connections' => array(
 
 		'production' => array(
-			'host'      => '',
-			'username'  => '',
+			'host'      => 'bravoindochinatour.com',
+			'username'  => 'vietnamtourism',
 			'password'  => '',
-			'key'       => '',
+			'key'       => __DIR__ . '/bravo_rsa',
 			'keyphrase' => '',
-			'root'      => '/var/www',
+			'root'      => '/home/vietnamtourism/public_html/testdeploy',
 		),
 
 	),
