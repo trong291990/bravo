@@ -48,7 +48,7 @@
                         data-add-url="{{route('wishlist.add', $tour->id)}}"
                         data-remove-url="{{route('wishlist.remove', $tour->id)}}"
                         class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
-                        {{in_array($tour->id, $wishlist_items) ? 'Remove from Wishlist' : 'Add to Wishlist'}}
+                        {{in_array($tour->id, $wishlist_items) ? '- Wishlist' : '+ Wishlist'}}
                     </button>                      
                   </div>
                 </div>

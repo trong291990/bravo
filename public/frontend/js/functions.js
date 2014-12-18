@@ -47,7 +47,7 @@ $(document).ready(function() {
         $.post($this.data('add-url'), function(res) {
             if (res.success) {
                 bootbox.alert(res.message);
-                $this.text('Remove from Wishlist');
+                $this.text('- Wishlist');
                 $this.busyOff()
                         .removeClass('btn-add-wishlist')
                         .addClass('btn-remove-wishlist');
@@ -62,7 +62,7 @@ $(document).ready(function() {
         $.post($this.data('remove-url'), function(res) {
             if (res.success) {
                 bootbox.alert(res.message);
-                $this.text('Add to Wishlist');
+                $this.text('+ Wishlist');
                 $this.busyOff()
                         .removeClass('btn-remove-wishlist')
                         .addClass('btn-add-wishlist');
