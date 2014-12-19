@@ -3,7 +3,7 @@
 class Album extends \Eloquent {
 use CommentableTrait;
 
-    protected $fillable = ['name', 'area_id', 'description', 'type'];
+    protected $fillable = ['name', 'area_id', 'description', 'type', 'is_published'];
     protected $table = 'albums';
 
     const ALBUMS_PATH = 'uploads/albums'; // albums/:id/origin & albums/:id/thumb
@@ -95,6 +95,14 @@ use CommentableTrait;
         return $query->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
 
+    public static function createTravellerAlbum($name) {
+        $album = new Album(['name' => $name]);
+        $album->type = self::TYPE_TRAVELLER;
+        $album->is_published = false;
+        $album->area_id = Area::first()->id;
+        $album->save();
+        return $album;
+    }
     /*
      * Scope by types
      */
@@ -118,6 +126,10 @@ use CommentableTrait;
     /*
      * More scopes
      */
+
+    public function scopePublished($query) {
+        return $query->where('is_published', true);
+    }
 
     public function scopeMostView($query, $count = 8) {
         return $query->orderBy('views', 'DESC')->take($count);
@@ -191,6 +203,12 @@ use CommentableTrait;
         $photo->thumb_path = $this->thumbPhotoPath(false) . $thumbFileName;
         $photo->save();
         return $photo;
+    }
+
+    public function uploadPhotos($uploadedFiles) {
+        foreach ($uploadedFiles as $photo) {
+            $this->uploadPhoto($photo);
+        }
     }
 
     public function increaseViews() {

@@ -29,7 +29,7 @@ class AlbumController extends FrontendBaseController {
         if (inputHasAny(['country', 'type', 'keyword'])) {
             // Do searching
             $selectedArea = null;
-            $albumQuery = Album::orderBy('views', 'DESC');
+            $albumQuery = Album::orderBy('views', 'DESC')->published();
             if (Input::has('country') && ($selectedArea = Area::findByName(Input::get('country')))) {
                 $albumQuery = $albumQuery->withAreaID($selectedArea->id);
             }
@@ -46,9 +46,9 @@ class AlbumController extends FrontendBaseController {
             $albums = $albumQuery->get();
             $this->layout->content = View::make('frontend.album.search', compact('areas', 'albums'));
         } else {
-            $cityAlbums = Album::city()->mostView()->get();
-            $hotelAlbums = Album::hotel()->mostView()->get();
-            $travellerAlbums = Album::traveller()->mostView()->get();
+            $cityAlbums = Album::city()->published()->mostView()->get();
+            $hotelAlbums = Album::hotel()->published()->mostView()->get();
+            $travellerAlbums = Album::traveller()->published()->mostView()->get();
             $this->layout->content = View::make(
                             'frontend.album.index', compact('areas', 'cityAlbums', 'hotelAlbums', 'travellerAlbums')
             );

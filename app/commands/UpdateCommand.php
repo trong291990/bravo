@@ -18,7 +18,8 @@ class UpdateCommand extends Command {
 		$this->info(str_repeat('=', 80) . "\n");
     \SSH::run([
       'cd ~/public_html/dev',
-      'git pull origin master'
+      'git pull origin master',
+      'php artisan migrate'
     ]);
     $this->info(str_repeat('=', 80) . "\n");
 	}

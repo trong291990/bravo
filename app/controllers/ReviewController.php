@@ -10,9 +10,14 @@ class ReviewController extends FrontendBaseController {
 
     public function submit() {
         $customer = Auth::customer()->get();
-
         if (Validator::make(Input::all(), Review::$rules)->passes()) {
             $customer->reviews()->save(new Review(Input::all()));
+            if(is_array(Input::file('photos'))) {
+                $album = Album::createTravellerAlbum(Input::get('destination'));
+                $album->uploadPhotos(Input::file('photos'));  
+            } else {
+                dd('ero co');
+            }
         }
 
         Session::flash('success', "Thank you. Your review are currently in the melting pot.");

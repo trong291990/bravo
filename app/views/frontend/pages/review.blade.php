@@ -192,7 +192,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
             <?php if ($loggedCustomer): ?>
                 <div class='col-sm-10 col-sm-offset-2'>
                     <hr class='divider'/>
-                    <form action="{{route('review_submit')}}" id="review-form" method='POST'>
+                    <form action="{{route('review_submit')}}" id="review-form" method='POST' enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-sm-12">
                                 <span style="font-size: 1.3em">YOUR RATE ON OUR SERVICE</span> <span id="client-raty"></span>
@@ -219,7 +219,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
                         </div>
                         <h3>UPLOAD YOUR TRIP PHOTOS</h3>      
                         <div class="form-group">
-                            <input class="form-control bootstrap-input-file" type="file" multiple="true" name="photos"/>
+                            <input class="form-control bootstrap-input-file" type="file" multiple="true" name="photos[]"/>
                         </div>                        
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Submit</button>
@@ -253,12 +253,12 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
     $('#client-raty').raty({starType: 'i', 'score': 4});
 
     $('#review-form').removeAttr('novalidate');
-    $('#review-form').on('submit', function() {
-        if($(this).find('[name="content"]').val().trim().length === 0) {
-            bootbox.alert("Please write your review");
-            return false;
-        }
-    });
+    // $('#review-form').on('submit', function() {
+    //     if($(this).find('[name="content"]').val().trim().length === 0) {
+    //         bootbox.alert("Please write your review");
+    //         return false;
+    //     }
+    // });
     $('.ckeditor').each(function(e) {
         CKEDITOR.replace(this);
     });

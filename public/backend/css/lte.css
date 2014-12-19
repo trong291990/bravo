@@ -8,10 +8,12 @@
     Core: General style
 ----------------------------
 */
+@import url('//fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic');
+
 html,
 body {
   overflow-x: hidden!important;
-  font-family: Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
   background: #f9f9f9;
