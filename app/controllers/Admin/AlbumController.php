@@ -50,10 +50,17 @@ class AlbumController extends AdminBaseController {
         $album = Album::findOrFail($id);
         $uploadFile = Input::file('photo');
         $photo = $album->uploadPhoto($uploadFile);
-        return Response::json([
-                    'success' => true,
-                    'photo_form' => View::make('admin.album._photo_form')->with('photo', $photo)->render()
-        ]);
+        if(!$photo) {
+            return Response::json([
+                'success' => false
+            ]);   
+        } else {
+            return Response::json([
+                'success' => true,
+                'photo_form' => View::make('admin.album._photo_form')
+                    ->with('photo', $photo)->render()
+            ]);            
+        }
     }
 
     public function edit($id) {

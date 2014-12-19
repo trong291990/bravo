@@ -185,24 +185,28 @@ use CommentableTrait;
     }
 
     public function uploadPhoto($uploadedFile) {
-        $ext = $uploadedFile->guessExtension(); // What if null ?
-        // Randomize filename
-        $fileName = md5(microtime(true) . $uploadedFile->getClientOriginalName());
-        $originFileName = $fileName . '.' . $ext;
-        $thumbFileName = $fileName . 't.' . $ext;
-        // Move and create original
-        $uploadedFile->move($this->originPhotoPath(), $originFileName);
-        // Make thumb
-        Image::make($this->originPhotoPath() . $originFileName)
-            ->resize(300, 200)
-            ->save($this->thumbPhotoPath() . $thumbFileName);
-        // Save to DB
-        $photo = new AlbumPhoto;
-        $photo->album_id = $this->id;
-        $photo->origin_path = $this->originPhotoPath(false) . $originFileName;
-        $photo->thumb_path = $this->thumbPhotoPath(false) . $thumbFileName;
-        $photo->save();
-        return $photo;
+        if(!check_uploaded_file_is_image($uploadedFile)) {
+            return null;
+        } else {
+            $ext = $uploadedFile->guessExtension(); // What if null ?
+            // Randomize filename
+            $fileName = md5(microtime(true) . $uploadedFile->getClientOriginalName());
+            $originFileName = $fileName . '.' . $ext;
+            $thumbFileName = $fileName . 't.' . $ext;
+            // Move and create original
+            $uploadedFile->move($this->originPhotoPath(), $originFileName);
+            // Make thumb
+            Image::make($this->originPhotoPath() . $originFileName)
+                ->resize(300, 200)
+                ->save($this->thumbPhotoPath() . $thumbFileName);
+            // Save to DB
+            $photo = new AlbumPhoto;
+            $photo->album_id = $this->id;
+            $photo->origin_path = $this->originPhotoPath(false) . $originFileName;
+            $photo->thumb_path = $this->thumbPhotoPath(false) . $thumbFileName;
+            $photo->save();
+            return $photo;            
+        }
     }
 
     public function uploadPhotos($uploadedFiles) {

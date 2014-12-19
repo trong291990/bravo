@@ -15,8 +15,6 @@ class ReviewController extends FrontendBaseController {
             if(is_array(Input::file('photos'))) {
                 $album = Album::createTravellerAlbum(Input::get('destination'));
                 $album->uploadPhotos(Input::file('photos'));  
-            } else {
-                dd('ero co');
             }
         }
 

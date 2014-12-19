@@ -148,4 +148,8 @@ function extract_id_from_slug($slug) {
     return substr($slug, strrpos($slug, '-') + 1);
 }
 
+function check_uploaded_file_is_image($uploadedFile) {
+    $image_mimes = ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'];
+    return in_array($uploadedFile->getMimeType(), $image_mimes);
+}
 ?>

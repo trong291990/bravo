@@ -219,7 +219,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
                         </div>
                         <h3>UPLOAD YOUR TRIP PHOTOS</h3>      
                         <div class="form-group">
-                            <input class="form-control bootstrap-input-file" type="file" multiple="true" name="photos[]"/>
+                            <input class="form-control bootstrap-input-file" type="file" accept="image/*" multiple="true" name="photos[]"/>
                         </div>                        
                         <div class="form-group text-center">
                             <button class="btn btn-primary" type="submit">Submit</button>
@@ -253,12 +253,12 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
     $('#client-raty').raty({starType: 'i', 'score': 4});
 
     $('#review-form').removeAttr('novalidate');
-    // $('#review-form').on('submit', function() {
-    //     if($(this).find('[name="content"]').val().trim().length === 0) {
-    //         bootbox.alert("Please write your review");
-    //         return false;
-    //     }
-    // });
+    $('#review-form').on('submit', function() {
+        if($(this).find('[name="content"]').val().trim().length === 0) {
+            bootbox.alert("Please write your review");
+            return false;
+        }
+    });
     $('.ckeditor').each(function(e) {
         CKEDITOR.replace(this);
     });
