@@ -1,5 +1,5 @@
 @section('title')
-{{ $specialist->fullName() }}'s Profile
+{{ $specialist->fullName() }}'s Profile | Bravo indochina Tour
 @stop
 @section('body_class')
 staff-page
@@ -156,6 +156,7 @@ staff-page
 
         </div>
     </div>
+</div>
     @stop
     @section('addon_stylesheets')
     {{ HTML::style('/plugins/raty/jquery.raty.css') }}
