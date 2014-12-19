@@ -19,6 +19,7 @@ class UpdateCommand extends Command {
     \SSH::run([
       'cd ~/public_html/dev',
       'git pull origin master',
+      'php composer.phar dump-autoload',
       'php artisan migrate'
     ]);
     $this->info(str_repeat('=', 80) . "\n");
