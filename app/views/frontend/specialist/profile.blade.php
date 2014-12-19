@@ -39,11 +39,13 @@ staff-page
                                 <li>The Valley of Kings &amp; Queens</li>
                             </ul>
                         </div>
-                        <span class="btn_small">See more</span>
-                        <span class="price">
-                            <sub>price/person</sub>
-                            $ 527               
-                        </span>                    
+                        <div class="cleafix">
+                            <a class="pull-left" href="{{ route('tour.show', [$popularTour->area->slug, $popularTour->slug]) }}">See more</a>
+                            <span class="price pull-right">
+                                <sub>price/person</sub>
+                                $ 527               
+                            </span>  
+                        </div>  
                         <div class="clear"></div>
                     </div>
                 @endif
