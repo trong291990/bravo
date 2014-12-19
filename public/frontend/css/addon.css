@@ -197,3 +197,18 @@
 ul.staff-specialties input{
     margin-bottom: 10px;
 }
+#staff-content-wrapper h1 {
+    font-size: 30px;
+    margin-top: 5px;
+}
+#staff-content-wrapper  h2 {
+    font-size: 25px;
+    margin: 25px 0px 15px 0px;
+}
+.staff-trip h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.staff-trip ul.mainAttractionList {
+    padding-left: 15px;
+}

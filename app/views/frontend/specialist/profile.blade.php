@@ -75,7 +75,11 @@ staff-page
                 </div>
             </div>
         </div>
-        <h2>Individual trip deals from {{ $specialist->first_name }}</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Individual trip deals from {{ $specialist->first_name }}</h2>
+            </div>
+        </div>
         <div class='row staff-trips'>
             @foreach($newestTours as $tour)
             <div class='col-sm-4'>
@@ -95,11 +99,13 @@ staff-page
                                 <li>The Valley of Kings &amp; Queens</li>
                             </ul>
                         </div>
-                        <span class="btn_small">See more</span>
-                        <span class="price">
-                            <sub>price/person</sub>
-                            $ 527               
-                        </span>                    
+                        <div class="cleafix">
+                            <a class="pull-lef" href="{{ route('tour.show', [$tour->area->slug, $tour->slug]) }}">See more</a>
+                            <span class="price pull-right">
+                                <sub>price/person</sub>
+                                $ 527               
+                            </span>  
+                        </div>                  
                         <div class="clear"></div>
                     </div>
                 </div>
