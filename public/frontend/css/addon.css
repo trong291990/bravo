@@ -205,7 +205,7 @@ ul.staff-specialties input{
     font-size: 25px;
     margin: 25px 0px 15px 0px;
 }
-.staff-trip h3 {
+.staff-trip h3,.staff-popular-trip h3 {
     font-size: 18px;
     margin-top: 10px;
 }

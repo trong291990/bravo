@@ -22,7 +22,7 @@ staff-page
         </div>
 
         <div class='staff-sidebar'>
-            <h3>Most popular trip</h3>
+            <h3 style="margin-top: 5px">Most popular trip</h3>
             <div class='staff-popular-trip'>
                 @if($popularTour)
                     <div class="thumbnail">
