@@ -4,6 +4,8 @@
         <?php echo Former::text('customer_name')->label('Name')->required() ?>
         <?php echo Former::email('customer_email')->label('Email')->required() ?>
         <?php echo Former::text('customer_phone')->label('phone') ?>
+            <?php echo Former::textarea('pick_off')->label('Pick Up/Drop off information')->rows(5)?>
+        
     </fieldset>
 </div>
 <div class="col-md-7">

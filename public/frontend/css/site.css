@@ -1053,3 +1053,7 @@ li.dropdown .dropdown-menu li a {
 #galleria .galleria-thumbnails {
     margin: auto;
 }
+label.error {
+    font-size:12px;
+    color:#c9302c
+}

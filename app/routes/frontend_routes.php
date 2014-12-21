@@ -11,7 +11,7 @@ Route::get('/geo', array('as' => 'geo', 'uses' => 'ToolController@geo'));
 Route::get('/tour-slug', array('as' => 'tour.slug', 'uses' => 'ToolController@tourSlug'));
 Route::get('/place-slug', array('as' => 'place.slug', 'uses' => 'ToolController@placeSlug'));
 Route::post('/package-compare', array('as' => 'package_compare', 'uses' => 'TourController@compare'));
-Route::post('/booking', array('as' => 'booking', 'uses' => 'TourController@booking'));
+Route::post('/enquiry', array('as' => 'tour.enquiry', 'uses' => 'TourController@booking'));
 Route::get('/booking/success',['as' => 'booking.success','uses'=>'BookingController@success']);
 Route::get('/booking/faild',['as' => 'booking.success','uses'=>'BookingController@faild']);
 Route::get('/customize-your-trip', array('as' => 'inquiry.create', 'uses' => 'TourController@createInquiry'));

@@ -8,9 +8,11 @@ class Reservation extends Eloquent {
     const STATUS_REJECTED = '2';
 
     protected $table = 'reservations';
-    protected $fillable = ['tour_id', 'customer_name', 'customer_email',
+    protected $fillable = [
+        'tour_id', 'customer_name', 'customer_email','pick_off',
         'customer_phone', 'message', 'status', 'start_date','traveling','travel_date',
-        'include_payment','pricing','fee','fee_description','payment_status','payment_detail','payment_method'
+        'include_payment','pricing','fee','fee_description','payment_status','payment_detail',
+        'payment_method'
     ];
     public static $rules = array(
         'tour_id' => 'required',

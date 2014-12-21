@@ -512,7 +512,7 @@
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h2 class="modal-title" style="text-align: center" id="myModalLabel">Send us an Enquiry</h2>
                     </div>
-                    <?php echo Former::open('/booking') ?>
+                    <?php echo Former::open(route('tour.enquiry'))->novalidate('novalidate') ?>
                     <div class="modal-body">
                         <div id='booking-modal-content' class='row clearfix'>
                             <div  class='col-sm-10 col-sm-offset-1'>
@@ -526,16 +526,26 @@
                                     <input type="email" name='customer_email' class="form-control" required="required"  placeholder="Enter your email">
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Phone number</label>
+                                    <input name='customer_phone' type="text" 
+                                           class="form-control"
+                                           placeholder="Enter your phone number">
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Travel date</label>
                                     <input name='start_date' type="text" 
                                            class="form-control datepicker" 
-                                           placeholder="Enter your travel date">
+                                           placeholder="Enter your travel date" required="required">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">How many traveling ?</label>
                                     <input name='travelling' type="text" 
                                            class="form-control"
-                                           placeholder="Enter your number of  traveling">
+                                           placeholder="Enter your number of  traveling" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Pick Up/Drop off information</label>
+                                    <textarea name='pick_off' class="form-control" placeholder="Pick Up/Drop off information" style="min-height: 120px"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Message</label>
@@ -546,7 +556,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Send now</button>  
-                        <button type="submit" name='payment' class="btn btn-primary">
+                        <button style="display:none"  type="submit" name='payment' class="btn btn-primary">
                             <img style="width: 18px" src="/frontend/images/paypal.png" alt='Paypal' />
                             Pay with Paypal</button> 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

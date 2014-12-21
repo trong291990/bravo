@@ -192,7 +192,9 @@ $('.datepicker').datepicker({
 }); 
 $('select:not(.not-picker)').selectpicker();
 $('form').validate();
-
+$('#booking-modal').on('shown.bs.modal', function (e) {
+  $('#booking-modal form').validate();
+});
 $(':file.bootstrap-input-file').each(function() {
     var $_this = $(this);
     var placeholder = 'Choose a file';
