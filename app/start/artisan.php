@@ -12,3 +12,5 @@
 */
 Artisan::add(new Deploy\UpdateCommand);
 Artisan::add(new Deploy\UpdateComposerCommand);
+Artisan::add(new Deploy\DumpAutoloadComposerCommand);
+Artisan::add(new Deploy\SelfUpdateComposerCommand);
