@@ -37,11 +37,11 @@ class UpdateComposerCommand extends Command {
 	 */
 	public function fire()
 	{
-		$this->info(str_repeat('=', 80) . "\n");
-    \SSH::run([
-      'cd ~/public_html/dev',
-      'php composer.phar update'
-    ]);
-    $this->info(str_repeat('=', 80) . "\n");
+            $this->info(str_repeat('=', 80) . "\n");
+            \SSH::run([
+              'cd ~/public_html/dev',
+              'php composer.phar update'
+            ]);
+            $this->info(str_repeat('=', 80) . "\n");
 	}
 }
