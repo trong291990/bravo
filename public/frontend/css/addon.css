@@ -216,3 +216,6 @@ ul.staff-specialties input{
   font-family: "open sans";
   font-weight: bold;
 }
+#tour-staffs h4 {
+    font-size: 1.4em;
+}
