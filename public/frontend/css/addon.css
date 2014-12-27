@@ -212,3 +212,7 @@ ul.staff-specialties input{
 .staff-trip ul.mainAttractionList {
     padding-left: 15px;
 }
+#detail-tour-tab a, #tour-staffs h4 {
+  font-family: "open sans";
+  font-weight: bold;
+}
