@@ -85,7 +85,7 @@
                         <li class="active"><a data-toggle="tab" role="tab" href="#tour-detail-itinerary">ITINERARY</a></li>
                         <li class=""><a data-toggle="tab" role="tab" href="#tour-detail-pricing">PRICING</a></li>
                     </ul>
-                    <div class="tab-content" id="detail-tour-tab-content">
+                    <div class="tab-content" id="detail-tour-tab-content" style="border: none !important">
                     <div id="tour-detail-itinerary" class="tab-pane fade active in">
                         <div class="cleafix tour-itinerary-item">
                             <div class="">
