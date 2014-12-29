@@ -72,3 +72,27 @@ textarea {
 .inline-radio  label:not(:first-child) {
     font-weight: normal !important;
 }
+
+/* Style admin box search album to insert link to HTML Editor */
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 900px;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-lg {
+        width: 760px;
+    }
+}
+
+
+#albums-result-container {
+    margin: 10px 0;
+    overflow-y: scroll;
+    max-height: 650px;
+}
+
+#albums-result-container > ul > li {
+
+}

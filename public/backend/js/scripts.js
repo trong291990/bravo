@@ -22,8 +22,6 @@ $(document).ready(function() {
             }
         });
     });
-    $('#include').wysihtml5({stylesheets: false});
-    $('#not_include').wysihtml5({stylesheets: false});
 
     /* Trigger submit form of select tag on changed */
     $('.submit-on-change').on('change', function(e) {

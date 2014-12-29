@@ -19,6 +19,9 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
+        <script type="text/javascript">
+           var baseURL = '{{ url("/") }}';
+        </script>
     </head>
     <body class="skin-blue fixed">
         @include('layouts/admin/_header')

@@ -100,4 +100,9 @@ class AlbumController extends AdminBaseController {
         return Response::json([]);
     }
 
+    public function searchForInsertLink() {
+        $albums = Album::take(15)->get();
+        return View::make('admin.album.search_for_insert_link', compact('albums'));
+    }
+
 }
