@@ -219,3 +219,6 @@ ul.staff-specialties input{
 #tour-staffs h4 {
     font-size: 1.4em;
 }
+.selectpicker .glyphicon:before  {
+    content :"" !important
+}

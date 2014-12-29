@@ -10,6 +10,8 @@ function slug_string($input) {
 function sanitize_file_name($filename) {
     $filename = preg_replace('/[^a-zA-Z0-9_\'%\[\]\.\(\)%&-]/s', '', $filename);
     $filename = str_replace(' ', '_', $filename);
+    $filename = str_replace('-&-', '-', $filename);
+    $filename = str_replace('&', '', $filename);
     return strtolower($filename);
 }
 

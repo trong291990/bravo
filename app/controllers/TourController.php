@@ -6,14 +6,9 @@ class TourController extends FrontendBaseController {
     private $_ClientId = 'AVJx0RArQzkCCsWC0evZi1SsoO4gxjDkkULQBdmPNBZT4fc14AROUq-etMEY';
     private $_ClientSecret = 'EH5F0BAxqonVnP8M4a0c6ezUHq-UT-CWfGciPNQOdUlTpWPkNyuS6eDN-tpA';
 
-    public function area($slug) {
+    public function area($slug,$fillters='') {
         $area = Area::where('slug', '=', trim($slug))->first();
         $place = null;
-        $params = Request::query();
-        $sorts = [];
-        $sorts['price'] = isset($params['price']) ? $params['price'] : false;
-        $sorts['travel_style'] = isset($params['travel_style']) ? $params['travel_style'] : false;
-        $sorts['duration'] = isset($params['duration']) ? $params['duration'] : false;
         if ($area) {
             $toursQuery = Tour::where('area_id', '=', $area->id)->orderBy('viewed', 'desc');
             $toursParent = $area->slug;
@@ -25,7 +20,7 @@ class TourController extends FrontendBaseController {
                         ->whereHas('places', function($query) use ($place) {
                                     $query->where('places.id', $place->id);
                                 })
-                        ->whereHas('travelStyles', function($query) use ($sorts) {
+                        ->whereHas('travelStyles', function($query)  {
                             $query->where('travel_styles.id', '1');
                         });
             }
@@ -34,30 +29,9 @@ class TourController extends FrontendBaseController {
             $title = $place->name . " Tours";
             $toursParent = $place->slug;
         }
-
-        if ($sorts['travel_style']) {
-            $toursQuery->whereHas('travelStyles', function($query) use ($sorts) {
-                        $query->where('travel_styles.id', $sorts['travel_style']);
-                    });
-        } else {
-            if (!$place)
-                $toursQuery = $toursQuery->with('places');
-//            if ($sorts['travel_style']) {
-//                $toursQuery = $area->tours()->with('places')->whereHas('travelStyles', function($query) use ($sorts) {
-//                            $query->where('travel_styles.id', $sorts['travel_style']);
-//                        });
-//            } else {
-//                $toursQuery = $toursQuery->with('places');
-//            }
-        }
-        if ($sorts['price']) {
-            $priceSorts = Tour::priceSorts();
-            $toursQuery = $toursQuery->whereRaw("price_from {$priceSorts[$sorts['price']]['condition']}");
-        }
-        if ($sorts['duration']) {
-            $priceSorts = Tour::durationSorts();
-            $toursQuery = $toursQuery->whereRaw("duration {$priceSorts[$sorts['duration']]['condition']}");
-        }
+        $result = $this->_tourQueryWithFillter($toursQuery, $fillters, $place);
+        $toursQuery = $result['toursQuery'];
+        $sorts = $result['sorts'];//dd($sorts);
         $tours = $toursQuery->paginate(9);
         View::composer(Paginator::getViewName(), function($view) {
                     $query = array_except(Input::query(), Paginator::getPageName());
@@ -72,7 +46,43 @@ class TourController extends FrontendBaseController {
                 ->with('toursParent', $toursParent)
                 ->with('place', $place);
     }
-
+    protected function _tourQueryWithFillter($toursQuery,$fillters,$place){
+        $sorts = ['travel_style'=>false,'price'=>false,'duration'=>false];
+        if(!$fillters){
+            return ['sorts'=>$sorts,'toursQuery'=>$toursQuery];
+        }
+        $fillters = explode('/', $fillters);
+        $priceSorts = Tour::priceSorts();
+        $durationSorts = Tour::durationSorts();
+        $travelStyleSorts = TravelStyle::lists('id','slug');
+        foreach ($fillters as $fillter) {
+            if(array_key_exists($fillter, $priceSorts) && !($sorts['price'])){
+                $sorts['price'] = $priceSorts[$fillter];
+                $sorts['price']['key'] = $fillter;
+            }
+            if(array_key_exists($fillter, $travelStyleSorts) && !($sorts['travel_style'])){
+                $sorts['travel_style'] = $travelStyleSorts[$fillter];
+            }
+            if(array_key_exists($fillter, $durationSorts) && !($sorts['duration'])){
+                $sorts['duration'] = $durationSorts[$fillter];
+                $sorts['duration']['key'] = $fillter;
+            }
+        }
+        if ($sorts['travel_style']) {
+            $toursQuery->whereHas('travelStyles', function($query) use ($sorts) {
+                $query->where('travel_styles.id', $sorts['travel_style']);
+            });
+        } elseif (!$place) {
+            $toursQuery->with('places');
+        }
+        if ($sorts['price']) {
+            $toursQuery->whereRaw("price_from {$sorts['price']['condition']}");
+        }
+        if ($sorts['duration']) {
+            $toursQuery->whereRaw("duration {$sorts['duration']['condition']}");
+        }
+        return ['sorts'=>$sorts,'toursQuery'=>$toursQuery];
+    }
     public function search() {
         $keyword = trim(Input::get('keyword'));
         $tours = Tour::searchByKeyword($keyword);

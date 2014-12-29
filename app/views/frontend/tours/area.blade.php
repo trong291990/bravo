@@ -54,10 +54,10 @@
                 <div class="col-md-8 col-sm-12 no-padding">
                     <div class="row" id="filter-container">
                         <div class="col-sm-4">
-                            <select id='travel-style-sort'>
+                            <select id='travel-style-sort' >
                                 <option value="">Sort by travel style</option>
                                 <?php foreach (TravelStyle::all() as $key => $style) :?>
-                                <option <?php if($key==$sorts['travel_style']-1) echo 'selected="selected"'; ?> value="{{$style->id}}">{{$style->name}}</option>
+                                <option <?php if( $style->id == $sorts['travel_style']) echo 'selected="selected"'; ?> value="{{$style->slug}}">{{$style->name}}</option>
                                 <?php endforeach;?>
                             </select>
                         </div>
@@ -65,7 +65,7 @@
                             <select id='price-sort'>
                                 <option value="">Sort by price</option>
                                 <?php foreach (Tour::priceSorts() as $key => $v): ?>
-                                <option <?php if($key==$sorts['price']) echo 'selected="selected"'; ?> value="{{$key}}">{{$v['label']}}</option>
+                                <option <?php if($key==$sorts['price']['key']) echo 'selected="selected"'; ?> value="{{$key}}">{{$v['label']}}</option>
                                 <?php endforeach;?>
                             </select>
                         </div>
@@ -73,7 +73,7 @@
                             <select id='duration-sort'>
                                 <option value="">Sort by duration</option> 
                                 <?php foreach (Tour::durationSorts() as $key => $v): ?>
-                                <option <?php if($key==$sorts['duration']) echo 'selected="selected"'; ?> value="{{$key}}">{{$v['label']}}</option>
+                                <option <?php if($key==$sorts['duration']['key']) echo 'selected="selected"'; ?> value="{{$key}}">{{$v['label']}}</option>
                                 <?php endforeach;?>
                             </select>
                         </div>
@@ -244,19 +244,19 @@
             }
         }
     });
-    var url = "{{Request::root()}}/tours/{{$toursParent}}?filler=true";
+    var url = "{{Request::root()}}/tours/{{$toursParent}}";
     $('#filter-container select').change(function(){
         var travelStyle = $('#travel-style-sort').val();
         var price = $('#price-sort').val();
         var duration =  $('#duration-sort').val();
         if(travelStyle!==''){
-           url += "&travel_style="+travelStyle;
-        }
-        if(price!==''){
-           url += "&price="+price; 
+           url += "/"+travelStyle;
         }
         if(duration !==''){
-             url += "&duration="+duration; 
+             url += "/"+duration; 
+        }
+        if(price!==''){
+           url += "/"+price; 
         }
         window.location = url;
     });

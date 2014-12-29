@@ -32,4 +32,15 @@ class ToolController extends BaseController {
             $place->save();
         }
     }
+    public function getTravelStyleSlug(){
+        $travels = TravelStyle::all();
+        foreach ($travels as $travel){
+            $travel->slug = slug_string($travel->name);
+            $travel->save();
+        }
+        dd('ok');
+    }
+    public function getHello(){
+        echo 'ee';
+    }
 }

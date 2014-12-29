@@ -15,6 +15,7 @@ class TravelStylesTableSeeder extends Seeder {
                 'name' => $s
             ]);      
         }
+        
     }
 
 }
