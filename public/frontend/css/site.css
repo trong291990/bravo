@@ -1057,3 +1057,6 @@ label.error {
     font-size:12px;
     color:#c9302c
 }
+#detail-tour-tab {
+    border-bottom: 1px solid #ddd;
+}

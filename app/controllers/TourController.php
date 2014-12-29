@@ -140,9 +140,9 @@ class TourController extends FrontendBaseController {
             $reservation = new Reservation($data);
             $reservation->is_by_admin = true;
             $reservation->save();
-            Mail::send('emails.notify.new_booking', ['reservation' => $reservation], function($message) {
-                        $message->to('vntourismjsc@gmail.com')
-                                ->subject('Bravo Tour - Customer booked tour');
+            Mail::send('emails.notify.new_booking', ['reservation' => $reservation], function($message) use($reservation) {
+                        $message->to(Config::get('site.admin_email'))
+                                ->subject("Bravo Tour - Customer : {$reservation->customer_name}  booked tour");
                     });
             Session::flash('booking_success', "Your booking request has been sent. We will contact with you in 2 hours");
             if (isset($data['payment'])) {
@@ -223,9 +223,9 @@ class TourController extends FrontendBaseController {
         if ($validator->passes()) {
             $inquiry = new Inquiry($inputs);
             $inquiry->save();
-            Mail::send('emails.notify.new_inquiry', ['inquiry' => $inquiry], function($message) {
-                        $message->to('vntourismjsc@gmail.com')
-                                ->subject('Bravo Tour - Received new inquiry from customer');
+            Mail::send('emails.notify.new_inquiry', ['inquiry' => $inquiry], function($message) use($inquiry) {
+                        $message->to(Config::get('site.admin_email'))
+                                ->subject('Bravo Tour - Received new inquiry from customer: '.$inquiry->fullName());
                     });
             Session::flash('success', "Your booking request has been sent. We will contact with you in 2 hours");
             return Redirect::back();
