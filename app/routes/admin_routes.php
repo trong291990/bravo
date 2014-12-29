@@ -35,6 +35,7 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
         Route::resource('tour', 'TourController');
         Route::resource('reservation', 'ReservationController');
         Route::resource('contact', 'ContactController');
+        Route::get('/album/search-for-insert-link', 'AlbumController@searchForInsertLink');
         Route::resource('album', 'AlbumController');
         Route::resource('customer', 'CustomerController');
         Route::resource('specialist', 'SpecialistController');
@@ -56,5 +57,6 @@ Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function() {
         Route::get('/setting/pages/edit', ['as' => 'admin.static_page.edit', 'uses' => 'StaticPageController@edit']);
         Route::post('/setting/pages/update', ['as' => 'admin.static_page.update', 'uses' => 'StaticPageController@update']);
         Route::resource('booking', 'BookingController');
+
     });
 });
