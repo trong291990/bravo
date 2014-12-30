@@ -7,15 +7,38 @@ class TourController extends FrontendBaseController {
     private $_ClientSecret = 'EH5F0BAxqonVnP8M4a0c6ezUHq-UT-CWfGciPNQOdUlTpWPkNyuS6eDN-tpA';
 
     public function area($slug,$fillters='') {
+        $tourDetail = $this->_getDetailTour($fillters);
+        if($tourDetail){
+              $this->_showTourDetail($slug, $tourDetail);
+        }else{
+            $this->_showTourList($slug, $fillters);
+        }
+    }
+    protected function _getDetailTour($fillters){
+        if(!$fillters){
+            return null;
+        }
+        $arr = explode('/', $fillters);
+        if(count($arr)==1){
+            $tour = Tour::where('slug', $arr[0])->first();
+            return $tour ? $tour : null;
+        }
+        return null;
+        
+    }
+    protected function _showTourList($slug,$fillters){
         $area = Area::where('slug', '=', trim($slug))->first();
         $place = null;
-        if ($area) {
+        if ($area) { // list all tours of area
             $toursQuery = Tour::where('area_id', '=', $area->id)->orderBy('viewed', 'desc');
             $toursParent = $area->slug;
             $title = $area->name . " Tours";
-        } else {
+        } else { // list all tours of place (city)
             $place = Place::where('slug', '=', trim(str_replace('-tours', '', $slug)))->first();
-            if ($place) {
+            //sort
+            $area = Area::find($place->area_id);
+            $title = $place->name . " Tours";
+            if ($place) { 
                 $toursQuery = Tour::with('places')
                         ->whereHas('places', function($query) use ($place) {
                                     $query->where('places.id', $place->id);
@@ -23,12 +46,14 @@ class TourController extends FrontendBaseController {
                         ->whereHas('travelStyles', function($query)  {
                             $query->where('travel_styles.id', '1');
                         });
+                $toursParent = $place->slug;
+            }else{
+                App::abort(404);
             }
-            //sort
-            $area = Area::find($place->area_id);
-            $title = $place->name . " Tours";
-            $toursParent = $place->slug;
         }
+        $this->_renderTourList($toursQuery, $fillters, $title, $toursParent, $place,$area);
+    }
+    protected function _renderTourList($toursQuery,$fillters,$title,$toursParent,$place,$area){
         $result = $this->_tourQueryWithFillter($toursQuery, $fillters, $place);
         $toursQuery = $result['toursQuery'];
         $sorts = $result['sorts'];//dd($sorts);
@@ -46,6 +71,25 @@ class TourController extends FrontendBaseController {
                 ->with('toursParent', $toursParent)
                 ->with('place', $place);
     }
+    
+    protected function _showTourDetail($areaSlug, $tour){
+        $area = Area::where('slug', $areaSlug)->first();
+        if (!$area) {
+            $place = Place::where('slug', '=', trim(str_replace('-tours', '', $areaSlug)))->first();
+            $area = Area::find($place->area_id);
+        }
+        $tour->viewed++;
+        $tour->save();
+        $otherTours = $area->tours()->where('tours.id', '<>', $tour->id)->take(4)->get();
+        $itineraries = $tour->itineraries()->orderBy('order', 'ASC')->get();
+        $places = $tour->places()->orderBy('order', 'ASC')->get();
+        $specialists = $tour->area->specialists;
+        //$specialists->first()->fullName();
+        $this->layout->content = View::make('frontend.tours.show')
+                ->with(compact('area', 'tour', 'itineraries', 'places', 'otherTours', 'specialists'));
+    }
+
+
     protected function _tourQueryWithFillter($toursQuery,$fillters,$place){
         $sorts = ['travel_style'=>false,'price'=>false,'duration'=>false];
         if(!$fillters){
