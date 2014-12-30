@@ -17,7 +17,9 @@ class Reservation extends Eloquent {
     public static $rules = array(
         'tour_id' => 'required',
         'customer_name' => 'required',
-        'customer_email' => 'required'
+        'customer_email' => 'required',
+        'start_date' => 'required',
+        'travelling' => 'required'
     );
     
     public static function boot() {

@@ -191,10 +191,20 @@ $('.datepicker').datepicker({
     autoclose: true
 }); 
 $('select:not(.not-picker)').selectpicker();
-$('form').validate();
-$('#booking-modal').on('shown.bs.modal', function (e) {
-  $('#booking-modal form').validate();
+$.validator.setDefaults({ 
+    ignore: [],
+    // any other default options and/or rules
 });
+$('form').validate({ignore: ""});
+//$('#booking-modal').on('shown.bs.modal', function (e) {
+//    $('#booking-modal form').validate();
+//});
+//$('#booking-modal').on('show.bs.modal', function (e) {
+//    $('#booking-modal form').validate();
+//});
+// $('body').on('submit','#booking-modal form', function (e) {
+//    $('#booking-modal form').validate();
+//});
 $(':file.bootstrap-input-file').each(function() {
     var $_this = $(this);
     var placeholder = 'Choose a file';

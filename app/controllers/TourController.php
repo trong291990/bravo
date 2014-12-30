@@ -163,7 +163,8 @@ class TourController extends FrontendBaseController {
             }
         } else {
             //print_r($validator->errors()->toArray());die();
-            return Redirect::to('/');
+             Session::flash('booking_error',true);
+            return Redirect::back()->withInput()->withErrors($validator);
         }
     }
 

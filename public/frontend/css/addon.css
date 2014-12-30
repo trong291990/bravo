@@ -222,3 +222,6 @@ ul.staff-specialties input{
 .selectpicker .glyphicon:before  {
     content :"" !important
 }
+#booking-modal-content span.help {
+    color: #900
+}

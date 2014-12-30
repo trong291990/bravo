@@ -512,36 +512,55 @@
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h2 class="modal-title" style="text-align: center" id="myModalLabel">Send us an Enquiry</h2>
                     </div>
-                    <?php echo Former::open(route('tour.enquiry'))->novalidate('novalidate') ?>
+                    <?php echo Former::open(route('tour.enquiry'))->novalidate(false) ;?>
+                    {{Former::framework('Nude')}}
                     <div class="modal-body">
                         <div id='booking-modal-content' class='row clearfix'>
                             <div  class='col-sm-10 col-sm-offset-1'>
                                 <input type="hidden" value="" id='booking-tour-id' name='tour_id' />
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Your name(*)</label>
-                                    <input type="text" class="form-control" name='customer_name' required="required"  placeholder="Enter your name">
+                                    {{
+                                        Former::text('customer_name')->lable(false)
+                                        ->class("form-control")
+                                        ->requried('required')
+                                        ->placeholder('Enter your name')
+                                    }}
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Your email(*)</label>
-                                    <input type="email" name='customer_email' class="form-control" required="required"  placeholder="Enter your email">
+                                    {{
+                                        Former::text('customer_email')->lable(false)
+                                        ->class("form-control")
+                                        ->requried('required')
+                                        ->placeholder('Enter your email address')
+                                    }}
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Phone number</label>
-                                    <input name='customer_phone' type="text" 
-                                           class="form-control"
-                                           placeholder="Enter your phone number">
+                                    {{
+                                        Former::text('customer_phone')->lable(false)
+                                        ->class("form-control")
+                                        ->placeholder('Enter your phone number')
+                                    }}
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Travel date</label>
-                                    <input name='start_date' type="text" 
-                                           class="form-control datepicker" 
-                                           placeholder="Enter your travel date" required="required">
+                                    {{
+                                        Former::text('start_date')->lable(false)
+                                        ->class("form-control datepicker")
+                                        ->requried('required')
+                                        ->placeholder('Enter your travel date')
+                                    }}
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">How many traveling ?</label>
-                                    <input name='travelling' type="text" 
-                                           class="form-control"
-                                           placeholder="Enter your number of  traveling" required="required">
+                                    {{
+                                        Former::text('travelling')->lable(false)
+                                        ->class("form-control")
+                                        ->requried('required')
+                                        ->placeholder('Enter your number of  traveling')
+                                    }}
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Pick Up/Drop off information</label>
@@ -786,6 +805,11 @@
         @if(Session::has('booking_success'))
         <script>
             $('#booking-success').modal('show');
+        </script>
+        @endif
+        @if(Session::has('booking_error'))
+        <script>
+            $('#booking-modal').modal('show');
         </script>
         @endif
         @if(Session::has('thanks'))
