@@ -142,7 +142,7 @@
                                 <p>
                                     <a href="javascript:void(0);" class="btn-email-friend"><i class="fa fa-envelope"></i> EMAIL TO FRIEND</a>
                                 </p>
-                                <p><i class="fa fa-print"></i> PRINT THIS PAGE</p>
+                                <p><a class="btn-print-page" href="{{ $tour_url }}"><i class="fa fa-print"></i> PRINT THIS PAGE</a></p>
                                 <p><i class="fa fa-phone-square"></i> 19008198</p>
 
                             </div>

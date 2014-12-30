@@ -32,8 +32,8 @@
         
         <div class="col-sm-5">
             <ul class="list-unstyled list-inline" id="tour-detail-actions">
-                <li><i class="fa fa-envelope"></i> EMAIL TO FRIEND</li>
-                <li><i class="fa fa-print"></i> PRINT THIS PAGE</li>
+                <li> <a href="javascript:void(0);" class="btn-email-friend"><i class="fa fa-envelope"></i> EMAIL TO FRIEND</a></li>
+                <li><a class="btn-print-page" href="{{ Request::url() }}"><i class="fa fa-print"></i> PRINT THIS PAGE</a></li>
                 <li><i class="fa fa-phone-square"></i> 19008198</li>
             </ul>
         </div>

@@ -792,7 +792,8 @@
                '/plugins/bootbox.js',
                '/plugins/justifiedgallery/justifiedgallery.js',
                '/plugins/photor/photor.js',
-               '/plugins/galleria/galleria-1.4.2.js'
+               '/plugins/galleria/galleria-1.4.2.js',
+               '/plugins/jquery-print/jquery.printPage.js',
          )) }}
         {{ 
             Minify::javascript(array(

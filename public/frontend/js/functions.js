@@ -37,6 +37,7 @@ function addLink() {
 // tempollary disable
 //document.addEventListener('copy', addLink);
 $(document).ready(function() {
+    $(".btn-print-page").printPage();
     $('.btn-email-friend').click(function(e) {
         $(this).closest('.tour-item').find('.st_email_hcount').click();
         return false;
