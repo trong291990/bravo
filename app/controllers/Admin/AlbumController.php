@@ -101,7 +101,7 @@ class AlbumController extends AdminBaseController {
     }
 
     public function searchForInsertLink() {
-        $albums = Album::take(15)->get();
+        $albums = Album::searchWithKeyword(Input::get('keyword'));
         return View::make('admin.album.search_for_insert_link', compact('albums'));
     }
 

@@ -95,6 +95,15 @@ use CommentableTrait;
         return $query->orderBy('created_at', 'DESC')->paginate(self::PER_PAGE);
     }
 
+    public static function searchWithKeyword($keyword) {
+        return self::select('albums.*')->with('area')
+                        ->where('albums.name', 'LIKE', '%' . $keyword . '%')
+                        ->leftJoin('areas', 'areas.id', '=', 'albums.area_id')
+                        ->orWhere('areas.name', 'LIKE', '%' . $keyword . '%')
+                        ->orderBy('created_at', 'DESC')
+                        ->get();
+    }
+
     public static function createTravellerAlbum($name) {
         $album = new Album(['name' => $name]);
         $album->type = self::TYPE_TRAVELLER;

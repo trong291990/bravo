@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label for="itineraries_{{$index}}_detail" class="control-label col-lg-2 col-sm-4">Detail</label>
                         <div class="col-lg-10 col-sm-8">
-                            <textarea class="form-control wysihtml5" rows='3' id="itineraries_{{$index}}_detail" name="itineraries[{{$index}}][detail]" required>{{$itinerary['detail']}}</textarea>
+                            <textarea class="form-control ckeditor" rows='3' id="itineraries_{{$index}}_detail" name="itineraries[{{$index}}][detail]" required>{{$itinerary['detail']}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -74,6 +74,10 @@
     </div>
     {{ Former::close() }}
 </div>
+@stop
+
+@section('addon_js')
+{{ HTML::script('/plugins/ckeditor-bootstrap/ckeditor.js') }}
 @stop
 
 @section('inline_scripts')
@@ -115,7 +119,7 @@
                 '<div class="form-group">' +
                 '<label for="itineraries_' + index + '_detail" class="control-label col-lg-2 col-sm-4">Detail</label>' +
                 '<div class="col-lg-10 col-sm-8">' +
-                '<textarea class="form-control" rows="3" id="itineraries_' + index + '_detail" name="itineraries[' + index + '][detail]" required></textarea>' +
+                '<textarea class="form-control ckeditor" rows="3" id="itineraries_' + index + '_detail" name="itineraries[' + index + '][detail]" required></textarea>' +
                 '</div>' +
                 '</div>' +
                 '<div class="form-group">' +
@@ -141,7 +145,7 @@
         var $_lastItineraryForm = $('.an-itinerary:last');
         Helper.scroll_to($_lastItineraryForm, 700, null, 30);
         $_lastItineraryForm.find('input:first').focus();
-        $_lastItineraryForm.find('textarea').wysihtml5();
+        CKEDITOR.replace($_lastItineraryForm.find('textarea').get(0));
         refreshUI();
     });
 
@@ -166,6 +170,8 @@
             }
         });
     });
-
+    $('.ckeditor').each(function(e) {
+        CKEDITOR.replace(this);
+    });
 </script>
 @stop
