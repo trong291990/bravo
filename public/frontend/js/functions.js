@@ -37,6 +37,13 @@ function addLink() {
 // tempollary disable
 //document.addEventListener('copy', addLink);
 $(document).ready(function() {
+    $('html').on('click', function(e) {
+      if (typeof $(e.target).data('original-title') == 'undefined' &&
+         !$(e.target).parents().is('.popover.in')) {
+        $('[data-original-title]').popover('hide');
+      }
+    });    
+ 
     $('.link-to-album').each(function() {
         var $_this = $(this);
         // var content = '
@@ -46,8 +53,8 @@ $(document).ready(function() {
         // ';
         var content = '<a href="' + $_this.attr('href') + '">View photos</a>'
         var options = {
-            delay: 200,
             title: $_this.text(),
+            delay: { "show": 200, "hide": 7000 },
             content: content,
             html: true,
             trigger: 'hover',

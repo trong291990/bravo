@@ -786,7 +786,7 @@
         <!-- End modal register -->
 
         {{ Minify::javascript(array(
-               '/shared/js/bootstrap.min.js',
+               '/shared/js/bootstrap-3.3.1.min.js',
                '/frontend/js/layout.js',
                '/plugins/bootstrap-select/bootstrap-select.js',
                '/plugins/icheck/icheck.js',
