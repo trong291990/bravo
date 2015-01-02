@@ -1,5 +1,11 @@
 @section('addon_stylesheets')
 {{ HTML::style('/plugins/raty/jquery.raty.css') }}
+{{ HTML::style('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.css') }}
+@stop
+@section('addon_js')
+{{ HTML::script('/plugins/raty/jquery.raty.js') }}
+{{ HTML::script('/plugins/html5wysiwyg/wysihtml5-0.3.0.min.js') }}
+{{ HTML::script('/plugins/html5wysiwyg/bootstrap-wysihtml5-0.0.2.min.js') }}
 @stop
 @section('title')
 Indochina Tour Reviews, Indochina Travel Reviews - Bravo Indochina Tours
@@ -215,7 +221,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
                         </div>
                         <div class="form-group">
                             <label >Your review</label>
-                            <textarea class="form-control ckeditor" name="content" rows="10"></textarea>
+                            <textarea class="form-control html5-editor" name="content" rows="10"></textarea>
                         </div>
                         <h3>UPLOAD YOUR TRIP PHOTOS</h3>      
                         <div class="form-group">
@@ -240,10 +246,7 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
     </div>
 </div>
 @stop
-@section('addon_js')
-{{ HTML::script('/plugins/raty/jquery.raty.js') }}
-{{ HTML::script('/plugins/ckeditor-bootstrap/ckeditor.js') }}
-@stop
+
 @section('inline_scripts')
 <script>
     $('.client-ratied').each(function() {
@@ -259,8 +262,10 @@ Read what our clients Bravo about our Indochina Tours. Tour reviews submitted by
             return false;
         }
     });
-    $('.ckeditor').each(function(e) {
-        CKEDITOR.replace(this);
+    $('.html5-editor').each(function(e) {
+        $(this).wysihtml5({
+            stylesheets: false
+        });
     });
 </script>
 @stop

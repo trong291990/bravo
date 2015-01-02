@@ -10,6 +10,9 @@
 .pt-10 {
     padding-top: 10px
 }
+.mb-10 {
+    margin-bottom: 10px;
+}
 .bs-callout {
     padding: 20px;
     border: 1px solid #eee;
@@ -224,4 +227,8 @@ ul.staff-specialties input{
 }
 #booking-modal-content span.help {
     color: #900
+}
+.form-group {
+    overflow-y: auto;
+    margin-bottom: 10px;
 }

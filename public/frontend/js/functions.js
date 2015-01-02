@@ -37,6 +37,31 @@ function addLink() {
 // tempollary disable
 //document.addEventListener('copy', addLink);
 $(document).ready(function() {
+    $('html').on('click', function(e) {
+      if (typeof $(e.target).data('original-title') == 'undefined' &&
+         !$(e.target).parents().is('.popover.in')) {
+        $('[data-original-title]').popover('hide');
+      }
+    });    
+ 
+    $('.link-to-album').each(function() {
+        var $_this = $(this);
+        // var content = '
+        // <div class="thumbnail">\
+        //   <img src="' + $_this .data('thumbnail-url') +'"/>\
+        // </div>
+        // ';
+        var content = '<a href="' + $_this.attr('href') + '">View photos</a>'
+        var options = {
+            title: $_this.text(),
+            delay: { "show": 200, "hide": 7000 },
+            content: content,
+            html: true,
+            trigger: 'hover',
+            placement: 'top'
+        };
+        $_this.popover(options);
+    });
     $(".btn-print-page").printPage();
     $('.btn-email-friend').click(function(e) {
         $(this).closest('.tour-item').find('.st_email_hcount').click();

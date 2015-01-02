@@ -65,9 +65,9 @@
                 {{Former::text('meta_description')->class('form-control')->label('Meta Description')}}
                 {{Former::text('price_from')->class('form-control')->placeholder('$')->required()}}
                 {{Former::text('duration')->class('form-control')->placeholder('days')->required()}}
-                {{Former::textarea('include')->class('form-control')->rows(10)}}
-                {{Former::textarea('not_include')->class('form-control')->rows(10)}}
-                {{Former::textarea('overview')->class('form-control')->rows(4)}}
+                {{Former::textarea('include')->class('form-control ckeditor')->rows(10)}}
+                {{Former::textarea('not_include')->class('form-control ckeditor')->rows(10)}}
+                {{Former::textarea('overview')->class('form-control ckeditor')->rows(4)}}
                 {{Former::file('photo')}}
                 {{Former::file('thumbnail')}}
             </div>
@@ -87,6 +87,15 @@
     $("#area_id").val('');
     $('#area_id').on('change', function() {
         var areaId = $(this).val();
-
     });
 </script>
+@section('addon_js')
+{{ HTML::script('/plugins/ckeditor-bootstrap/ckeditor.js') }}
+@stop
+@section('inline_scripts')
+<script>
+    $('.ckeditor').each(function(e) {
+        CKEDITOR.replace(this);
+    });
+</script>
+@stop

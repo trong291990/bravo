@@ -43,12 +43,18 @@ Search Tours  | Bravo Tours
                                     </li>                                                       
                                 </ul>
                                 <a href="{{route('tour.show', array($tour->area->slug, $tour->slug))}}" class="btn btn-primary">Details</a>
-                                <button type="button" 
-                                        data-add-url="{{route('wishlist.add', $tour->id)}}"
-                                        data-remove-url="{{route('wishlist.remove', $tour->id)}}"
-                                        class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
-                                    {{in_array($tour->id, $wishlist_items) ? 'Remove from Wishlist' : 'Add to Wishlist'}}
-                                </button>                      
+                                <?php if($loggedCustomer): ?>
+                                        <button type="button" 
+                                            data-add-url="{{route('wishlist.add', $tour->id)}}"
+                                            data-remove-url="{{route('wishlist.remove', $tour->id)}}"
+                                            class="btn {{in_array($tour->id, $wishlist_items) ? 'btn-remove-wishlist' : 'btn-add-wishlist' }}">
+                                            @if(in_array($tour->id, $wishlist_items))
+                                                <i class="fa fa-minus"></i>  <i class="fa fa-shopping-cart"></i>
+                                            @else
+                                                <i class="fa fa-plus"></i>  <i class="fa fa-shopping-cart"></i>
+                                            @endif
+                                        </button>
+                                <?php endif; ?>                    
                             </div>
                         </div>
                     <?php endforeach; ?>          

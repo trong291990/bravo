@@ -668,6 +668,7 @@
                 <h4 class="modal-title">Login</h4>
               </div>
               <div class="modal-body">
+                <div class="row">
                 {{ Former::open(route('login'))->id('form-login') }}
                     <div class="row">
                         <div class="col-sm-12 form-messages"></div>
@@ -687,7 +688,7 @@
                               <input type="password" name="password" class="form-control" placeholder="Password">
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button type="Submit" class="btn btn-primary btn-block">Login</button>
@@ -712,6 +713,7 @@
                         </div>
                     </div>
                 {{ Former::close() }}
+                </div>
               </div>
             </div>
           </div>
@@ -724,6 +726,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="myModalLabel">Register</h4>
               </div>
+              <div class="row">
               {{ Former::open(route('customer_register'))->id('form-register') }}
               <div class="modal-body">
                     <div class="row">
@@ -776,13 +779,14 @@
                     </div>
               </div>
               {{ Former::close() }}
+              </div>
             </div>
           </div>
         </div> 
         <!-- End modal register -->
 
         {{ Minify::javascript(array(
-               '/shared/js/bootstrap.min.js',
+               '/shared/js/bootstrap-3.3.1.min.js',
                '/frontend/js/layout.js',
                '/plugins/bootstrap-select/bootstrap-select.js',
                '/plugins/icheck/icheck.js',

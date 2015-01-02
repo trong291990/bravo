@@ -1,12 +1,13 @@
 (function(){
   var initialed = false;
+  var currentInstance = null;
   function createModal() {
    var html = '<div class="modal fade" id="modal-insert-album" tabindex="-1" role="dialog" aria-hidden="false"> \
         <div class="modal-dialog modal-lg"> \
           <div class="modal-content"> \
               <div class="modal-header"> \
                   <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button> \
-                  <h4 class="modal-title">Add link to album</h4> \
+                  <h4 class="modal-title">Add album\'s link</h4> \
               </div>\
               <div class="modal-body"> \
                   <div class="input-group">\
@@ -42,28 +43,60 @@
   // Code to execute when the toolbar button is pressed
   var excute =  {
     exec: function(editor) {
+      currentInstance = editor;
+      function insertAlbumLinkToEditor(text, url, klass) {
+        var html = '<a href="' + url +' " class="' + klass +'">' + text +'</a> ';
+        var newElement = CKEDITOR.dom.element.createFromHtml( html, currentInstance.document );
+        currentInstance.insertElement( newElement );
+        currentInstance.insertText(' ');
+      };
+
       if(!initialed) {
         $('body').append(createModal());
+        $('#input-keyword').keyup(function(e) {
+          if((e.keyCode || e.which) == 13) {
+            $('#btn-search-album').trigger('click');
+          }
+        });
+
         $('#btn-search-album').click(function(e) {
           var keyword = $('#input-keyword').val();
           if(keyword.trim().length > 0 ) {
             $.get(baseURL + "/admin/album/search-for-insert-link?keyword=" + keyword, function(res) {
-              $('#albums-result-container').html(res);
-            });            
+              $('#albums-result-container').fadeOut(150, function(){
+                $('#albums-result-container').html(res);
+              }).fadeIn(300);
+            });
           }
 
         });
 
         $('#btn-insert-link').click(function(e) {
-          console.log('inserting');
           var linkText = $('#link-text').val().trim();
           var linkURL = $('#link-url').val().trim();
           if(linkText.length > 0 && linkURL.length > 0) {
-            var html = '<a href="' + linkURL +' " class="link-to-album">' + linkText +'</a>';
-            var newElement = CKEDITOR.dom.element.createFromHtml( html, editor.document );
-            editor.insertElement( newElement );
+            insertAlbumLinkToEditor(linkText, linkURL, 'link-to-album');
             $('#modal-insert-album').modal('hide');        
           }
+        });
+
+        $('#albums-result-container').on('click', '.btn-select-album', function(e) {
+          e.stopPropagation();
+          var $_selectAlbum = $(this).closest('.album-search-item');
+          insertAlbumLinkToEditor(
+            $_selectAlbum.data('album-name'),
+            $_selectAlbum.data('album-url'),
+            'link-to-album'
+          );
+          $('#modal-insert-album').modal('hide'); 
+        });
+
+        $('#albums-result-container').on('click', '.album-search-item', function(e) {
+          var $_selectAlbum = $(this);
+          $('#albums-result-container').find('.album-search-item').not(this).removeClass('selected');
+          $_selectAlbum.addClass('selected');
+          $('#link-text').val($_selectAlbum.data('album-name'));
+          $('#link-url').val($_selectAlbum.data('album-url'));
         });
         initialed = true;
       }

@@ -93,6 +93,19 @@ textarea {
     max-height: 650px;
 }
 
-#albums-result-container > ul > li {
+#albums-result-container .album-search-item .btn-select-album {
+    margin-top: 15px;
+}
 
+#albums-result-container .album-search-item {
+    padding-top: 5px;
+    margin-bottom: 5px;    
+    cursor: pointer;
+}
+
+#albums-result-container .thumbnail {
+    margin-bottom: 5px;
+}
+#albums-result-container .album-search-item:hover, #albums-result-container .album-search-item.selected {
+    background-color: #C6EAFF;
 }
