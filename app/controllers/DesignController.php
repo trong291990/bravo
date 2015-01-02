@@ -23,4 +23,7 @@ class DesignController extends \BaseController {
     public function staff(){
         $this->layout->content = \View::make('design.staff_profile');
     }
+    public function getPrintTour(){
+       return \View::make('design.print_tour');
+    }
 }

@@ -150,7 +150,19 @@ class TourController extends FrontendBaseController {
         $this->layout->content = View::make('frontend.tours.show')
                 ->with(compact('area', 'tour', 'itineraries', 'places', 'otherTours', 'specialists'));
     }
-
+    public function printTour($areaSlug, $tourSlug) {
+        $area = Area::where('slug', $areaSlug)->first();
+        if (!$area) {
+            $place = Place::where('slug', '=', trim(str_replace('-tours', '', $areaSlug)))->first();
+            $area = Area::find($place->area_id);
+        }
+        $tour = Tour::where('slug', $tourSlug)->first();
+        $itineraries = $tour->itineraries()->orderBy('order', 'ASC')->get();
+        $places = $tour->places()->orderBy('order', 'ASC')->get();
+        //$specialists->first()->fullName();
+        return View::make('frontend.tours.print')
+                ->with(compact('area', 'tour', 'itineraries', 'places'));
+    }
     public function compare() {
         $tourIds = Input::get('select_packages');
         //prd($tourIds);
