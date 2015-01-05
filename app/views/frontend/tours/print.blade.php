@@ -29,49 +29,132 @@
             #print-header .col-sm-4:not(:last-child){
                 border-right: 1px dotted #fff;
             }
+            #map {
+                width:100%;height: 270px;border:1px solid #ccc
+            }
+            #print-page-wrapper {
+                border:3px dotted #146070;
+                padding:10px
+            }
+            .tour-detail-day {
+                background: none repeat scroll 0 0 #146abd;
+                color: #eab640;
+                display: inline-block;
+                font-size: 0.7em;
+                text-align: center;
+              }
         </style>
+        
         {{HTML::script('/shared/js/jquery-2.0.3.min.js')}}
+        
+        {{ Minify::javascript(array(
+               '/shared/bootstrap/3.0.0/js/bootstrap.js',
+               '/plugins/jquery-print/jquery.printPage.js',
+         )) }}
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
     </head>
     <body>
         <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <a style="padding: 0" href="#" class="navbar-brand pull-right">
-                                <img style="width: 100%" alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
-                                <span class="sr-only">Bravo Tour Since 2009</span>
-                            </a>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <img id="scissors" src="{{Request::root()}}/frontend/images/scissors.png" alt="{{$tour->name}}" />           
+                        <div id="print-page-wrapper">
+                            <div class="row">
+                            <div class="col-sm-2">
+                                <a style="padding: 0" href="#" class="navbar-brand pull-right">
+                                    <img style="width: 100%" alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
+                                    <span class="sr-only">Bravo Tour Since 2009</span>
+                                </a>
+                            </div>
+                            <div  style="text-align:center" class="col-sm-3 col-sm-offset-7">
+                                <img  style="width:150px;margin:auto;"  src="{{Request::root()}}/frontend/images/barcode.png" alt="{{$tour->name}}" />
+                                <p style="text-align:center">{{$tour->code}}</p>
+                            </div>
+                            </div>
+                            <hr style="margin-top:25px;" class="divider" />
+                            <div id="print-tour-content">
+                                <h1>{{$tour->name}}</h1>
+                                <div id="map"></div>
+                            </div>
+                            <div class="row" style="margin-top:10px">
+                                <div class="col-sm-7">
+                                    <p><b>Duration : {{$tour->duration}}  days</b></p>
+                                    <p><b> Tour Code: {{$tour->code}}</b></p>
+                                    <p><b>Destinations : {{implode(',',$tour->places()->lists('name'))}}</b></p>
+                                    <p><b> Great For: <span class="great-for">{{implode(',',$tour->travelStyles->lists('name'))}}</span></b></p>
+                                </div>
+                                <div class="col-sm-5">
+                                    <a class="thumbnail" href="#">
+                                        <img  src="{{$tour->thumbnailURL()}}" alt="{{$tour->name}}" class="img-responsive" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="print-tour-pricing" style="margin-top: 20px;margin-bottom: 20px;padding: 20px;background: #e0eff6">
+                                <p>
+                                    {{$tour->include}}
+                                </p>
+                                <p>
+                                    {{$tour->not_include}}
+                                </p>
+                            </div>
+                            <div id="print-tour-itinerary">
+                                <h2>Itinerary</h2>
+                                <?php foreach ($itineraries as $index => $itinerary) : ?>
+                                <div class="row">
+                                    <div class="col-xs-1 no-padding">
+                                        <div class="tour-detail-day">
+                                            Day <br/> <span>{{$index + 1}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-11">
+                                        <h4>{{$itinerary->name}}</h4>
+                                        <p>
+                                            {{$itinerary->detail}}
+                                        </p>
+                                        <p>
+                                            <?php if ($itinerary->hasAnyMeals()): ?>
+                                                <img src="{{asset('frontend/images/page/dinner.png')}}" style="width: 20px" /> 
+                                                <?php echo $itinerary->mealsInString() ?>   
+                                            <?php endif; ?>
+                                            &nbsp;
+                                            &nbsp;
+                                            <i class="fa fa-building"></i> {{$itinerary->hotel}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                            
                         </div>
-                        <div class="col-sm-3 col-sm-offset-7">
-                            <img src="{{route}}"
-                        </div>
                     </div>
-                    <hr class="divider" />
-                    <div id="print-tour-content">
-                        <img src="http://bravoindochinatour.com/uploads/tours/26/halong-bay-tour.jpg" class="img-responsive" alt="" />
-                        <br/>
-                        <p>
-                          This full-day tour which departs from Hanoi is also available based from Ha Long, and will take you on a cruise among the awesome and bizarre limestone formations of Ha Long Bay - See more at: http://bravoindochinatour.com/tours/vietnam-tours/halong-bay---a-unesco-world-heritage-site#sthash.QdEqcxgy.dpuf
-                        </p>
-                    </div>
-                    <div id="print-tour-itinerary">
-                        <h2>Itinerary</h2>
-                        <h3>Day 1</h3>
-                        <p>
-                            This full-day tour which departs from Hanoi is also available based from Ha Long, and will take you on a cruise among the awesome and bizarre limestone formations of Ha Long Bay - See more at: http://bravoindochinatour.com/tours/vietnam-tours/halong-bay---a-unesco-world-heritage-site#sthash.QdEqcxgy.dpuf
-                        </p>
-                    </div>
-                    <div id="print-tour-pricing">
-                        <h2>Pricing</h2>
-                        <p>
-                            </p><div><b>ALWAYS INCLUDED IN THE PACKAGES</b></div><div><b>Accomodation </b>(Not Included for Day Tour)</div><div>We've carefully screened and selected the right hotels in the heart of the destination and you can choose your accommodations to match with your style and budget. Hotels are convenient for shopping and sightseeing.</div><div><b>Transportation Made Easy</b></div><div>Whether it's flight arrangements, transfers from the airport to your hotel, sightseeing, or traveling between cities, we can take care of your transportation needs and can include it in your package price.</div><div><b>Sightseeing and Activities</b></div><div>Packages feature sightseeing and orientation in each city, so you don't miss the must-see sights. You can also personalize your trip by adding more activities and excursions that will make your vacation…exclusively yours.</div><div><b>Local Guide Service</b></div><div>Throughout your vacation, we provide you with a friendly, knowledgeable insider in each destination to offer hints and recommendations, steer you off the beaten path, and help you maximize every moment of your time.</div><div><b>Meals Included</b></div><div>Start your day off with an included breakfast. For lunch and dinner, immerse yourself in the local culture by sampling regional cuisine. After all, one of the best ways to learn about other cultures is to eat like the locals.</div>                        <p></p>
-                        <p>
-                        </p>
-                    </div>
-                    <br/><br/><br/>
                 </div>
-            </div>
         </div>
+        <script type="text/javascript">
+            var locations = {{json_encode($locations)}};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 6,
+              center: new google.maps.LatLng(locations[0][1], locations[0][2]),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker, i;
+
+            for (i = 0; i < locations.length; i++) {  
+              marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map,
+                icon: "/frontend/images/common/map.png"
+              });
+
+              google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                  infowindow.setContent(locations[i][0]);
+                  infowindow.open(map, marker);
+                }
+              })(marker, i));
+            }
+          </script>
     </body>
 </html>

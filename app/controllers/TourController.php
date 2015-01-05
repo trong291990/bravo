@@ -159,9 +159,17 @@ class TourController extends FrontendBaseController {
         $tour = Tour::where('slug', $tourSlug)->first();
         $itineraries = $tour->itineraries()->orderBy('order', 'ASC')->get();
         $places = $tour->places()->orderBy('order', 'ASC')->get();
-        //$specialists->first()->fullName();
+        $locationsArr = $tour->places()
+                    ->where('lat', '<>', 'NULL')
+                    ->where('lng', '<>', 'NULL')
+                    ->get(array('name', 'lat', 'lng'))
+                    ->toArray();
+        $locations = [];
+        foreach($locationsArr as $arr){
+            $locations[] = [$arr['name'],$arr['lat'],$arr['lng']];
+        }
         return View::make('frontend.tours.print')
-                ->with(compact('area', 'tour', 'itineraries', 'places'));
+                ->with(compact('area', 'tour', 'itineraries', 'places','locations'));
     }
     public function compare() {
         $tourIds = Input::get('select_packages');
