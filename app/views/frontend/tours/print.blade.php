@@ -83,7 +83,7 @@
                                 <h1>{{$tour->name}}</h1>
                                 <div id="map"></div>
                             </div>
-                            <div class="row" style="margin-top:10px">
+                            <div class="row" style="margin-top:20px">
                                 <div class="col-sm-6">
                                     <p><b>Duration : {{$tour->duration}}  days</b></p>
                                     <p><b> Tour Code: {{$tour->code}}</b></p>
