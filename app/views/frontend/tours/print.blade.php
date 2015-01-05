@@ -40,8 +40,15 @@
                 background: none repeat scroll 0 0 #146abd;
                 color: #eab640;
                 display: inline-block;
-                font-size: 0.7em;
+                font-size: 0.9em;
                 text-align: center;
+                padding:10px
+              }
+              h1 {
+                  font-size: 18px;
+              }
+              h2 {
+                  font-size: 16px;
               }
         </style>
         
@@ -77,13 +84,13 @@
                                 <div id="map"></div>
                             </div>
                             <div class="row" style="margin-top:10px">
-                                <div class="col-sm-7">
+                                <div class="col-sm-6">
                                     <p><b>Duration : {{$tour->duration}}  days</b></p>
                                     <p><b> Tour Code: {{$tour->code}}</b></p>
                                     <p><b>Destinations : {{implode(',',$tour->places()->lists('name'))}}</b></p>
                                     <p><b> Great For: <span class="great-for">{{implode(',',$tour->travelStyles->lists('name'))}}</span></b></p>
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="col-sm-6">
                                     <a class="thumbnail" href="#">
                                         <img  src="{{$tour->thumbnailURL()}}" alt="{{$tour->name}}" class="img-responsive" />
                                     </a>
