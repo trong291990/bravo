@@ -510,7 +510,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h2 class="modal-title" style="text-align: center;text-transform: uppercase;font-weight: bold" id="myModalLabel">Send us an Enquiry</h2>
+                        <h2 class="modal-title" style="font-size:25px;text-align: center;text-transform: uppercase;font-weight: bold" id="myModalLabel">Send us an Enquiry</h2>
                     </div>
                     <?php echo Former::open(route('tour.enquiry'))->novalidate(false) ;?>
                     {{Former::framework('Nude')}}
@@ -521,7 +521,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Your name(*)</label>
                                     {{
-                                        Former::text('customer_name')->lable(false)
+                                        Former::text('customer_name')->label(false)
                                         ->class("form-control")
                                         ->requried('required')
                                         ->placeholder('Enter your name')
@@ -530,7 +530,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Your email(*)</label>
                                     {{
-                                        Former::text('customer_email')->lable(false)
+                                        Former::text('customer_email')->label(false)
                                         ->class("form-control")
                                         ->requried('required')
                                         ->placeholder('Enter your email address')
@@ -539,7 +539,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Phone number</label>
                                     {{
-                                        Former::text('customer_phone')->lable(false)
+                                        Former::text('customer_phone')->label(false)
                                         ->class("form-control")
                                         ->placeholder('Enter your phone number')
                                     }}
@@ -547,7 +547,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Travel date</label>
                                     {{
-                                        Former::text('start_date')->lable(false)
+                                        Former::text('start_date')->label(false)
                                         ->class("form-control datepicker")
                                         ->requried('required')
                                         ->placeholder('Enter your travel date')
@@ -556,7 +556,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">How many traveling ? (*)</label>
                                     {{
-                                        Former::text('travelling')->lable(false)
+                                        Former::text('travelling')->label(false)
                                         ->class("form-control")
                                         ->requried('required')
                                         ->placeholder('Enter your number of  traveling')
