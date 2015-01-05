@@ -57,7 +57,7 @@
 
             </div>
             <div id="tour-staffs">
-                <h4>{{ $tour->area->name }} DESTINATION EXPERT</h4>
+                <h4><a href="{{Request::root()}}/join-our-team"{{ $tour->area->name }} DESTINATION EXPERT</h4>
                 <!-- Update here -->
                 @foreach($specialists as $specialist)
                 <div class="row staff-item">

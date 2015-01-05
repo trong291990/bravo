@@ -167,7 +167,7 @@
                     <h2>CLASS OF SERVICE</h2>
                     <div class="row">
                         <div class="form-group col-sm-12">
-                            <label class="control-label">CHOOSE CRUISE LINE</label>
+                            <label class="control-label">CHOOSE YOUR HOTEL CLASS</label>
                             <?php 
                             $cruiseLineOpts = [
                                 "Standard Hotels - generally 1-2 star" => "Standard Hotels - generally 1-2 star",

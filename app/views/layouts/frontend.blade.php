@@ -510,7 +510,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h2 class="modal-title" style="text-align: center" id="myModalLabel">Send us an Enquiry</h2>
+                        <h2 class="modal-title" style="text-align: center;text-transform: uppercase;font-weight: bold" id="myModalLabel">Send us an Enquiry</h2>
                     </div>
                     <?php echo Former::open(route('tour.enquiry'))->novalidate(false) ;?>
                     {{Former::framework('Nude')}}
@@ -554,7 +554,7 @@
                                     }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">How many traveling ?</label>
+                                    <label for="exampleInputEmail1">How many traveling ? (*)</label>
                                     {{
                                         Former::text('travelling')->lable(false)
                                         ->class("form-control")
@@ -563,12 +563,12 @@
                                     }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Pick Up/Drop off information</label>
-                                    <textarea name='pick_off' class="form-control" placeholder="Pick Up/Drop off information" style="min-height: 120px"></textarea>
+                                    <label for="exampleInputEmail1">For the tours I booked, please pick me up at the following hotel (adress, room number, phone ) or airport (flight number, arrival time)</label>
+                                    <textarea name='pick_off' class="form-control" placeholder=" " style="min-height: 120px"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Message</label>
-                                    <textarea name='message' class="form-control" placeholder="Your message" style="min-height: 120px"></textarea>
+                                    <label for="exampleInputEmail1"> Please leave any additional comments here.</label>
+                                    <textarea name='message' class="form-control" placeholder="" style="min-height: 120px"></textarea>
                                 </div>
                             </div>
                         </div>

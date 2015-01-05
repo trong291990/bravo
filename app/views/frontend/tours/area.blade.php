@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="col-lg-3 price-col col-sm-8">
                                     <p class="tour-price">START AT ${{$tour->price_from}} </p>
-                                    <p class="tour-note">per person, without air</p>
+                                    <p class="tour-note">per person, included  air</p>
                                 </div>
                             </div>
                         </div>

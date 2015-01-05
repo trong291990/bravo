@@ -1060,3 +1060,7 @@ label.error {
 #detail-tour-tab {
     border-bottom: 1px solid #ddd;
 }
+.tour-booking {
+    font-weight:bold;
+    text-transform: uppercase
+}
