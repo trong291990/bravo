@@ -11,7 +11,7 @@ Route::get('/tours/search', array('as' => 'tour.search', 'uses' => 'TourControll
 Route::get('/tours/{slug}/{fillter?}', array('as' => 'area_tours', 'uses' => 'TourController@area'))->where('fillter', '(.*)');
 Route::get('/tours-coordinates/{id}/place_coordinates', array('as' => 'tour.load_place_coordinates', 'uses' => 'TourController@placeCoordinates'));
 Route::get('/tours/{area_slug}/{tour_slug}', array('as' => 'tour.show', 'uses' => 'TourController@show'));
-Route::get('/print-tour/{area_slug}/{tour_slug}', array('as' => 'tour.show', 'uses' => 'TourController@print-tour'));
+Route::get('/print-tour/{area_slug}/{tour_slug}', array('as' => 'tour.print', 'uses' => 'TourController@printTour'));
 Route::get('/travel-reviews', array('as' => 'review', 'uses' => 'ReviewController@index'));
 Route::post('/package-compare', array('as' => 'package_compare', 'uses' => 'TourController@compare'));
 Route::post('/enquiry', array('as' => 'tour.enquiry', 'uses' => 'TourController@booking'));

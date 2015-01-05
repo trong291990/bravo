@@ -33,7 +33,7 @@
         <div class="col-sm-5">
             <ul class="list-unstyled list-inline" id="tour-detail-actions">
                 <li> <a href="javascript:void(0);" class="btn-email-friend"><i class="fa fa-envelope"></i> EMAIL TO FRIEND</a></li>
-                <li><a class="btn-print-page" href="{{ Request::url() }}"><i class="fa fa-print"></i> PRINT THIS PAGE</a></li>
+                <li><a class="" href="{{ Request::url() }}"><i class="fa fa-print"></i> PRINT THIS PAGE</a></li>
                 <li><i class="fa fa-phone-square"></i> 19008198</li>
             </ul>
         </div>
@@ -43,7 +43,9 @@
             <p>
                 {{$tour->overview}}
             </p>
-            <div class="tour-map-container" data-url="{{route('tour.load_place_coordinates', $tour->id)}}"></div>
+            <div class="tour-map-container" data-url="{{route('tour.load_place_coordinates', $tour->id)}}">
+                
+            </div>
             <div id="map-des">
                 <?php foreach ($places as $index => $place): ?>
                     <p>

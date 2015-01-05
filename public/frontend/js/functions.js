@@ -198,13 +198,15 @@ function showMap(dom, locations, zoom) {
 /**
  * Load tour's place coordinate and draw map
  */
-$('.tour-map-container').each(function() {
-    var $_this = $(this);
-    var _this = this;
-    $.get($_this.data('url'), function(response) {
-        if (response.success) {
-            showMap(_this, response.places, 9);
-        }
+$(document).ready(function(){
+    $('.tour-map-container').each(function() {
+        var $_this = $(this);
+        var _this = this;
+        $.get($_this.data('url'), function(response) {
+            if (response.success) {
+                showMap(_this, response.places, 9);
+            }
+        });
     });
 });
 $('.booking-tour').on('click', function() {

@@ -19,7 +19,7 @@
             });
         </script>
         {{ Minify::stylesheet( array(
-                        '/shared/css/bootstrap.css',
+                        '/shared/bootstrap/3.0.0/css/bootstrap.css',
                         '/fonts/font-awesome.css',
                         '/fonts/augushand.css',
                         '/frontend/css/site.css',
@@ -786,7 +786,7 @@
         <!-- End modal register -->
 
         {{ Minify::javascript(array(
-               '/shared/js/bootstrap-3.3.1.min.js',
+               '/shared/bootstrap/3.0.0/js/bootstrap.js',
                '/frontend/js/layout.js',
                '/plugins/bootstrap-select/bootstrap-select.js',
                '/plugins/icheck/icheck.js',

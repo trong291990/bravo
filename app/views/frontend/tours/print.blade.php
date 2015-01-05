@@ -36,27 +36,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
-                    <div id="print-header" class="row">
-                        <div class="col-sm-4">
-                            <a href="">Print</a>
-                        </div>
-                        <div class="col-sm-4">
-                            <a href="">Email</a>
-                        </div>
-                        <div class="col-sm-4">
-                            <a href="">Close</a>
-                        </div>
-                    </div>
                     <div class="row">
-                        <div class="col-sm-10">
-                            <h1>Vietnam tour</h1>
-                            <p>This is tour name</p>
-                        </div>
                         <div class="col-sm-2">
                             <a style="padding: 0" href="#" class="navbar-brand pull-right">
                                 <img style="width: 100%" alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
                                 <span class="sr-only">Bravo Tour Since 2009</span>
                             </a>
+                        </div>
+                        <div class="col-sm-3 col-sm-offset-7">
+                            <img src="{{route}}"
                         </div>
                     </div>
                     <hr class="divider" />
