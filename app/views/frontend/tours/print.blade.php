@@ -50,6 +50,9 @@
               h2 {
                   font-size: 16px;
               }
+              footer ,footer a {
+                  color: #fff;
+              }
         </style>
         
         {{HTML::script('/shared/js/jquery-2.0.3.min.js')}}
@@ -92,7 +95,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <a class="thumbnail" href="#">
-                                        <img  src="{{$tour->thumbnailURL()}}" alt="{{$tour->name}}" class="img-responsive" />
+                                        <img  src="{{$tour->photoUrl()}}" alt="{{$tour->name}}" class="img-responsive" />
                                     </a>
                                 </div>
                             </div>
@@ -136,6 +139,12 @@
                     </div>
                 </div>
         </div>
+        <footer style="padding: 10px;background:#146abd;text-align: center">
+            BRAVO INDOCHINATOURS
+            Indochina Park Tower, 4 Nguyen Dinh Chieu, Ho Chi Minh City, Vietnam <br/>
+            Email: <a href="mailto:support@bravoindochinatour.com ">support@bravoindochinatour.com </a>| <br/> 
+            <a href="http://www.bravoindochinatour.com">www.bravoindochinatour.com</a>
+        </footer>
         <script type="text/javascript">
             var locations = {{json_encode($locations)}};
             var map = new google.maps.Map(document.getElementById('map'), {
