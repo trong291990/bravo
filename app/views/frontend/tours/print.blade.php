@@ -47,12 +47,10 @@
               h1 {
                   font-size: 18px;
               }
-              h2 {
+              h2,h3 {
                   font-size: 16px;
               }
-              h2 {
-                  font-size: 14px;
-              }
+              
               footer ,footer a {
                   color: #fff;
               }
@@ -138,10 +136,10 @@
                                 <?php endforeach; ?>
                             </div>
                             <div>
-                                <h2>
+                                <h1>
                                     THE FOLLOWING TERMS AND CONDITIONS SHALL APPLY FOR ALL 
                                     PERSONS PURCHASING A TOUR FROM BRAVO INDOCHINA
-                                </h2>
+                                </h1>
                                 <h3>Deposit</h3>
                                 <p>A deposit of $100.00 per person is required upon accepted confirmation of your booking.  Once a deposit is received it will be understood that you have read and accepted the conditions of the booking.  Balance is due 60 days prior to departure.  Payment can be made by credit card (Master or Visa Card only), bank cheque or telegraphic transfer.  
 
