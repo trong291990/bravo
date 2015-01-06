@@ -697,7 +697,8 @@ label.css-label {
     width: 76px;
     height:280px;
     position: fixed;
-    background: url('/frontend/images/quick-reply.png') top left no-repeat;
+    background: url('/frontend/images/sharephoto.png') top left no-repeat;
+    background-size: cover;
     border-radius: 10px;
     padding: 15px;
     bottom: 200px;

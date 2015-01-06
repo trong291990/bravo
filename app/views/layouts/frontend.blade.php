@@ -489,10 +489,17 @@
                 </div>
             </div>
         </footer>
-        <a id="quick-contact-form" class="clearfix" href="mailto:sales@bravoindochinatour.com">
+        <?php
+            $ignoredQickLinkActions = ['AlbumController@index','AlbumController@download',
+                    'AlbumController@area','AlbumController@show'
+                ];
+            $action = Route::currentRouteAction();
+            if(!in_array($action,$ignoredQickLinkActions)):
+        ?>
+        <a id="quick-contact-form" class="clearfix" href="{{route('travel_album')}}">
             <i class="" id="toggle-quick-contact-form"></i>
-            
         </a>
+        <?php endif ?>
         <div itemscope="itemscope" itemtype="http://schema.org/LocalBusiness" style="display:none">
 			<span itemprop="name">Bravo Indochina Tours</span>
 			<div itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
@@ -610,14 +617,26 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3>Thank you !.</h3>
+                        <h3>We have received your enquiry and one of our travel consultant will reply within 24 hours.</h3>
                     </div>
                     <div class="modal-body" style="padding: 0">
-                        <div style="margin-top:20px">
-                            <div id="thanks-modal-content" role="alert" class="alert alert-success">
-                               
+                        <div style="margin-top:20px;padding-left: 20px;padding-right: 20px">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                     <img style="max-width: 100%" alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
+                                </div>
+                                <div class="col-xs-8">
+                                    <div id="thanks-modal-content">
+                                        <p style="font-style: italic;font-size: .9em">
+                                            If you have not received a reply within 1 working day, please email to 
+                                            support@bravoindochinatour.com who will investigate the case. To ensure that you can receive a reply from Bravo Indochina, add the "www.bravoindochinatour.com" domain to your e-mail "safe list". If you do not receive a response please check your "bulk mail" or "junk mail" folders.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <img src="{{Request::root()}}/frontend/images/thanks.png" style="height: 50px;position: relative;top:-15px" class="pull-right" />
+                                </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="modal-footer" style="margin: 0">
@@ -819,7 +838,7 @@
         @endif
         @if(Session::has('thanks'))
         <script>
-            $('#thanks-modal-content').html( {{Session::get('thanks')}});
+           // $('#thanks-modal-content').html( {{Session::get('thanks')}});
             $('#thanks-modal').modal('show');
             function changeCurrency(type){
                 

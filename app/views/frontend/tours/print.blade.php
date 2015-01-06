@@ -50,6 +50,9 @@
               h2 {
                   font-size: 16px;
               }
+              h2 {
+                  font-size: 14px;
+              }
               footer ,footer a {
                   color: #fff;
               }
@@ -70,14 +73,14 @@
                         <img id="scissors" src="{{Request::root()}}/frontend/images/scissors.png" alt="{{$tour->name}}" />           
                         <div id="print-page-wrapper">
                             <div class="row">
-                            <div class="col-sm-2">
-                                <a style="padding: 0" href="#" class="navbar-brand pull-right">
-                                    <img style="width: 100%" alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
+                            <div class="col-xs-2">
+                                <a style="padding: 0" href="#" class="">
+                                    <img style="max-width: 100%" alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
                                     <span class="sr-only">Bravo Tour Since 2009</span>
                                 </a>
                             </div>
-                            <div  style="text-align:center" class="col-sm-3 col-sm-offset-7">
-                                <img  style="width:150px;margin:auto;"  src="{{Request::root()}}/frontend/images/barcode.png" alt="{{$tour->name}}" />
+                            <div  style="text-align:center" class="col-xs-3 col-xs-offset-7">
+                                <img  style="width:150px;margin:auto;max-width: 100%"  src="{{Request::root()}}/frontend/images/barcode.png" alt="{{$tour->name}}" />
                                 <p style="text-align:center">{{$tour->code}}</p>
                             </div>
                             </div>
@@ -134,7 +137,58 @@
                                 </div>
                                 <?php endforeach; ?>
                             </div>
-                            
+                            <div>
+                                <h2>
+                                    THE FOLLOWING TERMS AND CONDITIONS SHALL APPLY FOR ALL 
+                                    PERSONS PURCHASING A TOUR FROM BRAVO INDOCHINA
+                                </h2>
+                                <h3>Deposit</h3>
+                                <p>A deposit of $100.00 per person is required upon accepted confirmation of your booking.  Once a deposit is received it will be understood that you have read and accepted the conditions of the booking.  Balance is due 60 days prior to departure.  Payment can be made by credit card (Master or Visa Card only), bank cheque or telegraphic transfer.  
+
+                                <h3>Insurance</h3>
+                                <p>Insurance is not included in your tour cost.  We strongly recommend that, at the time of booking, you purchase a comprehensive Travel Insurance policy.  With medical costs being so high and cancellation fees expensive, we strongly recommend that you discuss with your Travel Agent the most all-inclusive travel insurance policy available, which will fully cover your holiday requirements.
+
+                                <h3>Cancellation and Refunds</h3>
+                                <p>Cancellation must be received in writing and will be subject to the following cancellation fees applied per person, per arrangement:
+                                </p>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <p>More than 30 days before departure</p>
+                                        <p>Less than 30 days before departure<br/><br/></p>
+                                        <p>Less than 21 days before departure</p>
+                                        <p>Less than 14 days before departure</p>
+                                        <p>After the tour has started</p>
+                                    </div>
+                                    <div class="col-xs-2" style="text-align: center">
+                                        <p>-</p>
+                                        <p>-<br/><br/></p>
+                                        <p>-</p>
+                                        <p>-</p>
+                                        <p>-</p>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <p>deposit</p>
+                                        <p>25% of the full price of the tour or $500 whichever is the greater. </p>
+                                        <p>50% of the full price of the tour. </p>
+                                        <p>80% of the full price of the tour.</p>
+                                        <p>100% of the full price of the tour.</p>
+                                    </div>
+                                </div>
+                                <p>These are nominal charges only and Bravo Indochina ’s apologise for having to levy these fees but as these are individual tours all arrangements are made well in advance of your departure. 
+                                 </p>   
+                                <h3>Tax</h3>
+                                <p>Packages do not include local & or airport taxes unless otherwise clearly stated.
+
+                                <h3>Amendments</h3>
+                                <p>Up to 30 days prior to departure one amendment per booking is permitted free of charge.  For all subsequent changes there may be a charge of $25 levied per change.  Within 30 days prior to departure, cancellation fees may also be charged.
+                                </p>
+                                <h3>Air Line Tickets</h3>
+                                <p>Cancellation of air arrangements will be subject to fees charged in accordance with the type of airfare used and airline tariff regulations.  Refunds will not be given for unused or cancelled services after your tour arrangements have commenced.
+                                </p>
+                                <h3>Documents</h3>
+                                <p>Pre-departure information will be dispatched on receipt of payment.  Travel documents will be issued after final payment has been received and are normally sent two or three weeks prior to departure.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
