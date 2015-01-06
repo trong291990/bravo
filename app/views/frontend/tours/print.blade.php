@@ -52,13 +52,12 @@
                   font-size: 14px;
                   font-weight: bold
               }
-              
               footer ,footer a {
                   color: #fff;
               }
               .l-h4 {
                   font-size: 18px !important;
-                  font-weight: normal !important
+                  font-weight: bold !important
               }
         </style>
         
@@ -141,6 +140,9 @@
                                 </div>
                                 <?php endforeach; ?>
                             </div>
+                            <h2 style="margin: 20px 0px;text-align: center">
+                                --- Service end ---
+                            </h2>
                             <div>
                                 <h2  class="l-h4">
                                     TERM & CONDITION 
@@ -197,10 +199,8 @@
                 </div>
         </div>
         <footer style="padding: 10px;background:#146abd;text-align: center">
-            BRAVO INDOCHINATOURS
-            Indochina Park Tower, 4 Nguyen Dinh Chieu, Ho Chi Minh City, Vietnam <br/>
-            Email: support@bravoindochinatour.com | <br/> 
-            www.bravoindochinatour.com
+            BRAVO INDOCHINATOURS   Email: support@bravoindochinatour.com | <br/> 
+            www.bravoindochinatour.com<br/>
         </footer>
         <script type="text/javascript">
             var locations = {{json_encode($locations)}};
