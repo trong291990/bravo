@@ -289,7 +289,7 @@
                         <h4>Viet Nam</h4>
                         <ul class="list-unstyled">
                             <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/tours/vietnam-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/vietnam-tours/<?php echo $s->slug ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -297,7 +297,7 @@
                         <h4>Lao</h4>
                         <ul class="list-unstyled">
                             <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/tours/laos-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/laos-tours/<?php echo $s->slug ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -305,7 +305,7 @@
                         <h4>Cambodia</h4>
                         <ul class="list-unstyled">
                            <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/tours/cambodia-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/cambodia-tours/<?php echo $s->slug ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -313,7 +313,7 @@
                         <h4>Thailand</h4>
                         <ul class="list-unstyled">
                            <?php foreach ($styles as $s) : ?>
-                            <li><a href="<?php echo Request::root() ?>/tours/thailand-tours/?filler=true&travel_style=<?php echo $s->id ?>"><?php echo $s->name ?></a></li>
+                            <li><a href="<?php echo Request::root() ?>/tours/thailand-tours/<?php echo $s->slug ?>"><?php echo $s->name ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
