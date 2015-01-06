@@ -49,7 +49,7 @@
                    font-weight: bold
               }
               h2,h3 {
-                  font-size: 16px;
+                  font-size: 14px;
                   font-weight: bold
               }
               
@@ -73,17 +73,17 @@
     <body>
         <div class="container">
                 <div class="cleafix">
-                    <div style="width: 200mm;margin:auto">
+                    <div style="width: 190mm;margin:auto">
                         <img id="scissors" src="{{Request::root()}}/frontend/images/scissors.png" alt="{{$tour->name}}" />           
                         <div id="print-page-wrapper">
                             <div class="row">
-                            <div class="col-xs-2">
+                            <div class="col-xs-3">
                                 <a style="padding: 0" href="#" class="">
-                                    <img style="max-width: 100%" alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
+                                    <img style="width:140px;max-width: 100%" alt="Bravo Indochina Tour logo" class="img-responsive" src="{{ URL::asset('/') }}frontend/images/page/main_logov2.jpg">
                                     <span class="sr-only">Bravo Tour Since 2009</span>
                                 </a>
                             </div>
-                            <div  style="text-align:center" class="col-xs-3 col-xs-offset-7">
+                            <div  style="text-align:center" class="col-xs-3 col-xs-offset-6">
                                 <img  style="width:150px;margin:auto;max-width: 100%"  src="{{Request::root()}}/frontend/images/barcode.png" alt="{{$tour->name}}" />
                                 <p style="text-align:center">{{$tour->code}}</p>
                             </div>
@@ -115,7 +115,7 @@
                                 </p>
                             </div>
                             <div id="print-tour-itinerary">
-                                <h2 class="l-h4">Itinerary</h2>
+                                <h2 class="l-h4">ITINERARY</h2>
                                 <?php foreach ($itineraries as $index => $itinerary) : ?>
                                 <div class="row">
                                     <div class="col-xs-1 no-padding">
