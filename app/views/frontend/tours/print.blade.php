@@ -199,7 +199,7 @@
                 </div>
         </div>
         <footer style="padding: 10px;background:#146abd;text-align: center">
-            BRAVO INDOCHINATOURS   Email: support@bravoindochinatour.com | <br/> 
+            BRAVO INDOCHINATOURS   <br/>   Email: support@bravoindochinatour.com |
             www.bravoindochinatour.com<br/>
         </footer>
         <script type="text/javascript">
