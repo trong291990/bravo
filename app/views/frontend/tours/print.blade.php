@@ -49,6 +49,7 @@
               }
               h2,h3 {
                   font-size: 16px;
+                  font-weight: bold
               }
               
               footer ,footer a {
