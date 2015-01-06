@@ -56,6 +56,10 @@
               footer ,footer a {
                   color: #fff;
               }
+              .l-h4 {
+                  font-size: 18px !important;
+                  font-weight: normal !important
+              }
         </style>
         
         {{HTML::script('/shared/js/jquery-2.0.3.min.js')}}
@@ -68,8 +72,8 @@
     </head>
     <body>
         <div class="container">
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1">
+                <div class="cleafix">
+                    <div style="width: 200mm;margin:auto">
                         <img id="scissors" src="{{Request::root()}}/frontend/images/scissors.png" alt="{{$tour->name}}" />           
                         <div id="print-page-wrapper">
                             <div class="row">
@@ -111,7 +115,7 @@
                                 </p>
                             </div>
                             <div id="print-tour-itinerary">
-                                <h2>Itinerary</h2>
+                                <h2 class="l-h4">Itinerary</h2>
                                 <?php foreach ($itineraries as $index => $itinerary) : ?>
                                 <div class="row">
                                     <div class="col-xs-1 no-padding">
@@ -138,10 +142,9 @@
                                 <?php endforeach; ?>
                             </div>
                             <div>
-                                <h1>
-                                    THE FOLLOWING TERMS AND CONDITIONS SHALL APPLY FOR ALL 
-                                    PERSONS PURCHASING A TOUR FROM BRAVO INDOCHINA
-                                </h1>
+                                <h2  class="l-h4">
+                                    TERM & CONDITION 
+                                </h2>
                                 <h3>Deposit</h3>
                                 <p>A deposit of $100.00 per person is required upon accepted confirmation of your booking.  Once a deposit is received it will be understood that you have read and accepted the conditions of the booking.  Balance is due 60 days prior to departure.  Payment can be made by credit card (Master or Visa Card only), bank cheque or telegraphic transfer.  
 
@@ -196,8 +199,8 @@
         <footer style="padding: 10px;background:#146abd;text-align: center">
             BRAVO INDOCHINATOURS
             Indochina Park Tower, 4 Nguyen Dinh Chieu, Ho Chi Minh City, Vietnam <br/>
-            Email: <a href="mailto:support@bravoindochinatour.com ">support@bravoindochinatour.com </a>| <br/> 
-            <a href="http://www.bravoindochinatour.com">www.bravoindochinatour.com</a>
+            Email: support@bravoindochinatour.com | <br/> 
+            www.bravoindochinatour.com
         </footer>
         <script type="text/javascript">
             var locations = {{json_encode($locations)}};
