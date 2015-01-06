@@ -402,6 +402,14 @@
                                     <img src="/frontend/images/footer/tripadvisor.png" alt="Check out other travelers Bravo us On TripAdvisor" />
                                 </div>
                             </li>
+                            <li class="row">
+                                <div class="col-sm-6">
+                                    Cheap & Fund Vietnam
+                                </div>
+                                <div class="col-sm-6">
+                                    <img class="img-responsive" src="/frontend/images/footer/budgettravel.png" alt="Cheap & Fund Vietnam" />
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-sm-3">
