@@ -402,12 +402,15 @@
                                     <img src="/frontend/images/footer/tripadvisor.png" alt="Check out other travelers Bravo us On TripAdvisor" />
                                 </div>
                             </li>
+                        </ul>
+                        <h4>Cheap & Fun Vietnam</h4>
+                        <ul class="list-unstyled" style="margin-left: 0;padding-left: 0">
                             <li class="row">
-                                <div class="col-sm-6">
-                                    Cheap & Fund Vietnam
-                                </div>
-                                <div class="col-sm-6">
-                                    <img class="img-responsive" src="/frontend/images/footer/budgettravel.png" alt="Cheap & Fund Vietnam" />
+                                <div class="col-sm-12">
+                                    <a href="{{Request::root()}}/tours/vietnam-tours/budget-travel">
+                                        <img class="img-responsive" src="/frontend/images/footer/budgettravel.png" 
+                                             alt="Cheap & Fun Vietnam" />
+                                    </a>
                                 </div>
                             </li>
                         </ul>
