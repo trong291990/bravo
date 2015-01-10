@@ -19,7 +19,7 @@ class Reservation extends Eloquent {
         'customer_name' => 'required',
         'customer_email' => 'required',
         'start_date' => 'required',
-        'travelling' => 'required'
+        'traveling' => 'required'
     );
     
     public static function boot() {

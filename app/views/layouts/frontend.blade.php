@@ -574,7 +574,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">How many traveling ? (*)</label>
                                     {{
-                                        Former::text('travelling')->label(false)
+                                        Former::text('traveling')->label(false)
                                         ->class("form-control")
                                         ->requried('required')
                                         ->placeholder('Enter your number of  traveling')
