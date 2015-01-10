@@ -190,6 +190,7 @@
                                                         <li>Customer's name: {{ $reservation->customer_name }} </li>  
                                                         <li>Email: {{ $reservation->customer_email }} </li>  
                                                         <li>Phone: {{ $reservation->customer_phone }} </li> 
+                                                        <li>Number of traveling: {{ $reservation->traveling }} </li> 
                                                         <li>Start date: {{ \Carbon\Carbon::createFromFormat('Y-m-d', $reservation->start_date)->format('M d,Y')}} </li> 
                                                   </ul>
                                                 </td>

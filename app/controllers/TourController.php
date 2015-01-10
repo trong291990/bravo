@@ -226,8 +226,8 @@ class TourController extends FrontendBaseController {
                 return Redirect::to('/tours/indochina-tours');
             }
         } else {
-            //print_r($validator->errors()->toArray());die();
-             Session::flash('booking_error',true);
+            print_r($validator->errors()->toArray());die();
+            Session::flash('booking_error',true);
             return Redirect::back()->withInput()->withErrors($validator);
         }
     }

@@ -839,7 +839,7 @@
        
         @if(Session::has('booking_success'))
         <script>
-            $('#booking-success').modal('show');
+            $('#thanks-modal').modal('show');
         </script>
         @endif
         @if(Session::has('booking_error'))
